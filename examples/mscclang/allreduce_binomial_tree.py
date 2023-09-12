@@ -19,7 +19,7 @@ def allreduce_binomial_tree(size, instances, trees, protocol):
             for rank in range(0, size, distance*2):
                 peer = rank + distance
                 c1 = chunk(peer, Buffer.input, 0)
-                chunk(rank, Buffer.input).reduce(c1, 0)
+                chunk(rank, Buffer.input, 0).reduce(c1, 0)
             distance *= 2
         # Broadcast tree - root is Rank 0
         distance = distance // 2
