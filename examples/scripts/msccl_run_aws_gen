@@ -1,0 +1,599 @@
+#!/usr/bin/env bash
+
+# Script setup
+set -e -x
+
+### experiment set: 16nodes, one gpu per node
+### tested algorithm: nccl ring, nccl tree, msccl ring, msccl double binary tree, msccl double binomial tree, msccl triple trinomial tree, msccl resursive doubling halving
+
+### Set environment variables ###
+# CUDA HOME
+CUDA_HOME="/project/deps/cuda"
+export CUDA_HOME
+
+# MPI HOME
+# MPI_HOME="/project/deps/openmpi"
+MPI_HOME="/opt/amazon/openmpi"
+export MPI_HOME
+export PATH="${MPI_HOME}/bin:$PATH"
+export LD_LIBRARY_PATH="${MPI_HOME}/lib:$LD_LIBRARY_PATH"
+
+# NCCL HOME
+echo "[INFO] Setting NCCL-related environment variables for other tasks..."
+NCCL_HOME="/project/deps/nccl/build" 
+export NCCL_HOME
+echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
+
+echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
+LD_LIBRARY_PATH="${NCCL_HOME}/lib:${LD_LIBRARY_PATH}"
+export LD_LIBRARY_PATH
+PATH="${NCCL_HOME}/include:${PATH}"
+export PATH
+echo ""
+
+# NCCL TESTS HOME
+NCCLTESTS_SRC_LOCATION="/project/deps/nccl-tests"
+export NCCLTESTS_SRC_LOCATION
+
+# MSCCL HOME
+MSCCL_SRC_LOCATION="/project/deps/msccl"
+export MSCCL_SRC_LOCATION
+
+# MSCCL-Tools HOME
+export MSCCLTOOLS_SRC_LOCATION="/project/deps/msccl-tools"
+
+# MSCCL XML HOME
+export MSCCLTOOLS_XML_LOCATION="${MSCCLTOOLS_SRC_LOCATION}/examples/xml"
+
+# NCCL TESTS WITH MSCCL HOME
+NCCLTESTS_MSCCL_SRC_LOCATION="/project/deps/msccl-tests"
+export NCCLTESTS_MSCCL_SRC_LOCATION
+
+# Experiment Setup
+export MPI_PROC_PER_NODE=1
+export MPI_FI_PROVIDER="efa"
+export NCCL_SOCKET_IFNAME="eth"
+
+### MPI Macro ###
+MPIRUN() {
+    echo "[INFO] Will run mpirun with NCCL_DEBUG=${1}, NCCL_DEBUG_SUBSYS=${2}, NCCL_ALGO=${3}, NCCL_PROTO=${4}, MSCCL_XML_FILES=${5}"
+    mpirun \
+        -x PATH="${PATH}" \
+        -x LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" \
+        -x FI_PROVIDER="${MPI_FI_PROVIDER}" \
+        -x NCCL_DEBUG="${1}" \
+        -x NCCL_DEBUG_SUBSYS="${2}" \
+        -x NCCL_ALGO="${3}" \
+        -x NCCL_PROTO="${4}" \
+        -x MSCCL_XML_FILES="${5}" \
+        -x NCCL_SOCKET_IFNAME="${NCCL_SOCKET_IFNAME}" \
+	    --hostfile "$HOME/hostfile" \
+	    --map-by ppr:"${MPI_PROC_PER_NODE}":node \
+        --mca pml ^cm --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
+        "${@:6}"
+}
+
+echo " "
+echo " "
+######### run msccl #########
+echo " "
+echo " "
+
+# Define Algorithm
+algorithm_vector="binary_tree binomial_tree trinomial_tree rec_doub_halv fibonacci_tree"
+protocol_vector="Simple LL"
+instance_vector="1 2"
+ring_instance_vector="4 8 16"
+
+# Use a for loop to iterate through the elements of ring algorithm
+for element4 in $ring_instance_vector; do
+    echo " "
+    echo "######### case: instance = ${element4} #########"
+    echo " "
+    
+
+    echo " "
+    echo "------ Library: MSCCL, Algorithm: ring, Protocol: Simple, Instance: ${element4} ------"
+
+    export NCCL_DEBUG=INFO
+    export NCCL_DEBUG_SUBSYS=INIT,ENV
+    export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_Simple_gpu16_ins${element4}.xml
+    export NCCL_ALGO=MSCCL,RING,TREE
+    export NCCL_PROTO=Simple
+
+    MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+    
+done
+
+# Use a for loop to iterate through the elements of other algorithms
+for element3 in $instance_vector; do
+    echo " "
+    echo "######### case ${element3}: instance = ${element3} #########"
+    echo " "
+    for element1 in $algorithm_vector; do
+        for element2 in $protocol_vector; do
+            echo " "
+            echo "------ Library: MSCCL, Algorithm: ${element1}, Protocol: ${element2}, Instance: ${element3} ------"
+
+            export NCCL_DEBUG=INFO
+            export NCCL_DEBUG_SUBSYS=INIT,ENV
+            export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_${element1}_${element2}_gpu16_ins${element3}.xml
+            export NCCL_ALGO=MSCCL,RING,TREE
+            export NCCL_PROTO=${element2}
+
+            MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 256MB -f 2 -g 1
+        done
+    done
+done
+
+# ### run msccl ###
+
+# ### case 01: instance = 1
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib:$LD_LIBRARY_PATH
+# export PATH="${MSCCL_SRC_LOCATION}/include:${PATH}"
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: Simple, Channel: 1, Instance: 1 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_Simple_gpu16_ch1_ins1.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=Simple
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL, Channel: 1, Instance: 1 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL_gpu16_ch1_ins1.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL128, Channel: 1, Instance: 1 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL128_gpu16_ch1_ins1.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL128
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: Simple, Channel: 8, Instance: 1 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_Simple_gpu16_ch8_ins1.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=Simple
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL, Channel: 8, Instance: 1 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL_gpu16_ch8_ins1.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL128, Channel: 8, Instance: 1 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL128_gpu16_ch8_ins1.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL128
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binary Tree, Protocol: Simple, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binary_tree_Simple_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binary Tree, Protocol: LL, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binary_tree_LL_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binary Tree, Protocol: LL128, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binary_tree_LL128_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binomial Tree, Protocol: Simple, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binomial_tree_Simple_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binomial Tree, Protocol: LL, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binomial_tree_LL_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binomial Tree, Protocol: LL128, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binomial_tree_LL128_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Trinomial Tree, Protocol: Simple, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_trinomial_tree_Simple_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Trinomial Tree, Protocol: LL, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_trinomial_tree_LL_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Trinomial Tree, Protocol: LL128, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_trinomial_tree_LL128_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Recursive Halving Doubling, Protocol: Simple, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_rec_doub_halv_Simple_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Recursive Halving Doubling, Protocol: LL, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_rec_doub_halv_LL_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Recursive Halving Doubling, Protocol: LL128, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_rec_doub_halv_LL128_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Fibonacci Tree, Protocol: Simple, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_fibonacci_tree_Simple_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Fibonacci Tree, Protocol: LL, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_fibonacci_tree_LL_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Fibonacci Tree, Protocol: LL128, Instance: 1 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_fibonacci_tree_LL128_gpu16_ins1.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# ### case 02: instance = 2
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: Simple, Channel: 1, Instance: 2 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_Simple_gpu16_ch1_ins2.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=Simple
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL, Channel: 1, Instance: 2 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL_gpu16_ch1_ins2.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL128, Channel: 1, Instance: 2 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL128_gpu16_ch1_ins2.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL128
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: Simple, Channel: 8, Instance: 2 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_Simple_gpu16_ch8_ins2.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=Simple
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL, Channel: 8, Instance: 2 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL_gpu16_ch8_ins2.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL
+
+# # MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# # echo " "
+# # echo "------ Library: MSCCL, Algorithm: Ring, Protocol: LL128, Channel: 8, Instance: 2 ------"
+
+# # export NCCL_DEBUG=INFO
+# # export NCCL_DEBUG_SUBSYS=INIT,ENV
+# # export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_ring_LL128_gpu16_ch8_ins2.xml
+# # export NCCL_ALGO=MSCCL,RING,TREE
+# # export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binary Tree, Protocol: Simple, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binary_tree_Simple_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binary Tree, Protocol: LL, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binary_tree_LL_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binary Tree, Protocol: LL128, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binary_tree_LL128_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binomial Tree, Protocol: Simple, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binomial_tree_Simple_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binomial Tree, Protocol: LL, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binomial_tree_LL_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Binomial Tree, Protocol: LL128, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_binomial_tree_LL128_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Trinomial Tree, Protocol: Simple, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_trinomial_tree_Simple_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Trinomial Tree, Protocol: LL, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_trinomial_tree_LL_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Trinomial Tree, Protocol: LL128, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_trinomial_tree_LL128_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Recursive Halving Doubling, Protocol: Simple, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_rec_doub_halv_Simple_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Recursive Halving Doubling, Protocol: LL, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_rec_doub_halv_LL_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Recursive Halving Doubling, Protocol: LL128, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_rec_doub_halv_LL128_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Fibonacci Tree, Protocol: Simple, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_fibonacci_tree_Simple_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=Simple
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Fibonacci Tree, Protocol: LL, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_fibonacci_tree_LL_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+
+# echo " "
+# echo "------ Library: MSCCL, Algorithm: Fibonacci Tree, Protocol: LL128, Instance: 2 ------"
+
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCLTOOLS_XML_LOCATION}/allreduce_fibonacci_tree_LL128_gpu16_ins2.xml
+# export NCCL_ALGO=MSCCL,RING,TREE
+# export NCCL_PROTO=LL128
+
+# MPIRUN "${NCCL_DEBUG}" "${NCCL_DEBUG_SUBSYS}" "${NCCL_ALGO}" "${NCCL_PROTO}" "${MSCCL_XML_FILES}" ${NCCLTESTS_MSCCL_SRC_LOCATION}/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
