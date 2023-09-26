@@ -5,9 +5,9 @@
 
 export PATH="/home/ldai8/scratch/msccl_build/venv/bin:$PATH"
 
-export MSCCL_TOOLS_ALGORITHMS='/home/ldai8/scratch/msccl_build/deps/msccl-tools/examples/mscclang'
+export MSCCL_TOOLS_ALGORITHMS='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/examples/mscclang'
 
-export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools/examples/xml'
+export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/examples/xml'
 
 ### generated algorithm for 16 gpus: msccl ring, msccl double binary tree, msccl double binomial tree, msccl triple trinomial tree, msccl resursive doubling halving
 ### ring
@@ -77,13 +77,31 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools/example
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_fibonacci_tree.py --protocol=LL 16 2 2 > ${MSCCL_TOOLS_XML}/allreduce_fibonacci_tree_LL_gpu16_ins2.xml
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_fibonacci_tree.py --protocol=LL128 16 2 2 > ${MSCCL_TOOLS_XML}/allreduce_fibonacci_tree_LL128_gpu16_ins2.xml
 
-### msccl ring tree test
+# ### msccl ring tree test
+# python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py -h
+# python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins1_test.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins2_test.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 8 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins8_test.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 16 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins16_test.xml
+
+# ###### test for msccl-tools ######
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py 2 1 1 > ${MSCCL_TOOLS_XML}/allreduce_2_gpus_tree_gpu2_ins1_test.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py 2 1 2 > ${MSCCL_TOOLS_XML}/allreduce_2_gpus_tree_gpu2_ins2_test.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py -h
+
 python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py -h
-python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins1_test.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins2_test.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree.py --protocol=LL 2 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_LL_gpu2_ins1.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 8 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins8_test.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binomial_tree.py --protocol=LL 8 2 2 > ${MSCCL_TOOLS_XML}/allreduce_binomial_tree_LL_gpu8_ins2.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 16 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins16_test.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=LL 4 2 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_LL_gpu4_ch2_ins2.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=LL128 4 2 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_LL128_gpu4_ch2_ins2.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=Simple 4 2 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu4_ch2_ins2.xml
 
+python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_recursive_doubling_halving.py --protocol=LL 2 1 > ${MSCCL_TOOLS_XML}/allreduce_rec_doub_halv_LL_gpu2_ins1.xml
