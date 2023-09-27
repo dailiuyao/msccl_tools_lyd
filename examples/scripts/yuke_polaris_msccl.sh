@@ -32,7 +32,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
@@ -42,7 +42,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 2 PROTOCOL: LL ##############################################"
@@ -54,7 +54,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
@@ -64,7 +64,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 1 PROTOCOL: LL128 ##############################################"
@@ -76,7 +76,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
@@ -85,7 +85,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 2 PROTOCOL: LL128 ##############################################"
@@ -97,7 +97,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
@@ -106,7 +106,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_L
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 1 PROTOCOL: Simple ##############################################"
@@ -118,7 +118,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_S
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
@@ -127,7 +127,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_S
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 2 PROTOCOL: Simple ##############################################"
@@ -139,7 +139,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_S
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
@@ -148,7 +148,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_S
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY_TREE INSTANCE: 1 PROTOCOL: LL ##############################################"
@@ -160,7 +160,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY_TREE INSTANCE: 2 PROTOCOL: LL ##############################################"
 
@@ -171,7 +171,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY_TREE INSTANCE: 1 PROTOCOL: LL128 ##############################################"
@@ -183,7 +183,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY_TREE INSTANCE: 2 PROTOCOL: LL128 ##############################################"
 
@@ -194,7 +194,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY_TREE INSTANCE: 1 PROTOCOL: SIMPLE ##############################################"
@@ -206,7 +206,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY_TREE INSTANCE: 2 PROTOCOL: SIMPLE ##############################################"
 
@@ -217,7 +217,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 
@@ -230,7 +230,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL_TREE INSTANCE: 2 PROTOCOL: LL ##############################################"
 
@@ -241,7 +241,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL_TREE INSTANCE: 1 PROTOCOL: LL128 ##############################################"
@@ -253,7 +253,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL_TREE INSTANCE: 2 PROTOCOL: LL128 ##############################################"
 
@@ -264,7 +264,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL_TREE INSTANCE: 1 PROTOCOL: SIMPLE ##############################################"
@@ -276,7 +276,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL_TREE INSTANCE: 2 PROTOCOL: SIMPLE ##############################################"
 
@@ -287,7 +287,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: HIERARCHICAL_BINOMIAL_TREE INSTANCE: 1 PROTOCOL: LL ##############################################"
@@ -299,7 +299,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: HIERARCHICAL_BINOMIAL_TREE INSTANCE: 2 PROTOCOL: LL ##############################################"
 
@@ -310,7 +310,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: HIERARCHICAL_BINOMIAL_TREE INSTANCE: 1 PROTOCOL: LL128 ##############################################"
@@ -322,7 +322,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: HIERARCHICAL_BINOMIAL_TREE INSTANCE: 2 PROTOCOL: LL128 ##############################################"
 
@@ -333,7 +333,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: HIERARCHICAL_BINOMIAL_TREE INSTANCE: 1 PROTOCOL: SIMPLE ##############################################"
@@ -345,7 +345,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: HIERARCHICAL_BINOMIAL_TREE INSTANCE: 2 PROTOCOL: SIMPLE ##############################################"
 
@@ -356,7 +356,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomi
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RECV_HALV_DOUBLE INSTANCE: 1 PROTOCOL: LL ##############################################"
@@ -368,7 +368,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_rec_do
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RECV_HALV_DOUBLE INSTANCE: 2 PROTOCOL: LL ##############################################"
 
@@ -379,7 +379,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_rec_do
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RECV_HALV_DOUBLE INSTANCE: 1 PROTOCOL: LL128 ##############################################"
@@ -391,7 +391,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_rec_do
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RECV_HALV_DOUBLE INSTANCE: 2 PROTOCOL: LL128 ##############################################"
 
@@ -402,7 +402,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_rec_do
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=LL128
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RECV_HALV_DOUBLE INSTANCE: 1 PROTOCOL: SIMPLE ##############################################"
@@ -414,7 +414,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_rec_do
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RECV_HALV_DOUBLE INSTANCE: 2 PROTOCOL: SIMPLE ##############################################"
 
@@ -425,5 +425,5 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_rec_do
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
