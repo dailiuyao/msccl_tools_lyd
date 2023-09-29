@@ -8,7 +8,7 @@ export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
 # Set location to store MSCCL_TEST source/repository
 MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/msccl_test"
 export MSCCL_SRC_LOCATION
-export MSCCL_TEST_COMMIT="v0.7.4"
+export MSCCL_TEST_COMMIT="algorithm_test"
 
 export MSCCL_TEST_HOME=${MSCCL_TEST_SRC_LOCATION}/build
 
