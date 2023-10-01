@@ -1,0 +1,4 @@
+<algo name="allreduce_recursive_doubling_halving" proto="Simple" nchannels="0" nchunksperloop="0" ngpus="1" coll="allreduce" inplace="1">
+  <gpu id="0" i_chunks="0" o_chunks="0" s_chunks="0"/>
+</algo>
+Rank 0 chunk 0 is incorrect should be ReduceChunk index 0 from all ranks, given Chunk(origin_rank=0, origin_index=0, dst_rank=-1, dst_index=0)

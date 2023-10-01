@@ -58,14 +58,14 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_binomial_hierarchical.py --protocol=LL128 4 16 2 > ${MSCCL_TOOLS_XML}/allreduce_binomial_tree_LL128_nodes_16_gpus_4_ins2_hierarchical.xml
 
 
-### hierarchical 4_nomial tree
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins1_hierarchical.xml
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL_nodes_16_gpus_4_ins1_hierarchical.xml
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL128 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL128_nodes_16_gpus_4_ins1_hierarchical.xml
+# ### hierarchical 4_nomial tree
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins1_hierarchical.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL_nodes_16_gpus_4_ins1_hierarchical.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL128 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL128_nodes_16_gpus_4_ins1_hierarchical.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=Simple 4 16 2 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins2_hierarchical.xml
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL 4 16 2 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL_nodes_16_gpus_4_ins2_hierarchical.xml
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL128 4 16 2 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL128_nodes_16_gpus_4_ins2_hierarchical.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=Simple 4 16 2 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins2_hierarchical.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL 4 16 2 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL_nodes_16_gpus_4_ins2_hierarchical.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --protocol=LL128 4 16 2 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_LL128_nodes_16_gpus_4_ins2_hierarchical.xml
 
 
 
@@ -137,3 +137,25 @@ python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical.py --proto
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=Simple 4 2 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu4_ch2_ins2.xml
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_recursive_doubling_halving.py --protocol=LL 2 1 > ${MSCCL_TOOLS_XML}/allreduce_rec_doub_halv_LL_gpu2_ins1.xml
+
+
+
+
+
+
+
+# ### a100 allpairs_v2
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_allpairs_v2.py -h
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_allpairs_v2.py --protocol=Simple 64 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_allpairs_v2_gpus64_ins1.xml
+
+### binary_hierarchical tree
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical.py -h
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_hierarchical_Simple_gpu64_ins1.xml
+
+# hierarchical binomial tree ch3
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_binomial_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binomial_tree_Simple_nodes_16_gpus_4_ins1_ch4_hierarchical.xml
+
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins1_ch4_hierarchical.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_hierarchical_Simple_gpu64_ins1_ch4.xml
