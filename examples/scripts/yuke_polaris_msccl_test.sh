@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #PBS -l select=4:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=02:00:00
+#PBS -l walltime=00:10:00
 #PBS -q debug-scaling
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
@@ -602,6 +602,9 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl-tools-lyd"
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
+# Print the current time
+echo "MSCCL TEST RING time: $(date)"
+
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
@@ -613,6 +616,10 @@ mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: AllPAIRS INSTANCE: 1 PROTOCOL: Simple ##############################################"
+
+# Print the current time
+echo "MSCCL TEST AllPAIRS time: $(date)"
+
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
@@ -626,6 +633,9 @@ mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
+# Print the current time
+echo "MSCCL TEST BINARY time: $(date)"
+
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
@@ -637,6 +647,9 @@ mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b
 
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINARY INSTANCE: 1 PROTOCOL: Simple ##############################################"
+
+# Print the current time
+echo "MSCCL TEST H-BINARY time: $(date)"
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
@@ -650,6 +663,10 @@ mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b
 
 echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINARY-PIPE INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
+# Print the current time
+echo "MSCCL TEST H-BINARY-PIPE time: $(date)"
+
+
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
@@ -660,36 +677,45 @@ export NCCL_PROTO=Simple
 mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
-export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomial_tree_Simple_gpu64_ins1.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_PROTO=Simple
+# # Print the current time
+# echo "MSCCL TEST BINOMIAL time: $(date)"
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomial_tree_Simple_gpu64_ins1.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
-export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomial_tree_h_Simple_gpus_64_ins1.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_PROTO=Simple
+# echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+# # Print the current time
+# echo "MSCCL TEST H-BINOMIAL time: $(date)"
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomial_tree_h_Simple_gpus_64_ins1.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: H-4-NOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: H-4-NOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
-export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_4_nomial_tree_h_Simple_gpus_64_ins1.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_PROTO=Simple
+# # Print the current time
+# echo "MSCCL TEST H-4-NOMIAL time: $(date)"
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_4_nomial_tree_h_Simple_gpus_64_ins1.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1

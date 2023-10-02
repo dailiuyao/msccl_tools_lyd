@@ -18,6 +18,8 @@ export NCCLTESTS_MSCCL_TEST_SRC_LOCATION
 
 ### MSCCL_TEST Core Section ###
 
+rm -rf "${MSCCL_TEST_SRC_LOCATION}" 
+
 # Download MSCCL_TEST
 if [ ! -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
 	echo "[INFO] Downloading MSCCL_TEST repository..."
@@ -50,6 +52,8 @@ echo ""
 
 
 ### NCCL-Tests-MSCCL-LYD Section ###
+
+rm -rf "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" 
 
 # Download NCCL-Tests-MSCCL-LYD
 if [ ! -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
