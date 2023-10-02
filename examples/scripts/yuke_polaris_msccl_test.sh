@@ -599,12 +599,37 @@ export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
 MSCCL_SRC_LOCATION="/home/yuke/ncclPG/msccl_test"
 MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl-tools-lyd"
 
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 1 PROTOCOL: Simple ##############################################"
+
+export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+export NCCL_DEBUG=TRACE
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_Simple_gpu64_ch8_ins1.xml
+export NCCL_ALGO=MSCCL,TREE,RING
+export NCCL_PROTO=Simple
+
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+
+
 echo "######################### LIBRARY: MSCCL ALGORITHM: AllPAIRS INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_a100_allpairs_v2_gpus64_ins1.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_allpairs_v2_Simple_gpus64_ins1.xml
+export NCCL_ALGO=MSCCL,TREE,RING
+export NCCL_PROTO=Simple
+
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY INSTANCE: 1 PROTOCOL: Simple ##############################################"
+
+export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+export NCCL_DEBUG=TRACE
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_Simple_gpu64_ins1.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
@@ -616,42 +641,54 @@ echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINARY INSTANCE: 1 P
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_hierarchical_Simple_gpu64_ins1.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_Simple_gpu64_ins1.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
 mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINARY-CH4 INSTANCE: 1 CH: 4 PROTOCOL: Simple ##############################################"
+echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINARY-PIPE INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_hierarchical_Simple_gpu64_ins1_ch4.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_Simple_gpus_64_ins1.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
 mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINOMIAL-CH4 INSTANCE: 1 CH: 4 PROTOCOL: Simple ##############################################"
+echo "######################### LIBRARY: MSCCL ALGORITHM: BINOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomial_tree_Simple_nodes_16_gpus_4_ins1_ch4_hierarchical.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomial_tree_Simple_gpu64_ins1.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
 mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: H-4-NOMIAL-CH4 INSTANCE: 1 CH: 4 PROTOCOL: Simple ##############################################"
+echo "######################### LIBRARY: MSCCL ALGORITHM: H-BINOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins1_ch4_hierarchical.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binomial_tree_h_Simple_gpus_64_ins1.xml
+export NCCL_ALGO=MSCCL,TREE,RING
+export NCCL_PROTO=Simple
+
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
+
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: H-4-NOMIAL INSTANCE: 1 PROTOCOL: Simple ##############################################"
+
+export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+export NCCL_DEBUG=TRACE
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_4_nomial_tree_h_Simple_gpus_64_ins1.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
