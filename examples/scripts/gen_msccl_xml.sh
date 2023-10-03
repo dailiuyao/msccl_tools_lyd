@@ -140,7 +140,9 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_pipeline_4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_ch4_h_p_Simple_gpu64_ins1.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_pipeline_8.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_ch8_h_p_Simple_gpu64_ins1.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_pipeline_8.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_ch8_h_p_Simple_gpu64_ins1.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_p.py --protocol=Simple 64 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_Simple_gpu64_ins1.xml
 
 
 # ###### test for msccl-tools ######
