@@ -38,34 +38,41 @@ def allreduce_allpairs(num_local_gpus, num_nodes, instances, protocol):
             ring_reduce_scatter(size=num_local_gpus, rank_offset=n * num_local_gpus, continue_chunk_size=continue_chunk_size)
         
         # Each rank sends the nth chunk to the nth rank into scratch space
-        for r1 in range(size):
-            for r2 in range(size):
+        for r1 in range(num_nodes):
+            for r2 in range(num_nodes):
                 if r1 != r2:
                     index = r2 
-                    c = chunk(r1, Buffer.input, index)
-                    c.copy(r2, 'scratch', sendtb=r2, recvtb=r1)
+                    for intra_gpu_i in range(num_local_gpus):
+                        c = chunk(r1*num_local_gpus+intra_gpu_i, Buffer.input, index)
+                        c.copy(r2*num_local_gpus+intra_gpu_i, 'scratch', sendtb=r2, recvtb=r1)
 
         # Each rank performs a local reduction on the nth chunk
         # Utilize 8 threadblocks for this reduction for better parallelism
-        for r in range(size):
-            for k in range(1,int(math.log2(size)+1)):
+        for r in range(num_nodes):
+            for k in range(1,int(math.log2(num_nodes)+1)):
               level = 2**k
-              for index in range(0, size//level):
+              for index in range(0, num_nodes//level):
+                for intra_gpu_i in range(num_local_gpus):
                     if index == 0:
-                        c = chunk(r, Buffer.input, r)
+                        c = chunk(r*num_local_gpus+intra_gpu_i, Buffer.input, r)
                     else:
-                        c = chunk(r, 'scratch', (index-1))
-                    c.reduce(chunk(r, 'scratch', (index+size//level-1)), sendtb=index)
+                        c = chunk(r*num_local_gpus+intra_gpu_i, 'scratch', (index-1))
+                    c.reduce(chunk(r*num_local_gpus+intra_gpu_i, 'scratch', (index+num_nodes//level-1)), sendtb=index)
                     #c = chunk(r, Buffer.input, r*size + (index % size))
                     #c.reduce(chunk(r, 'scratch', index), sendtb=(index % size))
         
         # Each rank sends the fully reduced nth chunk to all other gpus
-        for r1 in range(size):
-            for r2 in range(size):
+        for r1 in range(num_nodes):
+            for r2 in range(num_nodes):
                 if r1 != r2:
                     index = r1
-                    c = chunk(r1, Buffer.input, index)
-                    c.copy(r2, Buffer.input, index, sendtb=r2, recvtb=r1)
+                    for intra_gpu_i in range(num_local_gpus):
+                        c = chunk(r1*num_local_gpus+intra_gpu_i, Buffer.input, index)
+                        c.copy(r2*num_local_gpus+intra_gpu_i, Buffer.input, index, sendtb=r2, recvtb=r1)
+        
+        # intra node all gather
+        for n in range(num_nodes):
+            ring_all_gather(size=num_local_gpus, rank_offset=n * num_local_gpus, continue_chunk_size=continue_chunk_size) 
                 
         XML()
         Check()
