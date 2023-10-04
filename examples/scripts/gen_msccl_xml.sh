@@ -142,8 +142,23 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_pipeline_8.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_ch8_h_p_Simple_gpu64_ins1.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_p.py --protocol=Simple 64 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_Simple_gpu64_ins1.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_p.py --protocol=Simple 64 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_Simple_gpu64_ins1.xml
 
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_1ch_intra_2ch_inter.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_1ch_intra_2ch_inter_Simple_gpu64_ins1.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_Simple_gpu64_ins1.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_2ch_intra_4ch_inter.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2ch_intra_4ch_inter_Simple_gpu64_ins1.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_4_ch_intra_2ch_inter.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_4ch_intra_2ch_inter_Simple_gpu64_ins1.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/hierarchical_allreduce.py --protocol=Simple --schedule=manual 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_allreduce_hierarchical_allreduce_Simple_gpu64_ins1.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_allpairs_v2_h.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_allreduce_a100_allpairs_v2_h_Simple_gpu64_ins1.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_recursive_doubling_halving.py --protocol=Simple 64 1 > ${MSCCL_TOOLS_XML}/allreduce_rec_doub_halv_Simple_gpu64_ins1.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_binomial_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binomial_tree_h_ch4_Simple_gpu64_ins1.xml
 
 # ###### test for msccl-tools ######
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py 2 1 1 > ${MSCCL_TOOLS_XML}/allreduce_2_gpus_tree_gpu2_ins1_test.xml
