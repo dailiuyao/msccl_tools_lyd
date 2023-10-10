@@ -1,8 +1,8 @@
 #!/bin/bash -l
-#PBS -l select=4:system=polaris
+#PBS -l select=16:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=00:10:00
-#PBS -q debug-scaling
+#PBS -l walltime=00:05:00
+#PBS -q prod
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
@@ -886,31 +886,46 @@ mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b
 
 # mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################"
+
+# # Print the current time
+# echo "MSCCL TEST BINARY-H-P 2-INTRA-1-INTER time: $(date)"
+
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_Simple_gpu64_ins1.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
+
+# echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P INSTANCE: 1 CHANNEL: 4-INTRA-2-INTER PROTOCOL: Simple ##############################################"
+
+# # Print the current time
+# echo "MSCCL TEST BINARY-H-P 4-INTRA-2-INTER time: $(date)"
+
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_4ch_intra_2ch_inter_Simple_gpu64_ins1.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4chunk INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################"
 
 # Print the current time
-echo "MSCCL TEST BINARY-H-P 2-INTRA-1-INTER time: $(date)"
+echo "MSCCL TEST BINARY-H-P-2NIC-4chunk 2-INTRA-1-INTER time: $(date)"
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_Simple_gpu64_ins1.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_PROTO=Simple
-
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
-
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P INSTANCE: 1 CHANNEL: 4-INTRA-2-INTER PROTOCOL: Simple ##############################################"
-
-# Print the current time
-echo "MSCCL TEST BINARY-H-P 4-INTRA-2-INTER time: $(date)"
-
-
-export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_4ch_intra_2ch_inter_Simple_gpu64_ins1.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_2nic_Simple_gpu64_ins1.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
