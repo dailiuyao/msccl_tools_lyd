@@ -624,7 +624,7 @@ export NCCL_TEST_HOME=/home/yuke/ncclPG/nccl-tests-msccl-test
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
 
 MSCCL_SRC_LOCATION="/home/yuke/ncclPG/msccl_test"
-MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl-tools-lyd"
+MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 
 
 # echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 1 PROTOCOL: Simple ##############################################"
