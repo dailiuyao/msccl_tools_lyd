@@ -193,7 +193,7 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
         
         # intra node all gather
         for n in range(num_nodes):
-            ring_all_gather(size=num_local_gpus, rank_offset=n * num_local_gpus, local_chunk_size=1, pipe_size=pipe_size, ch_offset=pipe_size, ch_size=num_channel_per_stage) 
+            ring_all_gather(size=num_local_gpus, rank_offset=n * num_local_gpus, local_chunk_size=1, pipe_size=pipe_size, ch_offset=num_channel_per_stage, ch_size=num_channel_per_stage) 
         
         XML()
         Check()
