@@ -174,6 +174,8 @@ python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch
 python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 32 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_32_nch_8.xml
 
 python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 16 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_16_nch_8.xml
+
+
 # ###### test for msccl-tools ######
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py 2 1 1 > ${MSCCL_TOOLS_XML}/allreduce_2_gpus_tree_gpu2_ins1_test.xml
 
