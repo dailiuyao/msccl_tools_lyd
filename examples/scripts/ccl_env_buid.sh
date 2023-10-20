@@ -23,7 +23,7 @@ export NCCLTESTS_MSCCL_TEST_SRC_LOCATION
 # Set location to store NCCL-PROFILE source/repository
 NCCL_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/nccl_profile"
 export NCCL_PROFILE_SRC_LOCATION
-export NCCL_PROFILE_COMMIT="nccl_profile"
+export NCCL_PROFILE_COMMIT="nccl_origin"
 
 ### NCCL-PROFILE Section ###
 
@@ -44,7 +44,7 @@ pushd "${NCCL_PROFILE_SRC_LOCATION}" || exit
 git fetch --all
 
 # Checkout the correct commit
-git checkout "${NCCL_2_14_3_COMMIT}"
+git checkout "${NCCL_PROFILE_COMMIT}"
 
 # Build NCCL
 echo "[INFO] Building NCCL_PROFILE..."

@@ -433,32 +433,32 @@ set -x
 
 # # mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8 -e 512MB -f 2 -g 1
 
-# echo "########################################   NCCL PROFILE TEST  #####################################################"
+echo "########################################   NCCL PROFILE TEST  #####################################################"
 
-# cd /home/yuke/ncclPG/nccl-tests-profile
+cd /home/yuke/ncclPG/nccl-tests-profile
 
-# #module swap PrgEnv-nvhpc PrgEnv-gnu
-# #module load nvhpc-mixed
-# #source env.sh
-# module load gcc
-# module load cudatoolkit-standalone/11.4.4
+#module swap PrgEnv-nvhpc PrgEnv-gnu
+#module load nvhpc-mixed
+#source env.sh
+module load gcc
+module load cudatoolkit-standalone/11.4.4
 
-# export NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
-# export NCCL_CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4
-# export NCCL_HOME=/home/yuke/ncclPG/nccl_profile/build
+export NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
+export NCCL_CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4
+export NCCL_HOME=/home/yuke/ncclPG/nccl_profile/build
 
-# #export PATH=${NCCL_MPI_HOME}/bin:$PATH
-# export LD_LIBRARY_PATH=${NCCL_CUDA_HOME}/lib64:${NCCL_MPI_HOME}/lib:${NCCL_HOME}/lib:$LD_LIBRARY_PATH
+#export PATH=${NCCL_MPI_HOME}/bin:$PATH
+export LD_LIBRARY_PATH=${NCCL_CUDA_HOME}/lib64:${NCCL_MPI_HOME}/lib:${NCCL_HOME}/lib:$LD_LIBRARY_PATH
 
-# #make MPI=1 NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1 NCCL_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/cuda NCCL_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/comm_libs/nccl
+#make MPI=1 NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1 NCCL_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/cuda NCCL_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/comm_libs/nccl
 
-# echo "######################### LIBRARY: NCCL ALGORITHM: TREE PROTOCOL: Simple MSSAGE SIZE: 512M ##############################################"
+echo "######################### LIBRARY: NCCL ALGORITHM: TREE PROTOCOL: Simple MSSAGE SIZE: 512M ##############################################"
 
-# export NCCL_DEBUG=INFO
-# export NCCL_ALGO=Tree
-# export NCCL_PROTO=Simple
+export NCCL_DEBUG=INFO
+export NCCL_ALGO=Tree
+export NCCL_PROTO=Simple
 
-# mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 512M -e 512M -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 128M -e 512M -f 2 -g 1
 
 # echo "########################################   NCCL TEST  #####################################################"
 
@@ -1066,19 +1066,19 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 
 # echo "MSCCL TEST BINARY-H-P-2NIC-256chunk-8ch 2-INTRA-1-INTER end time: $(date)"
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4gpuspipe-4chunk-8ch INSTANCE: 1 CHANNEL: 8 PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4gpuspipe-4chunk-8ch INSTANCE: 1 CHANNEL: 8 PROTOCOL: Simple ##############################################"
 
-# Print the current time
-echo "MSCCL TEST BINARY-H-P-2NIC-4gpuspipe-4chunk-8ch INSTANCE: 1 CHANNEL: 8 time: $(date)"
+# # Print the current time
+# echo "MSCCL TEST BINARY-H-P-2NIC-4gpuspipe-4chunk-8ch INSTANCE: 1 CHANNEL: 8 time: $(date)"
 
 
-export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_PROTO=Simple
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
 
-echo "MSCCL TEST BINARY-H-P-2NIC-4gpuspipe-4chunk-8ch INSTANCE: 1 CHANNEL: 8 end time: $(date)"
+# echo "MSCCL TEST BINARY-H-P-2NIC-4gpuspipe-4chunk-8ch INSTANCE: 1 CHANNEL: 8 end time: $(date)"
