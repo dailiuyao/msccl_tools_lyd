@@ -31,7 +31,7 @@ export PROFAPI=1
 # Download NCCL
 if [ ! -d "${NCCL_PROFILE_SRC_LOCATION}" ]; then
 	echo "[INFO] Downloading NCCL repository..."
-	git clone https://github.com/dailiuyao/NCCL_profile.git "${NCCL_PROFILE_SRC_LOCATION}"
+	git clone git@github.com:dailiuyao/NCCL_profile.git "${NCCL_PROFILE_SRC_LOCATION}"
 elif [ -d "${NCCL_PROFILE_SRC_LOCATION}" ]; then 
 	echo "[INFO] NCCL repository already exists."
 fi
