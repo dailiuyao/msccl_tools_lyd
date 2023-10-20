@@ -120,7 +120,7 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 # python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py 16 16 > ${MSCCL_TOOLS_XML}/allreduce_ring_gpu16_ins16_test.xml
 
 
-############################# Algo for AWS GPU64 ################################################
+############################# Algo for GPU64 ################################################
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py 64 8 1 --protocol=Simple > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu64_ch8_ins1.xml
 
@@ -165,18 +165,21 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_2nic_4gpu_p_Simple_gpu64_ins1.xml
 
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 256 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_256_nch_8.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 256 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_256_nch_8.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 128 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_128_nch_8.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 128 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_128_nch_8.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 64 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_64_nch_8.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 64 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_64_nch_8.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 32 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_32_nch_8.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 32 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_32_nch_8.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 16 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_16_nch_8.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 16 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_16_nch_8.xml
 
+python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.py --protocol=Simple 4 16 4 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.xml
 
 # ###### test for msccl-tools ######
+
+
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py 2 1 1 > ${MSCCL_TOOLS_XML}/allreduce_2_gpus_tree_gpu2_ins1_test.xml
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py 2 1 2 > ${MSCCL_TOOLS_XML}/allreduce_2_gpus_tree_gpu2_ins2_test.xml
@@ -185,7 +188,7 @@ python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/simple/allreduce_ring.py -h
 
-# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree.py --protocol=LL 2 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_LL_gpu2_ins1.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree.py --protocol=Simple 2 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_Simple_gpu2_ins1.xml
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binomial_tree.py --protocol=LL 8 2 2 > ${MSCCL_TOOLS_XML}/allreduce_binomial_tree_LL_gpu8_ins2.xml
 
