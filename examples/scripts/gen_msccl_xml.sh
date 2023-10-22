@@ -175,7 +175,9 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic_4gpu_pipe.py --protocol=Simple 4 16 16 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nic_4gpu_p_Simple_gpu64_ins1_nchunk_16_nch_8.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.py --protocol=Simple 4 16 4 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.py --protocol=Simple 4 16 4 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_8_ch_2nic_4gpu_pipe.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_8_ch_intra_pipe_inter_2nicPtree.py --protocol=Simple 4 16 4 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_8_ch_intra_pipe_inter_2nicPtree.xml
 
 # ###### test for msccl-tools ######
 
