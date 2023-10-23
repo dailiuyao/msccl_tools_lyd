@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-tests-msccl-1022-2
-#PBS -o nccl-tests-msccl-1022-2.out
-#PBS -e nccl-tests-msccl-1022-2.error
+#PBS -N nccl-tests-msccl-1023
+#PBS -o nccl-tests-msccl-1023.out
+#PBS -e nccl-tests-msccl-1023.error
 
 set -x
 
