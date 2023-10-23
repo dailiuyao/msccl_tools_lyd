@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-tests-msccl-1021-3
-#PBS -o nccl-tests-msccl-1021-3.out
-#PBS -e nccl-tests-msccl-1021-3.error
+#PBS -N nccl-tests-msccl-1022
+#PBS -o nccl-tests-msccl-1022.out
+#PBS -e nccl-tests-msccl-1022.error
 
 set -x
 
@@ -1102,19 +1102,37 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-8chunk-16ch-intra-pipe-inter-2nicPtree INSTANCE: 1 CHANNEL: 16 PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-8chunk-16ch-intra-pipe-inter-2nicPtree INSTANCE: 1 CHANNEL: 16 PROTOCOL: Simple ##############################################"
+
+# # Print the current time
+# echo "MSCCL TEST BINARY-H-P-8chunk-16ch-intra-pipe-inter-2nicPtree INSTANCE: 1 CHANNEL: 16 time: $(date)"
+
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_16_ch_intra_pipe_inter_2nicPtree.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
+
+# echo "MSCCL TEST BINARY-H-P-8chunk-16ch-intra-pipe-inter-2nicPtree INSTANCE: 1 CHANNEL: 16 end time: $(date)"
+
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-4chunk-2nicPtree INSTANCE: 1 CHANNEL: 4 PROTOCOL: Simple ##############################################"
 
 # Print the current time
-echo "MSCCL TEST BINARY-H-P-8chunk-16ch-intra-pipe-inter-2nicPtree INSTANCE: 1 CHANNEL: 16 time: $(date)"
+echo "MSCCL TEST BINARY-H-P-4chunk-2nicPtree INSTANCE: 1 CHANNEL: 4 time: $(date)"
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_16_ch_intra_pipe_inter_2nicPtree.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_2nicPtree_ch_4.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
 mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32 -e 512MB -f 2 -g 1
 
-echo "MSCCL TEST BINARY-H-P-8chunk-16ch-intra-pipe-inter-2nicPtree INSTANCE: 1 CHANNEL: 16 end time: $(date)"
+echo "MSCCL TEST BINARY-H-P-4chunk-2nicPtree INSTANCE: 1 CHANNEL: 4 end time: $(date)"
