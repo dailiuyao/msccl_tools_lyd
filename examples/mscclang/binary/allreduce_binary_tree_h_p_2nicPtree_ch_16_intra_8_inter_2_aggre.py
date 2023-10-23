@@ -52,7 +52,7 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
     pipe_size = int(num_chunks/4)
     chunk_size = num_chunks
     num_channel_per_stage = num_channel
-    num_channel_intra_stage = 2
+    num_channel_intra_stage = 8
     topology = fully_connected(size)
     collective = AllReduce(size, chunk_size, True)
     with MSCCLProgram("allreduce_binary_tree_hierarchical", topology, collective, instances, protocol=protocol):
@@ -78,21 +78,19 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
                 
                 low_bit = bit // 2
                 peer_0 = rank - low_bit
-                for pipe_step in range(0, pipe_size):   
-                    c1 = chunk(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step)
-                    chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step).reduce(c1, ch=0*num_channel_intra_stage+pipe_step/2)
-                    c2 = chunk(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step)
-                    chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step).reduce(c2, ch=0*num_channel_intra_stage+pipe_step/2)
+                c1 = chunk(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size)
+                chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size).reduce(c1, ch=1*num_channel_intra_stage)
+                c2 = chunk(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size)
+                chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size).reduce(c2, ch=1*num_channel_intra_stage)
                 
                 peer_1 = rank + low_bit
                 while peer_1 >= num_nodes:
                     peer_1 = rank + low_bit
                     low_bit //= 2
-                for pipe_step in range(0, pipe_size):  
-                    c1 = chunk(peer_1*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step)
-                    chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step).reduce(c1, ch=0*num_channel_intra_stage+pipe_step/2)
-                    c2 = chunk(peer_1*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step)
-                    chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step).reduce(c2, ch=0*num_channel_intra_stage+pipe_step/2)
+                c1 = chunk(peer_1*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size)
+                chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size).reduce(c1, ch=1*num_channel_intra_stage)
+                c2 = chunk(peer_1*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size)
+                chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size).reduce(c2, ch=1*num_channel_intra_stage)
             step *= 2
             
         peer_0 = 1
@@ -100,16 +98,14 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
             peer_0 *= 2
      
         peer_0 //= 2 
-        for pipe_step in range(0, pipe_size):   
-            c1 = chunk(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step)
-            chunk(0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step).reduce(c1, ch=0*num_channel_intra_stage+pipe_step/2)         
-            c2 = chunk(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step)
-            chunk(0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step).reduce(c2, ch=0*num_channel_intra_stage+pipe_step/2)         
+        c1 = chunk(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size)
+        chunk(0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size).reduce(c1, ch=1*num_channel_intra_stage)         
+        c2 = chunk(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size)
+        chunk(0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size).reduce(c2, ch=1*num_channel_intra_stage)         
     
         # Broadcast tree - root is Rank 0
-        for pipe_step in range(0, pipe_size): 
-            chunk(0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step).copy(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step, ch=1*num_channel_intra_stage+pipe_step/2) 
-            chunk(0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step).copy(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step, ch=1*num_channel_intra_stage+pipe_step/2) 
+        chunk(0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size).copy(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size, ch=1*num_channel_intra_stage) 
+        chunk(0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size).copy(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size, ch=1*num_channel_intra_stage) 
         
         step = 2**num_level
         while step >= 2:       
@@ -122,17 +118,15 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
                 
                 low_bit = bit // 2
                 peer_0 = rank - low_bit
-                for pipe_step in range(0, pipe_size): 
-                    chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step).copy(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step, ch=1*num_channel_intra_stage+pipe_step/2) 
-                    chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step).copy(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step, ch=1*num_channel_intra_stage+pipe_step/2) 
+                chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size).copy(peer_0*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size, ch=1*num_channel_intra_stage) 
+                chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size).copy(peer_0*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size, ch=1*num_channel_intra_stage) 
                 
                 peer_1 = rank + low_bit
                 while peer_1 >= num_nodes:
                     peer_1 = rank + low_bit
                     low_bit //= 2
-                for pipe_step in range(0, pipe_size): 
-                    chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step).copy(peer_1*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size+pipe_step, ch=1*num_channel_intra_stage+pipe_step/2)
-                    chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step).copy(peer_1*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size+pipe_step, ch=1*num_channel_intra_stage+pipe_step/2)  
+                chunk(rank*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size).copy(peer_1*num_local_gpus+inter_gpu_offset1, Buffer.input, 0*pipe_size, pipe_size, ch=1*num_channel_intra_stage)
+                chunk(rank*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size).copy(peer_1*num_local_gpus+inter_gpu_offset2, Buffer.input, 2*pipe_size, pipe_size, ch=1*num_channel_intra_stage)  
             step //= 2
 
         # Mirrored version of the second tree for even ranks
@@ -153,21 +147,19 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
                     
                     low_bit = bit // 2
                     peer_0 = rank - low_bit
-                    for pipe_step in range(0, pipe_size): 
-                        c1 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step)
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step).reduce(c1, ch=2*num_channel_intra_stage+pipe_step/2)
-                        c2 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step)
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step).reduce(c2, ch=2*num_channel_intra_stage+pipe_step/2)
+                    c1 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size)
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size).reduce(c1, ch=1*num_channel_intra_stage+1)
+                    c2 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size)
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size).reduce(c2, ch=1*num_channel_intra_stage+1)
      
                     peer_1 = rank + low_bit
                     while peer_1 >= num_nodes:
                         peer_1 = rank + low_bit
                         low_bit //= 2
-                    for pipe_step in range(0, pipe_size): 
-                        c1 = chunk((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step)
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step).reduce(c1, ch=2*num_channel_intra_stage+pipe_step/2)
-                        c2 = chunk((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step)
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step).reduce(c2, ch=2*num_channel_intra_stage+pipe_step/2)
+                    c1 = chunk((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size)
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size).reduce(c1, ch=1*num_channel_intra_stage+1)
+                    c2 = chunk((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size)
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size).reduce(c2, ch=1*num_channel_intra_stage+1)
                 step *= 2
                 
             peer_0 = 1
@@ -175,16 +167,14 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
                 peer_0 *= 2
         
             peer_0 //= 2
-            for pipe_step in range(0, pipe_size): 
-                c1 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step)
-                chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step).reduce(c1, ch=2*num_channel_intra_stage+pipe_step/2)         
-                c2 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step)
-                chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step).reduce(c2, ch=2*num_channel_intra_stage+pipe_step/2)         
+            c1 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size)
+            chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size).reduce(c1, ch=1*num_channel_intra_stage+1)         
+            c2 = chunk((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size)
+            chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size).reduce(c2, ch=1*num_channel_intra_stage+1)         
         
             # Broadcast tree - root is Rank N-1
-            for pipe_step in range(0, pipe_size): 
-                chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step, ch=3*num_channel_intra_stage+pipe_step/2) 
-                chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step, ch=3*num_channel_intra_stage+pipe_step/2) 
+            chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size, ch=1*num_channel_intra_stage+1) 
+            chunk((num_nodes-1-0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size, ch=1*num_channel_intra_stage+1) 
       
             step = 2**num_level
             while step >= 2:       
@@ -196,17 +186,15 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
                         bit *= 2   
                     
                     low_bit = bit // 2
-                    peer_0 = rank - low_bit    
-                    for pipe_step in range(0, pipe_size):                 
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step, ch=3*num_channel_intra_stage+pipe_step/2) 
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step, ch=3*num_channel_intra_stage+pipe_step/2)                     
+                    peer_0 = rank - low_bit            
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size, ch=1*num_channel_intra_stage+1) 
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size).copy((num_nodes-1-peer_0)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size, ch=1*num_channel_intra_stage+1)                     
                     peer_1 = rank + low_bit
                     while peer_1 >= num_nodes:
                         peer_1 = rank + low_bit
                         low_bit //= 2
-                    for pipe_step in range(0, pipe_size):  
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step).copy((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size+pipe_step, ch=3*num_channel_intra_stage+pipe_step/2) 
-                        chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step).copy((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size+pipe_step, ch=3*num_channel_intra_stage+pipe_step/2) 
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size).copy((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset1, Buffer.input, 1*pipe_size, pipe_size, ch=1*num_channel_intra_stage+1) 
+                    chunk((num_nodes-1-rank)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size).copy((num_nodes-1-peer_1)*num_local_gpus+inter_gpu_offset2, Buffer.input, 3*pipe_size, pipe_size, ch=1*num_channel_intra_stage+1) 
                 step //= 2
         
         # intra node all gather
