@@ -183,7 +183,10 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2nicPtree_ch_4.py --protocol=Simple 4 16 8 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nicPtree_ch_4.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2nicPtree_ch_8_intra_8_inter_4.py --protocol=Simple 4 16 8 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nicPtree_ch_8_intra_8_inter_4.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2nicPtree_ch_8_intra_8_inter_4.py --protocol=Simple 4 16 8 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nicPtree_ch_8_intra_8_inter_4.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2nicPtree_ch_16_intra_16_inter_8.py --protocol=Simple 4 16 16 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nicPtree_ch_16_intra_16_inter_8.xml
+
 
 
 # ###### test for msccl-tools ######
