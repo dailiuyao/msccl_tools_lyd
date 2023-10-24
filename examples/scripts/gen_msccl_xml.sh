@@ -189,7 +189,7 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_h_p_2nicPtree_ch_16_intra_8_inter_2_aggre.py --protocol=Simple 4 16 16 8 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2nicPtree_ch_16_intra_8_inter_2_aggre.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=Simple 4 4 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch4.xml
+python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=Simple 4 1 24 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch24.xml
 
 # ###### test for msccl-tools ######
 
