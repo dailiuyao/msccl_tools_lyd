@@ -1,14 +1,14 @@
 #!/bin/bash -l
-#PBS -l select=16:system=polaris
+#PBS -l select=1:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:05:00
-#PBS -q prod
+#PBS -q debug
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-tests-msccl-1023-1
-#PBS -o nccl-tests-msccl-1023-1.out
-#PBS -e nccl-tests-msccl-1023-1.error
+#PBS -N nccl-tests-msccl-1024
+#PBS -o nccl-tests-msccl-1024.out
+#PBS -e nccl-tests-msccl-1024.error
 
 set -x
 
@@ -460,24 +460,24 @@ set -x
 
 # mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 128M -e 512M -f 2 -g 1
 
-# echo "########################################   NCCL TEST  #####################################################"
+echo "########################################   NCCL TEST  #####################################################"
 
-# cd /home/yuke/ncclPG/nccl-tests-cu116
+cd /home/yuke/ncclPG/nccl-tests-cu116
 
-# #module swap PrgEnv-nvhpc PrgEnv-gnu
-# #module load nvhpc-mixed
-# #source env.sh
-# module load nvhpc/23.1
-# module load cudatoolkit-standalone/11.4.4
+#module swap PrgEnv-nvhpc PrgEnv-gnu
+#module load nvhpc-mixed
+#source env.sh
+module load nvhpc/23.1
+module load cudatoolkit-standalone/11.4.4
 
-# export NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/cray/10.0
-# export NCCL_CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4
-# export NCCL_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/23.1/comm_libs/nccl
+export NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/cray/10.0
+export NCCL_CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4
+export NCCL_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/23.1/comm_libs/nccl
 
-# #export PATH=${NCCL_MPI_HOME}/bin:$PATH
-# export LD_LIBRARY_PATH=${NCCL_CUDA_HOME}/lib64:${NCCL_MPI_HOME}/lib:${NCCL_HOME}/lib:$LD_LIBRARY_PATH
+#export PATH=${NCCL_MPI_HOME}/bin:$PATH
+export LD_LIBRARY_PATH=${NCCL_CUDA_HOME}/lib64:${NCCL_MPI_HOME}/lib:${NCCL_HOME}/lib:$LD_LIBRARY_PATH
 
-# #make MPI=1 NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1 NCCL_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/cuda NCCL_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/comm_libs/nccl
+#make MPI=1 NCCL_MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1 NCCL_CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/cuda NCCL_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/21.9/comm_libs/nccl
 
 # echo "######################### LIBRARY: NCCL ALGORITHM: RING PROTOCOL: LL ##############################################"
 
@@ -487,13 +487,13 @@ set -x
 
 # mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 8 -e 512M -f 2 -g 1
 
-# echo "######################### LIBRARY: NCCL ALGORITHM: RING PROTOCOL: SIMPLE ##############################################"
+echo "######################### LIBRARY: NCCL ALGORITHM: RING PROTOCOL: SIMPLE ##############################################"
 
-# export NCCL_DEBUG=INFO
-# export NCCL_ALGO=Ring
-# export NCCL_PROTO=Simple
+export NCCL_DEBUG=INFO
+export NCCL_ALGO=Ring
+export NCCL_PROTO=Simple
 
-# mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 8 -e 512M -f 2 -g 1
+mpiexec -n 4 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 8 -e 512M -f 2 -g 1
 
 # # echo "######################### LIBRARY: NCCL ALGORITHM: RING PROTOCOL: LL128 ##############################################"
 
@@ -1206,19 +1206,36 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 
 # echo "MSCCL TEST BINARY-H-P-16chunk-4:1-2nicPtree-aggre INSTANCE: 1 CHANNEL: 10 end time: $(date)"
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-16chunk-16:8-2nicPtree INSTANCE: 1 CHANNEL: 24 PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-16chunk-16:8-2nicPtree INSTANCE: 1 CHANNEL: 24 PROTOCOL: Simple ##############################################"
+
+# # Print the current time
+# echo "MSCCL TEST BINARY-H-P-16chunk-16:8-2nicPtree INSTANCE: 1 CHANNEL: 24 start time: $(date)"
+
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_2nicPtree_ch_16_intra_16_inter_8.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 64 -e 512MB -f 2 -g 1
+
+# echo "MSCCL TEST BINARY-H-P-16chunk-16:8-2nicPtree INSTANCE: 1 CHANNEL: 24 end time: $(date)"
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: A100-RING INSTANCE: 1 CHANNEL: 4 PROTOCOL: Simple ##############################################"
 
 # Print the current time
-echo "MSCCL TEST BINARY-H-P-16chunk-16:8-2nicPtree INSTANCE: 1 CHANNEL: 24 start time: $(date)"
+echo "MSCCL TEST A100-RING INSTANCE: 1 CHANNEL: 4 start time: $(date)"
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_h_p_2nicPtree_ch_16_intra_16_inter_8.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_a100_ring_ch4.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 64 -e 512MB -f 2 -g 1
+mpiexec -n 4 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 64 -e 512MB -f 2 -g 1
 
-echo "MSCCL TEST BINARY-H-P-16chunk-16:8-2nicPtree INSTANCE: 1 CHANNEL: 24 end time: $(date)"
+echo "MSCCL TEST A100-RING INSTANCE: 1 CHANNEL: 4 end time: $(date)"
