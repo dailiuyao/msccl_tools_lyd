@@ -5,6 +5,7 @@ import argparse
 from msccl.language import *
 from msccl.topologies import *
 from msccl.language.collectives import AllReduce
+import math
 
 # Ring all reduce for A100s
 # Vary channels from [1-8] to divide parts of the ring over multiple channels/tbs.
@@ -20,7 +21,7 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = (index + step) % size
                 next_rank = (index + step + 1) % size
-                channel = (index%channels)/4
+                channel = math.floor((index%channels)/4)
                 c = chunk(next_rank, Buffer.input, index)
                 c.reduce(chunk(rank, Buffer.input, index), ch=channel, recvtb=channel, sendtb=channel)
         
@@ -29,7 +30,7 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = gpu_index[(index + step) % size]
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 4)/4
+                channel = math.floor((index%channels + 4)/4)
                 c = chunk(next_rank, Buffer.input, index + 4)
                 c.reduce(chunk(rank, Buffer.input, index + 4), ch=channel, recvtb=channel, sendtb=channel)
                 
@@ -38,7 +39,7 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = gpu_index[(index + step) % size]
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 8)/4
+                channel = math.floor((index%channels + 8)/4)
                 c = chunk(next_rank, Buffer.input, index + 8)
                 c.reduce(chunk(rank, Buffer.input, index + 8), ch=channel, recvtb=channel, sendtb=channel)
                 
@@ -47,7 +48,7 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = gpu_index[(index + step) % size]
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 12)/4
+                channel = math.floor((index%channels + 12)/4)
                 c = chunk(next_rank, Buffer.input, index + 12)
                 c.reduce(chunk(rank, Buffer.input, index + 12), ch=channel, recvtb=channel, sendtb=channel)
                 
@@ -56,7 +57,7 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = gpu_index[(index + step) % size]
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 16)/4
+                channel = math.floor((index%channels + 16)/4)
                 c = chunk(next_rank, Buffer.input, index + 16)
                 c.reduce(chunk(rank, Buffer.input, index + 16), ch=channel, recvtb=channel, sendtb=channel)
         
@@ -65,7 +66,7 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = gpu_index[(index + step) % size]
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 20)/4
+                channel = math.floor((index%channels + 20)/4)
                 c = chunk(next_rank, Buffer.input, index + 20)
                 c.reduce(chunk(rank, Buffer.input, index + 20), ch=channel, recvtb=channel, sendtb=channel)
                 
@@ -75,7 +76,7 @@ def allreduce_ring(size, instances, channels, protocol):
                 rank = (index + step) % size
                 c = chunk(rank, Buffer.input, index)
                 next_rank = (index + step + 1) % size
-                channel = (index%channels)/4 + 6
+                channel = math.floor((index%channels)/4) + 6
                 c = c.copy(next_rank, Buffer.input, index, ch=channel, recvtb=channel, sendtb=channel)
         
         for step in range(-1, size-2):
@@ -84,7 +85,7 @@ def allreduce_ring(size, instances, channels, protocol):
                 rank = gpu_index[(index + step) % size]
                 c = chunk(rank, Buffer.input, index + 4)
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 4)/4 + 6
+                channel = math.floor((index%channels + 4)/4) + 6
                 c = c.copy(next_rank, Buffer.input, index + 4, ch=channel, recvtb=channel, sendtb=channel)
                 
         for step in range(-1, size-2):
@@ -93,7 +94,7 @@ def allreduce_ring(size, instances, channels, protocol):
                 rank = gpu_index[(index + step) % size]
                 c = chunk(rank, Buffer.input, index + 8)
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 8)/4 + 6
+                channel = math.floor((index%channels + 8)/4) + 6
                 c = c.copy(next_rank, Buffer.input, index + 8, ch=channel, recvtb=channel, sendtb=channel)
                 
         for step in range(-1, size-2):
@@ -102,7 +103,7 @@ def allreduce_ring(size, instances, channels, protocol):
                 rank = gpu_index[(index + step) % size]
                 c = chunk(rank, Buffer.input, index + 12)
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 12)/4 + 6
+                channel = math.floor((index%channels + 12)/4) + 6
                 c = c.copy(next_rank, Buffer.input, index + 12, ch=channel, recvtb=channel, sendtb=channel)
         
         for step in range(-1, size-2):
@@ -111,7 +112,7 @@ def allreduce_ring(size, instances, channels, protocol):
                 rank = gpu_index[(index + step) % size]
                 c = chunk(rank, Buffer.input, index + 16)
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 16)/4 + 6
+                channel = math.floor((index%channels + 16)/4) + 6
                 c = c.copy(next_rank, Buffer.input, index + 16, ch=channel, recvtb=channel, sendtb=channel)
                 
         for step in range(-1, size-2):
@@ -120,7 +121,7 @@ def allreduce_ring(size, instances, channels, protocol):
                 rank = gpu_index[(index + step) % size]
                 c = chunk(rank, Buffer.input, index + 20)
                 next_rank = gpu_index[(index + step + 1) % size]
-                channel = (index%channels + 20)/4 + 6
+                channel = math.floor((index%channels + 20)/4) + 6
                 c = c.copy(next_rank, Buffer.input, index + 20, ch=channel, recvtb=channel, sendtb=channel)
                
         XML()
