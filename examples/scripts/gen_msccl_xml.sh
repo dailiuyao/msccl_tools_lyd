@@ -191,11 +191,11 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_2_stage.py --protocol=Simple 4 24 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch24_manul_2_stage.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 4 24 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch24_manul_1ins.xml
+python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 4 4 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch4_manul_1ins.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 4 24 2 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch24_manul_2ins.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 4 4 4 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch24_manul_2ins.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 4 24 4 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch24_manul_4ins.xml
+python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 4 4 6 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch4_manul_6ins.xml
 
 # ###### test for msccl-tools ######
 
