@@ -1241,19 +1241,37 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 # echo "MSCCL TEST A100-RING-MANUL INSTANCE: 1 CHANNEL: 4 end time: $(date)"
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: A100-RING-MANUL INSTANCE: 4 CHANNEL: 8 PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: A100-RING-MANUL INSTANCE: 4 CHANNEL: 8 PROTOCOL: Simple ##############################################"
+
+# # Print the current time
+# echo "MSCCL TEST A100-RING-MANUL INSTANCE: 4 CHANNEL: 8 start time: $(date)"
+
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_a100_ring_ch8_manul_4ins.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 4 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 96 -e 96MB -f 2 -g 1
+
+# echo "MSCCL TEST A100-RING-MANUL INSTANCE: 4 CHANNEL: 8 end time: $(date)"
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: A100-RING-MANUL INSTANCE: 1 CHANNEL: 32 PROTOCOL: Simple ##############################################"
 
 # Print the current time
-echo "MSCCL TEST A100-RING-MANUL INSTANCE: 4 CHANNEL: 8 start time: $(date)"
+echo "MSCCL TEST A100-RING-MANUL INSTANCE: 1 CHANNEL: 32 start time: $(date)"
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_a100_ring_ch8_manul_4ins.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_a100_ring_ch32_8links.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
 mpiexec -n 4 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 96 -e 96MB -f 2 -g 1
 
-echo "MSCCL TEST A100-RING-MANUL INSTANCE: 4 CHANNEL: 8 end time: $(date)"
+echo "MSCCL TEST A100-RING-MANUL INSTANCE: 1 CHANNEL: 32 end time: $(date)"
+
