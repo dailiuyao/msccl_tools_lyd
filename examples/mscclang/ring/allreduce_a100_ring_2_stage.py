@@ -17,112 +17,114 @@ def allreduce_ring(size, instances, channels, protocol):
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances,
          protocol=protocol, threadblock_policy=ThreadblockPolicy.manual):
         # Reduce ring
-        for step in range(0, size-1):
-            for index in range(0, size):
-                rank = (index + step) % size
-                next_rank = (index + step + 1) % size
-                channel = math.floor((index%channels)/4)
-                c = chunk(next_rank, Buffer.input, index)
-                c.reduce(chunk(rank, Buffer.input, index), ch=channel, recvtb=channel, sendtb=channel)
-        
-        for step in range(0, size-1):
-            gpu_index = [0, 1, 3, 2]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 4)/4)
-                c = chunk(next_rank, Buffer.input, index + 4)
-                c.reduce(chunk(rank, Buffer.input, index + 4), ch=channel, recvtb=channel, sendtb=channel)
-                
-        for step in range(0, size-1):
-            gpu_index = [0, 2, 3, 1]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 8)/4)
-                c = chunk(next_rank, Buffer.input, index + 8)
-                c.reduce(chunk(rank, Buffer.input, index + 8), ch=channel, recvtb=channel, sendtb=channel)
-                
-        for step in range(0, size-1):
-            gpu_index = [0, 2, 1, 3]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 12)/4)
-                c = chunk(next_rank, Buffer.input, index + 12)
-                c.reduce(chunk(rank, Buffer.input, index + 12), ch=channel, recvtb=channel, sendtb=channel)
-                
-        for step in range(0, size-1):
-            gpu_index = [0, 3, 1, 2]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 16)/4)
-                c = chunk(next_rank, Buffer.input, index + 16)
-                c.reduce(chunk(rank, Buffer.input, index + 16), ch=channel, recvtb=channel, sendtb=channel)
-        
-        for step in range(0, size-1):
-            gpu_index = [0, 3, 2, 1]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 20)/4)
-                c = chunk(next_rank, Buffer.input, index + 20)
-                c.reduce(chunk(rank, Buffer.input, index + 20), ch=channel, recvtb=channel, sendtb=channel)
+        for channel_same_link in range(0, 4):
+            for step in range(0, size-1):
+                for index in range(0, size):
+                    rank = (index + step) % size
+                    next_rank = (index + step + 1) % size
+                    channel = math.floor((index)/4) + channel_same_link*6
+                    c = chunk(next_rank, Buffer.input, index + channel_same_link*24)
+                    c.reduce(chunk(rank, Buffer.input, index + channel_same_link*24), ch=channel, recvtb=channel, sendtb=channel)
+            
+            for step in range(0, size-1):
+                gpu_index = [0, 1, 3, 2]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 4)/4) + channel_same_link*6
+                    c = chunk(next_rank, Buffer.input, index + 4 + channel_same_link*24)
+                    c.reduce(chunk(rank, Buffer.input, index + 4 + channel_same_link*24), ch=channel, recvtb=channel, sendtb=channel)
+                    
+            for step in range(0, size-1):
+                gpu_index = [0, 2, 3, 1]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 8)/4) + channel_same_link*6
+                    c = chunk(next_rank, Buffer.input, index + 8 + channel_same_link*24)
+                    c.reduce(chunk(rank, Buffer.input, index + 8 + channel_same_link*24), ch=channel, recvtb=channel, sendtb=channel)
+                    
+            for step in range(0, size-1):
+                gpu_index = [0, 2, 1, 3]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 12)/4) + channel_same_link*6
+                    c = chunk(next_rank, Buffer.input, index + 12 + channel_same_link*24)
+                    c.reduce(chunk(rank, Buffer.input, index + 12 + channel_same_link*24), ch=channel, recvtb=channel, sendtb=channel)
+                    
+            for step in range(0, size-1):
+                gpu_index = [0, 3, 1, 2]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 16)/4) + channel_same_link*6
+                    c = chunk(next_rank, Buffer.input, index + 16 + channel_same_link*24)
+                    c.reduce(chunk(rank, Buffer.input, index + 16 + channel_same_link*24), ch=channel, recvtb=channel, sendtb=channel)
+            
+            for step in range(0, size-1):
+                gpu_index = [0, 3, 2, 1]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 20)/4) + channel_same_link*6
+                    c = chunk(next_rank, Buffer.input, index + 20 + channel_same_link*24)
+                    c.reduce(chunk(rank, Buffer.input, index + 20 + channel_same_link*24), ch=channel, recvtb=channel, sendtb=channel)
                 
         # Propagate ring
-        for step in range(-1, size-2):
-            for index in range(0, size):
-                rank = (index + step) % size
-                c = chunk(rank, Buffer.input, index)
-                next_rank = (index + step + 1) % size
-                channel = math.floor((index%channels)/4) + 6
-                c = c.copy(next_rank, Buffer.input, index, ch=channel, recvtb=channel, sendtb=channel)
-        
-        for step in range(-1, size-2):
-            gpu_index = [0, 1, 3, 2]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                c = chunk(rank, Buffer.input, index + 4)
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 4)/4) + 6
-                c = c.copy(next_rank, Buffer.input, index + 4, ch=channel, recvtb=channel, sendtb=channel)
-                
-        for step in range(-1, size-2):
-            gpu_index = [0, 2, 3, 1]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                c = chunk(rank, Buffer.input, index + 8)
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 8)/4) + 6
-                c = c.copy(next_rank, Buffer.input, index + 8, ch=channel, recvtb=channel, sendtb=channel)
-                
-        for step in range(-1, size-2):
-            gpu_index = [0, 2, 1, 3]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                c = chunk(rank, Buffer.input, index + 12)
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 12)/4) + 6
-                c = c.copy(next_rank, Buffer.input, index + 12, ch=channel, recvtb=channel, sendtb=channel)
-        
-        for step in range(-1, size-2):
-            gpu_index = [0, 3, 1, 2]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                c = chunk(rank, Buffer.input, index + 16)
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 16)/4) + 6
-                c = c.copy(next_rank, Buffer.input, index + 16, ch=channel, recvtb=channel, sendtb=channel)
-                
-        for step in range(-1, size-2):
-            gpu_index = [0, 3, 2, 1]
-            for index in range(0, size):
-                rank = gpu_index[(index + step) % size]
-                c = chunk(rank, Buffer.input, index + 20)
-                next_rank = gpu_index[(index + step + 1) % size]
-                channel = math.floor((index%channels + 20)/4) + 6
-                c = c.copy(next_rank, Buffer.input, index + 20, ch=channel, recvtb=channel, sendtb=channel)
+        for channel_same_link in range(0, 4):
+            for step in range(-1, size-2):
+                for index in range(0, size):
+                    rank = (index + step) % size
+                    c = chunk(rank, Buffer.input, index + channel_same_link*24)
+                    next_rank = (index + step + 1) % size
+                    channel = math.floor((index)/4) + channel_same_link*6
+                    c = c.copy(next_rank, Buffer.input, index + channel_same_link*24, ch=channel, recvtb=channel, sendtb=channel)
+            
+            for step in range(-1, size-2):
+                gpu_index = [0, 1, 3, 2]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    c = chunk(rank, Buffer.input, index + 4 + channel_same_link*24)
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 4)/4) + channel_same_link*6
+                    c = c.copy(next_rank, Buffer.input, index + 4 + channel_same_link*24, ch=channel, recvtb=channel, sendtb=channel)
+                    
+            for step in range(-1, size-2):
+                gpu_index = [0, 2, 3, 1]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    c = chunk(rank, Buffer.input, index + 8 + channel_same_link*24)
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 8)/4) + channel_same_link*6
+                    c = c.copy(next_rank, Buffer.input, index + 8 + channel_same_link*24, ch=channel, recvtb=channel, sendtb=channel)
+                    
+            for step in range(-1, size-2):
+                gpu_index = [0, 2, 1, 3]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    c = chunk(rank, Buffer.input, index + 12 + channel_same_link*24)
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 12)/4) + channel_same_link*6
+                    c = c.copy(next_rank, Buffer.input, index + 12 + channel_same_link*24, ch=channel, recvtb=channel, sendtb=channel)
+            
+            for step in range(-1, size-2):
+                gpu_index = [0, 3, 1, 2]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    c = chunk(rank, Buffer.input, index + 16 + channel_same_link*24)
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 16)/4) + channel_same_link*6
+                    c = c.copy(next_rank, Buffer.input, index + 16 + channel_same_link*24, ch=channel, recvtb=channel, sendtb=channel)
+                    
+            for step in range(-1, size-2):
+                gpu_index = [0, 3, 2, 1]
+                for index in range(0, size):
+                    rank = gpu_index[(index + step) % size]
+                    c = chunk(rank, Buffer.input, index + 20 + channel_same_link*24)
+                    next_rank = gpu_index[(index + step + 1) % size]
+                    channel = math.floor((index + 20)/4) + channel_same_link*6
+                    c = c.copy(next_rank, Buffer.input, index + 20 + channel_same_link*24, ch=channel, recvtb=channel, sendtb=channel)
                
         XML()
         Check()

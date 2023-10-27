@@ -1,0 +1,760 @@
+# nThread 1 nGpus 1 minBytes 67108864 maxBytes 67108864 step: 2(factor) warmup iters: 0 iters: 1 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid 1668061 on   gnode001 device  0 [0x17] NVIDIA A100-PCIE-40GB
+#  Rank  1 Group  0 Pid 1668062 on   gnode001 device  1 [0x31] NVIDIA A100-PCIE-40GB
+#  Rank  2 Group  0 Pid 3805131 on   gnode002 device  0 [0x17] NVIDIA A100-PCIE-40GB
+#  Rank  3 Group  0 Pid 3805132 on   gnode002 device  1 [0x31] NVIDIA A100-PCIE-40GB
+gnode001:1668061:1668061 [0] NCCL INFO Bootstrap : Using ib0:10.3.1.151<0>
+gnode001:1668061:1668061 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+gnode001:1668061:1668061 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [RO]; OOB ib0:10.3.1.151<0>
+gnode001:1668061:1668061 [0] NCCL INFO Using network IB
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.4
+gnode001:1668061:1668089 [0] NCCL INFO Setting affinity for GPU 0 to 0fffffff
+gnode001:1668061:1668089 [0] NCCL INFO Channel 00/02 :    0   1   2   3
+gnode001:1668061:1668089 [0] NCCL INFO Channel 01/02 :    0   1   2   3
+gnode001:1668061:1668089 [0] NCCL INFO Trees [0] 1/2/-1->0->-1 [1] 1/-1/-1->0->2
+gnode001:1668061:1668089 [0] NCCL INFO Channel 00/0 : 3[31000] -> 0[17000] [receive] via NET/IB/0
+gnode001:1668061:1668089 [0] NCCL INFO Channel 01/0 : 3[31000] -> 0[17000] [receive] via NET/IB/0
+gnode001:1668061:1668089 [0] NCCL INFO Channel 00 : 0[17000] -> 1[31000] via direct shared memory
+gnode001:1668061:1668089 [0] NCCL INFO Channel 01 : 0[17000] -> 1[31000] via direct shared memory
+gnode001:1668061:1668089 [0] NCCL INFO Connected all rings
+gnode001:1668061:1668089 [0] NCCL INFO Channel 00/0 : 2[17000] -> 0[17000] [receive] via NET/IB/0
+gnode001:1668061:1668089 [0] NCCL INFO Channel 01/0 : 2[17000] -> 0[17000] [receive] via NET/IB/0
+gnode001:1668061:1668089 [0] NCCL INFO Channel 00/0 : 0[17000] -> 2[17000] [send] via NET/IB/0
+gnode001:1668061:1668089 [0] NCCL INFO Channel 01/0 : 0[17000] -> 2[17000] [send] via NET/IB/0
+gnode001:1668061:1668089 [0] NCCL INFO Connected all trees
+gnode001:1668061:1668089 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/examples/xml/allreduce_ring_Simple_gpu4_ch2_ins1.xml
+gnode001:1668061:1668089 [0] NCCL INFO MSCCL: Parsing algorithm /home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/examples/xml/allreduce_ring_Simple_gpu4_ch2_ins1.xml
+gnode001:1668061:1668089 [0] NCCL INFO Parsed MSCCL Algorithm /home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/examples/xml/allreduce_ring_Simple_gpu4_ch2_ins1.xml successfully.
+gnode001:1668061:1668089 [0] NCCL INFO Connected 1 MSCCL algorithms
+gnode001:1668061:1668089 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+gnode001:1668061:1668089 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,Tree,Ring
+gnode001:1668061:1668089 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 8/8/64 | 8/8/512
+gnode001:1668061:1668089 [0] NCCL INFO 2 coll channels, 2 p2p channels, 2 p2p channels per peer
+gnode001:1668061:1668089 [0] NCCL INFO comm 0x14e7ba45a010 rank 0 nranks 4 cudaDev 0 busId 17000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+    67108864      16777216     float     sum      -1gnode001:1668061:1668061 [0] NCCL INFO Launch mode Parallel
+total size in run interpreter() is: 16777216
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 0, c 0 is: 0.729787 us
+
+for loop size (the MSCCL chunk size) in run interpreter() is: 2097152
+nthreads is: 288
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 1, c 0 is: 153.944681 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 0, c 0 is: 164.070922 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 1, c 0 is: 332.826241 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 2, c 0 is: 769.126241 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 2, c 0 is: 853.036170 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 3, c 0 is: 1030.947518 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 3, c 0 is: 1122.637589 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 4, c 0 is: 1582.895745 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 4, c 0 is: 1659.149645 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 5, c 0 is: 1787.672340 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 5, c 0 is: 1918.290071 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 6, c 0 is: 2007.679433 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 6, c 0 is: 2178.319149 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 0, c 0 is: 2242.936170 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 1, c 0 is: 2393.882270 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 0, c 0 is: 2424.265957 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 1, c 0 is: 2608.376596 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 2, c 0 is: 2684.378014 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 2, c 0 is: 2879.251773 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 3, c 0 is: 2947.047518 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 3, c 0 is: 3147.268794 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 4, c 0 is: 3277.726241 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 5, c 0 is: 3499.817021 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 4, c 0 is: 3540.173759 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 6, c 0 is: 3732.026241 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 5, c 0 is: 3802.843972 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 0, c 0 is: 3932.895745 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 1, c 0 is: 4093.529078 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 6, c 0 is: 4103.455319 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 0, c 0 is: 4357.297163 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 2, c 0 is: 4402.736879 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 1, c 0 is: 4518.748227 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 3, c 0 is: 4688.294326 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 2, c 0 is: 4788.069504 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 4, c 0 is: 5036.848227 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 3, c 0 is: 5072.444681 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 5, c 0 is: 5283.321277 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 6, c 0 is: 5501.171631 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 4, c 0 is: 5494.465957 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 0, c 0 is: 5754.906383 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 5, c 0 is: 5789.251064 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 1, c 0 is: 5894.693617 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 6, c 0 is: 6050.869504 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 2, c 0 is: 6171.602128 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 0, c 0 is: 6287.097872 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 1, c 0 is: 6456.141844 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 3, c 0 is: 6490.366667 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 2, c 0 is: 6731.109220 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 4, c 0 is: 6835.471631 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 3, c 0 is: 7050.239007 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 5, c 0 is: 7066.068085 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 6, c 0 is: 7300.484397 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 4, c 0 is: 7409.839716 us
+
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 7463 us
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 5, c 0 is: 7696.185816 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 6, c 0 is: 7922.570213 us
+
+
+[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 8101 us
+total size in run interpreter() is: 16777216
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 0, c 0 is: 0.921277 us
+
+for loop size (the MSCCL chunk size) in run interpreter() is: 2097152
+nthreads is: 288
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 1, c 0 is: 142.880142 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 0, c 0 is: 181.932624 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 1, c 0 is: 359.829078 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 2, c 0 is: 427.045390 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 2, c 0 is: 658.322695 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 3, c 0 is: 697.133333 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 3, c 0 is: 937.614894 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 4, c 0 is: 1019.151773 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 5, c 0 is: 1228.548936 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 4, c 0 is: 1300.010638 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 6, c 0 is: 1437.029787 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 5, c 0 is: 1525.631206 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 0, c 0 is: 1596.707801 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 1, c 0 is: 1754.503546 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 6, c 0 is: 1810.258865 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 2, c 0 is: 1991.041135 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 0, c 0 is: 2007.084397 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 1, c 0 is: 2182.963121 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 3, c 0 is: 2280.687234 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 2, c 0 is: 2436.956738 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 4, c 0 is: 2610.804965 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 3, c 0 is: 2707.057447 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 5, c 0 is: 2808.595035 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 6, c 0 is: 3019.690780 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 4, c 0 is: 3070.149645 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 0, c 0 is: 3181.318440 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 1, c 0 is: 3341.252482 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 5, c 0 is: 3345.285106 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 6, c 0 is: 3585.244681 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 2, c 0 is: 3613.474468 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 0, c 0 is: 3786.554610 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 3, c 0 is: 3853.644681 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 1, c 0 is: 3943.889362 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 4, c 0 is: 4215.551773 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 2, c 0 is: 4211.799291 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 5, c 0 is: 4427.096454 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 3, c 0 is: 4495.774468 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 6, c 0 is: 4637.705674 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 0, c 0 is: 4800.496454 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 4, c 0 is: 4840.725532 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 1, c 0 is: 4939.261702 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 5, c 0 is: 5078.081560 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 2, c 0 is: 5192.704965 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 6, c 0 is: 5310.386525 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 3, c 0 is: 5461.302837 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 0, c 0 is: 5505.493617 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 1, c 0 is: 5683.546099 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 4, c 0 is: 5822.199291 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 2, c 0 is: 5951.429078 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 5, c 0 is: 6050.817021 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 3, c 0 is: 6228.631206 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 6, c 0 is: 6270.154610 us
+
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 6437 us
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 4, c 0 is: 6563.340426 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 5, c 0 is: 6767.484397 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 6, c 0 is: 6979.858156 us
+
+
+[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 7157 us
+total size in run interpreter() is: 16777216
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 0, c 0 is: 0.955319 us
+
+for loop size (the MSCCL chunk size) in run interpreter() is: 2097152
+nthreads is: 288
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 1, c 0 is: 144.551064 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 0, c 0 is: 176.920567 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 1, c 0 is: 359.094326 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 2, c 0 is: 431.272340 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 2, c 0 is: 628.308511 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 3, c 0 is: 684.736879 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 3, c 0 is: 899.200000 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 4, c 0 is: 1016.056028 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 5, c 0 is: 1224.131915 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 4, c 0 is: 1258.090780 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 6, c 0 is: 1439.178014 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 5, c 0 is: 1495.352482 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 0, c 0 is: 1593.297872 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 1, c 0 is: 1748.446099 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 6, c 0 is: 1787.990071 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 2, c 0 is: 1988.573050 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 0, c 0 is: 1990.388652 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 1, c 0 is: 2156.690780 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 3, c 0 is: 2290.651773 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 2, c 0 is: 2419.388652 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 4, c 0 is: 2614.991489 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 3, c 0 is: 2674.352482 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 5, c 0 is: 2810.210638 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 6, c 0 is: 3023.007092 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 4, c 0 is: 3043.712057 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 0, c 0 is: 3194.302128 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 5, c 0 is: 3262.246099 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 1, c 0 is: 3333.730496 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 6, c 0 is: 3503.170213 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 2, c 0 is: 3588.462411 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 0, c 0 is: 3689.608511 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 3, c 0 is: 3884.240426 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 1, c 0 is: 3875.077305 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 2, c 0 is: 4146.765248 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 4, c 0 is: 4214.433333 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 5, c 0 is: 4435.959574 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 3, c 0 is: 4445.165248 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 6, c 0 is: 4647.025532 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 4, c 0 is: 4804.219858 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 0, c 0 is: 4810.031915 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 1, c 0 is: 4955.704965 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 5, c 0 is: 5075.343972 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 2, c 0 is: 5211.627660 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 6, c 0 is: 5302.136879 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 3, c 0 is: 5482.528369 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 0, c 0 is: 5499.990780 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 1, c 0 is: 5663.462411 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 4, c 0 is: 5854.558156 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 2, c 0 is: 5916.590780 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 5, c 0 is: 6092.411348 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 3, c 0 is: 6191.682979 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 6, c 0 is: 6290.134752 us
+
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 6455 us
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 4, c 0 is: 6524.365248 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 5, c 0 is: 6749.127660 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 6, c 0 is: 6971.958865 us
+
+
+[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 7144 us
+    13089    5.13    7.69  6.71089e+07total size in run interpreter() is: 16777216
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 0, c 0 is: 0.998582 us
+
+for loop size (the MSCCL chunk size) in run interpreter() is: 2097152
+nthreads is: 288
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 1, c 0 is: 143.056028 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 0, c 0 is: 189.728369 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 1, c 0 is: 364.301418 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 2, c 0 is: 428.421986 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 2, c 0 is: 631.904965 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 3, c 0 is: 687.100000 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 3, c 0 is: 894.921986 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 4, c 0 is: 1009.917730 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 5, c 0 is: 1220.753901 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 4, c 0 is: 1257.406383 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 6, c 0 is: 1436.409220 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 5, c 0 is: 1493.073050 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 0, c 0 is: 1590.407801 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 1, c 0 is: 1748.173050 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 6, c 0 is: 1779.578014 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 2, c 0 is: 1989.167376 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 0, c 0 is: 1980.213475 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 1, c 0 is: 2144.884397 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 3, c 0 is: 2293.371631 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 2, c 0 is: 2408.540426 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 4, c 0 is: 2620.143972 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 3, c 0 is: 2665.734043 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 5, c 0 is: 2817.720567 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 6, c 0 is: 3029.043262 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 4, c 0 is: 3041.248936 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 0, c 0 is: 3202.858865 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 5, c 0 is: 3261.956028 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 1, c 0 is: 3341.253901 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 6, c 0 is: 3500.994326 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 2, c 0 is: 3599.497872 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 0, c 0 is: 3686.868085 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 1, c 0 is: 3873.051773 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 3, c 0 is: 3891.717730 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 2, c 0 is: 4136.579433 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 4, c 0 is: 4217.058156 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 5, c 0 is: 4438.437589 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 3, c 0 is: 4431.168794 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 6, c 0 is: 4654.887234 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 4, c 0 is: 4792.234752 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 0, c 0 is: 4814.954610 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 1, c 0 is: 4973.950355 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 5, c 0 is: 5072.775177 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 2, c 0 is: 5229.200000 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 6, c 0 is: 5299.068085 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 3, c 0 is: 5479.176596 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 0, c 0 is: 5497.453191 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 1, c 0 is: 5660.809929 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 4, c 0 is: 5857.860993 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 2, c 0 is: 5916.450355 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 5, c 0 is: 6079.001418 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 3, c 0 is: 6214.152482 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 6, c 0 is: 6289.648936 us
+
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 6457 us
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 4, c 0 is: 6535.341844 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 5, c 0 is: 6797.573759 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 6, c 0 is: 7010.894326 us
+
+
+[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 7187 us
+total size in run interpreter() is: 16777216
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 0, c 0 is: 0.763121 us
+
+for loop size (the MSCCL chunk size) in run interpreter() is: 2097152
+nthreads is: 288
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 1, c 0 is: 140.714184 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 0, c 0 is: 177.490780 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 1, c 0 is: 358.263121 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 2, c 0 is: 431.726241 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 2, c 0 is: 656.746809 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 3, c 0 is: 703.534043 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 3, c 0 is: 935.288652 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 4, c 0 is: 1026.270213 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 5, c 0 is: 1233.942553 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 4, c 0 is: 1289.221986 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 6, c 0 is: 1451.953191 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 5, c 0 is: 1521.575177 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 0, c 0 is: 1611.131206 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 1, c 0 is: 1766.673050 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 6, c 0 is: 1806.771631 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 2, c 0 is: 2004.313475 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 0, c 0 is: 2007.509929 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 1, c 0 is: 2178.067376 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 3, c 0 is: 2299.750355 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 2, c 0 is: 2437.336879 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 4, c 0 is: 2626.767376 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 3, c 0 is: 2695.707801 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 5, c 0 is: 2822.573759 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 6, c 0 is: 3030.413475 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 4, c 0 is: 3066.105674 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 0, c 0 is: 3193.474468 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 5, c 0 is: 3309.710638 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 1, c 0 is: 3344.761702 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 6, c 0 is: 3551.314894 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 2, c 0 is: 3615.519149 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 0, c 0 is: 3741.665248 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 3, c 0 is: 3862.543262 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 1, c 0 is: 3917.141135 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 4, c 0 is: 4191.100709 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 2, c 0 is: 4188.673759 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 5, c 0 is: 4403.239716 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 3, c 0 is: 4473.951064 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 6, c 0 is: 4605.787943 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 0, c 0 is: 4770.787234 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 4, c 0 is: 4818.965957 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 1, c 0 is: 4912.038298 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 5, c 0 is: 5054.097872 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 2, c 0 is: 5160.126950 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 6, c 0 is: 5285.893617 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 3, c 0 is: 5430.842553 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 0, c 0 is: 5469.700000 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 1, c 0 is: 5649.746099 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 4, c 0 is: 5796.175177 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 2, c 0 is: 5925.897872 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 5, c 0 is: 6000.041844 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 6, c 0 is: 6225.473759 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 3, c 0 is: 6229.365248 us
+
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 6387 us
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 4, c 0 is: 6554.965248 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 5, c 0 is: 6758.468794 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 6, c 0 is: 6975.864539 us
+
+
+[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 7145 us
+total size in run interpreter() is: 16777216
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 0, c 0 is: 0.759574 us
+
+for loop size (the MSCCL chunk size) in run interpreter() is: 2097152
+nthreads is: 288
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 1, c 0 is: 144.065248 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 0, c 0 is: 169.496454 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 1, c 0 is: 352.856738 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 2, c 0 is: 428.231206 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 2, c 0 is: 639.450355 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 3, c 0 is: 690.751064 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 3, c 0 is: 913.921277 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 4, c 0 is: 1012.866667 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 5, c 0 is: 1220.820567 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 4, c 0 is: 1274.024113 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 0, step 6, c 0 is: 1434.670213 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 5, c 0 is: 1502.504255 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 0, c 0 is: 1589.771631 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 1, c 0 is: 1747.501418 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 0, step 6, c 0 is: 1786.085816 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 2, c 0 is: 1986.748936 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 0, c 0 is: 1988.028369 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 1, c 0 is: 2156.097872 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 3, c 0 is: 2287.796454 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 2, c 0 is: 2418.222695 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 4, c 0 is: 2613.439716 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 3, c 0 is: 2676.404965 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 5, c 0 is: 2806.600709 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 1, step 6, c 0 is: 3015.761702 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 4, c 0 is: 3046.676596 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 0, c 0 is: 3183.558156 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 5, c 0 is: 3264.695035 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 1, c 0 is: 3327.346809 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 1, step 6, c 0 is: 3505.872340 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 2, c 0 is: 3587.239007 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 0, c 0 is: 3680.257447 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 1, c 0 is: 3865.312766 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 3, c 0 is: 3882.095745 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 2, c 0 is: 4138.895745 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 4, c 0 is: 4205.182270 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 5, c 0 is: 4428.809929 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 3, c 0 is: 4438.975887 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 2, step 6, c 0 is: 4627.288652 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 0, c 0 is: 4793.404965 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 4, c 0 is: 4796.904255 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 1, c 0 is: 4937.790071 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 5, c 0 is: 5057.794326 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 2, c 0 is: 5188.208511 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 2, step 6, c 0 is: 5282.844681 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 3, c 0 is: 5428.380142 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 0, c 0 is: 5471.843262 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 1, c 0 is: 5649.091489 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 4, c 0 is: 5794.494326 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 2, c 0 is: 5909.968794 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 5, c 0 is: 5999.513475 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 3, c 0 is: 6205.268794 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=1) of chunk 3, step 6, c 0 is: 6217.346099 us
+
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 6377 us
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 4, c 0 is: 6533.702128 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 5, c 0 is: 6735.032624 us
+
+[LYD INFO] T in MSCCL (loopsize=2097152 thisNelem=524288, bid=0) of chunk 3, step 6, c 0 is: 6946.797872 us
+
+
+[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 7125 us
+    12693    5.29    7.93      0
+gnode001:1668061:1668061 [0] NCCL INFO comm 0x14e7ba45a010 rank 0 nranks 4 cudaDev 0 busId 17000 - Destroy COMPLETE
+# Out of bounds values : 4 FAILED
+# Avg bus bandwidth    : 7.81066 
+#
+

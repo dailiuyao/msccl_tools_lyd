@@ -1,0 +1,8 @@
+[mpiexec@gnode001.cluster] HYDU_process_mfile_token (utils/args/args.c:293): token 0 not supported at this time
+[mpiexec@gnode001.cluster] HYDU_parse_hostfile (utils/args/args.c:340): unable to process token
+[mpiexec@gnode001.cluster] mfile_fn (ui/mpich/utils.c:325): error parsing hostfile
+[mpiexec@gnode001.cluster] match_arg (utils/args/args.c:153): match handler returned error
+[mpiexec@gnode001.cluster] HYDU_parse_array (utils/args/args.c:175): argument matching returned error
+[mpiexec@gnode001.cluster] parse_args (ui/mpich/utils.c:1603): error parsing input array
+[mpiexec@gnode001.cluster] HYD_uii_mpx_get_parameters (ui/mpich/utils.c:1655): unable to parse user arguments
+[mpiexec@gnode001.cluster] main (ui/mpich/mpiexec.c:128): error parsing parameters

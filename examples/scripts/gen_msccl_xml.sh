@@ -199,7 +199,7 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 4 8 4 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch8_manul_4ins.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_8links.py --protocol=Simple 4 32 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch32_8links.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_8links.py --protocol=Simple 4 32 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_ring_ch32_8links.xml
 
 # ###### test for msccl-tools ######
 
@@ -218,8 +218,11 @@ python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_8links.py --protocol=S
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=LL 4 2 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_LL_gpu4_ch2_ins2.xml
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=LL128 4 2 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_LL128_gpu4_ch2_ins2.xml
-# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=Simple 4 2 2 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu4_ch2_ins2.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=Simple 4 4 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu4_ch4_ins1.xml
 
+# python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_ring.py --protocol=Simple 4 1 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu4_ch2_ins1.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_2_stage.py --protocol=Simple 4 96 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu4_channel24_chunk96_ins1.xml
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_recursive_doubling_halving.py --protocol=LL 2 1 > ${MSCCL_TOOLS_XML}/allreduce_rec_doub_halv_LL_gpu2_ins1.xml
 
 
