@@ -20,11 +20,11 @@ def allreduce_ring(size, instances, nchunks, protocol):
         # Reduce ring
         gpu_index0 = []
         for i in range(64):
-            gpu_index0.append(((i // 4) * 4 + [0, 3, 2, 5][i % 4])%64)
+            gpu_index0.append(((i // 4) * 4 + [0, 2, 3, 5][i % 4])%64)
         
         gpu_index1 = []
         for i in range(64):
-            gpu_index1.append(((i // 4) * 4 + [0, 7, 6, 5][i % 4])%64)
+            gpu_index1.append(((i // 4) * 4 + [0, 2, 3, 5][i % 4])%64)
 
         for channel_same_link in range(0, 2):
             for step in range(0, size-1):

@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-tests-msccl-1028
-#PBS -o nccl-tests-msccl-1028.out
-#PBS -e nccl-tests-msccl-1028.error
+#PBS -N nccl-tests-msccl-1028-2
+#PBS -o nccl-tests-msccl-1028-2.out
+#PBS -e nccl-tests-msccl-1028-2.error
 
 set -x
 
@@ -493,7 +493,7 @@ export NCCL_DEBUG=INFO
 export NCCL_ALGO=Ring
 export NCCL_PROTO=Simple
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 96 -e 384M -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 256 -e 512M -f 2 -g 1
 
 # # echo "######################### LIBRARY: NCCL ALGORITHM: RING PROTOCOL: LL128 ##############################################"
 
@@ -1271,7 +1271,7 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_ring_S
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 96 -e 384MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 256 -e 512MB -f 2 -g 1
 
 echo "MSCCL TEST A100-RING INSTANCE: 1 CHANNEL: 4 CHUNK 256 end time: $(date)"
 
