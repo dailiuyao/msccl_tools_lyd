@@ -11,19 +11,19 @@ from msccl.language.collectives import AllReduce
 # Mirrored trees adopted from: http://algo2.iti.kit.edu/documents/2tree.pdf
 
 # intra node allreduce using ring algorithm
-def ring_reduce_scatter(size, rank_offset=0, local_chunk_size=1, pipe_size=4, ch_offset=0, ch_size=4):
-    ch_size_intra_stage = pipe_size
+def ring_reduce_scatter(size, rank_offset=0, ch_offset=0, ch_size=4):
+    pipe_size = size
     for ch in range(0, size):
-        index = ch * local_chunk_size
+        index = ch 
         for step in range(0, size-1):
             for pipe_step in range(0, pipe_size):
-                other = chunk(((step+1+index) % size) +rank_offset, Buffer.input, index*pipe_size+pipe_step, local_chunk_size)
-                c = chunk(((step+2+index) % size)+rank_offset, Buffer.input, index*pipe_size+pipe_step, local_chunk_size)
+                other = chunk(((step+1+index) % size) +rank_offset, Buffer.input, index*pipe_size+pipe_step)
+                c = chunk(((step+2+index) % size)+rank_offset, Buffer.input, index*pipe_size+pipe_step)
                 c.reduce(other, ch=(pipe_step%ch_size_intra_stage)+ch_offset)
     for index in range(0, size, 2):
         for pipe_step in range(0,pipe_size):
-            c = chunk((index % size) + rank_offset, Buffer.input, index*pipe_size+pipe_step, local_chunk_size)
-            c.copy(((index+1) % size) + rank_offset, Buffer.input, index*pipe_size+pipe_step, local_chunk_size, ch=(pipe_step%ch_size_intra_stage)+ch_offset+ch_size_intra_stage)
+            c = chunk((index % size) + rank_offset, Buffer.input, index*pipe_size+pipe_step)
+            c.copy(((index+1) % size) + rank_offset, Buffer.input, index*pipe_size+pipe_step, ch=(pipe_step%ch_size_intra_stage)+ch_offset+ch_size_intra_stage)
 
 
 
