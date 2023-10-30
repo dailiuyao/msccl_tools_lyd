@@ -224,7 +224,12 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_2_stage.py --protocol=Simple 4 96 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu4_channel24_chunk96_ins1.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_64gpu_4channel_256chunk.py --protocol=Simple 64 256 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu64_channel4_chunk256_ins1.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_64gpu_4channel_256chunk.py --protocol=Simple 64 256 1 > ${MSCCL_TOOLS_XML}/allreduce_ring_Simple_gpu64_channel4_chunk256_ins1.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_2nicPtree_channel4_chunk256.py --protocol=Simple 4 16 256 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_2nicPtree_channel4_chunk256.xml
+
+
+
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_recursive_doubling_halving.py --protocol=LL 2 1 > ${MSCCL_TOOLS_XML}/allreduce_rec_doub_halv_LL_gpu2_ins1.xml
 
 
