@@ -90,7 +90,7 @@ echo ""
 git fetch --all
 
 # Checkout the correct commit
-git checkout "${NCCL_PROFILE_COMMIT}"
+git checkout "${NCCL_TEST_PROFILE_COMMIT}"
 
 
 # Build NCCL Tests with MSCCL support
