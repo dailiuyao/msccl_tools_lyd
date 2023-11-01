@@ -12,9 +12,9 @@
 
 
 module load gcc
-module load cudatoolkit-standalone/11.8.0
+module load cudatoolkit-standalone/11.4.4
 export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
-export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.8.0/
+export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
 
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
 

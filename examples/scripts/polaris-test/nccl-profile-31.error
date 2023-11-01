@@ -1,0 +1,8 @@
+
+Lmod is automatically replacing "nvhpc/21.9" with "gcc/11.2.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.16
+
+x3207c0s13b1n0.hsn.cm.polaris.alcf.anl.gov: rank 37 died from signal 11 and dumped core

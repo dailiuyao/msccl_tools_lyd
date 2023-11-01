@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 module load gcc
 module load cudatoolkit-standalone/11.4.4

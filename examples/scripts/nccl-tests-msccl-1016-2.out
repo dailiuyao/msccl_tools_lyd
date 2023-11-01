@@ -1,0 +1,396 @@
+########################################   MSCCL TEST  #####################################################
+######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4gpuspipe-256chunk INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################
+MSCCL TEST BINARY-H-P-2NIC-256chunk 2-INTRA-1-INTER time: Mon 16 Oct 2023 08:14:16 PM UTC
+# nThread 1 nGpus 1 minBytes 536870912 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62014 on x3109c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  62015 on x3109c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  62016 on x3109c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  62017 on x3109c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  61339 on x3109c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  61340 on x3109c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  61341 on x3109c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  61342 on x3109c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid  20869 on x3109c0s1b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid  20871 on x3109c0s1b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid  20872 on x3109c0s1b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid  20873 on x3109c0s1b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  21765 on x3109c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  21767 on x3109c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  21768 on x3109c0s1b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  21770 on x3109c0s1b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 16 Group  0 Pid  17748 on x3109c0s25b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 17 Group  0 Pid  17749 on x3109c0s25b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 18 Group  0 Pid  17750 on x3109c0s25b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 19 Group  0 Pid  17751 on x3109c0s25b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 20 Group  0 Pid  12145 on x3109c0s25b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 21 Group  0 Pid  12146 on x3109c0s25b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 22 Group  0 Pid  12147 on x3109c0s25b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 23 Group  0 Pid  12148 on x3109c0s25b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 24 Group  0 Pid  40831 on x3109c0s31b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 25 Group  0 Pid  40834 on x3109c0s31b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 26 Group  0 Pid  40835 on x3109c0s31b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 27 Group  0 Pid  40836 on x3109c0s31b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 28 Group  0 Pid  14419 on x3109c0s31b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 29 Group  0 Pid  14420 on x3109c0s31b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 30 Group  0 Pid  14421 on x3109c0s31b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 31 Group  0 Pid  14422 on x3109c0s31b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 32 Group  0 Pid  17227 on x3109c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 33 Group  0 Pid  17228 on x3109c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 34 Group  0 Pid  17229 on x3109c0s37b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 35 Group  0 Pid  17230 on x3109c0s37b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 36 Group  0 Pid   9864 on x3109c0s37b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 37 Group  0 Pid   9865 on x3109c0s37b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 38 Group  0 Pid   9866 on x3109c0s37b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 39 Group  0 Pid   9867 on x3109c0s37b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 40 Group  0 Pid  20197 on x3109c0s7b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 41 Group  0 Pid  20198 on x3109c0s7b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 42 Group  0 Pid  20199 on x3109c0s7b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 43 Group  0 Pid  20200 on x3109c0s7b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 44 Group  0 Pid   7478 on x3109c0s7b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 45 Group  0 Pid   7479 on x3109c0s7b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 46 Group  0 Pid   7480 on x3109c0s7b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 47 Group  0 Pid   7481 on x3109c0s7b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 48 Group  0 Pid   9926 on x3110c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 49 Group  0 Pid   9927 on x3110c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 50 Group  0 Pid   9928 on x3110c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 51 Group  0 Pid   9929 on x3110c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 52 Group  0 Pid  29929 on x3110c0s13b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 53 Group  0 Pid  29931 on x3110c0s13b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 54 Group  0 Pid  29932 on x3110c0s13b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 55 Group  0 Pid  29933 on x3110c0s13b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 56 Group  0 Pid  58902 on x3110c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 57 Group  0 Pid  58903 on x3110c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 58 Group  0 Pid  58904 on x3110c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 59 Group  0 Pid  58905 on x3110c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 60 Group  0 Pid   8819 on x3110c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 61 Group  0 Pid   8820 on x3110c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 62 Group  0 Pid   8821 on x3110c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 63 Group  0 Pid   8822 on x3110c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+   536870912     134217728     float     sum      -1   107101    5.01    9.87      0   107135    5.01    9.87      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 9.86731 
+#
+
+MSCCL TEST BINARY-H-P-2NIC-256chunk 2-INTRA-1-INTER end time: Mon 16 Oct 2023 08:14:29 PM UTC
+######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4gpuspipe-128chunk INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################
+MSCCL TEST BINARY-H-P-2NIC-128chunk 2-INTRA-1-INTER time: Mon 16 Oct 2023 08:14:29 PM UTC
+# nThread 1 nGpus 1 minBytes 268435456 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62135 on x3109c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  62136 on x3109c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  62137 on x3109c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  62138 on x3109c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  61454 on x3109c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  61455 on x3109c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  61456 on x3109c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  61457 on x3109c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid  20986 on x3109c0s1b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid  20987 on x3109c0s1b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid  20988 on x3109c0s1b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid  20989 on x3109c0s1b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  21885 on x3109c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  21886 on x3109c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  21887 on x3109c0s1b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  21888 on x3109c0s1b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 16 Group  0 Pid  17864 on x3109c0s25b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 17 Group  0 Pid  17865 on x3109c0s25b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 18 Group  0 Pid  17866 on x3109c0s25b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 19 Group  0 Pid  17867 on x3109c0s25b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 20 Group  0 Pid  12261 on x3109c0s25b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 21 Group  0 Pid  12262 on x3109c0s25b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 22 Group  0 Pid  12263 on x3109c0s25b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 23 Group  0 Pid  12264 on x3109c0s25b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 24 Group  0 Pid  40949 on x3109c0s31b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 25 Group  0 Pid  40950 on x3109c0s31b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 26 Group  0 Pid  40951 on x3109c0s31b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 27 Group  0 Pid  40952 on x3109c0s31b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 28 Group  0 Pid  14535 on x3109c0s31b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 29 Group  0 Pid  14536 on x3109c0s31b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 30 Group  0 Pid  14537 on x3109c0s31b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 31 Group  0 Pid  14538 on x3109c0s31b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 32 Group  0 Pid  17343 on x3109c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 33 Group  0 Pid  17344 on x3109c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 34 Group  0 Pid  17345 on x3109c0s37b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 35 Group  0 Pid  17346 on x3109c0s37b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 36 Group  0 Pid   9979 on x3109c0s37b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 37 Group  0 Pid   9980 on x3109c0s37b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 38 Group  0 Pid   9981 on x3109c0s37b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 39 Group  0 Pid   9982 on x3109c0s37b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 40 Group  0 Pid  20315 on x3109c0s7b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 41 Group  0 Pid  20316 on x3109c0s7b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 42 Group  0 Pid  20317 on x3109c0s7b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 43 Group  0 Pid  20318 on x3109c0s7b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 44 Group  0 Pid   7594 on x3109c0s7b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 45 Group  0 Pid   7595 on x3109c0s7b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 46 Group  0 Pid   7596 on x3109c0s7b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 47 Group  0 Pid   7597 on x3109c0s7b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 48 Group  0 Pid  10041 on x3110c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 49 Group  0 Pid  10042 on x3110c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 50 Group  0 Pid  10043 on x3110c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 51 Group  0 Pid  10044 on x3110c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 52 Group  0 Pid  30044 on x3110c0s13b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 53 Group  0 Pid  30045 on x3110c0s13b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 54 Group  0 Pid  30046 on x3110c0s13b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 55 Group  0 Pid  30047 on x3110c0s13b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 56 Group  0 Pid  59020 on x3110c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 57 Group  0 Pid  59021 on x3110c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 58 Group  0 Pid  59022 on x3110c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 59 Group  0 Pid  59023 on x3110c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 60 Group  0 Pid   8937 on x3110c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 61 Group  0 Pid   8938 on x3110c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 62 Group  0 Pid   8939 on x3110c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 63 Group  0 Pid   8940 on x3110c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+   268435456      67108864     float     sum      -1    52746    5.09   10.02      0    52746    5.09   10.02      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 10.0193 
+#
+
+MSCCL TEST BINARY-H-P-2NIC-128chunk 2-INTRA-1-INTER end time: Mon 16 Oct 2023 08:14:38 PM UTC
+######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4gpuspipe-64chunk INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################
+MSCCL TEST BINARY-H-P-2NIC-64chunk 2-INTRA-1-INTER time: Mon 16 Oct 2023 08:14:38 PM UTC
+# nThread 1 nGpus 1 minBytes 134217728 maxBytes 134217728 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62191 on x3109c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  62192 on x3109c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  62193 on x3109c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  62194 on x3109c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  61504 on x3109c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  61505 on x3109c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  61506 on x3109c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  61507 on x3109c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid  21038 on x3109c0s1b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid  21039 on x3109c0s1b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid  21040 on x3109c0s1b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid  21041 on x3109c0s1b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  21934 on x3109c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  21935 on x3109c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  21936 on x3109c0s1b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  21937 on x3109c0s1b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 16 Group  0 Pid  17918 on x3109c0s25b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 17 Group  0 Pid  17919 on x3109c0s25b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 18 Group  0 Pid  17920 on x3109c0s25b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 19 Group  0 Pid  17921 on x3109c0s25b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 20 Group  0 Pid  12311 on x3109c0s25b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 21 Group  0 Pid  12312 on x3109c0s25b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 22 Group  0 Pid  12313 on x3109c0s25b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 23 Group  0 Pid  12314 on x3109c0s25b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 24 Group  0 Pid  41000 on x3109c0s31b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 25 Group  0 Pid  41001 on x3109c0s31b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 26 Group  0 Pid  41002 on x3109c0s31b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 27 Group  0 Pid  41003 on x3109c0s31b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 28 Group  0 Pid  14585 on x3109c0s31b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 29 Group  0 Pid  14586 on x3109c0s31b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 30 Group  0 Pid  14587 on x3109c0s31b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 31 Group  0 Pid  14588 on x3109c0s31b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 32 Group  0 Pid  17394 on x3109c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 33 Group  0 Pid  17395 on x3109c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 34 Group  0 Pid  17396 on x3109c0s37b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 35 Group  0 Pid  17397 on x3109c0s37b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 36 Group  0 Pid  10028 on x3109c0s37b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 37 Group  0 Pid  10029 on x3109c0s37b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 38 Group  0 Pid  10030 on x3109c0s37b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 39 Group  0 Pid  10031 on x3109c0s37b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 40 Group  0 Pid  20365 on x3109c0s7b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 41 Group  0 Pid  20366 on x3109c0s7b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 42 Group  0 Pid  20367 on x3109c0s7b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 43 Group  0 Pid  20368 on x3109c0s7b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 44 Group  0 Pid   7646 on x3109c0s7b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 45 Group  0 Pid   7647 on x3109c0s7b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 46 Group  0 Pid   7648 on x3109c0s7b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 47 Group  0 Pid   7649 on x3109c0s7b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 48 Group  0 Pid  10091 on x3110c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 49 Group  0 Pid  10092 on x3110c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 50 Group  0 Pid  10093 on x3110c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 51 Group  0 Pid  10094 on x3110c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 52 Group  0 Pid  30095 on x3110c0s13b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 53 Group  0 Pid  30096 on x3110c0s13b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 54 Group  0 Pid  30097 on x3110c0s13b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 55 Group  0 Pid  30098 on x3110c0s13b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 56 Group  0 Pid  59070 on x3110c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 57 Group  0 Pid  59071 on x3110c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 58 Group  0 Pid  59072 on x3110c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 59 Group  0 Pid  59073 on x3110c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 60 Group  0 Pid   8987 on x3110c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 61 Group  0 Pid   8988 on x3110c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 62 Group  0 Pid   8989 on x3110c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 63 Group  0 Pid   8990 on x3110c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+   134217728      33554432     float     sum      -1    26056    5.15   10.14      0    26049    5.15   10.14      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 10.1426 
+#
+
+MSCCL TEST BINARY-H-P-2NIC-64chunk 2-INTRA-1-INTER end time: Mon 16 Oct 2023 08:14:46 PM UTC
+######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4gpuspipe-32chunk INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################
+MSCCL TEST BINARY-H-P-2NIC-32chunk 2-INTRA-1-INTER time: Mon 16 Oct 2023 08:14:46 PM UTC
+# nThread 1 nGpus 1 minBytes 67108864 maxBytes 67108864 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62258 on x3109c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  62259 on x3109c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  62260 on x3109c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  62261 on x3109c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  61570 on x3109c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  61571 on x3109c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  61572 on x3109c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  61573 on x3109c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid  21099 on x3109c0s1b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid  21100 on x3109c0s1b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid  21101 on x3109c0s1b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid  21102 on x3109c0s1b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  21996 on x3109c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  21997 on x3109c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  21998 on x3109c0s1b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  21999 on x3109c0s1b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 16 Group  0 Pid  17982 on x3109c0s25b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 17 Group  0 Pid  17983 on x3109c0s25b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 18 Group  0 Pid  17984 on x3109c0s25b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 19 Group  0 Pid  17985 on x3109c0s25b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 20 Group  0 Pid  12374 on x3109c0s25b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 21 Group  0 Pid  12375 on x3109c0s25b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 22 Group  0 Pid  12376 on x3109c0s25b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 23 Group  0 Pid  12377 on x3109c0s25b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 24 Group  0 Pid  41067 on x3109c0s31b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 25 Group  0 Pid  41068 on x3109c0s31b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 26 Group  0 Pid  41069 on x3109c0s31b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 27 Group  0 Pid  41070 on x3109c0s31b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 28 Group  0 Pid  14646 on x3109c0s31b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 29 Group  0 Pid  14647 on x3109c0s31b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 30 Group  0 Pid  14648 on x3109c0s31b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 31 Group  0 Pid  14649 on x3109c0s31b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 32 Group  0 Pid  17460 on x3109c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 33 Group  0 Pid  17461 on x3109c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 34 Group  0 Pid  17462 on x3109c0s37b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 35 Group  0 Pid  17463 on x3109c0s37b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 36 Group  0 Pid  10091 on x3109c0s37b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 37 Group  0 Pid  10092 on x3109c0s37b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 38 Group  0 Pid  10093 on x3109c0s37b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 39 Group  0 Pid  10094 on x3109c0s37b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 40 Group  0 Pid  20427 on x3109c0s7b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 41 Group  0 Pid  20428 on x3109c0s7b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 42 Group  0 Pid  20429 on x3109c0s7b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 43 Group  0 Pid  20430 on x3109c0s7b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 44 Group  0 Pid   7711 on x3109c0s7b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 45 Group  0 Pid   7712 on x3109c0s7b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 46 Group  0 Pid   7713 on x3109c0s7b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 47 Group  0 Pid   7714 on x3109c0s7b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 48 Group  0 Pid  10158 on x3110c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 49 Group  0 Pid  10159 on x3110c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 50 Group  0 Pid  10160 on x3110c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 51 Group  0 Pid  10161 on x3110c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 52 Group  0 Pid  30160 on x3110c0s13b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 53 Group  0 Pid  30161 on x3110c0s13b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 54 Group  0 Pid  30162 on x3110c0s13b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 55 Group  0 Pid  30163 on x3110c0s13b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 56 Group  0 Pid  59136 on x3110c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 57 Group  0 Pid  59137 on x3110c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 58 Group  0 Pid  59138 on x3110c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 59 Group  0 Pid  59139 on x3110c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 60 Group  0 Pid   9051 on x3110c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 61 Group  0 Pid   9052 on x3110c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 62 Group  0 Pid   9053 on x3110c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 63 Group  0 Pid   9054 on x3110c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+    67108864      16777216     float     sum      -1    12847    5.22   10.28      0    12839    5.23   10.29      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 10.2872 
+#
+
+MSCCL TEST BINARY-H-P-2NIC-32chunk 2-INTRA-1-INTER end time: Mon 16 Oct 2023 08:14:52 PM UTC
+######################### LIBRARY: MSCCL ALGORITHM: BINARY-H-P-2NIC-4gpuspipe-16chunk INSTANCE: 1 CHANNEL: 2-INTRA-1-INTER PROTOCOL: Simple ##############################################
+MSCCL TEST BINARY-H-P-2NIC-16chunk 2-INTRA-1-INTER time: Mon 16 Oct 2023 08:14:52 PM UTC
+# nThread 1 nGpus 1 minBytes 33554432 maxBytes 33554432 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62394 on x3109c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  62395 on x3109c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  62396 on x3109c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  62397 on x3109c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  61698 on x3109c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  61699 on x3109c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  61700 on x3109c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  61701 on x3109c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid  21226 on x3109c0s1b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid  21227 on x3109c0s1b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid  21228 on x3109c0s1b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid  21229 on x3109c0s1b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  22123 on x3109c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  22124 on x3109c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  22125 on x3109c0s1b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  22126 on x3109c0s1b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 16 Group  0 Pid  18111 on x3109c0s25b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 17 Group  0 Pid  18112 on x3109c0s25b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 18 Group  0 Pid  18113 on x3109c0s25b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 19 Group  0 Pid  18114 on x3109c0s25b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 20 Group  0 Pid  12501 on x3109c0s25b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 21 Group  0 Pid  12502 on x3109c0s25b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 22 Group  0 Pid  12503 on x3109c0s25b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 23 Group  0 Pid  12504 on x3109c0s25b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 24 Group  0 Pid  41195 on x3109c0s31b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 25 Group  0 Pid  41196 on x3109c0s31b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 26 Group  0 Pid  41197 on x3109c0s31b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 27 Group  0 Pid  41198 on x3109c0s31b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 28 Group  0 Pid  14772 on x3109c0s31b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 29 Group  0 Pid  14773 on x3109c0s31b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 30 Group  0 Pid  14774 on x3109c0s31b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 31 Group  0 Pid  14775 on x3109c0s31b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 32 Group  0 Pid  17586 on x3109c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 33 Group  0 Pid  17587 on x3109c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 34 Group  0 Pid  17588 on x3109c0s37b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 35 Group  0 Pid  17589 on x3109c0s37b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 36 Group  0 Pid  10217 on x3109c0s37b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 37 Group  0 Pid  10218 on x3109c0s37b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 38 Group  0 Pid  10219 on x3109c0s37b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 39 Group  0 Pid  10220 on x3109c0s37b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 40 Group  0 Pid  20554 on x3109c0s7b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 41 Group  0 Pid  20555 on x3109c0s7b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 42 Group  0 Pid  20556 on x3109c0s7b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 43 Group  0 Pid  20557 on x3109c0s7b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 44 Group  0 Pid   7838 on x3109c0s7b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 45 Group  0 Pid   7839 on x3109c0s7b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 46 Group  0 Pid   7840 on x3109c0s7b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 47 Group  0 Pid   7841 on x3109c0s7b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 48 Group  0 Pid  10284 on x3110c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 49 Group  0 Pid  10285 on x3110c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 50 Group  0 Pid  10286 on x3110c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 51 Group  0 Pid  10287 on x3110c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 52 Group  0 Pid  30287 on x3110c0s13b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 53 Group  0 Pid  30288 on x3110c0s13b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 54 Group  0 Pid  30289 on x3110c0s13b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 55 Group  0 Pid  30290 on x3110c0s13b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 56 Group  0 Pid  59263 on x3110c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 57 Group  0 Pid  59264 on x3110c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 58 Group  0 Pid  59265 on x3110c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 59 Group  0 Pid  59266 on x3110c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 60 Group  0 Pid   9177 on x3110c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 61 Group  0 Pid   9178 on x3110c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 62 Group  0 Pid   9179 on x3110c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 63 Group  0 Pid   9180 on x3110c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+    33554432       8388608     float     sum      -1   7074.6    4.74    9.34      0   7084.8    4.74    9.32      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 9.33097 
+#
+
+MSCCL TEST BINARY-H-P-2NIC-16chunk 2-INTRA-1-INTER end time: Mon 16 Oct 2023 08:14:59 PM UTC

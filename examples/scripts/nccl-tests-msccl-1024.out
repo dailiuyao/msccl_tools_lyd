@@ -1,0 +1,650 @@
+########################################   NCCL TEST  #####################################################
+######################### LIBRARY: NCCL ALGORITHM: RING PROTOCOL: SIMPLE ##############################################
+# nThread 1 nGpus 1 minBytes 8 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid   5018 on x3002c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid   5019 on x3002c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid   5020 on x3002c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid   5021 on x3002c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+x3002c0s13b0n0:5018:5018 [0] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5018:5018 [0] NCCL INFO NET/Plugin : Plugin load returned 17 : libnccl-net.so: cannot open shared object file: No such file or directory.
+x3002c0s13b0n0:5018:5018 [0] NCCL INFO cudaDriverVersion 11040
+NCCL version 2.16.4+cuda11.0
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Using network IB
+x3002c0s13b0n0:5021:5021 [3] NCCL INFO cudaDriverVersion 11040
+x3002c0s13b0n0:5020:5020 [2] NCCL INFO cudaDriverVersion 11040
+x3002c0s13b0n0:5019:5019 [1] NCCL INFO cudaDriverVersion 11040
+x3002c0s13b0n0:5021:5021 [3] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5021:5021 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+x3002c0s13b0n0:5019:5019 [1] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5019:5019 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+x3002c0s13b0n0:5020:5020 [2] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5020:5020 [2] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Using network IB
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Using network IB
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Using network IB
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Setting affinity for GPU 3 to 08,00000008
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 00/24 :    0   1   2   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 01/24 :    0   1   3   2
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 02/24 :    0   2   3   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 03/24 :    0   2   1   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 04/24 :    0   3   1   2
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] 0/-1/-1->3->1 [3] 0/-1/-1->3->1 [4] 1/-1/-1->3->0 [5] 1/-1/-1->3->0 [6] 2/-1/-1->3->-1 [7] 2/-1/-1->3->-1 [8] -1/-1/-1->3->2 [9] -1/-1/-1->3->2 [10] 0/-1/-1->3->1 [11] 0/-1/-1->3->1 [12] -1/-1/-1->3->2 [13] -1/-1/-1->3->2 [14] 0/-1/-1->3->1 [15] 0/-1/-1->3->1 [16] 1/-1/-1->3->0 [17] 1/-1/-1->3->0 [18] 2/-1/-1->3->-1 [19] 2/-1/-1->3->-1 [20] -1/-1/-1->3->2 [21] -1/-1/-1->3->2 [22] 0/-1/-1->3->1 [23] 0/-1/-1->3->1
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO P2P Chunksize set to 524288
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 05/24 :    0   3   2   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 06/24 :    0   1   2   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 07/24 :    0   1   3   2
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 08/24 :    0   2   3   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 09/24 :    0   2   1   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 10/24 :    0   3   1   2
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 11/24 :    0   3   2   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 12/24 :    0   1   2   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 13/24 :    0   1   3   2
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 14/24 :    0   2   3   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 15/24 :    0   2   1   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 16/24 :    0   3   1   2
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 17/24 :    0   3   2   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 18/24 :    0   1   2   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 19/24 :    0   1   3   2
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 20/24 :    0   2   3   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 21/24 :    0   2   1   3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 22/24 :    0   3   1   2
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 23/24 :    0   3   2   1
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 2/-1/-1->0->3 [3] 2/-1/-1->0->3 [4] 3/-1/-1->0->2 [5] 3/-1/-1->0->2 [6] -1/-1/-1->0->1 [7] -1/-1/-1->0->1 [8] 1/-1/-1->0->-1 [9] 1/-1/-1->0->-1 [10] 2/-1/-1->0->3 [11] 2/-1/-1->0->3 [12] 1/-1/-1->0->-1 [13] 1/-1/-1->0->-1 [14] 2/-1/-1->0->3 [15] 2/-1/-1->0->3 [16] 3/-1/-1->0->2 [17] 3/-1/-1->0->2 [18] -1/-1/-1->0->1 [19] -1/-1/-1->0->1 [20] 1/-1/-1->0->-1 [21] 1/-1/-1->0->-1 [22] 2/-1/-1->0->3 [23] 2/-1/-1->0->3
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO P2P Chunksize set to 524288
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 3/-1/-1->1->-1 [3] 3/-1/-1->1->-1 [4] -1/-1/-1->1->3 [5] -1/-1/-1->1->3 [6] 0/-1/-1->1->2 [7] 0/-1/-1->1->2 [8] 2/-1/-1->1->0 [9] 2/-1/-1->1->0 [10] 3/-1/-1->1->-1 [11] 3/-1/-1->1->-1 [12] 2/-1/-1->1->0 [13] 2/-1/-1->1->0 [14] 3/-1/-1->1->-1 [15] 3/-1/-1->1->-1 [16] -1/-1/-1->1->3 [17] -1/-1/-1->1->3 [18] 0/-1/-1->1->2 [19] 0/-1/-1->1->2 [20] 2/-1/-1->1->0 [21] 2/-1/-1->1->0 [22] 3/-1/-1->1->-1 [23] 3/-1/-1->1->-1
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO P2P Chunksize set to 524288
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] -1/-1/-1->2->0 [3] -1/-1/-1->2->0 [4] 0/-1/-1->2->-1 [5] 0/-1/-1->2->-1 [6] 1/-1/-1->2->3 [7] 1/-1/-1->2->3 [8] 3/-1/-1->2->1 [9] 3/-1/-1->2->1 [10] -1/-1/-1->2->0 [11] -1/-1/-1->2->0 [12] 3/-1/-1->2->1 [13] 3/-1/-1->2->1 [14] -1/-1/-1->2->0 [15] -1/-1/-1->2->0 [16] 0/-1/-1->2->-1 [17] 0/-1/-1->2->-1 [18] 1/-1/-1->2->3 [19] 1/-1/-1->2->3 [20] 3/-1/-1->2->1 [21] 3/-1/-1->2->1 [22] -1/-1/-1->2->0 [23] -1/-1/-1->2->0
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO P2P Chunksize set to 524288
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 00/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 00/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 01/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 06/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 04/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 06/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 00/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 00/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 03/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 07/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 02/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 06/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 10/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 06/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 12/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 16/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 12/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 18/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 09/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 08/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 12/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 14/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 13/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 12/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 22/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 18/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 20/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 18/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 15/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 19/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 18/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 01/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 03/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 21/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 07/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 02/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 09/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 04/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 13/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 01/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 04/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 08/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 02/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 15/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 07/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 10/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 19/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 13/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 21/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 16/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 19/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 22/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 10/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 03/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 14/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 08/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 16/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 09/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 20/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 14/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 22/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 15/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 20/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 01/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 05/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 21/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 07/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 02/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 05/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 08/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 11/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 14/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 11/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 04/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 05/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 10/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 11/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 16/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 17/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 22/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 23/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 17/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 03/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 05/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 09/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 11/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 15/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 17/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 21/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 23/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 13/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 20/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 17/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 19/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 23/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Connected all rings
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 23/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Connected all rings
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Connected all rings
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Connected all rings
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 08/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 09/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 20/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 21/0 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 01/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 07/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 01/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 07/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 08/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 09/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 13/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 19/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 20/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 21/0 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 02/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 04/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 05/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 10/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 11/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 14/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 16/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 17/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 22/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 23/0 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 09/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 13/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 04/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 05/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 10/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 11/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 16/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 17/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 22/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 23/0 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 19/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 21/0 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 02/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 04/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 05/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 03/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 10/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 05/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 11/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 11/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 15/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 17/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 23/0 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 14/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 02/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 03/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 05/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 11/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 14/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 15/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 17/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 23/0 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 16/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 17/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 00/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 01/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 06/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 07/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 08/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 12/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 13/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 18/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 19/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Channel 20/0 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 22/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 23/0 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 02/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 03/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 14/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Channel 15/0 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 00/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 06/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 08/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 09/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 12/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 18/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 20/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Channel 21/0 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO Connected all trees
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO NCCL_ALGO set by environment to Ring
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 00/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 01/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 06/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 07/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 09/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 12/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 13/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 18/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 19/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Channel 21/0 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO Connected all trees
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO NCCL_ALGO set by environment to Ring
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO Connected all trees
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO NCCL_ALGO set by environment to Ring
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO Connected all trees
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO NCCL_ALGO set by environment to Ring
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 512 | 512
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5018:5044 [0] NCCL INFO comm 0x2031030 rank 0 nranks 4 cudaDev 0 busId 7000 commId 0xf9a59939a1da5ded - Init COMPLETE
+x3002c0s13b0n0:5020:5049 [2] NCCL INFO comm 0x24e8510 rank 2 nranks 4 cudaDev 2 busId 85000 commId 0xf9a59939a1da5ded - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3002c0s13b0n0:5019:5048 [1] NCCL INFO comm 0x1ace510 rank 1 nranks 4 cudaDev 1 busId 46000 commId 0xf9a59939a1da5ded - Init COMPLETE
+x3002c0s13b0n0:5021:5047 [3] NCCL INFO comm 0x287a510 rank 3 nranks 4 cudaDev 3 busId c7000 commId 0xf9a59939a1da5ded - Init COMPLETE
+           8             2     float     sum      -1    41.79    0.00    0.00      0    41.65    0.00    0.00      0
+          16             4     float     sum      -1    79.58    0.00    0.00      0    41.35    0.00    0.00      0
+          32             8     float     sum      -1    41.87    0.00    0.00      0    41.68    0.00    0.00      0
+          64            16     float     sum      -1    41.50    0.00    0.00      0    41.31    0.00    0.00      0
+         128            32     float     sum      -1    41.59    0.00    0.00      0    41.20    0.00    0.00      0
+         256            64     float     sum      -1    41.30    0.01    0.01      0    41.52    0.01    0.01      0
+         512           128     float     sum      -1    40.97    0.01    0.02      0    40.89    0.01    0.02      0
+        1024           256     float     sum      -1    44.56    0.02    0.03      0    44.09    0.02    0.03      0
+        2048           512     float     sum      -1    48.00    0.04    0.06      0    48.48    0.04    0.06      0
+        4096          1024     float     sum      -1    48.83    0.08    0.13      0    48.36    0.08    0.13      0
+        8192          2048     float     sum      -1    50.03    0.16    0.25      0    49.84    0.16    0.25      0
+       16384          4096     float     sum      -1    55.56    0.29    0.44      0    56.24    0.29    0.44      0
+       32768          8192     float     sum      -1    62.24    0.53    0.79      0    61.35    0.53    0.80      0
+       65536         16384     float     sum      -1    66.08    0.99    1.49      0    64.85    1.01    1.52      0
+      131072         32768     float     sum      -1    67.41    1.94    2.92      0    66.70    1.97    2.95      0
+      262144         65536     float     sum      -1    67.90    3.86    5.79      0    67.15    3.90    5.86      0
+      524288        131072     float     sum      -1    69.88    7.50   11.25      0    69.12    7.59   11.38      0
+     1048576        262144     float     sum      -1    73.60   14.25   21.37      0    73.04   14.36   21.53      0
+     2097152        524288     float     sum      -1    81.58   25.71   38.56      0    80.69   25.99   38.99      0
+     4194304       1048576     float     sum      -1    80.56   52.06   78.09      0    79.54   52.73   79.09      0
+     8388608       2097152     float     sum      -1    103.5   81.01  121.52      0    103.5   81.01  121.52      0
+    16777216       4194304     float     sum      -1    179.7   93.34  140.01      0    178.2   94.14  141.22      0
+    33554432       8388608     float     sum      -1    290.5  115.51  173.26      0    290.1  115.67  173.51      0
+    67108864      16777216     float     sum      -1    574.6  116.80  175.19      0    573.9  116.93  175.40      0
+   134217728      33554432     float     sum      -1   1066.6  125.84  188.76      0   1067.1  125.77  188.66      0
+   268435456      67108864     float     sum      -1   2093.4  128.23  192.35      0   2087.3  128.60  192.90      0
+   536870912     134217728     float     sum      -1   4082.1  131.52  197.28      0   4089.9  131.27  196.90      0
+x3002c0s13b0n0:5018:5018 [0] NCCL INFO comm 0x2031030 rank 0 nranks 4 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3002c0s13b0n0:5021:5021 [3] NCCL INFO comm 0x287a510 rank 3 nranks 4 cudaDev 3 busId c7000 - Destroy COMPLETE
+x3002c0s13b0n0:5020:5020 [2] NCCL INFO comm 0x24e8510 rank 2 nranks 4 cudaDev 2 busId 85000 - Destroy COMPLETE
+x3002c0s13b0n0:5019:5019 [1] NCCL INFO comm 0x1ace510 rank 1 nranks 4 cudaDev 1 busId 46000 - Destroy COMPLETE
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 50.0508 
+#
+
+########################################   MSCCL TEST  #####################################################
+######################### LIBRARY: MSCCL ALGORITHM: A100-RING INSTANCE: 1 CHANNEL: 4 PROTOCOL: Simple ##############################################
+MSCCL TEST A100-RING INSTANCE: 1 CHANNEL: 4 start time: Tue 24 Oct 2023 05:49:30 PM UTC
+# nThread 1 nGpus 1 minBytes 64 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid   5187 on x3002c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid   5188 on x3002c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid   5189 on x3002c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid   5190 on x3002c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+x3002c0s13b0n0:5187:5187 [0] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5187:5187 [0] NCCL INFO NET/Plugin : Plugin load returned 17 : libnccl-net.so: cannot open shared object file: No such file or directory.
+x3002c0s13b0n0:5187:5187 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5187:5187 [0] NCCL INFO Using network IB
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.4
+x3002c0s13b0n0:5190:5190 [3] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5190:5190 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+x3002c0s13b0n0:5189:5189 [2] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5188:5188 [1] NCCL INFO Bootstrap : Using bond0:10.140.57.9<0>
+x3002c0s13b0n0:5188:5188 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+x3002c0s13b0n0:5189:5189 [2] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+x3002c0s13b0n0:5189:5189 [2] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5189:5189 [2] NCCL INFO Using network IB
+x3002c0s13b0n0:5188:5188 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5188:5188 [1] NCCL INFO Using network IB
+x3002c0s13b0n0:5190:5190 [3] NCCL INFO NET/IB : Using [0]mlx5_0:1/RoCE [1]mlx5_1:1/RoCE [RO]; OOB bond0:10.140.57.9<0>
+x3002c0s13b0n0:5190:5190 [3] NCCL INFO Using network IB
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Setting affinity for GPU 3 to 08,00000008
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 00/24 :    0   1   2   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 01/24 :    0   1   3   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 02/24 :    0   2   3   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 03/24 :    0   2   1   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 04/24 :    0   3   1   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 05/24 :    0   3   2   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 06/24 :    0   1   2   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 07/24 :    0   1   3   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 08/24 :    0   2   3   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 09/24 :    0   2   1   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 10/24 :    0   3   1   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 11/24 :    0   3   2   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 12/24 :    0   1   2   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 13/24 :    0   1   3   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 14/24 :    0   2   3   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 15/24 :    0   2   1   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 16/24 :    0   3   1   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 17/24 :    0   3   2   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 18/24 :    0   1   2   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 19/24 :    0   1   3   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 20/24 :    0   2   3   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 21/24 :    0   2   1   3
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 22/24 :    0   3   1   2
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 23/24 :    0   3   2   1
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 2/-1/-1->0->3 [3] 2/-1/-1->0->3 [4] 3/-1/-1->0->2 [5] 3/-1/-1->0->2 [6] -1/-1/-1->0->1 [7] -1/-1/-1->0->1 [8] 1/-1/-1->0->-1 [9] 1/-1/-1->0->-1 [10] 2/-1/-1->0->3 [11] 2/-1/-1->0->3 [12] 1/-1/-1->0->-1 [13] 1/-1/-1->0->-1 [14] 2/-1/x3002c0s13b0n0:5188:5226 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0 [2] 3/-1/-1->1->-1 [3] 3/-1/-1->1->-1 [4] -1/-1/-1->1->3 [5] -1/-1/-1->1->3 [6] 0/-1/-1->1->2 [7] 0/-1/-1->1->2 [8] 2/-1/-1->1->0 [9] 2/-1/-1->1->0 [10] 3/-1/-1->1->-1 [11] 3/-1/-1->1->-1 [12] 2/-1/-1->1->0 [13] 2/-1/-1->1->0 [14] 3/-1/-1->1->-1 [15] 3/-1/-1->1->-1 [16] -1/-1/-1->1->3 [17] -1/-1/-1->1->3 [18] 0/-1/-1->1->2 [19] 0/-1/-1->1->2 [20] 2/-1/-1->1->0 [21] 2/-1/-1->1->0 [22] 3/-1/-1->1->-1 [23] 3/-1/-1->1->-1
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1 [2] -1/-1/-1->2->0 [3] -1/-1/-1->2->0 [4] 0/-1/-1->2->-1 [5] 0/-1/-1->2->-1 [6] 1/-1/-1->2->3 [7] 1/-1/-1->2->3 [8] 3/-1/-1->2->1 [9] 3/-1/-1->2->1 [10] -1/-1/-1->2->0 [11] -1/-1/-1->2->0 [12] 3/-1/-1->2->1 [13] 3/-1/-1->2->1 [14] -1/-1/-1->2->0 [15] -1/-1/-1->2->0 [16] 0/-1/-1->2->-1 [17] 0/-1/-1->2->-1 [18] 1/-1/-1->2->3 [19] 1/-1/-1->2->3 [20] 3/-1/-1->2->1 [21] 3/-1/-1->2->1 [22] -1/-1/-1->2->0 [23] -1/-1/-1->2->0
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2 [2] 0/-1/-1->3->1 [3] 0/-1/-1->3->1 [4] 1/-1/-1->3->0 [5] 1/-1/-1->3->0 [6] 2/-1/-1->3->-1 [7] 2/-1/-1->3->-1 [8] -1/-1/-1->3->2 [9] -1/-1/-1->3->2 [10] 0/-1/-1->3->1 [11] 0/-1/-1->3->1 [12] -1/-1/-1->3->2 [13] -1/-1/-1->3->2 [14] 0/-1/-1->3->1 [15] 0/-1/-1->3->1 [16] 1/-1/-1->3->0 [17] 1/-1/-1->3->0 [18] 2/-1/-1->3->-1 [19] 2/-1/-1->3->-1 [20] -1/-1/-1->3->2 [21] -1/-1/-1->3->2 [22] 0/-1/-1->3->1 [23] 0/-1/-1->3->1
+-1->0->3 [15] 2/-1/-1->0->3 [16] 3/-1/-1->0->2 [17] 3/-1/-1->0->2 [18] -1/-1/-1->0->1 [19] -1/-1/-1->0->1 [20] 1/-1/-1->0->-1 [21] 1/-1/-1->0->-1 [22] 2/-1/-1->0->3 [23] 2/-1/-1->0->3
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 00 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 02 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 06 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 08 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 12 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 14 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 18 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 20 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 00 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 03 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 06 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 09 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 12 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 15 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 18 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 21 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 00 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 01 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 06 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 07 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 12 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 13 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 18 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 19 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 00 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 04 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 06 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 10 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 12 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 16 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 18 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 22 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 02 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 04 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 08 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 10 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 14 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 16 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 20 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 22 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 02 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 03 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 08 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 09 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 14 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 15 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 20 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 21 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 01 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 04 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 07 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 10 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 13 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 16 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 19 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 22 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 01 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 03 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 04 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 07 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 05 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 09 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 10 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 13 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 11 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 15 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 19 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 21 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 16 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 01 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 05 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 07 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 11 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 13 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 17 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 19 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 23 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 17 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 02 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 05 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 08 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 11 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 14 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 17 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 20 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 23 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 22 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 03 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 05 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 09 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 11 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 15 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 17 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 21 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 23 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 23 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Connected all rings
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Connected all rings
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Connected all rings
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Connected all rings
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 02 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 04 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 05 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 01 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 07 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 08 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 09 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 13 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 19 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 20 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 21 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 10 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 11 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 14 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 16 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 17 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 22 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 23 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 01 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 07 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 09 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 13 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 19 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 21 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 08 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 09 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 20 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 21 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 03 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 05 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 11 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 15 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 17 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 23 : 3[c7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 02 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 03 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 05 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 11 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 14 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 15 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 17 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 23 : 2[85000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 02 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 04 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 05 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 10 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 11 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 14 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 16 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 17 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 22 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 23 : 1[46000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 00 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 06 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 08 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 09 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 12 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 18 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 20 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 21 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 04 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 05 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 10 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 11 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 16 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 17 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 22 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 23 : 0[7000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 02 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 03 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 14 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 15 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 00 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 01 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 06 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 07 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 08 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 12 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 13 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 18 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 19 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 20 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Connected all trees
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml successfully.
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Channel 01 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 00 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 01 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 06 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 07 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 09 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 12 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 13 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 18 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 19 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 21 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Connected all trees
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml successfully.
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Connected all trees
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Connected all trees
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml successfully.
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/msccl_tools_lyd/examples/xml/allreduce_a100_ring_ch4.xml successfully.
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 02 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Channel 03 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Channel 03 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO Connected 1 MSCCL algorithms
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 8/8/64 | 8/8/512
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 02 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Channel 03 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 8/8/64 | 8/8/512
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO Connected 1 MSCCL algorithms
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 8/8/64 | 8/8/512
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO threadThresholds 8/8/64 | 32/8/64 | 8/8/64 | 8/8/512
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO 24 coll channels, 32 p2p channels, 8 p2p channels per peer
+x3002c0s13b0n0:5188:5226 [1] NCCL INFO comm 0x14daa194a010 rank 1 nranks 4 cudaDev 1 busId 46000 - Init COMPLETE
+x3002c0s13b0n0:5189:5225 [2] NCCL INFO comm 0x151a8045a010 rank 2 nranks 4 cudaDev 2 busId 85000 - Init COMPLETE
+x3002c0s13b0n0:5187:5219 [0] NCCL INFO comm 0x14c5f8fbd010 rank 0 nranks 4 cudaDev 0 busId 7000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3002c0s13b0n0:5190:5228 [3] NCCL INFO comm 0x14aa40058010 rank 3 nranks 4 cudaDev 3 busId c7000 - Init COMPLETE
+x3002c0s13b0n0:5187:5187 [0] NCCL INFO Launch mode Parallel
+          64            16     float     sum      -1    56.07    0.00    0.00     64    56.07    0.00    0.00      0
+         128            32     float     sum      -1    56.06    0.00    0.00    128    56.01    0.00    0.00      0
+         256            64     float     sum      -1    56.37    0.00    0.01    256    56.49    0.00    0.01      0
+         512           128     float     sum      -1    56.03    0.01    0.01    512    56.16    0.01    0.01      0
+        1024           256     float     sum      -1    56.19    0.02    0.03   1024    56.12    0.02    0.03      0
+        2048           512     float     sum      -1    56.14    0.04    0.05   2048    56.66    0.04    0.05      0
+        4096          1024     float     sum      -1    56.04    0.07    0.11   4096    56.01    0.07    0.11      0
+        8192          2048     float     sum      -1    56.72    0.14    0.22   8192    56.45    0.15    0.22      0
+       16384          4096     float     sum      -1    59.57    0.28    0.41  16384    59.12    0.28    0.42      0
+       32768          8192     float     sum      -1    60.06    0.55    0.82  32768    60.16    0.54    0.82      0
+       65536         16384     float     sum      -1    63.04    1.04    1.56  65536    62.88    1.04    1.56      0
+      131072         32768     float     sum      -1    68.33    1.92    2.88  131072    68.83    1.90    2.86      0
+      262144         65536     float     sum      -1    71.85    3.65    5.47  262144    70.19    3.73    5.60      0
+      524288        131072     float     sum      -1    85.98    6.10    9.15  524288    81.69    6.42    9.63      0
+     1048576        262144     float     sum      -1    101.6   10.32   15.48  1.04858e+06    101.4   10.35   15.52      0
+     2097152        524288     float     sum      -1    149.4   14.03   21.05  2.09715e+06    149.5   14.03   21.05      0
+     4194304       1048576     float     sum      -1    242.9   17.27   25.90  4.1943e+06    242.7   17.28   25.92      0
+     8388608       2097152     float     sum      -1    427.5   19.62   29.43  8.3886e+06    426.9   19.65   29.47      0
+    16777216       4194304     float     sum      -1    772.7   21.71   32.57  1.67772e+07    772.5   21.72   32.58      0
+    33554432       8388608     float     sum      -1   1462.8   22.94   34.41  3.35544e+07   1464.2   22.92   34.37      0
+    67108864      16777216     float     sum      -1   2890.2   23.22   34.83  6.71089e+07   2853.8   23.52   35.27      0
+   134217728      33554432     float     sum      -1   5803.4   23.13   34.69  1.34218e+08   5790.6   23.18   34.77      0
+   268435456      67108864     float     sum      -1    11596   23.15   34.72  2.68435e+08    11615   23.11   34.67      0
+   536870912     134217728     float     sum      -1    23091   23.25   34.87  5.36871e+08    23105   23.24   34.85      0
+x3002c0s13b0n0:5187:5187 [0] NCCL INFO comm 0x14c5f8fbd010 rank 0 nranks 4 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3002c0s13b0n0:5190:5190 [3] NCCL INFO comm 0x14aa40058010 rank 3 nranks 4 cudaDev 3 busId c7000 - Destroy COMPLETE
+x3002c0s13b0n0:5189:5189 [2] NCCL INFO comm 0x151a8045a010 rank 2 nranks 4 cudaDev 2 busId 85000 - Destroy COMPLETE
+# Out of bounds values : 96 FAILED
+# Avg bus bandwidth    : 13.3014 
+#
+x3002c0s13b0n0:5188:5188 [1] NCCL INFO comm 0x14daa194a010 rank 1 nranks 4 cudaDev 1 busId 46000 - Destroy COMPLETE
+
+MSCCL TEST A100-RING INSTANCE: 1 CHANNEL: 4 end time: Tue 24 Oct 2023 05:49:37 PM UTC
