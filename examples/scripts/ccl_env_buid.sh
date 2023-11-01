@@ -19,11 +19,12 @@ export MSCCL_TEST_HOME=${MSCCL_TEST_SRC_LOCATION}/build
 # Set location to store NCCL-Tests-MSCCL-LYD source/repository
 NCCLTESTS_MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/nccl-tests-msccl-test"
 export NCCLTESTS_MSCCL_TEST_SRC_LOCATION
+export NCCL_TEST_PROFILE_COMMIT="nccl-test-profile"
 
 # Set location to store NCCL-PROFILE source/repository
 NCCL_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/nccl_profile"
 export NCCL_PROFILE_SRC_LOCATION
-export NCCL_PROFILE_COMMIT="nccl_origin"
+export NCCL_PROFILE_COMMIT="profile_steps"
 
 ### NCCL-PROFILE Section ###
 
@@ -72,10 +73,10 @@ echo ""
 
 ### NCCL-Tests-PROFILE Section ###
 
-# Download NCCL-Tests-MSCCL-LYD
+# Download NCCL-Tests-PROFILE
 if [ ! -d "${NCCLTESTS_PROFILE_SRC_LOCATION}" ]; then
 	echo "[INFO] Downloading NCCL Tests with profile support repository..."
-	git clone https://github.com/nvidia/nccl-tests.git "${NCCLTESTS_PROFILE_SRC_LOCATION}"
+	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_PROFILE_SRC_LOCATION}"
 elif [ -d "${NCCLTESTS_PROFILE_SRC_LOCATION}" ]; then
 	echo "[INFO] NCCL Tests with PROFILE support repository already exists."
 fi
@@ -84,6 +85,13 @@ echo ""
 # Enter NCCL-Tests-MSCCL-TEST dir
 pushd "${NCCLTESTS_PROFILE_SRC_LOCATION}" || exit
 echo ""
+
+# Fetch latest changes
+git fetch --all
+
+# Checkout the correct commit
+git checkout "${NCCL_PROFILE_COMMIT}"
+
 
 # Build NCCL Tests with MSCCL support
 echo "[INFO] Building NCCL tests (nccl-tests) with PROFILE support..."
