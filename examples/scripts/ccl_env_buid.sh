@@ -103,39 +103,39 @@ export NCCL_PROFILE_COMMIT="profile_steps"
 # echo ""
 
 
-### MSCCL_TEST Core Section ###
+# ### MSCCL_TEST Core Section ###
 
-rm -rf "${MSCCL_TEST_SRC_LOCATION}" 
+# rm -rf "${MSCCL_TEST_SRC_LOCATION}" 
 
-# Download MSCCL_TEST
-if [ ! -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
-	echo "[INFO] Downloading MSCCL_TEST repository..."
-	git clone https://github.com/dailiuyao/msccl-lyd.git "${MSCCL_TEST_SRC_LOCATION}"
-elif [ -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
-	echo "[INFO] MSCCL_TEST repository already downloaded; will not re-download."
-fi
-echo ""
+# # Download MSCCL_TEST
+# if [ ! -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
+# 	echo "[INFO] Downloading MSCCL_TEST repository..."
+# 	git clone https://github.com/dailiuyao/msccl-lyd.git "${MSCCL_TEST_SRC_LOCATION}"
+# elif [ -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
+# 	echo "[INFO] MSCCL_TEST repository already downloaded; will not re-download."
+# fi
+# echo ""
 
-# Enter MSCCL_TEST directory
-pushd "${MSCCL_TEST_SRC_LOCATION}" || exit
+# # Enter MSCCL_TEST directory
+# pushd "${MSCCL_TEST_SRC_LOCATION}" || exit
 
-# Fetch latest changes
-git fetch --all
+# # Fetch latest changes
+# git fetch --all
 
-# Checkout the correct commit
-git checkout "${MSCCL_TEST_COMMIT}"
+# # Checkout the correct commit
+# git checkout "${MSCCL_TEST_COMMIT}"
 
-# Build MSCCL_TEST
-echo "[INFO] Building MSCCL_TEST..."
-make -j src.build
-echo ""
+# # Build MSCCL_TEST
+# echo "[INFO] Building MSCCL_TEST..."
+# make -j src.build
+# echo ""
 
-# Create install package
-# [TODO]
+# # Create install package
+# # [TODO]
 
-# Exist MSCCL_TEST directory
-popd || exit
-echo ""
+# # Exist MSCCL_TEST directory
+# popd || exit
+# echo ""
 
 
 ### NCCL-Tests-MSCCL-LYD Section ###
