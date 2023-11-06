@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-profile-31
-#PBS -o nccl-profile-31.out
-#PBS -e nccl-profile-31.error
+#PBS -N nccl-profile-116
+#PBS -o nccl-profile-116.out
+#PBS -e nccl-profile-116.error
 
 
 module load gcc
@@ -34,4 +34,4 @@ export NCCL_DEBUG_SUBSYS=INIT,ENV
 export NCCL_ALGO=Tree
 
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 16MB -e 16MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 16MB -e 16MB -w 0 -n 1 -f 2 -g 1

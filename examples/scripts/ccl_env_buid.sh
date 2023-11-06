@@ -6,7 +6,7 @@ export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
 export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
 
 # Set location to store MSCCL_TEST source/repository
-MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/msccl_test"
+MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/msccl_test_profile"
 export MSCCL_SRC_LOCATION
 export MSCCL_TEST_COMMIT="algorithm_test_profile"
 
@@ -17,7 +17,7 @@ export NCCLTESTS_PROFILE_SRC_LOCATION
 export MSCCL_TEST_HOME=${MSCCL_TEST_SRC_LOCATION}/build
 
 # Set location to store NCCL-Tests-MSCCL-LYD source/repository
-NCCLTESTS_MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/nccl-tests-msccl-test"
+NCCLTESTS_MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/nccl-tests-msccl-test_profile"
 export NCCLTESTS_MSCCL_TEST_SRC_LOCATION
 export NCCL_TEST_PROFILE_COMMIT="nccl-test-profile"
 

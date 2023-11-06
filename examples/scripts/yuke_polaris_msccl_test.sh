@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-tests-msccl-1029
-#PBS -o nccl-tests-msccl-1029.out
-#PBS -e nccl-tests-msccl-1029.error
+#PBS -N nccl-tests-msccl-1106
+#PBS -o nccl-tests-msccl-1106.out
+#PBS -e nccl-tests-msccl-1106.error
 
 set -x
 
@@ -511,13 +511,13 @@ export LD_LIBRARY_PATH=${NCCL_CUDA_HOME}/lib64:${NCCL_MPI_HOME}/lib:${NCCL_HOME}
 
 # mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 8 -e 512M -f 2 -g 1
 
-echo "######################### LIBRARY: NCCL ALGORITHM: TREE PROTOCOL: SIMPLE ##############################################"
+# echo "######################### LIBRARY: NCCL ALGORITHM: TREE PROTOCOL: SIMPLE ##############################################"
 
-export NCCL_DEBUG=INFO
-export NCCL_ALGO=Tree
-export NCCL_PROTO=Simple
+# export NCCL_DEBUG=INFO
+# export NCCL_ALGO=Tree
+# export NCCL_PROTO=Simple
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 256 -e 512M -f 2 -g 1
+# mpiexec -n 64 --ppn 4 --cpu-bind core ./build/all_reduce_perf -b 256 -e 512M -f 2 -g 1
 
 # # echo "######################### LIBRARY: NCCL ALGORITHM: TREE PROTOCOL: LL128 ##############################################"
 
@@ -619,12 +619,12 @@ module load cudatoolkit-standalone/11.4.4
 
 export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
 export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
-export NCCL_TEST_HOME=/home/yuke/ncclPG/nccl-tests-msccl-test
+export NCCL_TEST_HOME=/home/yuke/ncclPG/nccl-tests-msccl-test-profile
 
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
 
-MSCCL_SRC_LOCATION="/home/yuke/ncclPG/msccl_test"
-MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
+MSCCL_SRC_LOCATION="/home/yuke/ncclPG/msccl_test_profile"
+MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd_profile"
 
 
 # echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 1 PROTOCOL: Simple ##############################################"
@@ -1293,10 +1293,10 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 # echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK INSTANCE: 1 CHANNEL: 4 CHUNK 256 end time: $(date)"
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-4CHANNEL-256CHUNK-GPU01 INSTANCE: 1 CHANNEL: 4 CHUNK 256 PROTOCOL: Simple ##############################################"
+echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-4CHANNEL-256CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 PROTOCOL: Simple ##############################################"
 
 # Print the current time
-echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK-GPU01 INSTANCE: 1 CHANNEL: 4 CHUNK 256 start time: $(date)"
+echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 start time: $(date)"
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
@@ -1306,8 +1306,8 @@ export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 256 -e 512MB -f 2 -g 1
+mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 16MB -e 16MB -w 0 -n 1 -f 2 -g 1
 
-echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK-GPU01 INSTANCE: 1 CHANNEL: 4 CHUNK 256 end time: $(date)"
+echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 end time: $(date)"
 
 
