@@ -145,7 +145,7 @@ rm -rf "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}"
 # Download NCCL-Tests-MSCCL-LYD
 if [ ! -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
 	echo "[INFO] Downloading NCCL Tests with MSCCL support repository..."
-	git clone https://github.com/nvidia/nccl-tests.git "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}"
+	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}"
 elif [ -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
 	echo "[INFO] NCCL Tests with MSCCL support repository already exists."
 fi
@@ -154,6 +154,12 @@ echo ""
 # Enter NCCL-Tests-MSCCL-TEST dir
 pushd "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" || exit
 echo ""
+
+# Fetch latest changes
+git fetch --all
+
+# Checkout the correct commit
+git checkout "${NCCL_TEST_PROFILE_COMMIT}"
 
 # Build NCCL Tests with MSCCL support
 echo "[INFO] Building NCCL tests (nccl-tests) with MSCCL support..."
