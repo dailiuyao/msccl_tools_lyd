@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-tests-msccl-1106
-#PBS -o nccl-tests-msccl-1106.out
-#PBS -e nccl-tests-msccl-1106.error
+#PBS -N nccl-tests-msccl-1107
+#PBS -o nccl-tests-msccl-1107.out
+#PBS -e nccl-tests-msccl-1107.error
 
 set -x
 
@@ -624,7 +624,7 @@ export NCCL_TEST_HOME=/home/yuke/ncclPG/nccl-tests-msccl-test-profile
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
 
 MSCCL_SRC_LOCATION="/home/yuke/ncclPG/msccl_test_profile"
-MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd_profile"
+MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 
 
 # echo "######################### LIBRARY: MSCCL ALGORITHM: RING INSTANCE: 1 PROTOCOL: Simple ##############################################"
@@ -1293,21 +1293,21 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd_profile"
 # echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK INSTANCE: 1 CHANNEL: 4 CHUNK 256 end time: $(date)"
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-4CHANNEL-256CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 PROTOCOL: Simple ##############################################"
+echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 PROTOCOL: Simple ##############################################"
 
 # Print the current time
-echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 start time: $(date)"
+echo "MSCCL TEST BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 128 start time: $(date)"
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk128.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
 mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 16MB -e 16MB -w 0 -n 1 -f 2 -g 1
 
-echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 end time: $(date)"
+echo "MSCCL TEST BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 128 end time: $(date)"
 
 
