@@ -66,8 +66,8 @@ def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
         # tree0: channel2 3->2->1->0
         # each tree has two same channel
         # Reduce tree - reducing onto Rank 0
-        gpu_index0 = [3, 2, 1, 0]
-        gpu_index1 = [3, 2, 1, 0]
+        gpu_index0 = list(range(num_local_gpus-1, -1, -1))
+        gpu_index1 = list(range(num_local_gpus-1, -1, -1))
 
 
         # peer0 and peer 1 are children nodes

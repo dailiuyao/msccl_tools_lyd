@@ -1,0 +1,596 @@
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.027660 us - 64 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.025532 us - 64 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.023404 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.028369 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.033333 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.072340 us - 64 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.081560 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.022695 us - 64 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.029787 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.026241 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.024113 us - 64 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.026950 us - 64 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.070922 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 0 is: 0.037589 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.026950 us - 64 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.024113 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.031206 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.025532 us - 64 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.029078 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.028369 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.029787 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.023404 us - 64 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.024823 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.026241 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.036170 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.060993 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.074468 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.057447 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.039007 us - 64 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 0 is: 0.032624 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 485.566667 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 485.546099 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 485.549645 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 484.468794 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 485.539007 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 485.526950 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 482.453191 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 485.520567 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 484.850355 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 484.567376 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 485.553901 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 486.210638 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 583.468085 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 583.411348 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 583.450355 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 581.407092 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 583.732624 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 583.724823 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 583.727660 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 1 is: 584.819149 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 748.924823 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 747.984397 us - 64 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 748.887943 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 748.970213 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 745.883688 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 749.021986 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 748.268794 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 749.009220 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 749.029078 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 749.094326 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 750.260284 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.720567 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.556028 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.572340 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.504255 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.250355 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.389362 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.457447 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.311348 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.768794 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.597872 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.815603 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.629078 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.268794 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.474468 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 319.730496 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.788652 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 873.794326 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.615603 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 872.619858 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 1 is: 871.778723 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 891.111348 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 891.083688 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 888.914894 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 891.040426 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 891.035461 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 891.080142 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 892.761702 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 2 is: 891.146099 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1280.548936 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1278.483688 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1281.604255 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1281.643972 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1281.637589 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1281.675887 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1281.591489 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1281.630496 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1280.684397 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1281.580851 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1280.880851 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1282.487943 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.463830 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.265248 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.124113 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.524823 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.423404 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.694326 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.628369 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.160993 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.287234 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.460284 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.371631 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.168085 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.704255 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.758156 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.360993 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.580851 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1325.631915 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 773.756028 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.807801 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 2 is: 1326.548936 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1394.702128 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1394.773050 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1394.678723 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1394.513475 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1392.505674 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1394.700709 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1394.679433 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 3 is: 1423.297163 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.834752 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.158865 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.861702 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.883688 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.849645 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.874468 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1778.839007 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1776.787234 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1778.960993 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.945390 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1779.873759 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1781.680142 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.796454 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.856028 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.513475 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1833.083688 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.819858 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.656738 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.929787 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.560284 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.758156 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.854610 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.678723 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.924823 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1833.134752 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1833.073050 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1833.025532 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.019149 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.713475 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1280.129078 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1832.535461 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 3 is: 1833.246809 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1880.517021 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1880.654610 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1880.536879 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1880.819149 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1880.602837 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1880.576596 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1878.250355 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 4 is: 1882.063830 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2283.140426 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2282.055319 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2283.121986 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2283.113475 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2283.077305 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2279.990780 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2282.385106 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2282.390780 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2283.151773 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2282.142553 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2283.160284 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2285.895745 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.248227 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.765248 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.906383 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.617730 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.017021 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.771631 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.007801 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.930496 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.695745 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.087943 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.163121 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.997872 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.892908 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.716312 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.253901 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 1757.286525 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.057447 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.365248 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2310.184397 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 4 is: 2309.153901 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2464.800000 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2464.861702 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2462.378014 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2464.851064 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2464.613475 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2464.846809 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2464.805674 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 5 is: 2489.203546 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2724.356028 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2723.336170 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2724.293617 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2724.253901 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2724.478014 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2721.185816 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2724.280851 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2724.326950 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2723.241844 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2723.671631 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2726.307801 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2724.426241 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.731915 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.464539 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.173759 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.380851 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.537589 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.512766 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.281560 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.712766 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.535461 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.424823 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.800000 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.738298 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2783.721277 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.248227 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.406383 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2231.826241 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.645390 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.611348 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2784.311348 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 5 is: 2786.575887 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2897.858865 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2899.561702 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2897.843262 us - 64 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2899.579433 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2897.847518 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2897.309220 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 6 is: 2915.575887 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3196.060993 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3197.129787 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3196.268794 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3197.219858 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3197.212766 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3197.214184 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3197.021986 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3194.115603 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3197.261702 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3198.724113 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3196.504255 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3197.215603 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.115603 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.097163 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3274.916312 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.136879 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.058865 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.424113 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3274.791489 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3274.824823 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.356028 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3274.885816 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.229078 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3274.249645 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3274.948227 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.382270 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.243262 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 2722.454610 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.418440 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.034752 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3275.202128 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 6 is: 3277.190780 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3321.739716 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3323.982979 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3323.959574 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3324.046809 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3323.946809 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3324.090780 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3323.975887 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 7 is: 3327.010638 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3708.521986 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3709.666667 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3709.697872 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3709.715603 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3709.610638 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3709.598582 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3706.573050 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3708.670213 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3709.632624 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3709.662411 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3708.998582 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3710.843972 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.541135 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.772340 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.339716 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.551773 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.468794 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.546809 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.399291 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.791489 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.803546 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.765248 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.203546 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.271631 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.539716 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.265248 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3204.811348 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.448227 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3756.704965 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.647518 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.628369 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 7 is: 3757.997872 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3934.672340 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3933.313475 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3934.695035 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3939.053191 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3934.700000 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3934.709220 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3935.621277 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 8 is: 3954.689362 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.785816 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.525532 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.245390 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.430496 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.439716 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.774468 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.305674 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.836879 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.557447 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.654610 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.392908 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.497872 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.257447 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4187.759574 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.787943 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.417021 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.670922 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 3635.826950 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4188.645390 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 8 is: 4191.075177 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4175.438298 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4175.383688 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4175.392908 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4175.464539 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4172.330496 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4174.429787 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4174.396454 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4175.431206 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4175.379433 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4175.473759 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4180.904255 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4174.693617 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4577.248227 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4577.273759 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4577.253901 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4577.256738 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4577.229078 us - 64 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4574.965957 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 9 is: 4583.535461 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4609.485816 us - 64 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4606.355319 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4608.523404 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4608.739007 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4609.468085 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4609.462411 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4608.428369 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4609.531206 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4609.499291 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4609.494326 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 4610.471631 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.544681 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.382270 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.082979 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.557447 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.423404 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.396454 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.675887 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.255319 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.280142 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.176596 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.132624 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.252482 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.614894 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.311348 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.080851 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4090.675887 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.507801 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4645.287943 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4642.564539 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 9 is: 4643.495035 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5072.580851 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5072.590780 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5072.629078 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5072.599291 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5072.629787 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5070.282979 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5072.641844 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 10 is: 5078.571631 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5094.612766 us - 64 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5094.646809 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5093.919149 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5094.653901 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5094.702128 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5091.555319 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5093.616312 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5093.734752 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5094.728369 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5095.867376 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5094.712057 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.746809 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.653191 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.176596 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.217021 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.581560 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.195035 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.863830 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.647518 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.019149 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.762411 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.865957 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.043972 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.947518 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5117.151773 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.096454 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.081560 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 4565.248936 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.296454 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.204255 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 10 is: 5118.021277 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5554.084397 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5554.052482 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5553.114184 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5552.990780 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5554.517021 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5554.109220 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5554.258865 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5554.539007 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5558.346099 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5554.413475 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5553.556028 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 5551.160284 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5567.677305 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5565.350355 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5567.691489 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5567.678014 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5567.694326 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5567.633333 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5568.939716 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 11 is: 5567.613475 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.680142 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5602.031206 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.790780 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.797163 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.514894 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.764539 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.698582 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.438298 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5600.978723 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.709929 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.885106 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.993617 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.509929 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.785816 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.981560 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5049.030496 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5602.069504 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.862411 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5601.597872 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 11 is: 5603.121986 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6001.139716 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6000.226241 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6001.162411 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6000.153191 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6001.191489 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6001.197872 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6001.102128 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6001.198582 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 5998.024113 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6000.456028 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6001.248227 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6015.948936 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6029.831206 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6029.854610 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6029.815603 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6029.824113 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6027.568794 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6029.839007 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6030.187943 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 12 is: 6029.828369 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.019149 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.329787 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6097.920567 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.096454 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.107801 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.106383 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6097.934043 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6097.773050 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.112057 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6097.851773 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6097.244681 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.345390 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.162411 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.364539 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.319858 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6098.200000 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6097.852482 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6097.995745 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 5545.384397 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 12 is: 6103.617021 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6529.551773 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6530.942553 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6530.921986 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6530.913475 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6530.506383 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6529.832624 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6530.836879 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6531.506383 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6530.156028 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6527.758865 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6530.912057 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 6537.025532 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6546.746099 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6546.751064 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6544.491489 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6546.753901 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6546.792908 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6546.756738 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6547.101418 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.292199 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.527660 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.136170 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.285106 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.294326 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.600709 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.299291 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.217730 us - 64 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.124113 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.575177 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.507801 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.017021 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.042553 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6545.979433 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.391489 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6545.481560 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.383688 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 5993.568794 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 13 is: 6546.704965 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 13 is: 6546.783688 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7001.951064 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7001.441844 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7002.372340 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7001.328369 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7001.431915 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7001.658865 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 6999.263121 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7002.359574 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7002.378014 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7002.426241 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7002.386525 us - 32 times
+ [LYD INFO] T (Reduce up, recv reduce send) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 15 is: 7003.319149 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7003.701418 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7003.589362 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7003.607801 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7001.577305 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7003.607092 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7003.727660 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7003.828369 us - 32 times
+ [LYD INFO] T (Broadcast down, directRecvCopySend) in NCCL (loopsize=131072, nelem=65536, bid=1) of chunk 14 is: 7004.978723 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.409220 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.399291 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.644681 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.312766 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.424113 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.073759 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.278723 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.700709 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.091489 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.231915 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.501418 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.588652 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.419858 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.634043 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 6553.673759 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7105.582270 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.113475 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.244681 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7106.482979 us - 32 times
+ [LYD INFO] T (reduce and broadcast) in NCCL (loopsize=131072, nelem=65536, bid=0) of chunk 14 is: 7111.682979 us - 32 times
