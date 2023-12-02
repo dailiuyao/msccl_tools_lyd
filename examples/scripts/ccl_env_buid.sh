@@ -26,20 +26,20 @@ NCCL_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/nccl_profile"
 export NCCL_PROFILE_SRC_LOCATION
 export NCCL_PROFILE_COMMIT="profile_steps"
 
-# ### NCCL-PROFILE Section ###
+### NCCL-PROFILE Section ###
 
-# export PROFAPI=1
-# # Download NCCL
-# if [ ! -d "${NCCL_PROFILE_SRC_LOCATION}" ]; then
-# 	echo "[INFO] Downloading NCCL repository..."
-# 	git clone git@github.com:dailiuyao/NCCL_profile.git "${NCCL_PROFILE_SRC_LOCATION}"
-# elif [ -d "${NCCL_PROFILE_SRC_LOCATION}" ]; then 
-# 	echo "[INFO] NCCL repository already exists."
-# fi
-# echo ""
+export PROFAPI=1
+# Download NCCL
+if [ ! -d "${NCCL_PROFILE_SRC_LOCATION}" ]; then
+	echo "[INFO] Downloading NCCL repository..."
+	git clone git@github.com:dailiuyao/NCCL_profile.git "${NCCL_PROFILE_SRC_LOCATION}"
+elif [ -d "${NCCL_PROFILE_SRC_LOCATION}" ]; then 
+	echo "[INFO] NCCL repository already exists."
+fi
+echo ""
 
-# # Enter NCCL dir
-# pushd "${NCCL_PROFILE_SRC_LOCATION}" || exit
+# Enter NCCL dir
+pushd "${NCCL_PROFILE_SRC_LOCATION}" || exit
 
 # # Fetch latest changes
 # git fetch --all
@@ -47,44 +47,44 @@ export NCCL_PROFILE_COMMIT="profile_steps"
 # # Checkout the correct commit
 # git checkout "${NCCL_PROFILE_COMMIT}"
 
-# # Build NCCL
-# echo "[INFO] Building NCCL_PROFILE..."
-# make clean
-# make -j src.build
-# echo ""
+# Build NCCL
+echo "[INFO] Building NCCL_PROFILE..."
+make clean
+make -j src.build
+echo ""
 
-# # Set environment variables that other tasks will use
-# echo "[INFO] Setting NCCL-related environment variables for other tasks..."
-# NCCL_HOME="${NCCL_PROFILE_SRC_LOCATION}/build" 
-# export NCCL_HOME
-# echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
+# Set environment variables that other tasks will use
+echo "[INFO] Setting NCCL-related environment variables for other tasks..."
+NCCL_HOME="${NCCL_PROFILE_SRC_LOCATION}/build" 
+export NCCL_HOME
+echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
 
-# echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
-# LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
-# export LD_LIBRARY_PATH
-# PATH="${PATH}:${NCCL_HOME}/include"
-# export PATH
-# echo ""
+echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
+LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
+export LD_LIBRARY_PATH
+PATH="${PATH}:${NCCL_HOME}/include"
+export PATH
+echo ""
 
-# # Exit NCCL dir
-# popd || exit
-# echo ""
+# Exit NCCL dir
+popd || exit
+echo ""
 
 
-# ### NCCL-Tests-PROFILE Section ###
+### NCCL-Tests-PROFILE Section ###
 
-# # Download NCCL-Tests-PROFILE
-# if [ ! -d "${NCCLTESTS_PROFILE_SRC_LOCATION}" ]; then
-# 	echo "[INFO] Downloading NCCL Tests with profile support repository..."
-# 	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_PROFILE_SRC_LOCATION}"
-# elif [ -d "${NCCLTESTS_PROFILE_SRC_LOCATION}" ]; then
-# 	echo "[INFO] NCCL Tests with PROFILE support repository already exists."
-# fi
-# echo ""
+# Download NCCL-Tests-PROFILE
+if [ ! -d "${NCCLTESTS_PROFILE_SRC_LOCATION}" ]; then
+	echo "[INFO] Downloading NCCL Tests with profile support repository..."
+	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_PROFILE_SRC_LOCATION}"
+elif [ -d "${NCCLTESTS_PROFILE_SRC_LOCATION}" ]; then
+	echo "[INFO] NCCL Tests with PROFILE support repository already exists."
+fi
+echo ""
 
-# # Enter NCCL-Tests-MSCCL-TEST dir
-# pushd "${NCCLTESTS_PROFILE_SRC_LOCATION}" || exit
-# echo ""
+# Enter NCCL-Tests-MSCCL-TEST dir
+pushd "${NCCLTESTS_PROFILE_SRC_LOCATION}" || exit
+echo ""
 
 # # Fetch latest changes
 # git fetch --all
@@ -93,14 +93,14 @@ export NCCL_PROFILE_COMMIT="profile_steps"
 # git checkout "${NCCL_TEST_PROFILE_COMMIT}"
 
 
-# # Build NCCL Tests with MSCCL support
-# echo "[INFO] Building NCCL tests (nccl-tests) with PROFILE support..."
-# make clean
-# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${NCCL_HOME}" -j  
+# Build NCCL Tests with MSCCL support
+echo "[INFO] Building NCCL tests (nccl-tests) with PROFILE support..."
+make clean
+make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${NCCL_HOME}" -j  
 
-# # Exit NCCL Tests dir
-# popd || exit
-# echo ""
+# Exit NCCL Tests dir
+popd || exit
+echo ""
 
 
 # ### MSCCL_TEST Core Section ###
@@ -138,34 +138,34 @@ export NCCL_PROFILE_COMMIT="profile_steps"
 # echo ""
 
 
-### NCCL-Tests-MSCCL-LYD Section ###
+# ### NCCL-Tests-MSCCL-LYD Section ###
 
-rm -rf "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" 
+# rm -rf "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" 
 
-# Download NCCL-Tests-MSCCL-LYD
-if [ ! -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
-	echo "[INFO] Downloading NCCL Tests with MSCCL support repository..."
-	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}"
-elif [ -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
-	echo "[INFO] NCCL Tests with MSCCL support repository already exists."
-fi
-echo ""
+# # Download NCCL-Tests-MSCCL-LYD
+# if [ ! -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
+# 	echo "[INFO] Downloading NCCL Tests with MSCCL support repository..."
+# 	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}"
+# elif [ -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
+# 	echo "[INFO] NCCL Tests with MSCCL support repository already exists."
+# fi
+# echo ""
 
-# Enter NCCL-Tests-MSCCL-TEST dir
-pushd "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" || exit
-echo ""
+# # Enter NCCL-Tests-MSCCL-TEST dir
+# pushd "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" || exit
+# echo ""
 
-# Fetch latest changes
-git fetch --all
+# # Fetch latest changes
+# git fetch --all
 
-# Checkout the correct commit
-git checkout "${NCCL_TEST_PROFILE_COMMIT}"
+# # Checkout the correct commit
+# git checkout "${NCCL_TEST_PROFILE_COMMIT}"
 
-# Build NCCL Tests with MSCCL support
-echo "[INFO] Building NCCL tests (nccl-tests) with MSCCL support..."
-make clean
-make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${MSCCL_TEST_HOME}" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
+# # Build NCCL Tests with MSCCL support
+# echo "[INFO] Building NCCL tests (nccl-tests) with MSCCL support..."
+# make clean
+# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${MSCCL_TEST_HOME}" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
 
-# Exit NCCL Tests dir
-popd || exit
-echo ""
+# # Exit NCCL Tests dir
+# popd || exit
+# echo ""
