@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-module load gcc
+module load gcc/11.2.0
 module load cudatoolkit-standalone/11.4.4
 export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
 export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/

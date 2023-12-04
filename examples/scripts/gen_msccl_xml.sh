@@ -232,8 +232,6 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel4.py --protocol=Simple 1 2 8 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_channel4_chunk8.xml
 
-
-
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_recursive_doubling_halving.py --protocol=LL 2 1 > ${MSCCL_TOOLS_XML}/allreduce_rec_doub_halv_LL_gpu2_ins1.xml
 
 
