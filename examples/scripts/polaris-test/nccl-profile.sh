@@ -1,14 +1,14 @@
 #!/bin/bash -l
-#PBS -l select=3:system=polaris
+#PBS -l select=2:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:05:00
 #PBS -q debug-scaling
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-profile-124
-#PBS -o nccl-profile-124.out
-#PBS -e nccl-profile-124.error
+#PBS -N nccl-profile-125
+#PBS -o nccl-profile-125.out
+#PBS -e nccl-profile-125.error
 
 
 module load gcc/11.2.0
@@ -34,4 +34,4 @@ export NCCL_DEBUG_SUBSYS=INIT,ENV
 export NCCL_ALGO=Tree
 
 
-mpiexec -n 3 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 8MB -e 8MB -w 0 -n 1 -f 2 -g 1
+mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1

@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-tests-msccl-1107
-#PBS -o nccl-tests-msccl-1107.out
-#PBS -e nccl-tests-msccl-1107.error
+#PBS -N nccl-tests-msccl-1205
+#PBS -o nccl-tests-msccl-1205.out
+#PBS -e nccl-tests-msccl-1205.error
 
 set -x
 
@@ -1293,21 +1293,38 @@ MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
 # echo "MSCCL TEST BINARY-4CHANNEL-256CHUNK INSTANCE: 1 CHANNEL: 4 CHUNK 256 end time: $(date)"
 
 
-echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 PROTOCOL: Simple ##############################################"
+# echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 256 PROTOCOL: Simple ##############################################"
+
+# # Print the current time
+# echo "MSCCL TEST BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 128 start time: $(date)"
+
+
+# export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk128.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+
+# mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 16MB -e 16MB -w 0 -n 1 -f 2 -g 1
+
+# echo "MSCCL TEST BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 128 end time: $(date)"
+
+echo "######################### LIBRARY: MSCCL ALGORITHM: BINARY-2CHANNEL-4CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 2 CHUNK 4 PROTOCOL: Simple ##############################################"
 
 # Print the current time
-echo "MSCCL TEST BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 128 start time: $(date)"
+echo "MSCCL TEST BINARY-2CHANNEL-4CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 2 CHUNK 4 start time: $(date)"
 
 
 export LD_LIBRARY_PATH=${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk128.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_channel2_chunk4.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
-mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 16MB -e 16MB -w 0 -n 1 -f 2 -g 1
+mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
 
-echo "MSCCL TEST BINARY-4CHANNEL-128CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 4 CHUNK 128 end time: $(date)"
+echo "MSCCL TEST BINARY-2CHANNEL-4CHUNK-GPU01-PROFILE INSTANCE: 1 CHANNEL: 2 CHUNK 4 end time: $(date)"
 
 
