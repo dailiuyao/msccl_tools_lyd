@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-profile-125
-#PBS -o nccl-profile-125.out
-#PBS -e nccl-profile-125.error
+#PBS -N nccl-profile-125-2
+#PBS -o nccl-profile-125-2.out
+#PBS -e nccl-profile-125-2.error
 
 
 module load gcc/11.2.0
@@ -21,10 +21,10 @@ export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
 # Set location to store NCCL_TEST source/repository
 
 
-export NCCL_TEST_HOME="/home/yuke/ncclPG/nccl-tests-profile"
+export NCCL_TEST_HOME="/home/yuke/ncclPG/nccl-tests"
 
 # Set location to store NCCL-PROFILE source/repository
-NCCL_SRC_LOCATION="/home/yuke/ncclPG/nccl_profile"
+NCCL_SRC_LOCATION="/home/yuke/ncclPG/nccl"
 export NCCL_SRC_LOCATION
 
 export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
