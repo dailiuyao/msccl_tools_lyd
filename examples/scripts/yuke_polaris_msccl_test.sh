@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#PBS -l select=16:system=polaris
+#PBS -l select=2:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:05:00
 #PBS -q prod
