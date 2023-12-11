@@ -246,7 +246,7 @@ make clean
 
 # Build NCCL Tests
 echo "[INFO] Building NCCL tests (nccl-tests)"
-make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${NCCL_SRC_LOCATION}/build -j"  
+make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${NCCL_SRC_LOCATION}/build" -j  
 
 # Exit NCCL Tests dir
 popd || exit
