@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-profile-125-2
-#PBS -o nccl-profile-125-2.out
-#PBS -e nccl-profile-125-2.error
+#PBS -N nccl-profile-1210-2
+#PBS -o nccl-profile-1210-2.out
+#PBS -e nccl-profile-1210-2.error
 
 
 # module load gcc/11.2.0
@@ -78,7 +78,7 @@ $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_PROFILE_HOME}
 echo "NCCL TEST with MSCCL"
 
 export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/nccl-tests-msccl-test_profile"
-
+:q
 MSCCL_SRC_LOCATION="/home/yuke/ncclPG/msccl_test_profile"
 export MSCCL_SRC_LOCATION
 
