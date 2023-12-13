@@ -1,11 +1,5 @@
 #!/bin/bash 
 
-# module load gcc
-# module load cudatoolkit-standalone/11.4.4
-# export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
-# export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
-
-
 module load gcc/11.2.0
 module load cudatoolkit-standalone/11.4.4
 export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
@@ -13,8 +7,8 @@ export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
 
 set -e 
 
-export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
-export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
+# export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
+# export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
 
 # Set location to store MSCCL_TEST source/repository
 MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/msccl_test_profile"
