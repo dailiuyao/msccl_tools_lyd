@@ -1,9 +1,15 @@
 #!/bin/bash 
 
-# module load gcc/11.2.0
+# module load gcc
 # module load cudatoolkit-standalone/11.4.4
 # export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
 # export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
+
+
+module load gcc/11.2.0
+module load cudatoolkit-standalone/11.4.4
+export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
+export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
 
 set -e 
 
@@ -40,6 +46,8 @@ export NCCL_COMMIT="v2.17.1-1"
 # Set location to store NCCL_TEST source/repository
 NCCLTESTS_SRC_LOCATION="/home/yuke/ncclPG/nccl-tests"
 export NCCLTESTS_SRC_LOCATION
+
+export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 
 ### NCCL-PROFILE Section ###
 
