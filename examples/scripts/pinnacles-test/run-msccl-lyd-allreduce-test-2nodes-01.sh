@@ -22,8 +22,8 @@ export NCCL_SRC_LOCATION
 
 ### Set environment variables ###
 
-node01=gnode003
-node02=gnode006
+node01=gnode001
+node02=gnode002
 
 echo $node01,$node02
 
@@ -32,52 +32,52 @@ echo ""
 # Get the current timestamp
 timestamp=$(date "+%Y-%m-%d %H:%M:%S")
 
-# echo "############################################################# MSCCL ########################################################################"
-
-# # Set environment variables that other tasks will use
-# echo "[INFO] Setting NCCL-related environment variables for other tasks..."
-# MSCCL_HOME="${MSCCL_SRC_LOCATION}/build" 
-# export MSCCL_HOME
-# echo "[DEBUG] MSCCL_HOME has been set to: ${MSCCL_HOME}"
-
-# echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
-# LD_LIBRARY_PATH="${MSCCL_HOME}/lib:${LD_LIBRARY_PATH}"
-# export LD_LIBRARY_PATH
-# PATH="${MSCCL_HOME}/include:${PATH}"
-# export PATH
-# echo ""
-
-# export LD_LIBRARY_PATH=${MSCCL_HOME}/lib/:$LD_LIBRARY_PATH
-# export NCCL_DEBUG=INFO
-# export NCCL_DEBUG_SUBSYS=INIT,ENV
-# export MSCCL_XML_FILES=/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk16.xml
-# export NCCL_ALGO=MSCCL,TREE,RING
-# export NCCL_PROTO=Simple
-
-# mpirun -np 4 -host $node01:2,$node02:2\
-#  /home/ldai8/scratch/msccl_build/deps/nccl-tests-msccl-lyd/build/all_reduce_perf -w 0 -b 8MB -e 8MB -f 2 -g 1 -n 1  
-
-# echo "done" 
-
-
-echo "############################################################# NCCL ########################################################################"
+echo "############################################################# MSCCL ########################################################################"
 
 # Set environment variables that other tasks will use
 echo "[INFO] Setting NCCL-related environment variables for other tasks..."
-NCCL_HOME="${NCCL_SRC_LOCATION}/build" 
-export NCCL_HOME
-echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
+MSCCL_HOME="${MSCCL_SRC_LOCATION}/build" 
+export MSCCL_HOME
+echo "[DEBUG] MSCCL_HOME has been set to: ${MSCCL_HOME}"
 
 echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
-LD_LIBRARY_PATH="${NCCL_HOME}/lib:${LD_LIBRARY_PATH}"
+LD_LIBRARY_PATH="${MSCCL_HOME}/lib:${LD_LIBRARY_PATH}"
 export LD_LIBRARY_PATH
-PATH="${NCCL_HOME}/include:${PATH}"
+PATH="${MSCCL_HOME}/include:${PATH}"
 export PATH
 echo ""
 
-export NCCL_ALGO=Tree
+export LD_LIBRARY_PATH=${MSCCL_HOME}/lib/:$LD_LIBRARY_PATH
+export NCCL_DEBUG=INFO
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk16.xml
+export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
 mpirun -np 4 -host $node01:2,$node02:2\
- /home/ldai8/scratch/msccl_build/deps/nccl-tests/build/all_reduce_perf -w 0 -b 8M -e 8M -f 2 -g 1 -n 1
+ /home/ldai8/scratch/msccl_build/deps/nccl-tests-msccl-lyd/build/all_reduce_perf -w 0 -b 8MB -e 8MB -f 2 -g 1 -n 1  
+
+echo "done" 
+
+
+# echo "############################################################# NCCL ########################################################################"
+
+# # Set environment variables that other tasks will use
+# echo "[INFO] Setting NCCL-related environment variables for other tasks..."
+# NCCL_HOME="${NCCL_SRC_LOCATION}/build" 
+# export NCCL_HOME
+# echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
+
+# echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
+# LD_LIBRARY_PATH="${NCCL_HOME}/lib:${LD_LIBRARY_PATH}"
+# export LD_LIBRARY_PATH
+# PATH="${NCCL_HOME}/include:${PATH}"
+# export PATH
+# echo ""
+
+# export NCCL_ALGO=Tree
+# export NCCL_PROTO=Simple
+
+# mpirun -np 4 -host $node01:2,$node02:2\
+#  /home/ldai8/scratch/msccl_build/deps/nccl-tests/build/all_reduce_perf -w 0 -b 8M -e 8M -f 2 -g 1 -n 1
 
