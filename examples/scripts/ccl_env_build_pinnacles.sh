@@ -31,44 +31,44 @@ NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 export NVCC_GENCODE
 
 # Set location to store NCCL source/repository
-NCCL_SRC_LOCATION="$(pwd)/deps/nccl"
+NCCL_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/nccl"
 export NCCL_SRC_LOCATION
 export NCCL_COMMIT="v2.17.1-1"
 
 # Set location to store NCCL-PROFILE source/repository
-NCCL_PROFILE_SRC_LOCATION="$(pwd)/deps/nccl_profile"
+NCCL_PROFILE_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/nccl_profile"
 export NCCL_PROFILE_SRC_LOCATION
 export NCCL_PROFILE_COMMIT="profile_steps"
 
 
 # Set location to store MSCCL source/repository
-MSCCL_SRC_LOCATION="$(pwd)/deps/msccl"
+MSCCL_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/msccl"
 export MSCCL_SRC_LOCATION
 export MSCCL_COMMIT="v0.7.4"
 
 # Set location to store MSCCL_LYD source/repository
-MSCCL_LYD_SRC_LOCATION="$(pwd)/deps/msccl_lyd"
+MSCCL_LYD_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/msccl_lyd"
 export MSCCL_LYD_SRC_LOCATION
 export MSCCL_LYD_COMMIT="algorithm_div_threads"
 
 # Set location to store MSCCL Tools source/repository
-MSCCLTOOLS_SRC_LOCATION="$(pwd)/deps/msccl-tools"
+MSCCLTOOLS_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/msccl-tools"
 export MSCCLTOOLS_SRC_LOCATION
 
 # Set location to store NCCL-Tests source/repository
-NCCLTESTS_SRC_LOCATION="$(pwd)/deps/nccl-tests"
+NCCLTESTS_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/nccl-tests"
 export NCCLTESTS_SRC_LOCATION
 
 # Set location to store NCCL-Tests profile source/repository
-NCCLTESTS_PROFILE_SRC_LOCATION="$(pwd)/deps/nccl-tests-profile"
+NCCLTESTS_PROFILE_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/nccl-tests-profile"
 export NCCLTESTS_PROFILE_SRC_LOCATION
 
 # Set location to store NCCL-Tests-MSCCL source/repository
-NCCLTESTS_MSCCL_SRC_LOCATION="$(pwd)/deps/nccl-tests-msccl"
+NCCLTESTS_MSCCL_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/nccl-tests-msccl"
 export NCCLTESTS_MSCCL_SRC_LOCATION
 
 # Set location to store NCCL-Tests-MSCCL-LYD source/repository
-NCCLTESTS_MSCCL_LYD_SRC_LOCATION="$(pwd)/deps/nccl-tests-msccl-lyd"
+NCCLTESTS_MSCCL_LYD_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/nccl-tests-msccl-lyd"
 export NCCLTESTS_MSCCL_LYD_SRC_LOCATION
 
 
@@ -77,31 +77,31 @@ PYTHON_SRC_VERSION="3.7.10"
 export PYTHON_SRC_VERSION
 
 # Set location to store Python source
-PYTHON_SRC_LOCATION="$(pwd)/deps/pysrc"
+PYTHON_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/pysrc"
 export PYTHON_SRC_LOCATION
 
 # Set location where Python should be installed after build
-PYTHON_INSTALL_LOCATION="$(pwd)/deps/python"
+PYTHON_INSTALL_LOCATION="/home/ldai8/scratch/msccl_build/deps/python"
 export PYTHON_INSTALL_LOCATION
 
 # Set location to store cuDNN source
-CUDNN_SRC_LOCATION="$(pwd)/deps/cudnn"
+CUDNN_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/cudnn"
 export CUDNN_SRC_LOCATION
 
 # Set location where cuDNN should be installed after build
-CUDNN_INSTALL_LOCATION="$(pwd)/deps/cudnn/install"
+CUDNN_INSTALL_LOCATION="/home/ldai8/scratch/msccl_build/deps/cudnn/install"
 export CUDNN_INSTALL_LOCATION
 
 # Set location for the Python virtual environment to use when running tests
-PY_VENV_LOCATION="$(pwd)/venv"
+PY_VENV_LOCATION="/home/ldai8/scratch/msccl_build/venv"
 export PY_VENV_LOCATION
 
 # Set location to download Anaconda setup scripts
-CONDA_SRC_LOCATION="$(pwd)/deps/conda_setup"
+CONDA_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/conda_setup"
 export CONDA_SRC_LOCATION
 
 # Set location to install Anaconda
-CONDA_INSTALL_LOCATION="$(pwd)/deps/conda"
+CONDA_INSTALL_LOCATION="/home/ldai8/scratch/msccl_build/deps/conda"
 export CONDA_INSTALL_LOCATION
 
 # Set string to use as the Anaconda environment name
@@ -109,7 +109,7 @@ CONDA_ENV_NAME="param_msccl"
 export CONDA_ENV_NAME
 
 # Set location to store PyTorch source/repository
-PYTORCH_SRC_LOCATION="$(pwd)/deps/pytorch"
+PYTORCH_SRC_LOCATION="/home/ldai8/scratch/msccl_build/deps/pytorch"
 export PYTORCH_SRC_LOCATION
 
 ### Initial Information Collection ###
