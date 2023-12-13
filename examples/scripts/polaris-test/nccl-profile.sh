@@ -11,13 +11,13 @@
 #PBS -e nccl-profile-plugin.error
 
 
-module load gcc/11.2.0
-module load cudatoolkit-standalone/11.4.4
-export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
-export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
+# module load gcc/11.2.0
+# module load cudatoolkit-standalone/11.4.4
+# export MPI_HOME=/opt/cray/pe/mpich/8.1.16/ofi/gnu/9.1
+# export CUDA_HOME=/soft/compilers/cudatoolkit/cuda-11.4.4/
 
-# export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
-# export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
+export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
+export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
 
 export MPIEXEC_HOME=/opt/cray/pe/pals/1.2.11
 export NCCL_NET_PLUGIN_HOME="/home/yuke/ncclPG/aws-ofi-nccl-1.7.4-aws/build"          
