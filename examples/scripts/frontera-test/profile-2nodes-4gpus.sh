@@ -1,14 +1,14 @@
 #!/bin/bash
 
-#SBATCH -J ccl-run-2nodes-2gpus           # Job name
-#SBATCH -o ccl-run-2nodes-2gpus.o%j       # Name of stdout output file
-#SBATCH -e ccl-run-2nodes-2gpus.e%j       # Name of stderr error file
+#SBATCH -J ccl-run-2nodes-4gpus           # Job name
+#SBATCH -o ccl-run-2nodes-4gpus.o%j       # Name of stdout output file
+#SBATCH -e ccl-run-2nodes-4gpus.e%j       # Name of stderr error file
 #SBATCH -p rtx           # Queue (partition) name
 #SBATCH -N 2               # Total # of nodes (must be 1 for serial)
 #SBATCH -n 2               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 00:19:00        # Run time (hh:mm:ss)
 ##SBATCH --mail-type=all    # Send email at begin and end of job
-##SBATCH -A ccl-run-2nodes-2gpus       # Project/Allocation name (req'd if you have more than 1)
+##SBATCH -A ccl-run-2nodes-4gpus       # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --mail-user=username@tacc.utexas.edu
 
 set -e
@@ -23,10 +23,10 @@ export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2
 
 ##################################### NCCL #####################################
 echo "##################################### NCCL #####################################"
-NCCL_SRC_LOCATION="/home1/09499/wchen97/ccl-build/nccl"
+NCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl"
 export NCCL_SRC_LOCATION
 
-NCCLTESTS_SRC_LOCATION="/home1/09499/wchen97/ccl-build/nccl-tests"
+NCCLTESTS_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests"
 export NCCLTESTS_SRC_LOCATION
 
 export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
@@ -35,14 +35,14 @@ export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
 
 ##################################### NCCL PROFILE #####################################
 echo "##################################### NCCL PROFILE #####################################"
-NCCL_PROFILE_SRC_LOCATION="/home1/09499/wchen97/ccl-build/NCCL_profile"
+NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
 export NCCL_PROFILE_SRC_LOCATION
 
-NCCLTESTS_NCCL_PROFILE_SRC_LOCATION="/home1/09499/wchen97/ccl-build/nccl-tests-profile"
+NCCLTESTS_NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile"
 export NCCLTESTS_NCCL_PROFILE_SRC_LOCATION
 
 export LD_LIBRARY_PATH="${NCCL_PROFILE_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
@@ -51,20 +51,23 @@ export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
 
 ##################################### MSCCL #####################################
 echo "##################################### MSCCL #####################################"
-MSCCL_SRC_LOCATION="/home1/09499/wchen97/ccl-build/msccl-lyd"
+MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
 export MSCCL_SRC_LOCATION
 
-NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09499/wchen97/ccl-build/nccl-tests-profile-msccl"
+NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
 export NCCLTESTS_MSCCL_SRC_LOCATION
 
 export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
+export NCCL_DEBUG=INFO
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk16.xml
+export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_DEBUG=TRACE
-export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
