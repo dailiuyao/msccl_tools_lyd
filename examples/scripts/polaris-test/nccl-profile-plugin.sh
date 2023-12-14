@@ -1,14 +1,14 @@
 #!/bin/bash -l
-#PBS -l select=8:system=polaris
+#PBS -l select=2:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=00:10:00
+#PBS -l walltime=00:05:00
 #PBS -q debug-scaling
 #PBS -l filesystems=home
 #PBS -A CSC250STPM09
 #PBS -k doe
-#PBS -N nccl-profile
-#PBS -o nccl-profile.out
-#PBS -e nccl-profile.error
+#PBS -N nccl-profile-plugin
+#PBS -o nccl-profile-plugin.out
+#PBS -e nccl-profile-plugin.error
 
 
 # module load gcc/11.2.0
@@ -56,20 +56,20 @@ export NCCL_SRC_LOCATION
 
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 
-$MPIEXEC_HOME/bin/mpiexec -n 32 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 128 -e 512MB -w 0 -n 1 -f 2 -g 1
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
 
-################################### NCCL TEST Profile ##########################################################
+# ################################### NCCL TEST Profile ##########################################################
 
-echo "NCCL TEST with NCCL Profile"
+# echo "NCCL TEST with NCCL Profile"
 
-export NCCL_TEST_PROFILE_HOME="/home/yuke/ncclPG/nccl-tests-profile"
+# export NCCL_TEST_PROFILE_HOME="/home/yuke/ncclPG/nccl-tests-profile"
 
-NCCL_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/nccl_profile"
-export NCCL_PROFILE_SRC_LOCATION
+# NCCL_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/nccl_profile"
+# export NCCL_PROFILE_SRC_LOCATION
 
-export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_PROFILE_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_PROFILE_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 
-$MPIEXEC_HOME/bin/mpiexec -n 32 --ppn 4 --cpu-bind core ${NCCL_TEST_PROFILE_HOME}/build/all_reduce_perf -b 128 -e 512MB -w 0 -n 1 -f 2 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_PROFILE_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
 
 # ################################### MSCCL TEST #########################################################
 
