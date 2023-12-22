@@ -1,0 +1,7 @@
+[INFO] NCCL_PROFILE repository already exists.
+
+~/ccl-build/NCCL_profile ~/ccl-build/msccl_tools_lyd/examples/scripts
+[INFO] Building NCCL_PROFILE...
+make -C src clean BUILDDIR=/home1/09168/ldai1/ccl-build/NCCL_profile/build
+NVCC_GENCODE is -gencode=arch=compute_75,code=sm_75
+make[1]: Entering directory `/home1/09168/ldai1/ccl-build/NCCL_profile/src'

@@ -1,0 +1,365 @@
+
+c199-032:18522:18522 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
+c199-032:18522:18522 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.172<0>
+c199-032:18522:18522 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c199-032:18522:18522 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c199-032:18522:18559 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.172<0>
+c199-032:18522:18559 [0] NCCL INFO Using network IB
+c199-032:18522:18559 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c199-032:18522:18559 [0] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
+c199-032:18522:18559 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
+c199-032:18522:18559 [0] NCCL INFO Trees [0] 9/12/-1->8->0
+c199-032:18522:18559 [0] NCCL INFO P2P Chunksize set to 131072
+c199-032:18522:18559 [0] NCCL INFO Channel 00/0 : 7[83000] -> 8[2000] [receive] via NET/IB/0
+c199-032:18522:18559 [0] NCCL INFO Channel 00 : 8[2000] -> 9[3000] via SHM/direct/direct
+c199-032:18522:18559 [0] NCCL INFO Connected all rings
+c199-032:18522:18559 [0] NCCL INFO Channel 00/0 : 8[2000] -> 12[2000] [send] via NET/IB/0
+c199-032:18522:18559 [0] NCCL INFO Channel 00/0 : 0[2000] -> 8[2000] [receive] via NET/IB/0
+c199-032:18522:18559 [0] NCCL INFO Channel 00/0 : 8[2000] -> 0[2000] [send] via NET/IB/0
+c199-032:18522:18559 [0] NCCL INFO Channel 00/0 : 12[2000] -> 8[2000] [receive] via NET/IB/0
+c199-032:18522:18559 [0] NCCL INFO Connected all trees
+c199-032:18522:18559 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c199-032:18522:18559 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+c199-032:18522:18559 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+c199-032:18522:18559 [0] NCCL INFO 1 coll channels, 0 nvls channels, 1 p2p channels, 1 p2p channels per peer
+c199-032:18522:18559 [0] NCCL INFO comm 0x897be70 rank 8 nranks 16 cudaDev 0 busId 2000 commId 0xd2baabcc37008fb8 - Init COMPLETE
+ncclGroupEnd() finished
+cudaHostAlloc() finished
+ncclTestEngine() start
+TimeTest start
+before BenchTime()
+before cudaLaunchKernel() 
+cudaLaunchKernel() finished
+before startColl() in BenchTest()
+before cudaLaunchKernel() 
+cudaLaunchKernel() finished
+before cudaLaunchKernel() 
+cudaLaunchKernel() finished
+after startColl() in BenchTest()
+before run() in ncclkernel()
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 9, index is:0
+runTreeUpDown launched
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+the primitives() is called one time
+In RolePostRecv, the *connStepPtr is: 0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 9, index is:0
+In RolePostSend, the *connStepPtr is: 0
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 12, index is:0
+In RoleWaitRecv, the *connStepPtr is: 0
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+In RoleWaitSend, the *connStepPtr is: 0
+userBuff in setDataPtrs is: 0x2b485ee00000
+In RolePostRecv, the *connStepPtr is: 0
+the primitives() is called one time
+In RolePostSend, the *connStepPtr is: 0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 12, index is:0
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+In RoleWaitRecv, the *connStepPtr is: 0
+In RoleWaitSend, the *connStepPtr is: 0
+userBuff in setDataPtrs is: 0x2b485ee00000
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is recv, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 1, step is: 0, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 0, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+index is: 0, now is recv, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 8
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 8, step is: 0, StepPerSlice is: 1
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 0, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 16384, size is 262144
+index is: 0, now is recv, connStepCache is: 1, step is: 1, StepPerSlice is: 1, connStepPtr is: 1
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 2, step is: 1, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 16384, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 16384, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 1, StepPerSlice is: 1, connStepPtr is: 1
+index is: 0, now is recv, connStepCache is: 8, step is: 1, StepPerSlice is: 1, connStepPtr is: 9
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 16384, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 32768, size is 262144
+index is: 0, now is recv, connStepCache is: 2, step is: 2, StepPerSlice is: 1, connStepPtr is: 3
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 3, step is: 2, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 32768, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 32768, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 2, StepPerSlice is: 1, connStepPtr is: 2
+index is: 0, now is recv, connStepCache is: 8, step is: 2, StepPerSlice is: 1, connStepPtr is: 10
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 32768, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 49152, size is 262144
+index is: 0, now is recv, connStepCache is: 3, step is: 3, StepPerSlice is: 1, connStepPtr is: 4
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 4, step is: 3, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 49152, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 49152, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 3, StepPerSlice is: 1, connStepPtr is: 3
+index is: 0, now is recv, connStepCache is: 8, step is: 3, StepPerSlice is: 1, connStepPtr is: 11
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 49152, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 65536, size is 262144
+index is: 0, now is recv, connStepCache is: 4, step is: 4, StepPerSlice is: 1, connStepPtr is: 5
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 5, step is: 4, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 65536, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 65536, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 4, StepPerSlice is: 1, connStepPtr is: 4
+index is: 0, now is recv, connStepCache is: 8, step is: 4, StepPerSlice is: 1, connStepPtr is: 12
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 65536, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 81920, size is 262144
+index is: 0, now is recv, connStepCache is: 5, step is: 5, StepPerSlice is: 1, connStepPtr is: 6
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 6, step is: 5, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 81920, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 81920, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 5, StepPerSlice is: 1, connStepPtr is: 5
+index is: 0, now is recv, connStepCache is: 8, step is: 5, StepPerSlice is: 1, connStepPtr is: 13
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 81920, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 98304, size is 262144
+index is: 0, now is recv, connStepCache is: 6, step is: 6, StepPerSlice is: 1, connStepPtr is: 8
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 8, step is: 6, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 98304, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 98304, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 6, StepPerSlice is: 1, connStepPtr is: 6
+index is: 0, now is recv, connStepCache is: 8, step is: 6, StepPerSlice is: 1, connStepPtr is: 14
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 98304, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 114688, size is 262144
+index is: 0, now is recv, connStepCache is: 8, step is: 7, StepPerSlice is: 1, connStepPtr is: 9
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 114688, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 114688, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 7, StepPerSlice is: 1, connStepPtr is: 7
+index is: 0, now is recv, connStepCache is: 8, step is: 7, StepPerSlice is: 1, connStepPtr is: 15
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 114688, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 131072, size is 262144
+index is: 0, now is recv, connStepCache is: 8, step is: 8, StepPerSlice is: 1, connStepPtr is: 9
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 9, step is: 8, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 131072, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 131072, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 8, StepPerSlice is: 1, connStepPtr is: 8
+index is: 0, now is recv, connStepCache is: 8, step is: 8, StepPerSlice is: 1, connStepPtr is: 16
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 16, step is: 8, StepPerSlice is: 1
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 131072, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 147456, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 9, StepPerSlice is: 1, connStepPtr is: 11
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 11, step is: 9, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 147456, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 147456, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 9, StepPerSlice is: 1, connStepPtr is: 9
+index is: 0, now is recv, connStepCache is: 16, step is: 9, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 147456, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 163840, size is 262144
+index is: 0, now is recv, connStepCache is: 11, step is: 10, StepPerSlice is: 1, connStepPtr is: 12
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 163840, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 163840, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 10, StepPerSlice is: 1, connStepPtr is: 10
+index is: 0, now is recv, connStepCache is: 16, step is: 10, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 163840, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 180224, size is 262144
+index is: 0, now is recv, connStepCache is: 11, step is: 11, StepPerSlice is: 1, connStepPtr is: 13
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 13, step is: 11, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 180224, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 180224, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 11, StepPerSlice is: 1, connStepPtr is: 11
+index is: 0, now is recv, connStepCache is: 16, step is: 11, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 180224, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 196608, size is 262144
+index is: 0, now is recv, connStepCache is: 13, step is: 12, StepPerSlice is: 1, connStepPtr is: 14
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 196608, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 196608, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 12, StepPerSlice is: 1, connStepPtr is: 12
+index is: 0, now is recv, connStepCache is: 16, step is: 12, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 196608, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 212992, size is 262144
+index is: 0, now is recv, connStepCache is: 13, step is: 13, StepPerSlice is: 1, connStepPtr is: 15
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 15, step is: 13, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 212992, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 212992, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 13, StepPerSlice is: 1, connStepPtr is: 13
+index is: 0, now is recv, connStepCache is: 16, step is: 13, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 212992, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 229376, size is 262144
+index is: 0, now is recv, connStepCache is: 15, step is: 14, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 229376, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 229376, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 14, StepPerSlice is: 1, connStepPtr is: 14
+index is: 0, now is recv, connStepCache is: 16, step is: 14, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 229376, size is 262144
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 245760, size is 262144
+index is: 0, now is recv, connStepCache is: 15, step is: 15, StepPerSlice is: 1, connStepPtr is: 16
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 16, step is: 15, StepPerSlice is: 1
+Reduce/ /post: prims1.recvReduceCopy, bid=0, gridOffset is: 245760, size is 262144
+Reduce/ /pre: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 245760, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 15, StepPerSlice is: 1, connStepPtr is: 15
+index is: 0, now is recv, connStepCache is: 16, step is: 15, StepPerSlice is: 1, connStepPtr is: 16
+conns[index]->step in the ~primitives() is: 16, index is: 0
+conns[index]->step in the ~primitives() is: 16, index is: 0
+Reduce/ /post: prims2.recvReduceSendFromOutput, bid=0, gridOffset is: 245760, size is 262144
+the ~primitives() is called one time
+the ~primitives() is called one time
+conns[index]->step in the ~primitives() is: 16, index is: 0
+conns[index]->step in the ~primitives() is: 0, index is: 0
+the primitives() is called one time
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 0, index is:0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 0, index is:0
+peer in flags & (RoleWaitSend|RolePostSend) is: 9, index is:0
+peer in flags & (RoleWaitSend|RolePostSend) is: 9, index is:0
+In RolePostRecv, the *connStepPtr is: 0
+In RoleWaitRecv, the *connStepPtr is: 0
+In RolePostSend, the *connStepPtr is: 0
+In RoleWaitSend, the *connStepPtr is: 0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 0, index is:0
+userBuff in setDataPtrs is: 0x2b485ee00000
+peer in flags & (RoleWaitSend|RolePostSend) is: 12, index is:0
+the primitives() is called one time
+In RolePostRecv, the *connStepPtr is: 0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 0, index is:0
+In RolePostSend, the *connStepPtr is: 0
+peer in flags & (RoleWaitSend|RolePostSend) is: 12, index is:0
+In RoleWaitRecv, the *connStepPtr is: 0
+In RoleWaitSend, the *connStepPtr is: 0
+userBuff in setDataPtrs is: 0x2b485ee00000
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is recv, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 1, step is: 0, StepPerSlice is: 1
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 0, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+index is: 0, now is send, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 0, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 16384, size is 262144
+index is: 0, now is recv, connStepCache is: 1, step is: 1, StepPerSlice is: 1, connStepPtr is: 2
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 2, step is: 1, StepPerSlice is: 1
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 16384, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 16384, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 1, StepPerSlice is: 1, connStepPtr is: 1
+index is: 0, now is send, connStepCache is: 0, step is: 1, StepPerSlice is: 1, connStepPtr is: 1
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 16384, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 32768, size is 262144
+index is: 0, now is recv, connStepCache is: 2, step is: 2, StepPerSlice is: 1, connStepPtr is: 4
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 4, step is: 2, StepPerSlice is: 1
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 32768, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 32768, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 2, StepPerSlice is: 1, connStepPtr is: 2
+index is: 0, now is send, connStepCache is: 0, step is: 2, StepPerSlice is: 1, connStepPtr is: 2
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 32768, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 49152, size is 262144
+index is: 0, now is recv, connStepCache is: 4, step is: 3, StepPerSlice is: 1, connStepPtr is: 5
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 49152, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 49152, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 3, StepPerSlice is: 1, connStepPtr is: 3
+index is: 0, now is send, connStepCache is: 0, step is: 3, StepPerSlice is: 1, connStepPtr is: 3
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 49152, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 65536, size is 262144
+index is: 0, now is recv, connStepCache is: 4, step is: 4, StepPerSlice is: 1, connStepPtr is: 6
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 6, step is: 4, StepPerSlice is: 1
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 65536, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 65536, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 4, StepPerSlice is: 1, connStepPtr is: 4
+index is: 0, now is send, connStepCache is: 0, step is: 4, StepPerSlice is: 1, connStepPtr is: 4
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 65536, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 81920, size is 262144
+index is: 0, now is recv, connStepCache is: 6, step is: 5, StepPerSlice is: 1, connStepPtr is: 8
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 81920, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 81920, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 5, StepPerSlice is: 1, connStepPtr is: 5
+index is: 0, now is send, connStepCache is: 0, step is: 5, StepPerSlice is: 1, connStepPtr is: 5
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 81920, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 98304, size is 262144
+index is: 0, now is recv, connStepCache is: 6, step is: 6, StepPerSlice is: 1, connStepPtr is: 9
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 9, step is: 6, StepPerSlice is: 1
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 98304, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 98304, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 6, StepPerSlice is: 1, connStepPtr is: 6
+index is: 0, now is send, connStepCache is: 0, step is: 6, StepPerSlice is: 1, connStepPtr is: 6
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 98304, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 114688, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 7, StepPerSlice is: 1, connStepPtr is: 11
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 114688, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 114688, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 7, StepPerSlice is: 1, connStepPtr is: 7
+index is: 0, now is send, connStepCache is: 0, step is: 7, StepPerSlice is: 1, connStepPtr is: 7
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 114688, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 131072, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 8, StepPerSlice is: 1, connStepPtr is: 12
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 131072, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 131072, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 8, StepPerSlice is: 1, connStepPtr is: 8
+index is: 0, now is send, connStepCache is: 0, step is: 8, StepPerSlice is: 1, connStepPtr is: 8
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 131072, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 147456, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 9, StepPerSlice is: 1, connStepPtr is: 13
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 13, step is: 9, StepPerSlice is: 1
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 147456, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 147456, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 9, StepPerSlice is: 1, connStepPtr is: 9
+index is: 0, now is send, connStepCache is: 8, step is: 9, StepPerSlice is: 1, connStepPtr is: 9
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 147456, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 163840, size is 262144
+index is: 0, now is recv, connStepCache is: 13, step is: 10, StepPerSlice is: 1, connStepPtr is: 15
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 163840, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 163840, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 10, StepPerSlice is: 1, connStepPtr is: 9
+index is: 0, now is send, connStepCache is: 8, step is: 10, StepPerSlice is: 1, connStepPtr is: 10
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 163840, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 180224, size is 262144
+index is: 0, now is recv, connStepCache is: 13, step is: 11, StepPerSlice is: 1, connStepPtr is: 16
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 180224, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 180224, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 11, StepPerSlice is: 1, connStepPtr is: 10
+index is: 0, now is send, connStepCache is: 8, step is: 11, StepPerSlice is: 1, connStepPtr is: 11
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 180224, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 196608, size is 262144
+index is: 0, now is recv, connStepCache is: 13, step is: 12, StepPerSlice is: 1, connStepPtr is: 16
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 196608, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 196608, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 12, StepPerSlice is: 1, connStepPtr is: 11
+index is: 0, now is send, connStepCache is: 8, step is: 12, StepPerSlice is: 1, connStepPtr is: 12
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 196608, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 212992, size is 262144
+index is: 0, now is recv, connStepCache is: 13, step is: 13, StepPerSlice is: 1, connStepPtr is: 16
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 16, step is: 13, StepPerSlice is: 1
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 212992, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 212992, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 13, StepPerSlice is: 1, connStepPtr is: 12
+index is: 0, now is send, connStepCache is: 8, step is: 13, StepPerSlice is: 1, connStepPtr is: 13
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 212992, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 229376, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 14, StepPerSlice is: 1, connStepPtr is: 16
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 229376, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 229376, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 14, StepPerSlice is: 1, connStepPtr is: 13
+index is: 0, now is send, connStepCache is: 8, step is: 14, StepPerSlice is: 1, connStepPtr is: 14
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 229376, size is 262144
+Broadcast/ /pre: prims1.directRecv, bid=0, gridOffset is: 245760, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 15, StepPerSlice is: 1, connStepPtr is: 16
+Broadcast/ /post: prims1.directRecv, bid=0, gridOffset is: 245760, size is 262144
+Broadcast/ /pre: prims1.directSend, bid=0, gridOffset is: 245760, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 15, StepPerSlice is: 1, connStepPtr is: 14
+index is: 0, now is send, connStepCache is: 8, step is: 15, StepPerSlice is: 1, connStepPtr is: 15
+Broadcast/ /post: prims2.directSend, bid=0, gridOffset is: 245760, size is 262144
+conns[index]->step in the ~primitives() is: 0, index is: 0
+conns[index]->step in the ~primitives() is: 16, index is: 0
+the ~primitives() is called one time
+the ~primitives() is called one time
+conns[index]->step in the ~primitives() is: 16, index is: 0
+conns[index]->step in the ~primitives() is: 16, index is: 0
+runTreeUpDown() finished
+after run() in ncclkernel(), before __syncthreads()
+after run() in ncclkernel(), after __syncthreads()
+in the end of ncclkernel()
+before run() in ncclkernel()
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 9, index is:0
+runTreeUpDown launched
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+the primitives() is called one time
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 9, index is:0
+In RolePostRecv, the *connStepPtr is: 16
+In RolePostSend, the *connStepPtr is: 16
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 12, index is:0
+In RoleWaitRecv, the *connStepPtr is: 16
+In RoleWaitSend, the *connStepPtr is: 16
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+userBuff in setDataPtrs is: 0x2b485ee00000
+In RolePostRecv, the *connStepPtr is: 16
+the primitives() is called one time
+In RolePostSend, the *connStepPtr is: 16
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 12, index is:0
+peer in flags & (RoleWaitSend|RolePostSend) is: 0, index is:0
+In RoleWaitRecv, the *connStepPtr is: 16
+In RoleWaitSend, the *connStepPtr is: 16
+userBuff in setDataPtrs is: 0x2b485ee00000
+Reduce/ /pre: prims1.recvReduceCopy, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 16, StepPerSlice is: 1, connStepPtr is: 16

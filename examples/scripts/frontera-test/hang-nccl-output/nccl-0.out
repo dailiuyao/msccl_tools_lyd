@@ -1,0 +1,330 @@
+# nThread 1 nGpus 1 minBytes 1048576 maxBytes 1048576 step: 2(factor) warmup iters: 0 iters: 2 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  13890 on   c199-022 device  0 [0x02] Quadro RTX 5000
+#  Rank  1 Group  0 Pid  13891 on   c199-022 device  1 [0x03] Quadro RTX 5000
+#  Rank  2 Group  0 Pid  13892 on   c199-022 device  2 [0x82] Quadro RTX 5000
+#  Rank  3 Group  0 Pid  13893 on   c199-022 device  3 [0x83] Quadro RTX 5000
+#  Rank  4 Group  0 Pid  18088 on   c199-031 device  0 [0x02] Quadro RTX 5000
+#  Rank  5 Group  0 Pid  18089 on   c199-031 device  1 [0x03] Quadro RTX 5000
+#  Rank  6 Group  0 Pid  18090 on   c199-031 device  2 [0x82] Quadro RTX 5000
+#  Rank  7 Group  0 Pid  18091 on   c199-031 device  3 [0x83] Quadro RTX 5000
+#  Rank  8 Group  0 Pid  18522 on   c199-032 device  0 [0x02] Quadro RTX 5000
+#  Rank  9 Group  0 Pid  18523 on   c199-032 device  1 [0x03] Quadro RTX 5000
+#  Rank 10 Group  0 Pid  18524 on   c199-032 device  2 [0x82] Quadro RTX 5000
+#  Rank 11 Group  0 Pid  18525 on   c199-032 device  3 [0x83] Quadro RTX 5000
+#  Rank 12 Group  0 Pid   1275 on   c199-041 device  0 [0x02] Quadro RTX 5000
+#  Rank 13 Group  0 Pid   1276 on   c199-041 device  1 [0x03] Quadro RTX 5000
+#  Rank 14 Group  0 Pid   1277 on   c199-041 device  2 [0x82] Quadro RTX 5000
+#  Rank 15 Group  0 Pid   1279 on   c199-041 device  3 [0x83] Quadro RTX 5000
+c199-022:13890:13890 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.170<0>
+c199-022:13890:13890 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c199-022:13890:13890 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+
+c199-022:13890:13890 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
+NCCL version 2.17.1+cuda11.3
+c199-022:13890:13928 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.170<0>
+c199-022:13890:13928 [0] NCCL INFO Using network IB
+c199-022:13890:13928 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c199-022:13890:13928 [0] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
+c199-022:13890:13928 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
+c199-022:13890:13928 [0] NCCL INFO Channel 00/01 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+c199-022:13890:13928 [0] NCCL INFO Trees [0] 1/8/-1->0->-1
+c199-022:13890:13928 [0] NCCL INFO P2P Chunksize set to 131072
+c199-022:13890:13928 [0] NCCL INFO Channel 00/0 : 15[83000] -> 0[2000] [receive] via NET/IB/0
+c199-022:13890:13928 [0] NCCL INFO Channel 00 : 0[2000] -> 1[3000] via SHM/direct/direct
+c199-022:13890:13928 [0] NCCL INFO Connected all rings
+c199-022:13890:13928 [0] NCCL INFO Channel 00/0 : 8[2000] -> 0[2000] [receive] via NET/IB/0
+c199-022:13890:13928 [0] NCCL INFO Channel 00/0 : 0[2000] -> 8[2000] [send] via NET/IB/0
+c199-022:13890:13928 [0] NCCL INFO Connected all trees
+c199-022:13890:13928 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c199-022:13890:13928 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+c199-022:13890:13928 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+c199-022:13890:13928 [0] NCCL INFO 1 coll channels, 0 nvls channels, 1 p2p channels, 1 p2p channels per peer
+c199-022:13890:13928 [0] NCCL INFO comm 0x9dbace0 rank 0 nranks 16 cudaDev 0 busId 2000 commId 0xd2baabcc37008fb8 - Init COMPLETE
+ncclGroupEnd() finished
+cudaHostAlloc() finished
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+ncclTestEngine() start
+TimeTest start
+before BenchTime()
+     1048576        262144     float     sum      -1before cudaLaunchKernel() 
+cudaLaunchKernel() finished
+before startColl() in BenchTest()
+before cudaLaunchKernel() 
+cudaLaunchKernel() finished
+before cudaLaunchKernel() 
+cudaLaunchKernel() finished
+after startColl() in BenchTest()
+before run() in ncclkernel()
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 1, index is:0
+runTreeUpDown launched
+In RolePostRecv, the *connStepPtr is: 0
+the primitives() is called one time
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 8, index is:0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 1, index is:0
+In RolePostRecv, the *connStepPtr is: 0
+In RoleWaitRecv, the *connStepPtr is: 0
+userBuff in setDataPtrs is: 0x2abe34e00000
+the primitives() is called one time
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 8, index is:0
+In RoleWaitRecv, the *connStepPtr is: 0
+userBuff in setDataPtrs is: 0x2abe34e00000
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is recv, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 1, step is: 0, StepPerSlice is: 1
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 0, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is recv, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 1, step is: 0, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 0, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 16384, size is 262144
+index is: 0, now is recv, connStepCache is: 1, step is: 1, StepPerSlice is: 1, connStepPtr is: 9
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 9, step is: 1, StepPerSlice is: 1
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 16384, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 16384, size is 262144
+index is: 0, now is recv, connStepCache is: 1, step is: 1, StepPerSlice is: 1, connStepPtr is: 1
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 2, step is: 1, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 16384, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 32768, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 2, StepPerSlice is: 1, connStepPtr is: 10
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 32768, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 32768, size is 262144
+index is: 0, now is recv, connStepCache is: 2, step is: 2, StepPerSlice is: 1, connStepPtr is: 2
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 3, step is: 2, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 32768, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 49152, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 3, StepPerSlice is: 1, connStepPtr is: 11
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 49152, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 49152, size is 262144
+index is: 0, now is recv, connStepCache is: 3, step is: 3, StepPerSlice is: 1, connStepPtr is: 3
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 4, step is: 3, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 49152, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 65536, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 4, StepPerSlice is: 1, connStepPtr is: 12
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 65536, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 65536, size is 262144
+index is: 0, now is recv, connStepCache is: 4, step is: 4, StepPerSlice is: 1, connStepPtr is: 4
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 5, step is: 4, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 65536, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 81920, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 5, StepPerSlice is: 1, connStepPtr is: 13
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 81920, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 81920, size is 262144
+index is: 0, now is recv, connStepCache is: 5, step is: 5, StepPerSlice is: 1, connStepPtr is: 5
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 6, step is: 5, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 81920, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 98304, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 6, StepPerSlice is: 1, connStepPtr is: 14
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 98304, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 98304, size is 262144
+index is: 0, now is recv, connStepCache is: 6, step is: 6, StepPerSlice is: 1, connStepPtr is: 6
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 7, step is: 6, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 98304, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 114688, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 7, StepPerSlice is: 1, connStepPtr is: 15
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 114688, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 114688, size is 262144
+index is: 0, now is recv, connStepCache is: 7, step is: 7, StepPerSlice is: 1, connStepPtr is: 7
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 8, step is: 7, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 114688, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 131072, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 8, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 131072, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 131072, size is 262144
+index is: 0, now is recv, connStepCache is: 8, step is: 8, StepPerSlice is: 1, connStepPtr is: 8
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 9, step is: 8, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 131072, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 147456, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 9, StepPerSlice is: 1, connStepPtr is: 16
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 16, step is: 9, StepPerSlice is: 1
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 147456, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 147456, size is 262144
+index is: 0, now is recv, connStepCache is: 9, step is: 9, StepPerSlice is: 1, connStepPtr is: 9
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 10, step is: 9, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 147456, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 163840, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 10, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 163840, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 163840, size is 262144
+index is: 0, now is recv, connStepCache is: 10, step is: 10, StepPerSlice is: 1, connStepPtr is: 10
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 11, step is: 10, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 163840, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 180224, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 11, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 180224, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 180224, size is 262144
+index is: 0, now is recv, connStepCache is: 11, step is: 11, StepPerSlice is: 1, connStepPtr is: 11
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 12, step is: 11, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 180224, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 196608, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 12, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 196608, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 196608, size is 262144
+index is: 0, now is recv, connStepCache is: 12, step is: 12, StepPerSlice is: 1, connStepPtr is: 12
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 13, step is: 12, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 196608, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 212992, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 13, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 212992, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 212992, size is 262144
+index is: 0, now is recv, connStepCache is: 13, step is: 13, StepPerSlice is: 1, connStepPtr is: 13
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 14, step is: 13, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 212992, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 229376, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 14, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 229376, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 229376, size is 262144
+index is: 0, now is recv, connStepCache is: 14, step is: 14, StepPerSlice is: 1, connStepPtr is: 14
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 15, step is: 14, StepPerSlice is: 1
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 229376, size is 262144
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 245760, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 15, StepPerSlice is: 1, connStepPtr is: 16
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 245760, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 245760, size is 262144
+index is: 0, now is recv, connStepCache is: 15, step is: 15, StepPerSlice is: 1, connStepPtr is: 15
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 16, step is: 15, StepPerSlice is: 1
+conns[index]->step in the ~primitives() is: 16, index is: 0
+Reduce/up == -1/post: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 245760, size is 262144
+the ~primitives() is called one time
+the ~primitives() is called one time
+conns[index]->step in the ~primitives() is: 16, index is: 0
+the primitives() is called one time
+peer in flags & (RoleWaitSend|RolePostSend) is: 1, index is:0
+peer in flags & (RoleWaitSend|RolePostSend) is: 1, index is:0
+In RolePostSend, the *connStepPtr is: 0
+In RoleWaitSend, the *connStepPtr is: 0
+peer in flags & (RoleWaitSend|RolePostSend) is: 8, index is:0
+userBuff in setDataPtrs is: 0x2abe34e00000
+In RolePostSend, the *connStepPtr is: 0
+the primitives() is called one time
+peer in flags & (RoleWaitSend|RolePostSend) is: 8, index is:0
+In RoleWaitSend, the *connStepPtr is: 0
+userBuff in setDataPtrs is: 0x2abe34e00000
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 0, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 0, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 0, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 0, StepPerSlice is: 1, connStepPtr is: 0
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 0, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 16384, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 1, StepPerSlice is: 1, connStepPtr is: 1
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 16384, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 16384, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 1, StepPerSlice is: 1, connStepPtr is: 1
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 16384, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 32768, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 2, StepPerSlice is: 1, connStepPtr is: 2
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 32768, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 32768, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 2, StepPerSlice is: 1, connStepPtr is: 2
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 32768, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 49152, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 3, StepPerSlice is: 1, connStepPtr is: 3
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 49152, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 49152, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 3, StepPerSlice is: 1, connStepPtr is: 3
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 49152, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 65536, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 4, StepPerSlice is: 1, connStepPtr is: 3
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 65536, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 65536, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 4, StepPerSlice is: 1, connStepPtr is: 4
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 65536, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 81920, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 5, StepPerSlice is: 1, connStepPtr is: 4
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 81920, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 81920, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 5, StepPerSlice is: 1, connStepPtr is: 5
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 81920, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 98304, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 6, StepPerSlice is: 1, connStepPtr is: 5
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 98304, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 98304, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 6, StepPerSlice is: 1, connStepPtr is: 6
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 98304, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 114688, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 7, StepPerSlice is: 1, connStepPtr is: 6
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 114688, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 114688, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 7, StepPerSlice is: 1, connStepPtr is: 7
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 114688, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 131072, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 8, StepPerSlice is: 1, connStepPtr is: 7
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 131072, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 131072, size is 262144
+index is: 0, now is send, connStepCache is: 0, step is: 8, StepPerSlice is: 1, connStepPtr is: 8
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 131072, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 147456, size is 262144
+index is: 0, now is send, connStepCache is: 7, step is: 9, StepPerSlice is: 1, connStepPtr is: 8
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 147456, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 147456, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 9, StepPerSlice is: 1, connStepPtr is: 9
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 147456, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 163840, size is 262144
+index is: 0, now is send, connStepCache is: 7, step is: 10, StepPerSlice is: 1, connStepPtr is: 8
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 163840, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 163840, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 10, StepPerSlice is: 1, connStepPtr is: 10
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 163840, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 180224, size is 262144
+index is: 0, now is send, connStepCache is: 7, step is: 11, StepPerSlice is: 1, connStepPtr is: 9
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 180224, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 180224, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 11, StepPerSlice is: 1, connStepPtr is: 11
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 180224, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 196608, size is 262144
+index is: 0, now is send, connStepCache is: 7, step is: 12, StepPerSlice is: 1, connStepPtr is: 10
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 196608, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 196608, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 12, StepPerSlice is: 1, connStepPtr is: 12
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 196608, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 212992, size is 262144
+index is: 0, now is send, connStepCache is: 7, step is: 13, StepPerSlice is: 1, connStepPtr is: 11
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 212992, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 212992, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 13, StepPerSlice is: 1, connStepPtr is: 13
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 212992, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 229376, size is 262144
+index is: 0, now is send, connStepCache is: 7, step is: 14, StepPerSlice is: 1, connStepPtr is: 12
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 229376, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 229376, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 14, StepPerSlice is: 1, connStepPtr is: 14
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 229376, size is 262144
+Broadcast/up == -1/pre: prims1.directSendFromOutput, bid is 0, gridOffset is: 245760, size is 262144
+index is: 0, now is send, connStepCache is: 7, step is: 15, StepPerSlice is: 1, connStepPtr is: 13
+Broadcast/up == -1/post: prims1.directSendFromOutput, bid is 0, gridOffset is: 245760, size is 262144
+Broadcast/up == -1/pre: prims2.directSendFromOutput, bid is 0, gridOffset is: 245760, size is 262144
+index is: 0, now is send, connStepCache is: 8, step is: 15, StepPerSlice is: 1, connStepPtr is: 15
+conns[index]->step in the ~primitives() is: 16, index is: 0
+Broadcast/up == -1/post: prims2.directSendFromOutput, bid is 0, gridOffset is: 245760, size is 262144
+the ~primitives() is called one time
+the ~primitives() is called one time
+conns[index]->step in the ~primitives() is: 16, index is: 0
+runTreeUpDown() finished
+after run() in ncclkernel(), before __syncthreads()
+after run() in ncclkernel(), after __syncthreads()
+in the end of ncclkernel()
+before run() in ncclkernel()
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 1, index is:0
+runTreeUpDown launched
+In RolePostRecv, the *connStepPtr is: 16
+the primitives() is called one time
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 8, index is:0
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 1, index is:0
+In RolePostRecv, the *connStepPtr is: 16
+In RoleWaitRecv, the *connStepPtr is: 16
+userBuff in setDataPtrs is: 0x2abe34e00000
+the primitives() is called one time
+peer in flags & (RoleWaitRecv|RolePostRecv) is: 8, index is:0
+In RoleWaitRecv, the *connStepPtr is: 16
+userBuff in setDataPtrs is: 0x2abe34e00000
+Reduce/up == -1/pre: prims1.recvReduceCopy, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 16, StepPerSlice is: 1, connStepPtr is: 16
+Ready to exit while loop-- now is recv, index is: 0, connStepCache is: 17, step is: 16, StepPerSlice is: 1
+Reduce/up == -1/post: prims1.recvReduceCopy, bid=0, gridOffset is: 0, size is 262144
+Reduce/up == -1/pre: prims2.recvReduceCopyToInput, bid=0, gridOffset is: 0, size is 262144
+index is: 0, now is recv, connStepCache is: 16, step is: 16, StepPerSlice is: 1, connStepPtr is: 16
