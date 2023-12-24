@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH -J ccl-run-4nodes-16gpus           # Job name
-#SBATCH -o ccl-run-4nodes-16gpus.o%j       # Name of stdout output file
-#SBATCH -e ccl-run-4nodes-16gpus.e%j       # Name of stderr error file
+#SBATCH -o ./log/ccl-run-4nodes-16gpus.o%j       # Name of stdout output file
+#SBATCH -e ./log/ccl-run-4nodes-16gpus.e%j       # Name of stderr error file
 #SBATCH -p rtx           # Queue (partition) name
 #SBATCH -N 4               # Total # of nodes (must be 1 for serial)
 #SBATCH -n 16               # Total # of mpi tasks (should be 1 for serial)
@@ -53,6 +53,8 @@ export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 export NCCL_MIN_NCHANNELS=1
 export NCCL_MAX_NCHANNELS=1
+
+# export NCCL_COMM_BLOCKING=1
 
 $MPI_HOME/bin/mpirun -np 16 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 1M -e 1M -w 0 -f 2 -g 1 -n 2
 

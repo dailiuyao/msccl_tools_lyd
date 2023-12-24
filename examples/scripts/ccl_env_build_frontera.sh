@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #SBATCH -J ccl-build           # Job name
-#SBATCH -o ccl-build.o%j       # Name of stdout output file
-#SBATCH -e ccl-build.e%j       # Name of stderr error file
+#SBATCH -o ./build-log/ccl-build.o%j       # Name of stdout output file
+#SBATCH -e ./build-log/ccl-build.e%j       # Name of stderr error file
 #SBATCH -p rtx           # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for serial)
 #SBATCH -n 1               # Total # of mpi tasks (should be 1 for serial)
@@ -231,6 +231,8 @@ echo ""
 
 
 ### NCCL Tests NCCL_PROFILE Section ###
+
+export DEBUG=0
 
 echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL_PROFILE!"
 
