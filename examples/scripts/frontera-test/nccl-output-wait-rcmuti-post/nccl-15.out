@@ -1,0 +1,1344 @@
+
+c197-082:15006:15006 [3] misc/cudawrap.cc:112 NCCL WARN cuDriverGetVersion failed with 34
+c197-082:15006:15006 [3] NCCL INFO Bootstrap : Using ib0:192.168.44.138<0>
+c197-082:15006:15006 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-082:15006:15041 [3] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.138<0>
+c197-082:15006:15041 [3] NCCL INFO Using network IB
+c197-082:15006:15041 [3] NCCL INFO Setting affinity for GPU 3 to f000f000
+c197-082:15006:15041 [3] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
+c197-082:15006:15041 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
+c197-082:15006:15041 [3] NCCL INFO Trees [0] -1/-1/-1->15->14
+c197-082:15006:15041 [3] NCCL INFO Channel 00/0 : 15[83000] -> 0[2000] [send] via NET/IB/0
+c197-082:15006:15041 [3] NCCL INFO Connected all rings
+c197-082:15006:15041 [3] NCCL INFO Channel 00 : 15[83000] -> 14[82000] via SHM/direct/direct
+c197-082:15006:15041 [3] NCCL INFO Connected all trees
+c197-082:15006:15041 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+c197-082:15006:15041 [3] NCCL INFO 1 coll channels, 1 p2p channels, 1 p2p channels per peer
+c197-082:15006:15041 [3] NCCL INFO comm 0x5638260 rank 15 nranks 16 cudaDev 3 busId 83000 - Init COMPLETE
+HOST | common.cu:1021 | run() | ncclGroupEnd() finished
+HOST | common.cu:1033 | run() | cudaHostAlloc() finished
+HOST | common.cu:645 | threadRunTests() | ncclTestEngine().runTest start
+HOST | allreduce.cu:88 | AllReduceRunTest() | TimeTest start
+HOST | allreduce.cu:91 | AllReduceRunTest() | start type_count 0, op_count 0
+HOST | common.cu:604 | TimeTest() | before startColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:610 | TimeTest() | after completeColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:619 | TimeTest() | before BenchTime()
+HOST | common.cu:627 | TimeTest() | The first BenchTime launched, start out of place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:629 | TimeTest() | The first BenchTime finished, end out of place
+HOST | common.cu:630 | TimeTest() | The second BenchTime launched, start in place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:632 | TimeTest() | The second BenchTime finished, end in place
+HOST | common.cu:636 | TimeTest() | after BenchTime()
+HOST | allreduce.cu:93 | AllReduceRunTest() | end type_count 0, op_count 0
+HOST | allreduce.cu:96 | AllReduceRunTest() | TimeTest finished
+HOST | common.cu:647 | threadRunTests() | ncclTestEngine().runTest finished
+c197-082:15006:15006 [3] NCCL INFO comm 0x5638260 rank 15 nranks 16 cudaDev 3 busId 83000 - Destroy COMPLETE
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 28.984398 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -2591295862769740152116318784739868672.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -1.221993 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 719363453931749376.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 374272.625000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 67105604772657364992.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -927586265146914643283669942272.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 36.394989 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -1046809694699520.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 562.022949 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 0.006446 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -7971142116592231986684231680.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 0.000001 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -661117472543695047753728.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 28.997164 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -3619.683594 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 2089584603131875491156801431273472.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -0.272958 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 0.010994 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -47188531277983382263727557451972608.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -0.000165 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 27191136.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 1628455220166610928009216.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 12699693552347643904.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 28.957447 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 460515242039210568987817835233280.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -3692512233390080.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -0.571887 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 33097566151095097491456.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -0.000004 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 116897153024.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 11774455709696.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 1006136244901913821184.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -303394703083044864.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 192086778539933544151445062534823936.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -17946560350564714949324492173737984.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 3098810.500000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 1400426968645632.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 9950468562223104.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 3622094767103410176.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.002129 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -54716289549579502974140416.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 15331000729107311886336.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -891853737742743662239940608.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -1776751429656220337080107008.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 435.511902 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -49921200.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -158025118474943070208.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 35217.156250 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 40061399659735904562136919821487439872.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 28.977304 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 154.791687 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 12967508196594810880.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -1830338166784.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -188944.500000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -755091291833147581754329224720678912.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 36438124582141952.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -20821.625000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 955565312.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -4222530525069312.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -14245926770007041995315344972972032.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -892865.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: -785101814699952093266859524096.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -60304654336.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -4951401257288823006560256.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.024113 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 42496.843750 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -1374317084743234550193248794574848.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -0.484193 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -1979508064256.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -0.123614 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 226239586808501318383688482816.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 473752832.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 0.000413 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 0.426834 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -131195807949648576720666624.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 631868416.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 18337562624.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 580348.250000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 323632.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 28.963829 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 9950468562223104.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 3622094767103410176.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -54716289549579502974140416.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 15331000729107311886336.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -891853737742743662239940608.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -1776751429656220337080107008.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 435.511902 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -49921200.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.020567 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: -158025118474943070208.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 35217.156250 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 40061399659735904562136919821487439872.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 154.791687 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 12967508196594810880.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -1830338166784.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -188944.500000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -755091291833147581754329224720678912.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 36438124582141952.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -20821.625000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 955565312.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: -4222530525069312.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -14245926770007041995315344972972032.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -892865.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.042553 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -60304654336.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -4951401257288823006560256.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 28391856.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 42496.843750 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -1374317084743234550193248794574848.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -0.484193 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -1979508064256.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -0.123614 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 226239586808501318383688482816.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 473752832.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 0.000413 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 0.426834 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -131195807949648576720666624.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 631868416.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 28.952482 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 580348.250000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 323632.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -55000268800.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -360319858822722438597576286678286336.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 23095148544.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 18182296162354869911420928.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -0.004418 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -2173643264887949843496960.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -162698998317056.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 5.618622 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 17869656132107622003245056.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 28.990070 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 7737802752.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -304447212831473213696079069970432.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 40139848.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -7999007592281826148461077069824.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -37350040.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 15869.898438 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 8902525013275646372891066368.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -723941064704.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 0.023098 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -5734787072.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 4490855188092944384.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 0.000040 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 161220192.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.060284 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 173954489583465180506689110016.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 7774378439166918656.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -11567382528.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 10134192.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 5020739459612672.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -23814621659742014305783301018352615424.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -1262239504061035144282112.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -3029013022978338717696000.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 10993174952542208.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 1632464216468505086656512.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 83712154709977262163230720.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 6652568797184.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 69013948264340335696451469312.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 22.676880 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -2583220928446286330828784785321623552.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.070923 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 610114371005820755379381330495143936.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -1347435364352.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -0.001660 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -234294272.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -55000268800.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -360319858822722438597576286678286336.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 23095148544.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 18182296162354869911420928.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: -0.004418 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -2173643264887949843496960.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -162698998317056.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 5.618622 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.051064 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 17869656132107622003245056.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 7737802752.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -304447212831473213696079069970432.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 40139848.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -7999007592281826148461077069824.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -37350040.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 15869.898438 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 8902525013275646372891066368.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: -723941064704.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 0.023098 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -5734787072.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.066668 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 0.000040 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 161220192.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -196655729441131986944.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 173954489583465180506689110016.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 7774378439166918656.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: -11567382528.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 10134192.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 5020739459612672.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: -23814621659742014305783301018352615424.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -1262239504061035144282112.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -3029013022978338717696000.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 10993174952542208.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 1632464216468505086656512.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 83712154709977262163230720.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 6652568797184.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.114185 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 22.676880 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -2583220928446286330828784785321623552.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 0.000007 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 610114371005820755379381330495143936.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -1347435364352.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: -0.001660 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -234294272.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -361584162457392250880.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: -452216310474654699487232.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 156473912983552.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 37355446272.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 97696445266745640347443029019197440.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 41789251649536.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.126242 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: -6909734795870208.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 876025792920220780771815458865152.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 5009209521015427892607709085696.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 71862108160.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -712.993652 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 11490972141698570655648186368.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 47295232.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 4315060979226205388539966976425984.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -0.000022 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 3638784.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 9168024365428222587527000605428023296.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 968867386229153014480896.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.075178 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: 53456649024700416.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: 3.752411 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 3898743987279757312.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -9124714496.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -17780480.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 373778276845408302000606065721344.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 1708.375000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: -659.337402 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 29.090071 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: -373791498663997889504632125817618432.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -20.726868 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: 209568551826868484505798128720412672.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 6674641835020110874382287176271396864.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: -410.472168 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 0.000076 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: 283775.187500 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: -11091249725440.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: -361584162457392250880.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: -452216310474654699487232.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: 156473912983552.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 37355446272.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 0 | time: 97696445266745640347443029019197440.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 1 | time: 41789251649536.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 4 | time: 1058660.250000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 5 | time: -6909734795870208.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 7 | time: 876025792920220780771815458865152.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 11 | time: 5009209521015427892607709085696.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 13 | time: 71862108160.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 14 | time: -712.993652 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 15 | time: 11490972141698570655648186368.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 16 | time: 47295232.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 17 | time: 4315060979226205388539966976425984.000000 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 18 | time: -0.000022 us
+DEVICE | prims_simple.h | genericOp | waitpeer | iteration 19 | time: 3638784.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.844681 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 968867386229153014480896.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 53456649024700416.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 3.752411 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 3898743987279757312.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -9124714496.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -17780480.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.860284 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 1708.375000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -659.337402 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: 0.222100 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -373791498663997889504632125817618432.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: -20.726868 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 209568551826868484505798128720412672.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 6674641835020110874382287176271396864.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -410.472168 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 0.000076 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 283775.187500 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -11091249725440.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.853191 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 30110203904.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 0.001873 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 0.001552 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -108104980209829862589354475520.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 34549286535856679869340450816.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 1800273659953152.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 22128094495513251938304.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 16520505670246177338455115169792.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -342521505143880389228494848.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 1690826166347484866597807481421824.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 4112396288.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.026348 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.917021 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -781249421460022625573011456.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: 144891271486373888.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -104314.812500 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -0.122950 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -1878243033966661227889123980067471360.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -235496839519449145890998915451322368.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -2663.300781 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 1282105716581954965621631554158592.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -2326828025271945937918361600.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 7111147782820994220032.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 15061671736250122240564774923680088064.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.889362 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 0.000003 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -767761481885286400.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -178938970112.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 220124927055549536271325223452672.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -4678609412828693710717509959680.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 5342080322764800.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 2400882472150093529088.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -0.000051 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 6553076852550754834399100928.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -0.000735 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -11874656150409127963509095434605821952.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 1180368090333364558489596828057600.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.919149 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -10120867384995677732864.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -893.746826 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -249069241799707240146875237531648.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 30110203904.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 0.001873 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.001552 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -108104980209829862589354475520.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 34549286535856679869340450816.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 1800273659953152.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 22128094495513251938304.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 16520505670246177338455115169792.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -342521505143880389228494848.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.901418 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 1690826166347484866597807481421824.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 4112396288.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -0.026348 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -0.000054 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -781249421460022625573011456.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 144891271486373888.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -104314.812500 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -0.122950 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: -1878243033966661227889123980067471360.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -235496839519449145890998915451322368.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -2663.300781 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 1282105716581954965621631554158592.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -2326828025271945937918361600.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.994326 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 15061671736250122240564774923680088064.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 0.000003 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -767761481885286400.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -178938970112.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 220124927055549536271325223452672.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -4678609412828693710717509959680.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 5342080322764800.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 2400882472150093529088.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -0.000051 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 6553076852550754834399100928.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -0.000735 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -11874656150409127963509095434605821952.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.924113 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 1180368090333364558489596828057600.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -7438610432.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -10120867384995677732864.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -893.746826 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 619281015809786000804755275776.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 112204423757162750593204224.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: -185749929984.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 288925.750000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -4521686204416.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -13656.113281 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: -7348876300712749329404288565248.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.821277 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -1938953571210887168.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 59418065721226267412604305539072.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 5769120334504427184707338240.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -0.000003 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -0.019038 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 3037798072320.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 51746785224920861279799738368.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: -16143188460760997648400384.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 2424969673834496.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 60386137301228596494336.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 432368994839168184103433404416.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -32472360688224829440.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 105519699557260910919680.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -290762843488256.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 1456143360.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.941135 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -425703727554715646427136.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -65516.750000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 28643164160.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 0.000016 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 4.604774 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -10466207583762901565964288.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 369488261278404182016.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 1091827.750000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -2533269504.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 2893828472963558539264.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 10590842999766743470180443095040.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: -70919064240325539447141564416.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 40572647568004087808.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 68391469056.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 7.035461 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -3274.040039 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 71089566408647901184.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -599124.750000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 48583570540724224.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 92497641795364328760187662893056.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 332164661774385152.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -196714970881366809696309525937651712.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: -140210234306676254796217843712.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 619281015809786000804755275776.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 112204423757162750593204224.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -185749929984.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 288925.750000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -4521686204416.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.985106 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -7348876300712749329404288565248.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -385429080922254850654208.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -1938953571210887168.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 59418065721226267412604305539072.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 5769120334504427184707338240.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -0.000003 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -0.019038 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 3037798072320.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 51746785224920861279799738368.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -16143188460760997648400384.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 2424969673834496.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 60386137301228596494336.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 432368994839168184103433404416.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 6.978014 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 105519699557260910919680.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -290762843488256.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 1456143360.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 0.006155 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: -87107.750000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -19147832605886462260481104338223104.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -0.000334 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 12.172188 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 7.004255 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 44409256854584560716157031639154688.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -487943970004646918393689005883392.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -6312112.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: -0.000126 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -66720071680.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 0.815471 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 20851432605082118037691091420845178880.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 1827895839257319312155738112.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 1629968141411031262953472.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -0.000291 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -0.140581 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 3892150784.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 16269902348288.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -433862238250891420996705328300032.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 7.055319 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -3544573454589144533766766592.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 869030.500000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: 34668460617236480.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -1833042649808896.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 79108288.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -1688448549257216.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 7231317293919941888925761536.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 1176637558024978065031188317208576.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 7.022695 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 6367817194218192896.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -12177912102912.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 13753390042456646316101780216217600.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 0.006155 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: -87107.750000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -19147832605886462260481104338223104.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -0.000334 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 12.172188 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 7.009929 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 44409256854584560716157031639154688.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -487943970004646918393689005883392.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -6312112.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: -0.000126 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: -66720071680.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: 0.815471 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 20851432605082118037691091420845178880.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 1827895839257319312155738112.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 1629968141411031262953472.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -0.000291 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.140581 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 7.042553 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: 3892150784.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 16269902348288.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -433862238250891420996705328300032.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -13709141423177439504900854644736.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: -3544573454589144533766766592.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: 869030.500000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: 34668460617236480.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: -1833042649808896.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: 79108288.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -1688448549257216.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: 7231317293919941888925761536.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 0 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 2 | time: 1176637558024978065031188317208576.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 4 | time: -412339037261961479537557504.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 5 | time: 6367817194218192896.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 6 | time: -12177912102912.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 7 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 10 | time: 13753390042456646316101780216217600.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 12 | time: -29769856.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 14 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 15 | time: -42533437440.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 16 | time: -93210411008.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.034043 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 8036809376268288.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 32.057648 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -7098390806528.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 0.000001 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 39161713131520.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -15056628613120.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 8400121856.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 34017.562500 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -552.412598 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -2807569956177182720.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -52731011963579006976.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -203338320321708032.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -27400341485685579972608.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.031915 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 62555808.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -15333349356312985600.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: -29812207425762324618588276654080.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -30685974299175102017699840.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 1036982685085914316358549504.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 2010.289062 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -40825599013704051736428721209344.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -14421691972664858857506072428544.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: 9009530219391877120.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -5.478142 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 0.000520 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -8693423347780661352473821184.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.029787 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -579257378551390223816823768157782016.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -1082353196922494934581248.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -2.471592 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 167699055226188354388230144.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -665654400.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: -9028780468970979328.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -18595244.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.008353 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -29769856.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -42533437440.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.029078 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 8036809376268288.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 32.057648 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -7098390806528.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 0.000001 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 39161713131520.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -15056628613120.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 8400121856.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 34017.562500 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -552.412598 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -2807569956177182720.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.029787 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -203338320321708032.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -27400341485685579972608.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 204734448300820791296.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 62555808.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -15333349356312985600.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -29812207425762324618588276654080.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -30685974299175102017699840.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 1036982685085914316358549504.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 2010.289062 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -40825599013704051736428721209344.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -14421691972664858857506072428544.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 9009530219391877120.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.029078 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -5.478142 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 0.000520 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -8693423347780661352473821184.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 625744986628947968.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: -579257378551390223816823768157782016.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -1082353196922494934581248.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -2.471592 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 167699055226188354388230144.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -665654400.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -9028780468970979328.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -18595244.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -0.008353 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.028369 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -425703727554715646427136.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -65516.750000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 28643164160.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 0.000016 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 4.604774 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -10466207583762901565964288.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 369488261278404182016.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 1091827.750000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -2533269504.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 2893828472963558539264.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 10590842999766743470180443095040.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -70919064240325539447141564416.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 40572647568004087808.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 68391469056.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.027660 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -3274.040039 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 71089566408647901184.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -599124.750000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 48583570540724224.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 92497641795364328760187662893056.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 332164661774385152.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -196714970881366809696309525937651712.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -140210234306676254796217843712.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 743983630254080.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -358541950976.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -151939485410827375221521529097546629120.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 3594035200.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.029078 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 3099241.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 491215536043468357115178666426368.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: -3075594405281792.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 111922120933272190976.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 1179790281820028107246287661826048.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -16520452478404132864.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 557.628174 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000001 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -93404268693815296.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -3006.953125 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.033333 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -0.003266 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -2257118208.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -5345066871223746560.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 54362344288040589541556986365083648.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 157.285522 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -713300431666216471706737928306688.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 72582.468750 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -0.000315 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -6.135452 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -2683713032348588048384.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: 0.001778 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 2292043073759128131274276864.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.027660 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -38875149155434496.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 16227885175608456346717485268992.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: -126010240.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -109591427342826680941063494959104.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -18994212922494941880311089515087265792.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -520608807401690130190172160.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -1277015.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 92523456.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -108377139634970605982310203392.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -5913763971923443712.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: 1744483077931778917901994851242606592.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 20797.812500 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 0.007114 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.029078 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 2759533667549184.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 54029184.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -4960514.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 28470304.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -951973414330378860636876730007552.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -73514314970684705581563904.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000024 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 20167409137240349894288343040.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -25997472.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -512678.500000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -0.000143 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -3254941384704.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 4915862313853884300882771705856.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -1.193237 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.030496 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 1522651834365222322176.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 232614774911283331541717621932032.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 7163093265341924124523495424.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 141728801166983168.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 19642.636719 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -5345066871223746560.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 54362344288040589541556986365083648.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 157.285522 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -713300431666216471706737928306688.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: 72582.468750 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -0.000315 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -6.135452 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -2683713032348588048384.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 0.001778 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.031915 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -38875149155434496.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 16227885175608456346717485268992.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -126010240.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -109591427342826680941063494959104.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -18994212922494941880311089515087265792.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: -520608807401690130190172160.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -1277015.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 92523456.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -108377139634970605982310203392.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.032624 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -200019904.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 17545730375867085151547988901888.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 0.020468 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 5.150070 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 7280670092772420960814619071071911936.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -254937.687500 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 65406533993039111651328.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -33500931825776721920.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 7290999042736128.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 15923162577824120832.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: 21516617921855488.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 294451544064.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -52640544.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.037589 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -280.640259 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 18522125324272478978048.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -189373127368697184256.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 8311844625196492024446976.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 78127803924480.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: -23489966415806464000.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 1627280266332051044187504640.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -35.023773 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: 12192.416016 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -57039693185699897789835832163129360384.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -979458792907892987614887834380402688.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.029787 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: 35561.140625 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 23188.375000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 126341663977648406646958850048.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 27720494168629628209463296.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -0.120441 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 5749767208435712.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 968109307504669561391174123520.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 74139049699307522359296.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -0.000935 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: 96221593600.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -47.932953 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.028369 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -6283604583765308037984993151696240640.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: 0.456048 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 743983630254080.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -358541950976.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -151939485410827375221521529097546629120.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 3594035200.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: -133820288.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: 3099241.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: 491215536043468357115178666426368.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -3075594405281792.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 111922120933272190976.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 0.030496 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -16520452478404132864.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: 557.628174 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: -0.000001 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: -93404268693815296.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: -3006.953125 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 4882915745790427136.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -0.003266 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: -2257118208.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -262905593856.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 1038770176.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 0 | time: 1.010529 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 1 | time: -410960784346952237056.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 2 | time: 0.000001 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 3 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 4 | time: -0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 5 | time: 10.606804 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 6 | time: -153175371856140385764790228662353920.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 7 | time: 524241920.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 8 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 9 | time: 0.034843 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 10 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 11 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 12 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 13 | time: -2006587825785865252219387904.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 14 | time: -13713411349172318375145916858368.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 15 | time: 0.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 16 | time: 18858295427072.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 17 | time: -7327862226944.000000 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 18 | time: 0.000452 us
+DEVICE | prims_simple.h | genericOp | postPeer | iteration 19 | time: -0.000000 us

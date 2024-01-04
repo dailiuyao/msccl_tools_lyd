@@ -1,0 +1,164 @@
+
+c197-081:5156:5156 [3] misc/cudawrap.cc:112 NCCL WARN cuDriverGetVersion failed with 34
+c197-081:5156:5156 [3] NCCL INFO Bootstrap : Using ib0:192.168.44.137<0>
+c197-081:5156:5156 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-081:5156:5192 [3] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.137<0>
+c197-081:5156:5192 [3] NCCL INFO Using network IB
+c197-081:5156:5192 [3] NCCL INFO Setting affinity for GPU 3 to f000f000
+c197-081:5156:5192 [3] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
+c197-081:5156:5192 [3] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
+c197-081:5156:5192 [3] NCCL INFO Trees [0] -1/-1/-1->11->10
+c197-081:5156:5192 [3] NCCL INFO Channel 00/0 : 11[83000] -> 12[2000] [send] via NET/IB/0
+c197-081:5156:5192 [3] NCCL INFO Connected all rings
+c197-081:5156:5192 [3] NCCL INFO Channel 00 : 11[83000] -> 10[82000] via SHM/direct/direct
+c197-081:5156:5192 [3] NCCL INFO Connected all trees
+c197-081:5156:5192 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+c197-081:5156:5192 [3] NCCL INFO 1 coll channels, 1 p2p channels, 1 p2p channels per peer
+c197-081:5156:5192 [3] NCCL INFO comm 0x55285f0 rank 11 nranks 16 cudaDev 3 busId 83000 - Init COMPLETE
+HOST | common.cu:1021 | run() | ncclGroupEnd() finished
+HOST | common.cu:1033 | run() | cudaHostAlloc() finished
+HOST | common.cu:645 | threadRunTests() | ncclTestEngine().runTest start
+HOST | allreduce.cu:88 | AllReduceRunTest() | TimeTest start
+HOST | allreduce.cu:91 | AllReduceRunTest() | start type_count 0, op_count 0
+HOST | common.cu:604 | TimeTest() | before startColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:610 | TimeTest() | after completeColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:619 | TimeTest() | before BenchTime()
+HOST | common.cu:627 | TimeTest() | The first BenchTime launched, start out of place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:629 | TimeTest() | The first BenchTime finished, end out of place
+HOST | common.cu:630 | TimeTest() | The second BenchTime launched, start in place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:632 | TimeTest() | The second BenchTime finished, end in place
+HOST | common.cu:636 | TimeTest() | after BenchTime()
+HOST | allreduce.cu:93 | AllReduceRunTest() | end type_count 0, op_count 0
+HOST | allreduce.cu:96 | AllReduceRunTest() | TimeTest finished
+HOST | common.cu:647 | threadRunTests() | ncclTestEngine().runTest finished
+c197-081:5156:5156 [3] NCCL INFO comm 0x55285f0 rank 11 nranks 16 cudaDev 3 busId 83000 - Destroy COMPLETE
+DEVICE | prims_simple.h| genericop | time: 23.055319 us
+DEVICE | prims_simple.h| genericop | time: 23.052483 us
+DEVICE | prims_simple.h| genericop | time: 23.043972 us
+DEVICE | prims_simple.h| genericop | time: 23.146809 us
+DEVICE | prims_simple.h| genericop | time: 23.146099 us
+DEVICE | prims_simple.h| genericop | time: 23.117731 us
+DEVICE | prims_simple.h| genericop | time: 23.101418 us
+DEVICE | prims_simple.h| genericop | time: 23.103546 us
+DEVICE | prims_simple.h| genericop | time: 23.102837 us
+DEVICE | prims_simple.h| genericop | time: 23.092199 us
+DEVICE | prims_simple.h| genericop | time: 23.078724 us
+DEVICE | prims_simple.h| genericop | time: 23.192907 us
+DEVICE | prims_simple.h| genericop | time: 23.170921 us
+DEVICE | prims_simple.h| genericop | time: 23.168795 us
+DEVICE | prims_simple.h| genericop | time: 23.151773 us
+DEVICE | prims_simple.h| genericop | time: 23.219858 us
+DEVICE | prims_simple.h| genericop | time: 23.222694 us
+DEVICE | prims_simple.h| genericop | time: 23.203547 us
+DEVICE | prims_simple.h| genericop | time: 23.204256 us
+DEVICE | prims_simple.h| genericop | time: 23.224823 us

@@ -36,7 +36,7 @@ export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2
 # export NCCL_ALGO=Tree
 # export NCCL_PROTO=Simple
 
-# $MPI_HOME/bin/mpirun -np 16 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 128 -e 512MB -f 2 -g 1
+# $MPI_HOME/bin/mpirun -np 16 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 128 -e 512M -w 0 -f 2 -g 1 -n 10
 
 ##################################### NCCL PROFILE #####################################
 echo "##################################### NCCL PROFILE #####################################"
@@ -51,12 +51,13 @@ export LD_LIBRARY_PATH="${NCCL_PROFILE_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:$
 export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
+
 export NCCL_MIN_NCHANNELS=1
 export NCCL_MAX_NCHANNELS=1
 
 # export NCCL_COMM_BLOCKING=1
 
-$MPI_HOME/bin/mpirun -np 16 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 1M -e 1M -w 0 -f 2 -g 1 -n 2
+$MPI_HOME/bin/mpirun -np 16 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 1M -e 1M -w 0 -f 2 -g 1 -n 1
 
 # ##################################### MSCCL #####################################
 # echo "##################################### MSCCL #####################################"

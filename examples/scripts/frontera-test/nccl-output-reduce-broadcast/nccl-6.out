@@ -1,0 +1,184 @@
+
+c197-072:9232:9232 [2] misc/cudawrap.cc:112 NCCL WARN cuDriverGetVersion failed with 34
+c197-072:9232:9232 [2] NCCL INFO Bootstrap : Using ib0:192.168.44.136<0>
+c197-072:9232:9232 [2] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-072:9232:9279 [2] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.136<0>
+c197-072:9232:9279 [2] NCCL INFO Using network IB
+c197-072:9232:9279 [2] NCCL INFO Setting affinity for GPU 2 to 0f000f00
+c197-072:9232:9279 [2] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
+c197-072:9232:9279 [2] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
+c197-072:9232:9279 [2] NCCL INFO Trees [0] 7/-1/-1->6->5
+c197-072:9232:9279 [2] NCCL INFO Channel 00 : 6[82000] -> 7[83000] via SHM/direct/direct
+c197-072:9232:9279 [2] NCCL INFO Connected all rings
+c197-072:9232:9279 [2] NCCL INFO Channel 00 : 6[82000] -> 5[3000] via SHM/direct/direct
+c197-072:9232:9279 [2] NCCL INFO Connected all trees
+c197-072:9232:9279 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+c197-072:9232:9279 [2] NCCL INFO 1 coll channels, 1 p2p channels, 1 p2p channels per peer
+c197-072:9232:9279 [2] NCCL INFO comm 0x51f62f0 rank 6 nranks 16 cudaDev 2 busId 82000 - Init COMPLETE
+HOST | common.cu:1021 | run() | ncclGroupEnd() finished
+HOST | common.cu:1033 | run() | cudaHostAlloc() finished
+HOST | common.cu:645 | threadRunTests() | ncclTestEngine().runTest start
+HOST | allreduce.cu:88 | AllReduceRunTest() | TimeTest start
+HOST | allreduce.cu:91 | AllReduceRunTest() | start type_count 0, op_count 0
+HOST | common.cu:604 | TimeTest() | before startColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:610 | TimeTest() | after completeColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:619 | TimeTest() | before BenchTime()
+HOST | common.cu:627 | TimeTest() | The first BenchTime launched, start out of place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:629 | TimeTest() | The first BenchTime finished, end out of place
+HOST | common.cu:630 | TimeTest() | The second BenchTime launched, start in place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:632 | TimeTest() | The second BenchTime finished, end in place
+HOST | common.cu:636 | TimeTest() | after BenchTime()
+HOST | allreduce.cu:93 | AllReduceRunTest() | end type_count 0, op_count 0
+HOST | allreduce.cu:96 | AllReduceRunTest() | TimeTest finished
+HOST | common.cu:647 | threadRunTests() | ncclTestEngine().runTest finished
+c197-072:9232:9232 [2] NCCL INFO comm 0x51f62f0 rank 6 nranks 16 cudaDev 2 busId 82000 - Destroy COMPLETE
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 160.377304 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.142548 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.127655 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 346.940430 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.148926 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.131927 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.072327 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.131195 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.146088 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.134033 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.120575 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.131927 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.024109 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.074463 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.055328 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.130493 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.108521 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.124817 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.100006 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy | time: 347.163116 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.786499 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.813477 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.831909 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.823425 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.790771 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.856018 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.809937 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.831177 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.819885 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.834045 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.819885 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.842529 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.851746 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.836182 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.812744 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.855347 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.886536 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.877319 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.875183 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput | time: 940.800720 us

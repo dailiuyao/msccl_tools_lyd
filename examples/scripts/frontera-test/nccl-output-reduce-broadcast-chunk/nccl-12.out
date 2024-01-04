@@ -1,0 +1,946 @@
+
+c197-082:11597:11597 [0] misc/cudawrap.cc:112 NCCL WARN cuDriverGetVersion failed with 34
+c197-082:11597:11597 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.138<0>
+c197-082:11597:11597 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-082:11597:11638 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.138<0>
+c197-082:11597:11638 [0] NCCL INFO Using network IB
+c197-082:11597:11638 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c197-082:11597:11638 [0] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
+c197-082:11597:11638 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
+c197-082:11597:11638 [0] NCCL INFO Trees [0] 13/-1/-1->12->8
+c197-082:11597:11638 [0] NCCL INFO Channel 00/0 : 11[83000] -> 12[2000] [receive] via NET/IB/0
+c197-082:11597:11638 [0] NCCL INFO Channel 00 : 12[2000] -> 13[3000] via SHM/direct/direct
+c197-082:11597:11638 [0] NCCL INFO Connected all rings
+c197-082:11597:11638 [0] NCCL INFO Channel 00/0 : 8[2000] -> 12[2000] [receive] via NET/IB/0
+c197-082:11597:11638 [0] NCCL INFO Channel 00/0 : 12[2000] -> 8[2000] [send] via NET/IB/0
+c197-082:11597:11638 [0] NCCL INFO Connected all trees
+c197-082:11597:11638 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+c197-082:11597:11638 [0] NCCL INFO 1 coll channels, 1 p2p channels, 1 p2p channels per peer
+c197-082:11597:11638 [0] NCCL INFO comm 0x5aae5b0 rank 12 nranks 16 cudaDev 0 busId 2000 - Init COMPLETE
+HOST | common.cu:1021 | run() | ncclGroupEnd() finished
+HOST | common.cu:1033 | run() | cudaHostAlloc() finished
+HOST | common.cu:645 | threadRunTests() | ncclTestEngine().runTest start
+HOST | allreduce.cu:88 | AllReduceRunTest() | TimeTest start
+HOST | allreduce.cu:91 | AllReduceRunTest() | start type_count 0, op_count 0
+HOST | common.cu:604 | TimeTest() | before startColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:610 | TimeTest() | after completeColl for large size
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:619 | TimeTest() | before BenchTime()
+HOST | common.cu:627 | TimeTest() | The first BenchTime launched, start out of place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:629 | TimeTest() | The first BenchTime finished, end out of place
+HOST | common.cu:630 | TimeTest() | The second BenchTime launched, start in place
+HOST | common.cu:419 | BenchTime() | start syc
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:423 | BenchTime() | end sync
+HOST | common.cu:443 | BenchTime() | before Performance Benchmark
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:452 | BenchTime() | after Performance Benchmark
+HOST | common.cu:455 | BenchTime() | start graph capture
+HOST | common.cu:474 | BenchTime() | end graph capture
+HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
+HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
+HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:402 | completeColl() | blocking_coll is: 0
+HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
+
+ DEVICE | total size in run tree() is: 262144
+
+ DEVICE | nthreads is: 640
+
+ DEVICE | loopSize is: 16384
+
+ DEVICE | nChannels is: 1
+
+ DEVICE | chunkSize is: 16384
+HOST | common.cu:632 | TimeTest() | The second BenchTime finished, end in place
+HOST | common.cu:636 | TimeTest() | after BenchTime()
+HOST | allreduce.cu:93 | AllReduceRunTest() | end type_count 0, op_count 0
+HOST | allreduce.cu:96 | AllReduceRunTest() | TimeTest finished
+HOST | common.cu:647 | threadRunTests() | ncclTestEngine().runTest finished
+c197-082:11597:11597 [0] NCCL INFO comm 0x5aae5b0 rank 12 nranks 16 cudaDev 0 busId 2000 - Destroy COMPLETE
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -631244630723289062771261440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -14966525889007845376.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -342312978176897187840.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 1558032941056.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -263034647333507087294412547533307904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -1213755565423414214656.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 420737315065746029498997932032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 35559107985408.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 90138566920558914066620350464.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 0.000258 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: -7002103808.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 0.001354 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 2398521757283019953012736.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: 3462577473318606784353032831858900992.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 61777507202786480242468847616.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 19269551869745329311055872.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -491681258976313344.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 66146140101890291811787735040.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 29042870845440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 156138901274986443312476740124672.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -0.671758 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -8961234580195326224760832.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -54037.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 38550604325189924694647635968.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -3754699064868864.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 16109179748238801539688300544.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -105163569243377812414390075392.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -2645.335938 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -2482672150486783402931467783774404608.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 38829401357543262209087088099328.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 1304945858053295570944.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 406658154496.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -0.002720 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -37698.656250 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 10126736167534592.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 3965079447928832.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 0.000118 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 2761055600549235261440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 1095708966912.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -42.873718 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 1396856525871099216924770304.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 73439495124295692229885820928.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: 0.000001 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -126238588928.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -26.471176 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -166.843506 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 19597738203152384.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 950850048.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 15531900.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -51881872327587135488.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -0.000281 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -64084326561270507493616779264.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 19187135580359786071184113664.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 1044367875969312082767118336.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -0.000121 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 8033722.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -179391265702892121746309120.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -1216314172961714077696.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 3462577473318606784353032831858900992.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 61777507202786480242468847616.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 19269551869745329311055872.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -491681258976313344.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 66146140101890291811787735040.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 29042870845440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 156138901274986443312476740124672.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -0.671758 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -8961234580195326224760832.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -54037.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 38550604325189924694647635968.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -3754699064868864.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 16109179748238801539688300544.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -105163569243377812414390075392.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: -2645.335938 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -2482672150486783402931467783774404608.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 38829401357543262209087088099328.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 1304945858053295570944.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 406658154496.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -0.002720 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -37698.656250 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 10126736167534592.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 3965079447928832.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: 0.006155 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -87107.750000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -19147832605886462260481104338223104.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -0.000334 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 12.172188 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 44409256854584560716157031639154688.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -487943970004646918393689005883392.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -6312112.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -0.000126 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -66720071680.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 0.815471 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 20851432605082118037691091420845178880.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 1827895839257319312155738112.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 1629968141411031262953472.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -0.000291 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: -0.140581 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -0.004580 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -623984211591892898847182321528864768.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -0.090336 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 0.000004 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: -0.817003 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -13248.671875 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 16592917908989454396761665699840.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 27460427776.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -15707928.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -17263908.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 37775868218941898752.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -0.000667 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 237018.750000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -6051493196465176576.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -4487852032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.001238 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -0.003252 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: 567406250426368.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 123181242597244928.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 11815803661997621353906176.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -368606807709064431252510609707630592.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: 26636.562500 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -6165.644531 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 20156108503748531015758528758851567616.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -882260.500000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -631244630723289062771261440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -14966525889007845376.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -342312978176897187840.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 1558032941056.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -263034647333507087294412547533307904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -1213755565423414214656.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 420737315065746029498997932032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 35559107985408.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: 90138566920558914066620350464.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 0.000258 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: -7002103808.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 0.001354 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 2398521757283019953012736.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -15333349356312985600.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -29812207425762324618588276654080.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -30685974299175102017699840.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 1036982685085914316358549504.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 2010.289062 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -40825599013704051736428721209344.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -14421691972664858857506072428544.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 9009530219391877120.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -5.478142 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 0.000520 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: -8693423347780661352473821184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 625744986628947968.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -579257378551390223816823768157782016.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -1082353196922494934581248.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: -2.471592 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 167699055226188354388230144.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -665654400.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -9028780468970979328.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -18595244.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -0.008353 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 0.000118 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 2761055600549235261440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 1095708966912.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -42.873718 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 1396856525871099216924770304.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 73439495124295692229885820928.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 0.000001 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -126238588928.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: -26.471176 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -166.843506 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: 19597738203152384.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 950850048.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 15531900.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -51881872327587135488.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -0.000281 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -64084326561270507493616779264.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 19187135580359786071184113664.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 1044367875969312082767118336.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -0.000121 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 8033722.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -179391265702892121746309120.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -1216314172961714077696.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -15333349356312985600.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -29812207425762324618588276654080.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -30685974299175102017699840.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 1036982685085914316358549504.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 2010.289062 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -40825599013704051736428721209344.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -14421691972664858857506072428544.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 9009530219391877120.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -5.478142 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 0.000520 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -8693423347780661352473821184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 625744986628947968.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -579257378551390223816823768157782016.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -1082353196922494934581248.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -2.471592 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 167699055226188354388230144.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -665654400.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -9028780468970979328.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -18595244.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: -0.008353 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -5345066871223746560.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 54362344288040589541556986365083648.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 157.285522 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -713300431666216471706737928306688.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 72582.468750 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -0.000315 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: -6.135452 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -2683713032348588048384.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: 0.001778 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 2292043073759128131274276864.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -38875149155434496.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 16227885175608456346717485268992.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -126010240.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -109591427342826680941063494959104.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: -18994212922494941880311089515087265792.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -520608807401690130190172160.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -1277015.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 92523456.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: -108377139634970605982310203392.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: 3892150784.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 16269902348288.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -433862238250891420996705328300032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -13709141423177439504900854644736.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: -3544573454589144533766766592.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: 869030.500000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: 34668460617236480.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: -1833042649808896.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 79108288.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -1688448549257216.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: 7231317293919941888925761536.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: 1176637558024978065031188317208576.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: -412339037261961479537557504.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 6367817194218192896.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -12177912102912.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: 13753390042456646316101780216217600.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: -5345066871223746560.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: 54362344288040589541556986365083648.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: 157.285522 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: -713300431666216471706737928306688.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 0 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 1 | time: 72582.468750 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 2 | time: -0.000315 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 3 | time: -6.135452 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 4 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 5 | time: -2683713032348588048384.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 6 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 7 | time: 0.001778 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 8 | time: 2292043073759128131274276864.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 9 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 10 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 13 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 14 | time: -38875149155434496.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 15 | time: 16227885175608456346717485268992.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 17 | time: -126010240.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 18 | time: -109591427342826680941063494959104.000000 us
+DEVICE | allreduce.h| runTreeUpDown | recvReduceCopy-chunk | iteration 19 | time: -18994212922494941880311089515087265792.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -520608807401690130190172160.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -1277015.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 92523456.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: -108377139634970605982310203392.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 3892150784.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 16269902348288.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -433862238250891420996705328300032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -13709141423177439504900854644736.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -3544573454589144533766766592.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 869030.500000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 34668460617236480.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -1833042649808896.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 79108288.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -1688448549257216.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 7231317293919941888925761536.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 1176637558024978065031188317208576.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -412339037261961479537557504.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 6367817194218192896.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -12177912102912.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 13753390042456646316101780216217600.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 9636301768967063795674290061312.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 5389345084083588300800.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -0.527164 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -715096915395946944137108238591066112.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: -3778909.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -63371343669686848459252957184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -456221403491619721377679933440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -2516082.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 10997.144531 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 385351442171966656209893342979293184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 27.380310 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 151656343966787563822335918080.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -411294149390124913704536154709164032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 0.000226 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -829369278753520683535028549039685632.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -64699856669536143216003015531036672.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -1168076168946186026196402176.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -72925486944243154944.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: -20225920.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -5428795910366701897914515456.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -200019904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 17545730375867085151547988901888.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 0.020468 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 5.150070 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 7280670092772420960814619071071911936.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -254937.687500 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 65406533993039111651328.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: -33500931825776721920.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 7290999042736128.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 15923162577824120832.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 21516617921855488.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 294451544064.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -52640544.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -280.640259 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 18522125324272478978048.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -189373127368697184256.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 8311844625196492024446976.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 78127803924480.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -23489966415806464000.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 9636301768967063795674290061312.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 5389345084083588300800.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: -0.527164 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -715096915395946944137108238591066112.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -3778909.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -63371343669686848459252957184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -456221403491619721377679933440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -2516082.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 10997.144531 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 385351442171966656209893342979293184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 27.380310 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 151656343966787563822335918080.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -411294149390124913704536154709164032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 0.000226 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -829369278753520683535028549039685632.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: -64699856669536143216003015531036672.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: -1168076168946186026196402176.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -72925486944243154944.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: -20225920.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -5428795910366701897914515456.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -200019904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 17545730375867085151547988901888.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 0.020468 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 5.150070 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 7280670092772420960814619071071911936.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -254937.687500 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 65406533993039111651328.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -33500931825776721920.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 7290999042736128.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 15923162577824120832.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 21516617921855488.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 294451544064.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -52640544.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -280.640259 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 18522125324272478978048.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -189373127368697184256.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 8311844625196492024446976.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 78127803924480.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: -23489966415806464000.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 1627280266332051044187504640.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: -35.023773 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 12192.416016 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -57039693185699897789835832163129360384.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -979458792907892987614887834380402688.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 35561.140625 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 23188.375000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 126341663977648406646958850048.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 27720494168629628209463296.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -0.120441 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 5749767208435712.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 968109307504669561391174123520.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 74139049699307522359296.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -0.000935 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 96221593600.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -47.932953 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -2867777580826624.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -6283604583765308037984993151696240640.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 0.456048 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -5913763971923443712.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 1744483077931778917901994851242606592.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 20797.812500 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.007114 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 157526.625000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 2759533667549184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 54029184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -4960514.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 28470304.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: -951973414330378860636876730007552.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -73514314970684705581563904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 0.000024 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 20167409137240349894288343040.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -25997472.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -512678.500000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -0.000143 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -3254941384704.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 4915862313853884300882771705856.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -1.193237 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -1316601402587348992.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 1522651834365222322176.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 232614774911283331541717621932032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 7163093265341924124523495424.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 141728801166983168.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 19642.636719 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 1627280266332051044187504640.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -35.023773 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 12192.416016 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -57039693185699897789835832163129360384.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -979458792907892987614887834380402688.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 35561.140625 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 23188.375000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 126341663977648406646958850048.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 27720494168629628209463296.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -0.120441 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 5749767208435712.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 968109307504669561391174123520.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 74139049699307522359296.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -0.000935 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 96221593600.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -47.932953 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -2867777580826624.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -6283604583765308037984993151696240640.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.456048 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -5913763971923443712.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 1744483077931778917901994851242606592.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 20797.812500 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 0.007114 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 157526.625000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 2759533667549184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 54029184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -4960514.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 28470304.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -951973414330378860636876730007552.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -73514314970684705581563904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 0.000024 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 20167409137240349894288343040.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -25997472.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -512678.500000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -0.000143 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: -3254941384704.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 4915862313853884300882771705856.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -1.193237 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -1316601402587348992.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 1522651834365222322176.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 232614774911283331541717621932032.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 7163093265341924124523495424.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 141728801166983168.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 19642.636719 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.272958 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 0.010994 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -47188531277983382263727557451972608.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -0.000165 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 27191136.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 1628455220166610928009216.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 12699693552347643904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 460515242039210568987817835233280.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -3692512233390080.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: -0.571887 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 33097566151095097491456.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -0.000004 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: 116897153024.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 11774455709696.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 1006136244901913821184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -303394703083044864.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 192086778539933544151445062534823936.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: -17946560350564714949324492173737984.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: 3098810.500000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 116756512768.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 87.161606 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 63437757127698939904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 0.835521 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -15329.492188 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 482681691810571191524737941504.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 93385656710736117760.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -24989923614392320.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 2284477842653570959641935872.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 829571777085923393536.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -121867549540352.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: -143268297834496.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 382187686499530627744792576.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 49959718695914340089856.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: -4133210911878995733643264.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000006 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -64195584.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: -226404996874844270405888480641024.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 370122002188468224.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -351192528529699897344.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: 56403572115374080.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: -450084722442240.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 2236.108398 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 81985084525117440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: 161911737252442189025691828224.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -1586273623351131897856.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: -0.272958 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: 0.010994 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: -47188531277983382263727557451972608.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000165 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: 27191136.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 1628455220166610928009216.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 12699693552347643904.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 460515242039210568987817835233280.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -3692512233390080.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -0.571887 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 0 | time: 33097566151095097491456.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 1 | time: -0.000004 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 2 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 3 | time: 116897153024.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 4 | time: 11774455709696.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 5 | time: 0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 6 | time: 1006136244901913821184.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 7 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 8 | time: -303394703083044864.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 9 | time: 192086778539933544151445062534823936.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 10 | time: -17946560350564714949324492173737984.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 11 | time: 3098810.500000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 12 | time: -361584162457392250880.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 13 | time: -452216310474654699487232.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 14 | time: 156473912983552.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 15 | time: 37355446272.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 16 | time: 97696445266745640347443029019197440.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 17 | time: 41789251649536.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 18 | time: -0.000000 us
+DEVICE | allreduce.h| runTreeUpDown | directSendFromOutput-chunk | iteration 19 | time: -0.000000 us

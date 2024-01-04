@@ -1,0 +1,95 @@
+# nThread 1 nGpus 1 minBytes 6291456 maxBytes 6291456 step: 2(factor) warmup iters: 0 iters: 1 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  20878 on   c196-102 device  0 [0x02] Quadro RTX 5000
+#  Rank  1 Group  0 Pid  20879 on   c196-102 device  1 [0x03] Quadro RTX 5000
+#  Rank  2 Group  0 Pid  20880 on   c196-102 device  2 [0x82] Quadro RTX 5000
+c196-102:20878:20878 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.120<0>
+c196-102:20878:20878 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-102:20878:20878 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.120<0>
+c196-102:20878:20878 [0] NCCL INFO Using network IB
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.3
+c196-102:20878:20906 [0] NCCL INFO Setting affinity for GPU 0 to 1f001f
+c196-102:20878:20906 [0] NCCL INFO Channel 00/02 :    0   1   2
+c196-102:20878:20906 [0] NCCL INFO Channel 01/02 :    0   1   2
+c196-102:20878:20906 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
+c196-102:20878:20906 [0] NCCL INFO Channel 00 : 0[2000] -> 1[3000] via direct shared memory
+c196-102:20878:20906 [0] NCCL INFO Channel 01 : 0[2000] -> 1[3000] via direct shared memory
+c196-102:20878:20906 [0] NCCL INFO Connected all rings
+c196-102:20878:20906 [0] NCCL INFO Connected all trees
+c196-102:20878:20906 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_3nodes_channel2_chunk6.xml
+c196-102:20878:20906 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_3nodes_channel2_chunk6.xml
+c196-102:20878:20906 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_3nodes_channel2_chunk6.xml successfully.
+c196-102:20878:20906 [0] NCCL INFO Channel 00 : 0[2000] -> 2[82000] via direct shared memory
+c196-102:20878:20906 [0] NCCL INFO Channel 01 : 0[2000] -> 2[82000] via direct shared memory
+c196-102:20878:20906 [0] NCCL INFO Connected 1 MSCCL algorithms
+c196-102:20878:20906 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-102:20878:20906 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-102:20878:20906 [0] NCCL INFO threadThresholds 8/8/64 | 24/8/64 | 8/8/64 | 8/8/512
+c196-102:20878:20906 [0] NCCL INFO 2 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-102:20878:20906 [0] NCCL INFO comm 0x2b3292000010 rank 0 nranks 3 cudaDev 0 busId 2000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+     6291456       1572864     float     sum      -1c196-102:20878:20878 [0] NCCL INFO Launch mode Parallel
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 1, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 0, dependentStep is 0
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 1, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 0, dependentStep is 1
+
+[LYD INFO] blockId 0 channelID 1 RunInterpreter() time: 626 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 1, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 0, dependentStep is 2
+
+[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 1219 us
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 1244 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 1, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 0, dependentStep is 0
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 1, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 0, dependentStep is 1
+
+[LYD INFO] blockId 0 channelID 1 RunInterpreter() time: 714 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 1, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 0, dependentStep is 2
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 1330 us
+
+[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 1318 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 1, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 0, dependentStep is 0
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 1, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 0, dependentStep is 1
+
+[LYD INFO] blockId 0 channelID 1 RunInterpreter() time: 763 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 1, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 0, dependentStep is 2
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 1278 us
+
+[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 1315 us
+   1329.2    4.73    6.31  4.71859e+06DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 1, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 0, dependentStep is 0
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 1, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 0, dependentStep is 1
+
+[LYD INFO] blockId 0 channelID 1 RunInterpreter() time: 680 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 1, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 0, dependentStep is 2
+
+[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 1280 us
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 1292 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 1, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 0, dependentStep is 0
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 1, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 0, dependentStep is 1
+
+[LYD INFO] blockId 0 channelID 1 RunInterpreter() time: 679 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 1, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 0, dependentStep is 2
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 1233 us
+
+[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 1268 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 1, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 0, dependentStep is 0
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 1, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 0, dependentStep is 1
+
+[LYD INFO] blockId 0 channelID 1 RunInterpreter() time: 754 us
+DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 1, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 0, dependentStep is 2
+
+[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 1286 us
+
+[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 1324 us
+   1269.0    4.96    6.61      0
+c196-102:20878:20878 [0] NCCL INFO comm 0x2b3292000010 rank 0 nranks 3 cudaDev 0 busId 2000 - Destroy COMPLETE
+# Out of bounds values : 3 FAILED
+# Avg bus bandwidth    : 6.46064 
+#
+
