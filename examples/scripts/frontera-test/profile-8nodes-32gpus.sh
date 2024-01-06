@@ -35,7 +35,7 @@ export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 128 -e 512MB -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 32K -e 512M -f 2 -g 1
 
 # ##################################### NCCL PROFILE #####################################
 # echo "##################################### NCCL PROFILE #####################################"
@@ -51,7 +51,16 @@ $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf
 # export NCCL_ALGO=Tree
 # export NCCL_PROTO=Simple
 
-# $MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+# export NCCL_MIN_NCHANNELS=1
+# export NCCL_MAX_NCHANNELS=1
+
+# # export NCCL_NTHREADS=256
+
+# # export NCCL_COMM_BLOCKING=1
+
+# # $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 1M -e 1M -w 0 -f 2 -g 1 -n 1
+
+# $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 128M -e 128M -f 2 -g 1
 
 ##################################### MSCCL #####################################
 echo "##################################### MSCCL #####################################"
@@ -69,5 +78,6 @@ export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_DEBUG=TRACE
 export NCCL_PROTO=Simple
+export NCCL_NTHREADS=512
 
-$MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 128 -e 512MB -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 512M -f 2 -g 1

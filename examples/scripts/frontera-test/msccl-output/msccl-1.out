@@ -1,76 +1,27 @@
-c196-102:20879:20879 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.120<0>
-c196-102:20879:20879 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
-c196-102:20879:20879 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.120<0>
-c196-102:20879:20879 [1] NCCL INFO Using network IB
-c196-102:20879:20913 [1] NCCL INFO Setting affinity for GPU 1 to e000e0
-c196-102:20879:20913 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0
-c196-102:20879:20913 [1] NCCL INFO Channel 00 : 1[3000] -> 2[82000] via direct shared memory
-c196-102:20879:20913 [1] NCCL INFO Channel 01 : 1[3000] -> 2[82000] via direct shared memory
-c196-102:20879:20913 [1] NCCL INFO Connected all rings
-c196-102:20879:20913 [1] NCCL INFO Channel 00 : 1[3000] -> 0[2000] via direct shared memory
-c196-102:20879:20913 [1] NCCL INFO Channel 01 : 1[3000] -> 0[2000] via direct shared memory
-c196-102:20879:20913 [1] NCCL INFO Connected all trees
-c196-102:20879:20913 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_3nodes_channel2_chunk6.xml
-c196-102:20879:20913 [1] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_3nodes_channel2_chunk6.xml
-c196-102:20879:20913 [1] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_3nodes_channel2_chunk6.xml successfully.
-c196-102:20879:20913 [1] NCCL INFO Connected 1 MSCCL algorithms
-c196-102:20879:20913 [1] NCCL INFO NCCL_PROTO set by environment to Simple
-c196-102:20879:20913 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
-c196-102:20879:20913 [1] NCCL INFO threadThresholds 8/8/64 | 24/8/64 | 8/8/64 | 8/8/512
-c196-102:20879:20913 [1] NCCL INFO 2 coll channels, 2 p2p channels, 2 p2p channels per peer
-c196-102:20879:20913 [1] NCCL INFO comm 0x2b4ccd0bc010 rank 1 nranks 3 cudaDev 1 busId 3000 - Init COMPLETE
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 0, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 2, dependentStep is 0
-
-[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 447 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 0, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 2, dependentStep is 1
-
-[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 987 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 0, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 2, dependentStep is 2
-
-[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 1501 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 0, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 2, dependentStep is 0
-
-[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 515 us
-
-[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 985 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 0, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 2, dependentStep is 1
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 0, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 2, dependentStep is 2
-
-[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 1534 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 0, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 2, dependentStep is 0
-
-[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 662 us
-
-[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 1116 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 0, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 2, dependentStep is 1
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 0, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 2, dependentStep is 2
-
-[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 1635 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 0, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 2, dependentStep is 0
-
-[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 487 us
-
-[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 970 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 0, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 2, dependentStep is 1
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 0, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 2, dependentStep is 2
-
-[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 1500 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 0, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 2, dependentStep is 0
-
-[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 487 us
-
-[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 946 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 0, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 2, dependentStep is 1
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 0, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 2, dependentStep is 2
-
-[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 1455 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 0, bid is 0, tid is 0, numDependences is 1, dependentPointer is 0, dependentBid is 2, dependentStep is 0
-
-[LYD INFO] blockId 2 channelID 0 RunInterpreter() time: 513 us
-
-[LYD INFO] blockId 1 channelID 1 RunInterpreter() time: 941 us
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 1, bid is 0, tid is 0, numDependences is 1, dependentPointer is 1, dependentBid is 2, dependentStep is 1
-DEVICE | msccl_interpreter.h:145 | runInterpreter() | step in TB is 2, bid is 0, tid is 0, numDependences is 1, dependentPointer is 2, dependentBid is 2, dependentStep is 2
-
-[LYD INFO] blockId 0 channelID 0 RunInterpreter() time: 1467 us
-c196-102:20879:20879 [1] NCCL INFO comm 0x2b4ccd0bc010 rank 1 nranks 3 cudaDev 1 busId 3000 - Destroy COMPLETE
+c197-092:7552:7552 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.140<0>
+c197-092:7552:7552 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-092:7552:7552 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.140<0>
+c197-092:7552:7552 [1] NCCL INFO Using network IB
+c197-092:7552:7592 [1] NCCL INFO Setting affinity for GPU 1 to f000f0
+c197-092:7552:7592 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0
+c197-092:7552:7592 [1] NCCL INFO Channel 00 : 1[3000] -> 2[82000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Channel 01 : 1[3000] -> 2[82000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Connected all rings
+c197-092:7552:7592 [1] NCCL INFO Channel 00 : 1[3000] -> 0[2000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Channel 01 : 1[3000] -> 0[2000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Connected all trees
+c197-092:7552:7592 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml
+c197-092:7552:7592 [1] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml
+c197-092:7552:7592 [1] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml successfully.
+c197-092:7552:7592 [1] NCCL INFO Channel 02 : 1[3000] -> 2[82000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Channel 03 : 1[3000] -> 2[82000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Channel 02 : 1[3000] -> 0[2000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Channel 03 : 1[3000] -> 0[2000] via direct shared memory
+c197-092:7552:7592 [1] NCCL INFO Connected 1 MSCCL algorithms
+c197-092:7552:7592 [1] NCCL INFO NCCL_NTHREADS set by environment to 512.
+c197-092:7552:7592 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-092:7552:7592 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-092:7552:7592 [1] NCCL INFO threadThresholds 8/8/64 | 512/8/64 | 8/8/64 | 8/8/512
+c197-092:7552:7592 [1] NCCL INFO 4 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-092:7552:7592 [1] NCCL INFO comm 0x2b956cdb7010 rank 1 nranks 64 cudaDev 1 busId 3000 - Init COMPLETE
+c197-092:7552:7552 [1] NCCL INFO comm 0x2b956cdb7010 rank 1 nranks 64 cudaDev 1 busId 3000 - Destroy COMPLETE

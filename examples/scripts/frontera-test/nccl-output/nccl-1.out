@@ -1,32 +1,92 @@
 
-c197-071:23540:23540 [1] misc/cudawrap.cc:112 NCCL WARN cuDriverGetVersion failed with 34
-c197-071:23540:23540 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.135<0>
-c197-071:23540:23540 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
-c197-071:23540:23577 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.135<0>
-c197-071:23540:23577 [1] NCCL INFO Using network IB
-c197-071:23540:23577 [1] NCCL INFO Setting affinity for GPU 1 to f000f0
-c197-071:23540:23577 [1] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
-c197-071:23540:23577 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
-c197-071:23540:23577 [1] NCCL INFO Trees [0] 2/-1/-1->1->0
-c197-071:23540:23577 [1] NCCL INFO Channel 00 : 1[3000] -> 2[82000] via SHM/direct/direct
-c197-071:23540:23577 [1] NCCL INFO Connected all rings
-c197-071:23540:23577 [1] NCCL INFO Channel 00 : 1[3000] -> 0[2000] via SHM/direct/direct
-c197-071:23540:23577 [1] NCCL INFO Connected all trees
-c197-071:23540:23577 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
-c197-071:23540:23577 [1] NCCL INFO 1 coll channels, 1 p2p channels, 1 p2p channels per peer
-c197-071:23540:23577 [1] NCCL INFO comm 0x51c3870 rank 1 nranks 16 cudaDev 1 busId 3000 - Init COMPLETE
+c196-111:14564:14564 [1] misc/cudawrap.cc:112 NCCL WARN cuDriverGetVersion failed with 34
+c196-111:14564:14564 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.121<0>
+c196-111:14564:14564 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-111:14564:14605 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.121<0>
+c196-111:14564:14605 [1] NCCL INFO Using network IB
+c196-111:14564:14605 [1] NCCL INFO Setting affinity for GPU 1 to f000f0
+c196-111:14564:14605 [1] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 1.
+c196-111:14564:14605 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 1.
+c196-111:14564:14605 [1] NCCL INFO Trees [0] 2/-1/-1->1->0
+c196-111:14564:14605 [1] NCCL INFO Channel 00 : 1[3000] -> 2[82000] via SHM/direct/direct
+c196-111:14564:14605 [1] NCCL INFO Connected all rings
+c196-111:14564:14605 [1] NCCL INFO Channel 00 : 1[3000] -> 0[2000] via SHM/direct/direct
+c196-111:14564:14605 [1] NCCL INFO Connected all trees
+c196-111:14564:14605 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 512 | 512
+c196-111:14564:14605 [1] NCCL INFO 1 coll channels, 1 p2p channels, 1 p2p channels per peer
+c196-111:14564:14605 [1] NCCL INFO comm 0x6864d00 rank 1 nranks 16 cudaDev 1 busId 3000 - Init COMPLETE
 HOST | common.cu:1021 | run() | ncclGroupEnd() finished
 HOST | common.cu:1033 | run() | cudaHostAlloc() finished
 HOST | common.cu:645 | threadRunTests() | ncclTestEngine().runTest start
 HOST | allreduce.cu:88 | AllReduceRunTest() | TimeTest start
 HOST | allreduce.cu:91 | AllReduceRunTest() | start type_count 0, op_count 0
 HOST | common.cu:604 | TimeTest() | before startColl for large size
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 1
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 2
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 3
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 4
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
 HOST | common.cu:610 | TimeTest() | after completeColl for large size
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 1
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 2
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 3
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 4
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
 HOST | common.cu:619 | TimeTest() | before BenchTime()
 HOST | common.cu:627 | TimeTest() | The first BenchTime launched, start out of place
@@ -34,111 +94,309 @@ HOST | common.cu:419 | BenchTime() | start syc
 HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
 HOST | common.cu:423 | BenchTime() | end sync
 HOST | common.cu:443 | BenchTime() | before Performance Benchmark
 HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 1
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 2
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 3
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 4
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 5
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 6
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 7
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 8
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 9
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 10
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 11
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 12
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 13
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 14
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 15
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 16
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 17
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 18
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 19
 HOST | common.cu:452 | BenchTime() | after Performance Benchmark
 HOST | common.cu:455 | BenchTime() | start graph capture
 HOST | common.cu:474 | BenchTime() | end graph capture
 HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
 HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
 HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
 HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
-
- DEVICE | total size in run tree() is: 262144
-
- DEVICE | nthreads is: 640
-
- DEVICE | loopSize is: 16384
-
- DEVICE | nChannels is: 1
-
- DEVICE | chunkSize is: 16384
-
- DEVICE | total size in run tree() is: 262144
-
- DEVICE | nthreads is: 640
-
- DEVICE | loopSize is: 16384
-
- DEVICE | nChannels is: 1
-
- DEVICE | chunkSize is: 16384
 HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 0, iter is 0
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
-
- DEVICE | total size in run tree() is: 262144
-
- DEVICE | nthreads is: 640
-
- DEVICE | loopSize is: 16384
-
- DEVICE | nChannels is: 1
-
- DEVICE | chunkSize is: 16384
 HOST | common.cu:629 | TimeTest() | The first BenchTime finished, end out of place
 HOST | common.cu:630 | TimeTest() | The second BenchTime launched, start in place
 HOST | common.cu:419 | BenchTime() | start syc
 HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
 HOST | common.cu:423 | BenchTime() | end sync
 HOST | common.cu:443 | BenchTime() | before Performance Benchmark
 HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 1
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 2
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 3
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 4
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 5
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 6
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 7
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 8
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 9
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 10
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 11
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 12
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 13
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 14
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 15
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 16
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 17
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 18
+HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 19
 HOST | common.cu:452 | BenchTime() | after Performance Benchmark
 HOST | common.cu:455 | BenchTime() | start graph capture
 HOST | common.cu:474 | BenchTime() | end graph capture
 HOST | common.cu:477 | BenchTime() | before Performance Benchmark's completeColl()
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
 HOST | common.cu:481 | BenchTime() | after Performance Benchmark's completeColl()
 HOST | common.cu:501 | BenchTime() | after args->collTest->getBw and before barrier()
 HOST | common.cu:505 | BenchTime() | after args->collTest->getBw and barrier()
-
- DEVICE | total size in run tree() is: 262144
-
- DEVICE | nthreads is: 640
-
- DEVICE | loopSize is: 16384
-
- DEVICE | nChannels is: 1
-
- DEVICE | chunkSize is: 16384
-
- DEVICE | total size in run tree() is: 262144
-
- DEVICE | nthreads is: 640
-
- DEVICE | loopSize is: 16384
-
- DEVICE | nChannels is: 1
-
- DEVICE | chunkSize is: 16384
 HOST | common.cu:332 | startColl() | start startColl(), type is 7, opIndex is 0, root is -1, in_place is 1, iter is 0
 HOST | common.cu:402 | completeColl() | blocking_coll is: 0
 HOST | common.cu:405 | completeColl() | before testStreamSynchronize()
+DEVICE | total size in run tree() is: 33554432
+DEVICE | nthreads is: 640
+DEVICE | loopSize is: 131072
+DEVICE | nChannels is: 1
+DEVICE | chunkSize is: 131072
 HOST | common.cu:407 | completeColl() | after testStreamSynchronize()
-
- DEVICE | total size in run tree() is: 262144
-
- DEVICE | nthreads is: 640
-
- DEVICE | loopSize is: 16384
-
- DEVICE | nChannels is: 1
-
- DEVICE | chunkSize is: 16384
 HOST | common.cu:632 | TimeTest() | The second BenchTime finished, end in place
 HOST | common.cu:636 | TimeTest() | after BenchTime()
 HOST | allreduce.cu:93 | AllReduceRunTest() | end type_count 0, op_count 0
 HOST | allreduce.cu:96 | AllReduceRunTest() | TimeTest finished
 HOST | common.cu:647 | threadRunTests() | ncclTestEngine().runTest finished
-c197-071:23540:23540 [1] NCCL INFO comm 0x51c3870 rank 1 nranks 16 cudaDev 1 busId 3000 - Destroy COMPLETE
+c196-111:14564:14564 [1] NCCL INFO comm 0x6864d00 rank 1 nranks 16 cudaDev 1 busId 3000 - Destroy COMPLETE
