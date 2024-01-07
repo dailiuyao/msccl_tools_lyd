@@ -4,7 +4,7 @@
 #PBS -l walltime=00:05:00
 #PBS -q debug-scaling
 #PBS -l filesystems=home
-#PBS -A CSC250STPM09
+#PBS -A MPICH_MCS
 #PBS -k doe
 #PBS -N nccl-profile-plugin
 #PBS -o nccl-profile-plugin.out
@@ -49,14 +49,14 @@ export NCCL_PROTO=Simple
 
 echo "NCCL TEST with Original NCCL"
 
-export NCCL_TEST_HOME="/home/yuke/ncclPG/nccl-tests"
+export NCCL_TEST_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests"
 
-NCCL_SRC_LOCATION="/home/yuke/ncclPG/nccl"
+NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl"
 export NCCL_SRC_LOCATION
 
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
+$MPIEXEC_HOME/bin/mpiexec -n 8 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
 
 # ################################### NCCL TEST Profile ##########################################################
 
