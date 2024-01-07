@@ -1,14 +1,14 @@
 #!/bin/bash -l
-#PBS -l select=2:system=polaris
+#PBS -l select=4:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=00:05:00
+#PBS -l walltime=00:10:00
 #PBS -q debug-scaling
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
-#PBS -N nccl-profile-plugin
-#PBS -o log/nccl-profile-plugin.out
-#PBS -e log/nccl-profile-plugin.error
+#PBS -N ccl-4nodes
+#PBS -o log/ccl-4nodes.out
+#PBS -e log/ccl-4nodes.error
 
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
@@ -50,37 +50,38 @@ export NCCL_SRC_LOCATION
 
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 
-$MPIEXEC_HOME/bin/mpiexec -n 8 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
+$MPIEXEC_HOME/bin/mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32K -e 512MB -f 2 -g 1
 
 # ################################### NCCL TEST Profile ##########################################################
 
 # echo "NCCL TEST with NCCL Profile"
 
-# export NCCL_TEST_PROFILE_HOME="/home/yuke/ncclPG/nccl-tests-profile"
+# export NCCL_TEST_PROFILE_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-profile"
 
-# NCCL_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/nccl_profile"
+# NCCL_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl_profile"
 # export NCCL_PROFILE_SRC_LOCATION
 
 # export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_PROFILE_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 
-# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_PROFILE_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_PROFILE_HOME}/build/all_reduce_perf -b 32K -e 512MB -f 2 -g 1
 
-# ################################### MSCCL TEST #########################################################
+################################### MSCCL TEST #########################################################
 
-# echo "NCCL TEST with MSCCL"
+echo "NCCL TEST with MSCCL"
 
-# export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/nccl-tests-msccl-test_profile"
-# :q
-# MSCCL_SRC_LOCATION="/home/yuke/ncclPG/msccl_test_profile"
-# export MSCCL_SRC_LOCATION
+export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
+:q
+MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
+export MSCCL_SRC_LOCATION
 
-# export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/msccl_tools_lyd"
+export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
 
-# export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-# export NCCL_DEBUG=TRACE
-# export NCCL_DEBUG_SUBSYS=INIT,ENV
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_channel2_chunk4.xml
-# export NCCL_ALGO=MSCCL,TREE,RING
-# export NCCL_PROTO=Simple
+export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+export NCCL_DEBUG=TRACE
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_4nodes_channel2_chunk32.xml
+export NCCL_ALGO=MSCCL,TREE,RING
+export NCCL_PROTO=Simple
+# export NCCL_NTHREADS=512
 
-# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 2 -e 512MB -w 0 -n 1 -f 2 -g 1
+$MPIEXEC_HOME/bin/mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 32K -e 512MB -f 2 -g 1

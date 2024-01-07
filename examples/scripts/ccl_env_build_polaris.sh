@@ -16,9 +16,6 @@ module load nvhpc-mixed
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
 
-# export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
-# export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
-
 # Set location to store MSCCL_TEST source/repository
 MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
 export MSCCL_SRC_LOCATION

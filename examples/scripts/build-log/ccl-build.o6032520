@@ -1,0 +1,39 @@
+[INFO] Updating LD_LIBRARY_PATH and PATH to include MSCCL!
+[DEBUG] NCCL_HOME has been set to: /home1/09168/ldai1/ccl-build/msccl-lyd/build
+
+[INFO] NCCL Tests with MSCCL repository already exists.
+
+~/ccl-build/nccl-tests-profile-msccl ~/ccl-build/msccl_tools_lyd/examples/scripts
+
+make -C src clean BUILDDIR=/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build
+make[1]: Entering directory `/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/src'
+make[1]: Leaving directory `/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/src'
+[INFO] Building NCCL tests (MSCCL)
+make -C src build BUILDDIR=/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build
+make[1]: Entering directory `/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/src'
+Compiling  timer.cc                            > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/timer.o
+Compiling /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/verifiable/verifiable.o
+Compiling  all_reduce.cu                       > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/all_reduce.o
+Compiling  common.cu                           > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/common.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/all_reduce.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/all_reduce_perf
+Compiling  all_gather.cu                       > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/all_gather.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/all_gather.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/all_gather_perf
+Compiling  broadcast.cu                        > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/broadcast.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/broadcast.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/broadcast_perf
+Compiling  reduce_scatter.cu                   > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/reduce_scatter.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/reduce_scatter.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/reduce_scatter_perf
+Compiling  reduce.cu                           > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/reduce.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/reduce.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/reduce_perf
+Compiling  alltoall.cu                         > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/alltoall.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/alltoall.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/alltoall_perf
+Compiling  scatter.cu                          > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/scatter.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/scatter.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/scatter_perf
+Compiling  gather.cu                           > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/gather.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/gather.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/gather_perf
+Compiling  sendrecv.cu                         > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/sendrecv.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/sendrecv.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/sendrecv_perf
+Compiling  hypercube.cu                        > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/hypercube.o
+Linking  /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/hypercube.o > /home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/build/hypercube_perf
+make[1]: Leaving directory `/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl/src'
+~/ccl-build/msccl_tools_lyd/examples/scripts
+

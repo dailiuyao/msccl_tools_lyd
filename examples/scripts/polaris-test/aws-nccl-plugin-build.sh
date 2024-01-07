@@ -4,11 +4,11 @@
 #PBS -l walltime=00:05:59
 #PBS -q debug
 #PBS -l filesystems=home
-#PBS -A CSC250STPM09
+#PBS -A MPICH_MCS 
 #PBS -k doe
 #PBS -N install-ofi-nccl
-#PBS -o install-ofi-nccl.out
-#PBS -e install-ofi-nccl.error
+#PBS -o log/install-ofi-nccl.out
+#PBS -e log/install-ofi-nccl.error
 
 module swap PrgEnv-nvhpc PrgEnv-gnu
 module load nvhpc-mixed
