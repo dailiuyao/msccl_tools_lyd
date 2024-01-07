@@ -2,7 +2,7 @@
 #PBS -l select=4:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:10:00
-#PBS -q debug-scaling
+#PBS -q demand
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
@@ -50,6 +50,14 @@ export NCCL_SRC_LOCATION
 
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 
+export NCCL_DEBUG=TRACE
+export NCCL_ALGO=Tree
+export NCCL_PROTO=Simple
+export NCCL_NTHREADS=256
+export NCCL_MIN_NCHANNELS=4
+export NCCL_MAX_NCHANNELS=4
+
+
 $MPIEXEC_HOME/bin/mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 32K -e 512MB -f 2 -g 1
 
 # ################################### NCCL TEST Profile ##########################################################
@@ -79,9 +87,9 @@ export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_4nodes_channel2_chunk32.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_4nodes_channel4_chunk64.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
-# export NCCL_NTHREADS=512
+export NCCL_NTHREADS=128
 
 $MPIEXEC_HOME/bin/mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 32K -e 512MB -f 2 -g 1
