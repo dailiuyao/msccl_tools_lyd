@@ -31,9 +31,13 @@ export NCCLTESTS_SRC_LOCATION
 
 export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
+export NCCL_MIN_NCHANNELS=4
+export NCCL_MAX_NCHANNELS=4
+
 export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
+export NCCL_NTHREADS=512
 
 $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 32K -e 512M -f 2 -g 1
 
@@ -74,10 +78,10 @@ export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_H
 
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel2_chunk64.xml
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel4_chunk128.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_DEBUG=TRACE
 export NCCL_PROTO=Simple
-export NCCL_NTHREADS=512
+export NCCL_NTHREADS=256
 
 $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 512M -f 2 -g 1

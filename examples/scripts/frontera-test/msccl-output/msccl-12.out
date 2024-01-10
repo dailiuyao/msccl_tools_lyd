@@ -1,41 +1,29 @@
-c197-111:27039:27039 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.143<0>
-c197-111:27039:27039 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
-c197-111:27039:27039 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.143<0>
-c197-111:27039:27039 [0] NCCL INFO Using network IB
-c197-111:27039:27079 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
-c197-111:27039:27079 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] 13/4/-1->12->28
-c197-111:27039:27079 [0] NCCL INFO Channel 00/0 : 11[83000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 01/0 : 11[83000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 00 : 12[2000] -> 13[3000] via direct shared memory
-c197-111:27039:27079 [0] NCCL INFO Channel 01 : 12[2000] -> 13[3000] via direct shared memory
-c197-111:27039:27079 [0] NCCL INFO Connected all rings
-c197-111:27039:27079 [0] NCCL INFO Channel 00/0 : 8[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 01/0 : 4[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 01/0 : 12[2000] -> 28[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 01/0 : 28[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 01/0 : 12[2000] -> 4[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 00/0 : 12[2000] -> 8[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Connected all trees
-c197-111:27039:27079 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml
-c197-111:27039:27079 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml
-c197-111:27039:27079 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml successfully.
-c197-111:27039:27079 [0] NCCL INFO Channel 02 : 12[2000] -> 13[3000] via direct shared memory
-c197-111:27039:27079 [0] NCCL INFO Channel 03 : 12[2000] -> 13[3000] via direct shared memory
-c197-111:27039:27079 [0] NCCL INFO Channel 01/0 : 8[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 02/0 : 4[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 03/0 : 4[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 02/0 : 12[2000] -> 28[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 03/0 : 12[2000] -> 28[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 02/0 : 28[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 03/0 : 28[2000] -> 12[2000] [receive] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 02/0 : 12[2000] -> 4[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 03/0 : 12[2000] -> 4[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Channel 01/0 : 12[2000] -> 8[2000] [send] via NET/IB/0
-c197-111:27039:27079 [0] NCCL INFO Connected 1 MSCCL algorithms
-c197-111:27039:27079 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
-c197-111:27039:27079 [0] NCCL INFO NCCL_PROTO set by environment to Simple
-c197-111:27039:27079 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
-c197-111:27039:27079 [0] NCCL INFO threadThresholds 8/8/64 | 512/8/64 | 8/8/64 | 8/8/512
-c197-111:27039:27079 [0] NCCL INFO 4 coll channels, 2 p2p channels, 2 p2p channels per peer
-c197-111:27039:27079 [0] NCCL INFO comm 0x2b8505259010 rank 12 nranks 64 cudaDev 0 busId 2000 - Init COMPLETE
-c197-111:27039:27039 [0] NCCL INFO comm 0x2b8505259010 rank 12 nranks 64 cudaDev 0 busId 2000 - Destroy COMPLETE
+c197-022:17171:17171 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.126<0>
+c197-022:17171:17171 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-022:17171:17171 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.126<0>
+c197-022:17171:17171 [0] NCCL INFO Using network IB
+c197-022:17171:17213 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c197-022:17171:17213 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] 13/4/-1->12->28
+c197-022:17171:17213 [0] NCCL INFO Channel 00/0 : 11[83000] -> 12[2000] [receive] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Channel 01/0 : 11[83000] -> 12[2000] [receive] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Channel 00 : 12[2000] -> 13[3000] via direct shared memory
+c197-022:17171:17213 [0] NCCL INFO Channel 01 : 12[2000] -> 13[3000] via direct shared memory
+c197-022:17171:17213 [0] NCCL INFO Connected all rings
+c197-022:17171:17213 [0] NCCL INFO Channel 00/0 : 8[2000] -> 12[2000] [receive] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Channel 01/0 : 4[2000] -> 12[2000] [receive] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Channel 01/0 : 28[2000] -> 12[2000] [receive] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Channel 01/0 : 12[2000] -> 28[2000] [send] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Channel 01/0 : 12[2000] -> 4[2000] [send] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Channel 00/0 : 12[2000] -> 8[2000] [send] via NET/IB/0
+c197-022:17171:17213 [0] NCCL INFO Connected all trees
+c197-022:17171:17213 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel2_chunk64.xml
+c197-022:17171:17213 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel2_chunk64.xml
+c197-022:17171:17213 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel2_chunk64.xml successfully.
+c197-022:17171:17213 [0] NCCL INFO Connected 1 MSCCL algorithms
+c197-022:17171:17213 [0] NCCL INFO NCCL_NTHREADS set by environment to 128.
+c197-022:17171:17213 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-022:17171:17213 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-022:17171:17213 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 8/8/64 | 8/8/512
+c197-022:17171:17213 [0] NCCL INFO 2 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-022:17171:17213 [0] NCCL INFO comm 0x2aae7cdb7010 rank 12 nranks 32 cudaDev 0 busId 2000 - Init COMPLETE
+c197-022:17171:17171 [0] NCCL INFO comm 0x2aae7cdb7010 rank 12 nranks 32 cudaDev 0 busId 2000 - Destroy COMPLETE

@@ -78,7 +78,6 @@ $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/
 echo "NCCL TEST with MSCCL"
 
 export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
-:q
 MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
 export MSCCL_SRC_LOCATION
 

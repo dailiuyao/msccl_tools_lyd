@@ -1,0 +1,2307 @@
+##################################### NCCL #####################################
+# nThread 1 nGpus 1 minBytes 32768 maxBytes 134217728 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  32208 on   c196-011 device  0 [0x02] Quadro RTX 5000
+#  Rank  1 Group  0 Pid   3872 on   c196-012 device  0 [0x02] Quadro RTX 5000
+c196-011:32208:32208 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.101<0>
+c196-011:32208:32208 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c196-011:32208:32208 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+
+c196-011:32208:32208 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
+NCCL version 2.17.1+cuda11.3
+
+c196-012:3872:3872 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
+c196-012:3872:3872 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.102<0>
+c196-012:3872:3872 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c196-012:3872:3872 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c196-012:3872:3893 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.102<0>
+c196-012:3872:3893 [0] NCCL INFO Using network IB
+c196-011:32208:32230 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.101<0>
+c196-011:32208:32230 [0] NCCL INFO Using network IB
+c196-011:32208:32230 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
+c196-012:3872:3893 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
+c196-012:3872:3893 [0] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1
+c196-012:3872:3893 [0] NCCL INFO P2P Chunksize set to 131072
+c196-011:32208:32230 [0] NCCL INFO Channel 00/02 :    0   1
+c196-011:32208:32230 [0] NCCL INFO Channel 01/02 :    0   1
+c196-011:32208:32230 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1
+c196-011:32208:32230 [0] NCCL INFO P2P Chunksize set to 131072
+c196-012:3872:3893 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
+c196-011:32208:32230 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
+c196-012:3872:3893 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
+c196-011:32208:32230 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
+c196-012:3872:3893 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
+c196-011:32208:32230 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
+c196-012:3872:3893 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
+c196-011:32208:32230 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
+c196-011:32208:32230 [0] NCCL INFO Connected all rings
+c196-011:32208:32230 [0] NCCL INFO Connected all trees
+c196-011:32208:32230 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
+c196-012:3872:3893 [0] NCCL INFO Connected all rings
+c196-012:3872:3893 [0] NCCL INFO Connected all trees
+c196-011:32208:32230 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-011:32208:32230 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+c196-011:32208:32230 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+c196-011:32208:32230 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c196-012:3872:3893 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
+c196-012:3872:3893 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-012:3872:3893 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+c196-012:3872:3893 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+c196-012:3872:3893 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c196-011:32208:32230 [0] NCCL INFO comm 0x6680b00 rank 0 nranks 2 cudaDev 0 busId 2000 commId 0xcb8a8f2b6132cadc - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+c196-012:3872:3893 [0] NCCL INFO comm 0x6806b60 rank 1 nranks 2 cudaDev 0 busId 2000 commId 0xcb8a8f2b6132cadc - Init COMPLETE
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+       32768          8192     float     sum      -1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+    83.51    0.39    0.39      0bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+    83.70    0.39    0.39      0
+       65536         16384     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    88.00    0.74    0.74      0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    85.89    0.76    0.76      0
+      131072         32768     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    103.6    1.26    1.26      0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    113.5    1.15    1.15      0
+      262144         65536     float     sum      -1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 1
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    139.2    1.88    1.88      0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    136.9    1.92    1.92      0
+      524288        131072     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    190.0    2.76    2.76      0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    190.1    2.76    2.76      0
+     1048576        262144     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    288.6    3.63    3.63      0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    281.9    3.72    3.72      0
+     2097152        524288     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    494.2    4.24    4.24      0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 0, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    493.3    4.25    4.25      0
+     4194304       1048576     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+    917.6    4.57    4.57      0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+    906.9    4.63    4.63      0
+     8388608       2097152     float     sum      -1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+   1790.4    4.69    4.69      0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+   1786.8    4.69    4.69      0
+    16777216       4194304     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+   3446.7    4.87    4.87      0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+   3437.3    4.88    4.88      0
+    33554432       8388608     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+   6785.3    4.95    4.95      0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+   6768.8    4.96    4.96      0
+    67108864      16777216     float     sum      -1bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+    13474    4.98    4.98      0bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    13434    5.00    5.00      0
+   134217728      33554432     float     sum      -1bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+    26683    5.03    5.03      0bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+bid is: 0, nthreads is: 640
+bid is: 1, nthreads is: 640
+    26525    5.06    5.06      0
+c196-011:32208:32208 [0] NCCL INFO comm 0x6680b00 rank 0 nranks 2 cudaDev 0 busId 2000 - Destroy COMPLETE
+c196-012:3872:3872 [0] NCCL INFO comm 0x6806b60 rank 1 nranks 2 cudaDev 0 busId 2000 - Destroy COMPLETE
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 3.39103 
+#
+
+##################################### MSCCL #####################################
