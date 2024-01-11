@@ -39,26 +39,26 @@ export NCCL_PROTO=Simple
 # kill $RTOP1_PID
 # kill $RTOP2_P
 
-################################### NCCL TEST Original ##########################################################
-
-echo "NCCL TEST with Original NCCL"
-
-export NCCL_TEST_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests"
-
-NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl"
-export NCCL_SRC_LOCATION
-
-export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-
-export NCCL_DEBUG=TRACE
-export NCCL_ALGO=Tree
-export NCCL_PROTO=Simple
-export NCCL_NTHREADS=192
-export NCCL_MIN_NCHANNELS=4
-export NCCL_MAX_NCHANNELS=4
-
-
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1
+# ################################### NCCL TEST Original ##########################################################
+# 
+# echo "NCCL TEST with Original NCCL"
+# 
+# export NCCL_TEST_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests"
+# 
+# NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl"
+# export NCCL_SRC_LOCATION
+# 
+# export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# 
+# export NCCL_DEBUG=TRACE
+# export NCCL_ALGO=Tree
+# export NCCL_PROTO=Simple
+# export NCCL_NTHREADS=192
+# export NCCL_MIN_NCHANNELS=4
+# export NCCL_MAX_NCHANNELS=4
+# 
+# 
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1
 
 # ################################### NCCL TEST Profile ##########################################################
 
@@ -86,7 +86,7 @@ export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_channel4_chunk8.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_channel2_chunk4.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 export NCCL_NTHREADS=128

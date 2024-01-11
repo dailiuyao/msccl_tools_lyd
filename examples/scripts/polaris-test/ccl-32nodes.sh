@@ -53,9 +53,9 @@ export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/li
 export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
-export NCCL_NTHREADS=512
-export NCCL_MIN_NCHANNELS=2
-export NCCL_MAX_NCHANNELS=2
+export NCCL_NTHREADS=256
+export NCCL_MIN_NCHANNELS=4
+export NCCL_MAX_NCHANNELS=4
 
 
 $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1
@@ -73,22 +73,23 @@ $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build
 
 # $MPIEXEC_HOME/bin/mpiexec -n 16 --ppn 4 --cpu-bind core ${NCCL_TEST_PROFILE_HOME}/build/all_reduce_perf -b 32K -e 512MB -f 2 -g 1
 
-################################### MSCCL TEST #########################################################
-
-echo "NCCL TEST with MSCCL"
-
-export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
-MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
-export MSCCL_SRC_LOCATION
-
-export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
-
-export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel2_chunk256.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_PROTO=Simple
-export NCCL_NTHREADS=256
-
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1
+# ################################### MSCCL TEST #########################################################
+# 
+# echo "NCCL TEST with MSCCL"
+# 
+# export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
+# MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
+# export MSCCL_SRC_LOCATION
+# 
+# export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
+# 
+# export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel2_chunk256.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_PROTO=Simple
+# export NCCL_NTHREADS=128
+# 
+# 
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1
