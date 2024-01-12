@@ -53,12 +53,22 @@ export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${NCCL_SRC_LOCATION}/build/li
 export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
-export NCCL_NTHREADS=512
+export NCCL_NTHREADS=64
 export NCCL_MIN_NCHANNELS=2
 export NCCL_MAX_NCHANNELS=2
 
 
 $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=128
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=256
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=512
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
 
 # ################################### NCCL TEST Profile ##########################################################
 
@@ -118,6 +128,16 @@ export NCCL_MAX_NCHANNELS=4
 
 
 $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 200
+
+export NCCL_NTHREADS=128
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=256
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=512
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
 
 # ################################### NCCL TEST Profile ##########################################################
 
