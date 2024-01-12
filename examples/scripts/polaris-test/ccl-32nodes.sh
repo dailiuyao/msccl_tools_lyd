@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #PBS -l select=32:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=00:10:00
+#PBS -l walltime=00:12:00
 #PBS -q demand
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
@@ -165,39 +165,74 @@ export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk512.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
-export NCCL_NTHREADS=512
+# export NCCL_NTHREADS=512
 
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk512.xml
 
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
-# 
-# 
+
 # export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk256.xml
-# 
+
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
-# 
+
 # export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk128.xml
-# 
+
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
-# 
+
 # export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk64.xml
-# 
+
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
-# 
+
 # export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk32.xml
-# 
+
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
-# 
-# 
+
+
 # export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk16.xml
-# 
+
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
-# 
+
 # export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk8.xml
-# 
+
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk4.xml
+
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+
+export NCCL_NTHREADS=128
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk512.xml
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk256.xml
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk128.xml
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk64.xml
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk32.xml
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk16.xml
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk8.xml
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
 
 export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk4.xml
 
