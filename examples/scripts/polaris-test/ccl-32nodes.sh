@@ -239,7 +239,7 @@ export NCCL_PROTO=Simple
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 100 -g 1
 
 
-export NCCL_NTHREADS=128
+export NCCL_NTHREADS=256
 
 export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk512.xml
 
