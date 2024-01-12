@@ -253,13 +253,20 @@ export MSCCL_TOOLS_XML='/Users/liuyaodai/github/msccl_tools_lyd/examples/xml'
 
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 4 64 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_4nodes_channel4_reverse_chunk64.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 256 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk256.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 256 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk256.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 128 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk128.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 128 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk128.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 64 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk64.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 64 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk64.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 32 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk32.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 32 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk32.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 16 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk16.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 8 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk8.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 4 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_32nodes_channel4_reverse_chunk4.xml
+
 
 
 
