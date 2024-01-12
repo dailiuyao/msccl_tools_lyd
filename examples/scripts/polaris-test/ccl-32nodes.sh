@@ -165,7 +165,7 @@ export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export NCCL_ALGO=MSCCL,TREE
+export NCCL_ALGO=TREE
 export NCCL_PROTO=Simple
 # export NCCL_NTHREADS=512
 
@@ -274,7 +274,7 @@ export NCCL_PROTO=Simple
 
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 60 -g 1
 
-export NCCL_ALGO=MSCCL,TREE,RING
+export NCCL_ALGO=TREE
 
 export NCCL_NTHREADS=64
 
