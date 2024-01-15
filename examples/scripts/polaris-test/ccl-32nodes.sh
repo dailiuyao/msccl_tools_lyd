@@ -274,6 +274,11 @@ export NCCL_PROTO=Simple
 
 # $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -n 60 -g 1
 
+
+export NCCL_MIN_NCHANNELS=4
+export NCCL_MAX_NCHANNELS=4
+
+
 export NCCL_ALGO=TREE
 
 export NCCL_NTHREADS=64
