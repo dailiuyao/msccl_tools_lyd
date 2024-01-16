@@ -32,10 +32,16 @@ def intra_broadcast_peer0(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_ind
 
 
 def allreduce_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, num_channel, instances, protocol):
-    trees=2
+    if (num_channel == 1):
+        trees=1
+    else:
+        trees=2
     size = num_nodes * num_local_gpus
     num_chunks_per_channel = int(num_chunks / num_channel)
-    num_channel_per_tree = int(num_channel/2)
+    if (num_channel == 1):
+        num_channel_per_tree=1
+    else:
+        num_channel_per_tree=int(num_channel/2)
     topology = fully_connected(size)
     collective = AllReduce(size, num_chunks, True)
 

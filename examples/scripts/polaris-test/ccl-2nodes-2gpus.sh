@@ -75,7 +75,7 @@ export NCCL_PROTO=Simple
 
 ################################### MSCCL TEST #########################################################
 
-echo "NCCL TEST with MSCCL"
+echo "NCCL TEST with MSCCL 1 channel 2gpus"
 
 export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
 MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
@@ -86,23 +86,100 @@ export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
 export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_channel2_reverse_chunk2.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk1.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
+export NCCL_NTHREADS=64
+
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
 export NCCL_NTHREADS=128
 
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=256
 
 $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
 
-echo "NCCL TEST with NCCL_MSCCL"
+export NCCL_NTHREADS=512
+
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+echo "NCCL TEST with NCCL_MSCCL 1 channel 2gpus"
 
 export NCCL_ALGO=TREE
-export NCCL_MIN_NCHANNELS=2
-export NCCL_MAX_NCHANNELS=2
+export NCCL_MIN_NCHANNELS=1
+export NCCL_MAX_NCHANNELS=1
+
+export NCCL_NTHREADS=64
 
 $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
 
+export NCCL_NTHREADS=128
 
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=256
+
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=512
+
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+echo "NCCL TEST with MSCCL 1 channel 4gpus"
+
+export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
+MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
+export MSCCL_SRC_LOCATION
+
+export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
+
+export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
+export NCCL_DEBUG=TRACE
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_4gpus_channel1_reverse_chunk1.xml
+export NCCL_ALGO=MSCCL,TREE,RING
+export NCCL_PROTO=Simple
+
+
+export NCCL_NTHREADS=64
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=128
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=256
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=512
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+echo "NCCL TEST with NCCL_MSCCL 1 channel 4gpus"
+
+export NCCL_ALGO=TREE
+export NCCL_MIN_NCHANNELS=1
+export NCCL_MAX_NCHANNELS=1
+
+export NCCL_NTHREADS=64
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=128
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=256
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+
+export NCCL_NTHREADS=512
+
+$MPIEXEC_HOME/bin/mpiexec -n 4 --ppn 2 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
 
 ##########################################   4 CHANNELS   ############################################
 
