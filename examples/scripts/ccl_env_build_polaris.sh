@@ -2,7 +2,7 @@
 #PBS -l select=1:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:05:00
-#PBS -q demand
+#PBS -q debug
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe

@@ -2,7 +2,7 @@
 #PBS -l select=2:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:10:00
-#PBS -q debug-scaling
+#PBS -q debug
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
@@ -87,15 +87,15 @@ export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
 export NCCL_PROTO=Simple
 
-# echo "NCCL TEST with NCCL_MSCCL 1 channel 2gpus"
+echo "NCCL TEST with NCCL_MSCCL 1 channel 2gpus"
 
-# export NCCL_ALGO=TREE
-# export NCCL_MIN_NCHANNELS=1
-# export NCCL_MAX_NCHANNELS=1
+export NCCL_ALGO=TREE
+export NCCL_MIN_NCHANNELS=1
+export NCCL_MAX_NCHANNELS=1
 
-# export NCCL_NTHREADS=64
+export NCCL_NTHREADS=64
 
-# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
 
 # export NCCL_NTHREADS=128
 
@@ -137,26 +137,26 @@ export NCCL_PROTO=Simple
 # unset NCCL_MIN_NCHANNELS
 
 
-echo "NCCL TEST with MSCCL 1 channel 2gpus 128 steps"
-
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk128.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-
-export NCCL_NTHREADS=64
-
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
-
-export NCCL_NTHREADS=128
-
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
-
-export NCCL_NTHREADS=256
-
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
-
-export NCCL_NTHREADS=512
-
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+# echo "NCCL TEST with MSCCL 1 channel 2gpus 128 steps"
+# 
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk128.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# 
+# export NCCL_NTHREADS=64
+# 
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+# 
+# export NCCL_NTHREADS=128
+# 
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+# 
+# export NCCL_NTHREADS=256
+# 
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
+# 
+# export NCCL_NTHREADS=512
+# 
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60
 
 # echo "NCCL TEST with MSCCL 1 channel 2gpus 4 steps"
 
