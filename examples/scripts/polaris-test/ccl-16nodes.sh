@@ -2,7 +2,7 @@
 #PBS -l select=16:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:05:00
-#PBS -q demand
+#PBS -q prod
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
@@ -86,7 +86,7 @@ $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/
 # export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 # export NCCL_DEBUG=TRACE
 # export NCCL_DEBUG_SUBSYS=INIT,ENV
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_16nodes_channel2_chunk128.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel2_chunk128.xml
 # export NCCL_ALGO=MSCCL,TREE,RING
 # export NCCL_PROTO=Simple
 # export NCCL_NTHREADS=256
@@ -143,7 +143,7 @@ $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/
 # export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 # export NCCL_DEBUG=TRACE
 # export NCCL_DEBUG_SUBSYS=INIT,ENV
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_16nodes_channel4_reverse_chunk256.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_reverse_chunk256.xml
 # export NCCL_ALGO=MSCCL,TREE,RING
 # export NCCL_PROTO=Simple
 # export NCCL_NTHREADS=256

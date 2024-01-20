@@ -2,7 +2,7 @@
 #PBS -l select=4:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:10:00
-#PBS -q demand
+#PBS -q preemptable
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
@@ -86,7 +86,7 @@ export NCCL_PROTO=Simple
 # export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 # export NCCL_DEBUG=TRACE
 # export NCCL_DEBUG_SUBSYS=INIT,ENV
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_4nodes_channel2_chunk32.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_4nodes_channel2_chunk32.xml
 # export NCCL_ALGO=MSCCL,TREE,RING
 # export NCCL_PROTO=Simple
 # export NCCL_NTHREADS=128
@@ -172,7 +172,7 @@ export NCCL_PROTO=Simple
 
 # echo "NCCL TEST with MSCCL"
 
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_4nodes_4gpus_channel1_reverse_chunk1.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_4nodes_4gpus_channel1_reverse_chunk1.xml
 # export NCCL_ALGO=MSCCL,TREE,RING
 
 # export NCCL_NTHREADS=64

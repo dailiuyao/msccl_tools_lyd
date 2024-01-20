@@ -303,7 +303,7 @@ export MSCCL_TOOLS_XML='/Users/liuyaodai/github/msccl_tools_lyd/examples/xml'
 
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 1 2 4 1 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk4.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 1 2 128 1 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk128.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 1 2 128 1 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk128.xml
 
 
 # ### a100 allpairs_v2
@@ -321,5 +321,14 @@ python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins1_ch4_hierarchical.xml
 
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_hierarchical_Simple_gpu64_ins1_ch4.xml
+
+
+
+######################################### the xml for HPDC 2024 #########################################
+
+
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 1 2 128 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk128.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree.py --protocol=Simple 128 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/basic_binary_tree_128gpus.xml
 
 

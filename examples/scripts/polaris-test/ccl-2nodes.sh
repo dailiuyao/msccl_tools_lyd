@@ -139,7 +139,7 @@ $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/b
 
 # echo "NCCL TEST with MSCCL 1 channel 2gpus 128 steps"
 # 
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk128.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk128.xml
 # export NCCL_ALGO=MSCCL,TREE,RING
 # 
 # export NCCL_NTHREADS=64
@@ -169,7 +169,7 @@ $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/b
 # export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 # export NCCL_DEBUG=TRACE
 # export NCCL_DEBUG_SUBSYS=INIT,ENV
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk4.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk4.xml
 # export NCCL_ALGO=MSCCL,TREE,RING
 # export NCCL_PROTO=Simple
 
@@ -240,7 +240,7 @@ $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/b
 # export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
 # export NCCL_DEBUG=TRACE
 # export NCCL_DEBUG_SUBSYS=INIT,ENV
-# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/allreduce_binary_tree_p_gpu01_2nodes_channel4_reverse_chunk8.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_channel4_reverse_chunk8.xml
 # export NCCL_ALGO=MSCCL,TREE,RING
 # export NCCL_PROTO=Simple
 # export NCCL_NTHREADS=128
