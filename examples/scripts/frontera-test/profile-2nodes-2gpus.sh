@@ -32,14 +32,42 @@ export NCCLTESTS_SRC_LOCATION
 export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
 export NCCL_DEBUG=TRACE
-export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
-export NCCL_NTHREADS=192
 
-export NCCL_MIN_NCHANNELS=4
-export NCCL_MAX_NCHANNELS=4
+export NCCL_ALGO=TREE
+export NCCL_NTHREADS=64
 
-$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=128
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=256
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=512
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_ALGO=RING
+export NCCL_NTHREADS=64
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=128
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=256
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=512
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
 
 # ##################################### NCCL PROFILE #####################################
 # echo "##################################### NCCL PROFILE #####################################"

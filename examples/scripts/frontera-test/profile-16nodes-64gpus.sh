@@ -8,7 +8,7 @@
 #SBATCH -n 64               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 00:19:00        # Run time (hh:mm:ss)
 ##SBATCH --mail-type=all    # Send email at begin and end of job
-##SBATCH -A ccl-run-8nodes-32gpus       # Project/Allocation name (req'd if you have more than 1)
+##SBATCH -A ccl-run-16nodes-64gpus       # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --mail-user=username@tacc.utexas.edu
 
 set -e
@@ -32,10 +32,41 @@ export NCCLTESTS_SRC_LOCATION
 export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
 export NCCL_DEBUG=TRACE
-export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 32K -e 512M -f 2 -g 1
+export NCCL_ALGO=TREE
+export NCCL_NTHREADS=64
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=128
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=256
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=512
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_ALGO=RING
+export NCCL_NTHREADS=64
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=128
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=256
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+
+export NCCL_NTHREADS=512
+
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
 
 # ##################################### NCCL PROFILE #####################################
 # echo "##################################### NCCL PROFILE #####################################"
@@ -61,23 +92,3 @@ $MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf
 # # $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 1M -e 1M -w 0 -f 2 -g 1 -n 1
 
 # $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 128M -e 128M -f 2 -g 1
-
-##################################### MSCCL #####################################
-echo "##################################### MSCCL #####################################"
-MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
-export MSCCL_SRC_LOCATION
-
-NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
-export NCCLTESTS_MSCCL_SRC_LOCATION
-
-export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
-
-export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk256.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_DEBUG=TRACE
-export NCCL_PROTO=Simple
-export NCCL_NTHREADS=512
-
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 512M -f 2 -g 1
