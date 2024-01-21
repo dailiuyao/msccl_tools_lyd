@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #PBS -l select=32:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=00:10:00
+#PBS -l walltime=00:12:00
 #PBS -q prod
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
