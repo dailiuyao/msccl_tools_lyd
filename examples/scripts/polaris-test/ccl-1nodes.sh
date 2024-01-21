@@ -6,9 +6,9 @@
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
-#PBS -N ccl-2nodes
-#PBS -o log/ccl-2nodes.out
-#PBS -e log/ccl-2nodes.error
+#PBS -N ccl-1nodes
+#PBS -o log/ccl-1nodes.out
+#PBS -e log/ccl-1nodes.error
 
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
@@ -58,7 +58,7 @@ export NCCL_MIN_NCHANNELS=2
 export NCCL_MAX_NCHANNELS=2
 
 
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -g 1
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 2 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -g 1
 
 # ################################### NCCL TEST Profile ##########################################################
 
