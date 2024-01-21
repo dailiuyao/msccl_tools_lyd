@@ -242,7 +242,7 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n.py --protocol=Simple 4 16 256 4 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk256.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n.py --protocol=Simple 4 16 128 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_16nodes_channel2_chunk128.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n.py --protocol=Simple 4 16 128 2 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_p_gpu01_16nodes_channel2_chunk128.xml
 
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_recursive_doubling_halving.py --protocol=LL 2 1 > ${MSCCL_TOOLS_XML}/allreduce_rec_doub_halv_LL_gpu2_ins1.xml
@@ -268,5 +268,12 @@ python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n.
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins1_ch4_hierarchical.xml
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_hierarchical_Simple_gpu64_ins1_ch4.xml
+
+
+######################################### the xml for HPDC 2024 #########################################
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree.py --protocol=Simple 128 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/allredcue_basic_binary_tree_128gpus.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 32 4 4 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_32nodes_channel4_chunk4.xml
 
 
