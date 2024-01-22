@@ -1,105 +1,128 @@
-# nThread 1 nGpus 1 minBytes 32768 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+# nThread 1 nGpus 1 minBytes 32768 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
 #
 # Using devices
-#  Rank  0 Group  0 Pid    651 on   c196-101 device  0 [0x02] Quadro RTX 5000
-#  Rank  1 Group  0 Pid    652 on   c196-101 device  1 [0x03] Quadro RTX 5000
-#  Rank  2 Group  0 Pid    665 on   c196-101 device  2 [0x82] Quadro RTX 5000
-#  Rank  3 Group  0 Pid    666 on   c196-101 device  3 [0x83] Quadro RTX 5000
-#  Rank  4 Group  0 Pid  28911 on   c197-022 device  0 [0x02] Quadro RTX 5000
-#  Rank  5 Group  0 Pid  28912 on   c197-022 device  1 [0x03] Quadro RTX 5000
-#  Rank  6 Group  0 Pid  28913 on   c197-022 device  2 [0x82] Quadro RTX 5000
-#  Rank  7 Group  0 Pid  28914 on   c197-022 device  3 [0x83] Quadro RTX 5000
-#  Rank  8 Group  0 Pid   2151 on   c197-031 device  0 [0x02] Quadro RTX 5000
-#  Rank  9 Group  0 Pid   2152 on   c197-031 device  1 [0x03] Quadro RTX 5000
-#  Rank 10 Group  0 Pid   2153 on   c197-031 device  2 [0x82] Quadro RTX 5000
-#  Rank 11 Group  0 Pid   2154 on   c197-031 device  3 [0x83] Quadro RTX 5000
-#  Rank 12 Group  0 Pid  23007 on   c197-052 device  0 [0x02] Quadro RTX 5000
-#  Rank 13 Group  0 Pid  23008 on   c197-052 device  1 [0x03] Quadro RTX 5000
-#  Rank 14 Group  0 Pid  23009 on   c197-052 device  2 [0x82] Quadro RTX 5000
-#  Rank 15 Group  0 Pid  23010 on   c197-052 device  3 [0x83] Quadro RTX 5000
-#  Rank 16 Group  0 Pid  22185 on   c198-041 device  0 [0x02] Quadro RTX 5000
-#  Rank 17 Group  0 Pid  22186 on   c198-041 device  1 [0x03] Quadro RTX 5000
-#  Rank 18 Group  0 Pid  22187 on   c198-041 device  2 [0x82] Quadro RTX 5000
-#  Rank 19 Group  0 Pid  22188 on   c198-041 device  3 [0x83] Quadro RTX 5000
-#  Rank 20 Group  0 Pid   6797 on   c198-042 device  0 [0x02] Quadro RTX 5000
-#  Rank 21 Group  0 Pid   6798 on   c198-042 device  1 [0x03] Quadro RTX 5000
-#  Rank 22 Group  0 Pid   6799 on   c198-042 device  2 [0x82] Quadro RTX 5000
-#  Rank 23 Group  0 Pid   6800 on   c198-042 device  3 [0x83] Quadro RTX 5000
-#  Rank 24 Group  0 Pid  17919 on   c199-011 device  0 [0x02] Quadro RTX 5000
-#  Rank 25 Group  0 Pid  17920 on   c199-011 device  1 [0x03] Quadro RTX 5000
-#  Rank 26 Group  0 Pid  17921 on   c199-011 device  2 [0x82] Quadro RTX 5000
-#  Rank 27 Group  0 Pid  17922 on   c199-011 device  3 [0x83] Quadro RTX 5000
-#  Rank 28 Group  0 Pid  23015 on   c199-032 device  0 [0x02] Quadro RTX 5000
-#  Rank 29 Group  0 Pid  23016 on   c199-032 device  1 [0x03] Quadro RTX 5000
-#  Rank 30 Group  0 Pid  23017 on   c199-032 device  2 [0x82] Quadro RTX 5000
-#  Rank 31 Group  0 Pid  23018 on   c199-032 device  3 [0x83] Quadro RTX 5000
-c196-101:651:651 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.119<0>
-c196-101:651:651 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
-c196-101:651:651 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.119<0>
-c196-101:651:651 [0] NCCL INFO Using network IB
+#  Rank  0 Group  0 Pid   7740 on   c198-011 device  0 [0x02] Quadro RTX 5000
+#  Rank  1 Group  0 Pid   7741 on   c198-011 device  1 [0x03] Quadro RTX 5000
+#  Rank  2 Group  0 Pid   7742 on   c198-011 device  2 [0x82] Quadro RTX 5000
+#  Rank  3 Group  0 Pid   7743 on   c198-011 device  3 [0x83] Quadro RTX 5000
+#  Rank  4 Group  0 Pid  10912 on   c198-012 device  0 [0x02] Quadro RTX 5000
+#  Rank  5 Group  0 Pid  10913 on   c198-012 device  1 [0x03] Quadro RTX 5000
+#  Rank  6 Group  0 Pid  10914 on   c198-012 device  2 [0x82] Quadro RTX 5000
+#  Rank  7 Group  0 Pid  10915 on   c198-012 device  3 [0x83] Quadro RTX 5000
+#  Rank  8 Group  0 Pid  26285 on   c198-021 device  0 [0x02] Quadro RTX 5000
+#  Rank  9 Group  0 Pid  26286 on   c198-021 device  1 [0x03] Quadro RTX 5000
+#  Rank 10 Group  0 Pid  26287 on   c198-021 device  2 [0x82] Quadro RTX 5000
+#  Rank 11 Group  0 Pid  26288 on   c198-021 device  3 [0x83] Quadro RTX 5000
+#  Rank 12 Group  0 Pid  27471 on   c198-022 device  0 [0x02] Quadro RTX 5000
+#  Rank 13 Group  0 Pid  27472 on   c198-022 device  1 [0x03] Quadro RTX 5000
+#  Rank 14 Group  0 Pid  27473 on   c198-022 device  2 [0x82] Quadro RTX 5000
+#  Rank 15 Group  0 Pid  27474 on   c198-022 device  3 [0x83] Quadro RTX 5000
+#  Rank 16 Group  0 Pid   5471 on   c198-031 device  0 [0x02] Quadro RTX 5000
+#  Rank 17 Group  0 Pid   5472 on   c198-031 device  1 [0x03] Quadro RTX 5000
+#  Rank 18 Group  0 Pid   5473 on   c198-031 device  2 [0x82] Quadro RTX 5000
+#  Rank 19 Group  0 Pid   5474 on   c198-031 device  3 [0x83] Quadro RTX 5000
+#  Rank 20 Group  0 Pid  32180 on   c198-032 device  0 [0x02] Quadro RTX 5000
+#  Rank 21 Group  0 Pid  32181 on   c198-032 device  1 [0x03] Quadro RTX 5000
+#  Rank 22 Group  0 Pid  32182 on   c198-032 device  2 [0x82] Quadro RTX 5000
+#  Rank 23 Group  0 Pid  32183 on   c198-032 device  3 [0x83] Quadro RTX 5000
+#  Rank 24 Group  0 Pid  25490 on   c198-041 device  0 [0x02] Quadro RTX 5000
+#  Rank 25 Group  0 Pid  25491 on   c198-041 device  1 [0x03] Quadro RTX 5000
+#  Rank 26 Group  0 Pid  25492 on   c198-041 device  2 [0x82] Quadro RTX 5000
+#  Rank 27 Group  0 Pid  25493 on   c198-041 device  3 [0x83] Quadro RTX 5000
+#  Rank 28 Group  0 Pid  18439 on   c198-042 device  0 [0x02] Quadro RTX 5000
+#  Rank 29 Group  0 Pid  18440 on   c198-042 device  1 [0x03] Quadro RTX 5000
+#  Rank 30 Group  0 Pid  18441 on   c198-042 device  2 [0x82] Quadro RTX 5000
+#  Rank 31 Group  0 Pid  18442 on   c198-042 device  3 [0x83] Quadro RTX 5000
+#  Rank 32 Group  0 Pid  22894 on   c198-051 device  0 [0x02] Quadro RTX 5000
+#  Rank 33 Group  0 Pid  22895 on   c198-051 device  1 [0x03] Quadro RTX 5000
+#  Rank 34 Group  0 Pid  22896 on   c198-051 device  2 [0x82] Quadro RTX 5000
+#  Rank 35 Group  0 Pid  22897 on   c198-051 device  3 [0x83] Quadro RTX 5000
+#  Rank 36 Group  0 Pid   9534 on   c199-021 device  0 [0x02] Quadro RTX 5000
+#  Rank 37 Group  0 Pid   9535 on   c199-021 device  1 [0x03] Quadro RTX 5000
+#  Rank 38 Group  0 Pid   9536 on   c199-021 device  2 [0x82] Quadro RTX 5000
+#  Rank 39 Group  0 Pid   9537 on   c199-021 device  3 [0x83] Quadro RTX 5000
+#  Rank 40 Group  0 Pid  27160 on   c199-022 device  0 [0x02] Quadro RTX 5000
+#  Rank 41 Group  0 Pid  27161 on   c199-022 device  1 [0x03] Quadro RTX 5000
+#  Rank 42 Group  0 Pid  27162 on   c199-022 device  2 [0x82] Quadro RTX 5000
+#  Rank 43 Group  0 Pid  27163 on   c199-022 device  3 [0x83] Quadro RTX 5000
+#  Rank 44 Group  0 Pid  25133 on   c199-031 device  0 [0x02] Quadro RTX 5000
+#  Rank 45 Group  0 Pid  25134 on   c199-031 device  1 [0x03] Quadro RTX 5000
+#  Rank 46 Group  0 Pid  25135 on   c199-031 device  2 [0x82] Quadro RTX 5000
+#  Rank 47 Group  0 Pid  25136 on   c199-031 device  3 [0x83] Quadro RTX 5000
+#  Rank 48 Group  0 Pid   7815 on   c199-032 device  0 [0x02] Quadro RTX 5000
+#  Rank 49 Group  0 Pid   7816 on   c199-032 device  1 [0x03] Quadro RTX 5000
+#  Rank 50 Group  0 Pid   7817 on   c199-032 device  2 [0x82] Quadro RTX 5000
+#  Rank 51 Group  0 Pid   7818 on   c199-032 device  3 [0x83] Quadro RTX 5000
+#  Rank 52 Group  0 Pid  24303 on   c199-041 device  0 [0x02] Quadro RTX 5000
+#  Rank 53 Group  0 Pid  24304 on   c199-041 device  1 [0x03] Quadro RTX 5000
+#  Rank 54 Group  0 Pid  24305 on   c199-041 device  2 [0x82] Quadro RTX 5000
+#  Rank 55 Group  0 Pid  24306 on   c199-041 device  3 [0x83] Quadro RTX 5000
+#  Rank 56 Group  0 Pid  17873 on   c199-042 device  0 [0x02] Quadro RTX 5000
+#  Rank 57 Group  0 Pid  17874 on   c199-042 device  1 [0x03] Quadro RTX 5000
+#  Rank 58 Group  0 Pid  17875 on   c199-042 device  2 [0x82] Quadro RTX 5000
+#  Rank 59 Group  0 Pid  17876 on   c199-042 device  3 [0x83] Quadro RTX 5000
+#  Rank 60 Group  0 Pid    468 on   c199-051 device  0 [0x02] Quadro RTX 5000
+#  Rank 61 Group  0 Pid    469 on   c199-051 device  1 [0x03] Quadro RTX 5000
+#  Rank 62 Group  0 Pid    470 on   c199-051 device  2 [0x82] Quadro RTX 5000
+#  Rank 63 Group  0 Pid    471 on   c199-051 device  3 [0x83] Quadro RTX 5000
+c198-011:7740:7740 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.145<0>
+c198-011:7740:7740 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c198-011:7740:7740 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.145<0>
+c198-011:7740:7740 [0] NCCL INFO Using network IB
 NCCL version 2.12.12.MSCCL.0.7.4+cuda11.3
-c196-101:651:697 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
-c196-101:651:697 [0] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 4.
-c196-101:651:697 [0] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 4.
-c196-101:651:697 [0] NCCL INFO Channel 00/04 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19
-c196-101:651:697 [0] NCCL INFO Channel 01/04 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19
-c196-101:651:697 [0] NCCL INFO Channel 02/04 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19
-c196-101:651:697 [0] NCCL INFO Channel 03/04 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19
-c196-101:651:697 [0] NCCL INFO Trees [0] 1/16/-1->0->-1 [1] 1/-1/-1->0->4 [2] 1/16/-1->0->-1 [3] 1/-1/-1->0->4
-c196-101:651:697 [0] NCCL INFO Channel 00/0 : 31[83000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 01/0 : 31[83000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 02/0 : 31[83000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 03/0 : 31[83000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 00 : 0[2000] -> 1[3000] via direct shared memory
-c196-101:651:697 [0] NCCL INFO Channel 01 : 0[2000] -> 1[3000] via direct shared memory
-c196-101:651:697 [0] NCCL INFO Channel 02 : 0[2000] -> 1[3000] via direct shared memory
-c196-101:651:697 [0] NCCL INFO Channel 03 : 0[2000] -> 1[3000] via direct shared memory
-c196-101:651:697 [0] NCCL INFO Connected all rings
-c196-101:651:697 [0] NCCL INFO Channel 01/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 03/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 00/0 : 16[2000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 02/0 : 16[2000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 00/0 : 0[2000] -> 16[2000] [send] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 02/0 : 0[2000] -> 16[2000] [send] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 01/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 03/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Connected all trees
-c196-101:651:697 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel4_chunk128.xml
-c196-101:651:697 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel4_chunk128.xml
-c196-101:651:697 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_8nodes_channel4_chunk128.xml successfully.
-c196-101:651:697 [0] NCCL INFO Channel 02/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 01/0 : 16[2000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 01/0 : 0[2000] -> 16[2000] [send] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Channel 02/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
-c196-101:651:697 [0] NCCL INFO Connected 1 MSCCL algorithms
-c196-101:651:697 [0] NCCL INFO NCCL_NTHREADS set by environment to 256.
-c196-101:651:697 [0] NCCL INFO NCCL_PROTO set by environment to Simple
-c196-101:651:697 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
-c196-101:651:697 [0] NCCL INFO threadThresholds 8/8/64 | 256/8/64 | 8/8/64 | 8/8/512
-c196-101:651:697 [0] NCCL INFO 4 coll channels, 4 p2p channels, 2 p2p channels per peer
-c196-101:651:697 [0] NCCL INFO comm 0x2b60ce000010 rank 0 nranks 32 cudaDev 0 busId 2000 - Init COMPLETE
+c198-011:7740:7774 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c198-011:7740:7774 [0] NCCL INFO Channel 00/02 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19
+c198-011:7740:7774 [0] NCCL INFO Channel 01/02 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19
+c198-011:7740:7774 [0] NCCL INFO Trees [0] 1/32/-1->0->-1 [1] 1/-1/-1->0->4
+c198-011:7740:7774 [0] NCCL INFO Channel 00/0 : 63[83000] -> 0[2000] [receive] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 01/0 : 63[83000] -> 0[2000] [receive] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 00 : 0[2000] -> 1[3000] via direct shared memory
+c198-011:7740:7774 [0] NCCL INFO Channel 01 : 0[2000] -> 1[3000] via direct shared memory
+c198-011:7740:7774 [0] NCCL INFO Connected all rings
+c198-011:7740:7774 [0] NCCL INFO Channel 01/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 00/0 : 32[2000] -> 0[2000] [receive] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 00/0 : 0[2000] -> 32[2000] [send] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 01/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Connected all trees
+c198-011:7740:7774 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk4.xml
+c198-011:7740:7774 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk4.xml
+c198-011:7740:7774 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk4.xml successfully.
+c198-011:7740:7774 [0] NCCL INFO Channel 02 : 0[2000] -> 1[3000] via direct shared memory
+c198-011:7740:7774 [0] NCCL INFO Channel 03 : 0[2000] -> 1[3000] via direct shared memory
+c198-011:7740:7774 [0] NCCL INFO Channel 02/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 03/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 01/0 : 32[2000] -> 0[2000] [receive] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 01/0 : 0[2000] -> 32[2000] [send] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 02/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Channel 03/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
+c198-011:7740:7774 [0] NCCL INFO Connected 1 MSCCL algorithms
+c198-011:7740:7774 [0] NCCL INFO NCCL_NTHREADS set by environment to 64.
+c198-011:7740:7774 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c198-011:7740:7774 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c198-011:7740:7774 [0] NCCL INFO threadThresholds 8/8/64 | 512/8/64 | 8/8/64 | 8/8/512
+c198-011:7740:7774 [0] NCCL INFO 4 coll channels, 2 p2p channels, 2 p2p channels per peer
+c198-011:7740:7774 [0] NCCL INFO comm 0x2b0a8e000010 rank 0 nranks 64 cudaDev 0 busId 2000 - Init COMPLETE
 #
 #                                                              out-of-place                       in-place          
 #       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
 #        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
-c196-101:651:651 [0] NCCL INFO Launch mode Parallel
-       32768          8192     float     sum      -1   1262.4    0.03    0.05  262144   1265.3    0.03    0.05      0
-       65536         16384     float     sum      -1   1257.1    0.05    0.10  524288   1259.7    0.05    0.10      0
-      131072         32768     float     sum      -1   1263.1    0.10    0.20  1.04858e+06   1282.9    0.10    0.20      0
-      262144         65536     float     sum      -1   1257.7    0.21    0.40  2.09715e+06   1260.1    0.21    0.40      0
-      524288        131072     float     sum      -1   1294.7    0.40    0.78  4.1943e+06   1292.9    0.41    0.79      0
-     1048576        262144     float     sum      -1   1354.8    0.77    1.50  8.38861e+06   1352.5    0.78    1.50      0
-     2097152        524288     float     sum      -1   1454.4    1.44    2.79  1.67772e+07   1457.1    1.44    2.79      0
-     4194304       1048576     float     sum      -1   2286.3    1.83    3.55  3.35544e+07   2373.0    1.77    3.42      0
-     8388608       2097152     float     sum      -1   4252.7    1.97    3.82  6.71089e+07   4238.8    1.98    3.83      0
-    16777216       4194304     float     sum      -1   8377.2    2.00    3.88  1.34218e+08   8384.0    2.00    3.88      0
-    33554432       8388608     float     sum      -1    16927    1.98    3.84  2.68435e+08    16953    1.98    3.83      0
-    67108864      16777216     float     sum      -1    34546    1.94    3.76  5.36871e+08    34570    1.94    3.76      0
-   134217728      33554432     float     sum      -1    70545    1.90    3.69  1.07374e+09    70326    1.91    3.70      0
-   268435456      67108864     float     sum      -1   143284    1.87    3.63  2.14748e+09   143312    1.87    3.63      0
-   536870912     134217728     float     sum      -1   285245    1.88    3.65  4.29497e+09   285666    1.88    3.64      0
-c196-101:651:651 [0] NCCL INFO comm 0x2b60ce000010 rank 0 nranks 32 cudaDev 0 busId 2000 - Destroy COMPLETE
-# Out of bounds values : 480 FAILED
-# Avg bus bandwidth    : 2.37288 
+c198-011:7740:7740 [0] NCCL INFO Launch mode Parallel
+       32768          8192     float     sum      -1    263.2    0.12    0.25  524288    265.0    0.12    0.24      0
+       65536         16384     float     sum      -1    328.8    0.20    0.39  1.04858e+06    322.5    0.20    0.40      0
+      131072         32768     float     sum      -1    459.8    0.29    0.56  2.09715e+06    457.6    0.29    0.56      0
+      262144         65536     float     sum      -1    621.2    0.42    0.83  4.1943e+06    621.0    0.42    0.83      0
+      524288        131072     float     sum      -1   1161.3    0.45    0.89  8.38861e+06   1156.4    0.45    0.89      0
+     1048576        262144     float     sum      -1   2077.8    0.50    0.99  1.67772e+07   2036.2    0.51    1.01      0
+     2097152        524288     float     sum      -1   4124.0    0.51    1.00  3.35544e+07   3963.5    0.53    1.04      0
+     4194304       1048576     float     sum      -1   7837.8    0.54    1.05  6.71089e+07   7829.8    0.54    1.05      0
+     8388608       2097152     float     sum      -1    15607    0.54    1.06  1.34218e+08    15771    0.53    1.05      0
+    16777216       4194304     float     sum      -1    18911    0.89    1.75  2.68435e+08    19147    0.88    1.73      0
+    33554432       8388608     float     sum      -1    27101    1.24    2.44  5.36871e+08    27024    1.24    2.44      0
+    67108864      16777216     float     sum      -1    41517    1.62    3.18  1.07374e+09    41385    1.62    3.19      0
+   134217728      33554432     float     sum      -1    71737    1.87    3.68  2.14748e+09    71759    1.87    3.68      0
+   268435456      67108864     float     sum      -1   138563    1.94    3.81  4.29497e+09   138757    1.93    3.81      0
+c198-011:7740:7740 [0] NCCL INFO comm 0x2b0a8e000010 rank 0 nranks 64 cudaDev 0 busId 2000 - Destroy COMPLETE
+# Out of bounds values : 896 FAILED
+# Avg bus bandwidth    : 1.56537 
 #
 

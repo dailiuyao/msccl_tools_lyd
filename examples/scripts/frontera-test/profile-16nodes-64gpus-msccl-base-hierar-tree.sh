@@ -11,8 +11,6 @@
 ##SBATCH -A ccl-run-8nodes-32gpus       # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --mail-user=username@tacc.utexas.edu
 
-set -e
-
 module load gcc/9.1.0
 module load impi/18.0.5
 module load cuda/11.3
@@ -40,22 +38,22 @@ export NCCL_PROTO=Simple
 export NCCL_NTHREADS=64
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/allredcue_basic_binary_tree_64gpus.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
 
 export NCCL_NTHREADS=128
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/allredcue_basic_binary_tree_64gpus.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
 
 export NCCL_NTHREADS=256
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/allredcue_basic_binary_tree_64gpus.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
 
 export NCCL_NTHREADS=512
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/allredcue_basic_binary_tree_64gpus.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
 
 
 
@@ -63,19 +61,19 @@ $MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduc
 export NCCL_NTHREADS=64
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel1_chunk1.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
 
 export NCCL_NTHREADS=128
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel1_chunk1.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
 
 export NCCL_NTHREADS=256
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel1_chunk1.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
 
 export NCCL_NTHREADS=512
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel1_chunk1.xml
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 32K -e 256M -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1
