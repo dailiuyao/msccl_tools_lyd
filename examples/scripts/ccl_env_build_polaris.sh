@@ -126,39 +126,39 @@ export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 # echo ""
 
 
-# ### MSCCL_TEST Core Section ###
+### MSCCL_TEST Core Section ###
 
-# # rm -rf "${MSCCL_TEST_SRC_LOCATION}" 
+# rm -rf "${MSCCL_TEST_SRC_LOCATION}" 
 
-# # Download MSCCL_TEST
-# if [ ! -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
-# 	echo "[INFO] Downloading MSCCL_TEST repository..."
-# 	git clone https://github.com/dailiuyao/msccl-lyd.git "${MSCCL_TEST_SRC_LOCATION}"
-# elif [ -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
-# 	echo "[INFO] MSCCL_TEST repository already downloaded; will not re-download."
-# fi
-# echo ""
+# Download MSCCL_TEST
+if [ ! -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
+	echo "[INFO] Downloading MSCCL_TEST repository..."
+	git clone https://github.com/dailiuyao/msccl-lyd.git "${MSCCL_TEST_SRC_LOCATION}"
+elif [ -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
+	echo "[INFO] MSCCL_TEST repository already downloaded; will not re-download."
+fi
+echo ""
 
-# # Enter MSCCL_TEST directory
-# pushd "${MSCCL_TEST_SRC_LOCATION}" || exit
+# Enter MSCCL_TEST directory
+pushd "${MSCCL_TEST_SRC_LOCATION}" || exit
 
-# # # Fetch latest changes
-# # git fetch --all
-# # 
-# # # Checkout the correct commit
-# # git checkout "${MSCCL_TEST_COMMIT}"
+# # Fetch latest changes
+# git fetch --all
+# 
+# # Checkout the correct commit
+# git checkout "${MSCCL_TEST_COMMIT}"
 
-# # Build MSCCL_TEST
-# echo "[INFO] Building MSCCL_TEST..."
-# make -j src.build
-# echo ""
+# Build MSCCL_TEST
+echo "[INFO] Building MSCCL_TEST..."
+make -j src.build
+echo ""
 
-# # Create install package
-# # [TODO]
+# Create install package
+# [TODO]
 
-# # Exist MSCCL_TEST directory
-# popd || exit
-# echo ""
+# Exist MSCCL_TEST directory
+popd || exit
+echo ""
 
 
 # ### NCCL-Tests-MSCCL-LYD Section ###
@@ -193,49 +193,49 @@ export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 # popd || exit
 # echo ""
 
-### NCCL-Section ###
+# ### NCCL-Section ###
 
-export PROFAPI=1
-# Download NCCL
-if [ ! -d "${NCCL_SRC_LOCATION}" ]; then
-	echo "[INFO] Downloading NCCL repository..."
-	git clone https://github.com/NVIDIA/nccl.git "${NCCL_SRC_LOCATION}"
-elif [ -d "${NCCL_SRC_LOCATION}" ]; then 
-	echo "[INFO] NCCL repository already exists."
-fi
-echo ""
+# export PROFAPI=1
+# # Download NCCL
+# if [ ! -d "${NCCL_SRC_LOCATION}" ]; then
+# 	echo "[INFO] Downloading NCCL repository..."
+# 	git clone https://github.com/NVIDIA/nccl.git "${NCCL_SRC_LOCATION}"
+# elif [ -d "${NCCL_SRC_LOCATION}" ]; then 
+# 	echo "[INFO] NCCL repository already exists."
+# fi
+# echo ""
 
-# Enter NCCL dir
-pushd "${NCCL_SRC_LOCATION}" || exit
+# # Enter NCCL dir
+# pushd "${NCCL_SRC_LOCATION}" || exit
 
-# # Fetch latest changes
-# git fetch --all
+# # # Fetch latest changes
+# # git fetch --all
 
-# # Checkout the correct commit
-# git checkout "${NCCL_COMMIT}"
+# # # Checkout the correct commit
+# # git checkout "${NCCL_COMMIT}"
 
-# Build NCCL
-echo "[INFO] Building NCCL..."
-make clean
-make -j src.build
-echo ""
+# # Build NCCL
+# echo "[INFO] Building NCCL..."
+# make clean
+# make -j src.build
+# echo ""
 
-# Set environment variables that other tasks will use
-echo "[INFO] Setting NCCL-related environment variables for other tasks..."
-NCCL_HOME="${NCCL_SRC_LOCATION}/build" 
-export NCCL_HOME
-echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
+# # Set environment variables that other tasks will use
+# echo "[INFO] Setting NCCL-related environment variables for other tasks..."
+# NCCL_HOME="${NCCL_SRC_LOCATION}/build" 
+# export NCCL_HOME
+# echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
 
-echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
-LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
-export LD_LIBRARY_PATH
-PATH="${PATH}:${NCCL_HOME}/include"
-export PATH
-echo ""
+# echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
+# LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
+# export LD_LIBRARY_PATH
+# PATH="${PATH}:${NCCL_HOME}/include"
+# export PATH
+# echo ""
 
-# Exit NCCL dir
-popd || exit
-echo ""
+# # Exit NCCL dir
+# popd || exit
+# echo ""
 
 
 # ### NCCL Tests Section ###
