@@ -1,0 +1,417 @@
+NCCL TEST with MSCCL 2 channel 2gpus 2 steps
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  29768 on x3006c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  29769 on x3006c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO Using network AWS Libfabric
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO Using network AWS Libfabric
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 00/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 01/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 02/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 03/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 04/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 05/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 06/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 07/08 :    0   1
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] 1/-1/-1->0->-1 [7] 1/-1/-1->0->-1
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] -1/-1/-1->1->0 [4] -1/-1/-1->1->0 [5] -1/-1/-1->1->0 [6] -1/-1/-1->1->0 [7] -1/-1/-1->1->0
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 00 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 01 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 02 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 03 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 04 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 05 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 06 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Channel 07 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 00 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 01 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 02 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 03 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 04 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 05 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 06 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Channel 07 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Connected all rings
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Connected all trees
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Connected all rings
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Connected all trees
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO NCCL_NTHREADS set by environment to 64.
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO NCCL_NTHREADS set by environment to 64.
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29769:29784 [1] NCCL INFO comm 0x14b470d3f010 rank 1 nranks 2 cudaDev 1 busId 46000 - Init COMPLETE
+x3006c0s1b1n0:29768:29783 [0] NCCL INFO comm 0x148e68591010 rank 0 nranks 2 cudaDev 0 busId 7000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO Launch mode Parallel
+        1024           256     float     sum      -1    27.33    0.04    0.04    512    27.44    0.04    0.04      0
+        2048           512     float     sum      -1    27.51    0.07    0.07   1024    27.51    0.07    0.07      0
+        4096          1024     float     sum      -1    29.39    0.14    0.14   2048    29.48    0.14    0.14      0
+        8192          2048     float     sum      -1    28.96    0.28    0.28   4096    28.97    0.28    0.28      0
+       16384          4096     float     sum      -1    29.66    0.55    0.55   8192    29.56    0.55    0.55      0
+       32768          8192     float     sum      -1    33.72    0.97    0.97  16384    34.00    0.96    0.96      0
+       65536         16384     float     sum      -1    41.30    1.59    1.59  32768    41.66    1.57    1.57      0
+      131072         32768     float     sum      -1    44.76    2.93    2.93  65536    44.46    2.95    2.95      0
+      262144         65536     float     sum      -1    65.52    4.00    4.00  131072    66.01    3.97    3.97      0
+      524288        131072     float     sum      -1    107.4    4.88    4.88  262144    109.1    4.81    4.81      0
+     1048576        262144     float     sum      -1    192.3    5.45    5.45  524288    192.1    5.46    5.46      0
+     2097152        524288     float     sum      -1    358.3    5.85    5.85  1.04858e+06    357.8    5.86    5.86      0
+     4194304       1048576     float     sum      -1    689.7    6.08    6.08  2.09715e+06    688.9    6.09    6.09      0
+     8388608       2097152     float     sum      -1   1194.1    7.03    7.03  4.1943e+06   1194.0    7.03    7.03      0
+    16777216       4194304     float     sum      -1   2201.4    7.62    7.62  8.38861e+06   2200.9    7.62    7.62      0
+    33554432       8388608     float     sum      -1   4227.4    7.94    7.94  1.67772e+07   4224.0    7.94    7.94      0
+    67108864      16777216     float     sum      -1   8282.4    8.10    8.10  3.35544e+07   8284.7    8.10    8.10      0
+   134217728      33554432     float     sum      -1    16359    8.20    8.20  6.71088e+07    16393    8.19    8.19      0
+   268435456      67108864     float     sum      -1    32583    8.24    8.24  1.34218e+08    32502    8.26    8.26      0
+x3006c0s1b1n0:29768:29768 [0] NCCL INFO comm 0x148e68591010 rank 0 nranks 2 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3006c0s1b1n0:29769:29769 [1] NCCL INFO comm 0x14b470d3f010 rank 1 nranks 2 cudaDev 1 busId 46000 - Destroy COMPLETE
+# Out of bounds values : 38 FAILED
+# Avg bus bandwidth    : 4.20703 
+#
+
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  29828 on x3006c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  29829 on x3006c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO Using network AWS Libfabric
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO Using network AWS Libfabric
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 00/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 01/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 02/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 03/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 04/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 05/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 06/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 07/08 :    0   1
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] 1/-1/-1->0->-1 [7] 1/-1/-1->0->-1
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] -1/-1/-1->1->0 [4] -1/-1/-1->1->0 [5] -1/-1/-1->1->0 [6] -1/-1/-1->1->0 [7] -1/-1/-1->1->0
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 00 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 01 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 02 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 03 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 04 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 05 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 06 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Channel 07 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 00 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 01 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 02 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 03 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 04 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 05 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 06 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Channel 07 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Connected all rings
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Connected all trees
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Connected all rings
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Connected all trees
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO NCCL_NTHREADS set by environment to 128.
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO NCCL_NTHREADS set by environment to 128.
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29829:29848 [1] NCCL INFO comm 0x14967001f010 rank 1 nranks 2 cudaDev 1 busId 46000 - Init COMPLETE
+x3006c0s1b1n0:29828:29847 [0] NCCL INFO comm 0x14eeb0259010 rank 0 nranks 2 cudaDev 0 busId 7000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO Launch mode Parallel
+        1024           256     float     sum      -1    30.10    0.03    0.03    512    30.12    0.03    0.03      0
+        2048           512     float     sum      -1    30.27    0.07    0.07   1024    30.24    0.07    0.07      0
+        4096          1024     float     sum      -1    30.68    0.13    0.13   2048    30.55    0.13    0.13      0
+        8192          2048     float     sum      -1    31.68    0.26    0.26   4096    31.51    0.26    0.26      0
+       16384          4096     float     sum      -1    32.57    0.50    0.50   8192    32.50    0.50    0.50      0
+       32768          8192     float     sum      -1    34.03    0.96    0.96  16384    33.95    0.97    0.97      0
+       65536         16384     float     sum      -1    39.28    1.67    1.67  32768    39.11    1.68    1.68      0
+      131072         32768     float     sum      -1    47.30    2.77    2.77  65536    47.32    2.77    2.77      0
+      262144         65536     float     sum      -1    62.30    4.21    4.21  131072    62.48    4.20    4.20      0
+      524288        131072     float     sum      -1    83.64    6.27    6.27  262144    81.40    6.44    6.44      0
+     1048576        262144     float     sum      -1    119.5    8.77    8.77  524288    119.4    8.78    8.78      0
+     2097152        524288     float     sum      -1    210.1    9.98    9.98  1.04858e+06    209.6   10.00   10.00      0
+     4194304       1048576     float     sum      -1    392.3   10.69   10.69  2.09715e+06    392.9   10.68   10.68      0
+     8388608       2097152     float     sum      -1    670.8   12.51   12.51  4.1943e+06    670.7   12.51   12.51      0
+    16777216       4194304     float     sum      -1   1228.7   13.65   13.65  8.38861e+06   1226.3   13.68   13.68      0
+    33554432       8388608     float     sum      -1   2340.3   14.34   14.34  1.67772e+07   2342.7   14.32   14.32      0
+    67108864      16777216     float     sum      -1   4584.2   14.64   14.64  3.35544e+07   4582.9   14.64   14.64      0
+   134217728      33554432     float     sum      -1   9035.8   14.85   14.85  6.71088e+07   9052.5   14.83   14.83      0
+   268435456      67108864     float     sum      -1    17970   14.94   14.94  1.34218e+08    17944   14.96   14.96      0
+x3006c0s1b1n0:29828:29828 [0] NCCL INFO comm 0x14eeb0259010 rank 0 nranks 2 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3006c0s1b1n0:29829:29829 [1] NCCL INFO comm 0x14967001f010 rank 1 nranks 2 cudaDev 1 busId 46000 - Destroy COMPLETE
+# Out of bounds values : 38 FAILED
+# Avg bus bandwidth    : 6.91329 
+#
+
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  29858 on x3006c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  29859 on x3006c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO Using network AWS Libfabric
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO Using network AWS Libfabric
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 00/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 01/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 02/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 03/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 04/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 05/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 06/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 07/08 :    0   1
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] 1/-1/-1->0->-1 [7] 1/-1/-1->0->-1
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] -1/-1/-1->1->0 [4] -1/-1/-1->1->0 [5] -1/-1/-1->1->0 [6] -1/-1/-1->1->0 [7] -1/-1/-1->1->0
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 00 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 01 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 02 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 03 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 04 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 05 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 06 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Channel 07 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 00 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 01 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 02 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 03 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 04 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 05 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 06 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Channel 07 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Connected all rings
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Connected all trees
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Connected all rings
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Connected all trees
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO NCCL_NTHREADS set by environment to 256.
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO NCCL_NTHREADS set by environment to 256.
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29858:29876 [0] NCCL INFO comm 0x14ee9c45a010 rank 0 nranks 2 cudaDev 0 busId 7000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO Launch mode Parallel
+x3006c0s1b1n0:29859:29877 [1] NCCL INFO comm 0x15047445a010 rank 1 nranks 2 cudaDev 1 busId 46000 - Init COMPLETE
+        1024           256     float     sum      -1    29.83    0.03    0.03    512    29.84    0.03    0.03      0
+        2048           512     float     sum      -1    29.72    0.07    0.07   1024    29.74    0.07    0.07      0
+        4096          1024     float     sum      -1    29.86    0.14    0.14   2048    29.85    0.14    0.14      0
+        8192          2048     float     sum      -1    31.21    0.26    0.26   4096    31.32    0.26    0.26      0
+       16384          4096     float     sum      -1    31.83    0.51    0.51   8192    31.03    0.53    0.53      0
+       32768          8192     float     sum      -1    32.38    1.01    1.01  16384    32.40    1.01    1.01      0
+       65536         16384     float     sum      -1    35.18    1.86    1.86  32768    35.20    1.86    1.86      0
+      131072         32768     float     sum      -1    39.83    3.29    3.29  65536    39.95    3.28    3.28      0
+      262144         65536     float     sum      -1    46.65    5.62    5.62  131072    46.03    5.70    5.70      0
+      524288        131072     float     sum      -1    61.80    8.48    8.48  262144    62.07    8.45    8.45      0
+     1048576        262144     float     sum      -1    91.09   11.51   11.51  524288    91.09   11.51   11.51      0
+     2097152        524288     float     sum      -1    147.9   14.18   14.18  1.04858e+06    137.5   15.25   15.25      0
+     4194304       1048576     float     sum      -1    242.7   17.28   17.28  2.09715e+06    243.2   17.25   17.25      0
+     8388608       2097152     float     sum      -1    405.1   20.71   20.71  4.1943e+06    405.1   20.71   20.71      0
+    16777216       4194304     float     sum      -1    730.5   22.97   22.97  8.38861e+06    729.3   23.00   23.00      0
+    33554432       8388608     float     sum      -1   1382.6   24.27   24.27  1.67772e+07   1383.5   24.25   24.25      0
+    67108864      16777216     float     sum      -1   2689.7   24.95   24.95  3.35544e+07   2688.7   24.96   24.96      0
+   134217728      33554432     float     sum      -1   5291.3   25.37   25.37  6.71088e+07   5282.5   25.41   25.41      0
+   268435456      67108864     float     sum      -1    10518   25.52   25.52  1.34218e+08    10483   25.61   25.61      0
+x3006c0s1b1n0:29858:29858 [0] NCCL INFO comm 0x14ee9c45a010 rank 0 nranks 2 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3006c0s1b1n0:29859:29859 [1] NCCL INFO comm 0x15047445a010 rank 1 nranks 2 cudaDev 1 busId 46000 - Destroy COMPLETE
+# Out of bounds values : 38 FAILED
+# Avg bus bandwidth    : 10.9821 
+#
+
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  29887 on x3006c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  29888 on x3006c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO Using network AWS Libfabric
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.252<0>
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO Using network AWS Libfabric
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 00/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 01/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 02/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 03/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 04/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 05/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 06/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 07/08 :    0   1
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] 1/-1/-1->0->-1 [3] 1/-1/-1->0->-1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] 1/-1/-1->0->-1 [7] 1/-1/-1->0->-1
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] -1/-1/-1->1->0 [4] -1/-1/-1->1->0 [5] -1/-1/-1->1->0 [6] -1/-1/-1->1->0 [7] -1/-1/-1->1->0
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 00 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 01 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 02 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 03 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 04 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 05 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 06 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Channel 07 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 00 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 01 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 02 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 03 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 04 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 05 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 06 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Channel 07 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Connected all rings
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Connected all trees
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Connected all rings
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Connected all trees
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_1nodes_2gpus_channel2_chunk2.xml successfully.
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO NCCL_NTHREADS set by environment to 512.
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 8/8/64 | 8/8/512
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO 8 coll channels, 8 p2p channels, 8 p2p channels per peer
+x3006c0s1b1n0:29888:29907 [1] NCCL INFO comm 0x1498a045a010 rank 1 nranks 2 cudaDev 1 busId 46000 - Init COMPLETE
+x3006c0s1b1n0:29887:29906 [0] NCCL INFO comm 0x152eb8605010 rank 0 nranks 2 cudaDev 0 busId 7000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO Launch mode Parallel
+        1024           256     float     sum      -1    34.90    0.03    0.03    512    34.86    0.03    0.03      0
+        2048           512     float     sum      -1    34.99    0.06    0.06   1024    34.87    0.06    0.06      0
+        4096          1024     float     sum      -1    35.07    0.12    0.12   2048    35.06    0.12    0.12      0
+        8192          2048     float     sum      -1    36.37    0.23    0.23   4096    36.38    0.23    0.23      0
+       16384          4096     float     sum      -1    36.82    0.44    0.44   8192    36.77    0.45    0.45      0
+       32768          8192     float     sum      -1    38.20    0.86    0.86  16384    38.02    0.86    0.86      0
+       65536         16384     float     sum      -1    40.44    1.62    1.62  32768    40.49    1.62    1.62      0
+      131072         32768     float     sum      -1    45.49    2.88    2.88  65536    45.51    2.88    2.88      0
+      262144         65536     float     sum      -1    54.48    4.81    4.81  131072    50.59    5.18    5.18      0
+      524288        131072     float     sum      -1    64.85    8.08    8.08  262144    60.63    8.65    8.65      0
+     1048576        262144     float     sum      -1    80.87   12.97   12.97  524288    80.70   12.99   12.99      0
+     2097152        524288     float     sum      -1    127.5   16.45   16.45  1.04858e+06    127.4   16.46   16.46      0
+     4194304       1048576     float     sum      -1    219.1   19.15   19.15  2.09715e+06    219.0   19.15   19.15      0
+     8388608       2097152     float     sum      -1    354.3   23.68   23.68  4.1943e+06    354.3   23.67   23.67      0
+    16777216       4194304     float     sum      -1    626.0   26.80   26.80  8.38861e+06    626.9   26.76   26.76      0
+    33554432       8388608     float     sum      -1   1166.9   28.76   28.76  1.67772e+07   1167.3   28.75   28.75      0
+    67108864      16777216     float     sum      -1   2248.3   29.85   29.85  3.35544e+07   2248.2   29.85   29.85      0
+   134217728      33554432     float     sum      -1   4405.9   30.46   30.46  6.71088e+07   4407.2   30.45   30.45      0
+   268435456      67108864     float     sum      -1   8733.8   30.74   30.74  1.34218e+08   8727.3   30.76   30.76      0
+x3006c0s1b1n0:29887:29887 [0] NCCL INFO comm 0x152eb8605010 rank 0 nranks 2 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3006c0s1b1n0:29888:29888 [1] NCCL INFO comm 0x1498a045a010 rank 1 nranks 2 cudaDev 1 busId 46000 - Destroy COMPLETE
+# Out of bounds values : 38 FAILED
+# Avg bus bandwidth    : 12.5495 
+#
+
