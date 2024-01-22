@@ -112,81 +112,81 @@ NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-ms
 export NCCLTESTS_MSCCL_SRC_LOCATION
 export NCCLTESTS_MSCCL_COMMIT="nccl-test-profile-msccl"
 
-# ### MSCCL-Section ###
-# # Download MSCCL
-# if [ ! -d "${MSCCL_SRC_LOCATION}" ]; then
-#       echo "[INFO] Downloading MSCCL repository..."
-#       git clone git@github.com:dailiuyao/msccl-lyd.git "${MSCCL_SRC_LOCATION}"
-# elif [ -d "${MSCCL_SRC_LOCATION}" ]; then 
-#       echo "[INFO] MSCCL repository already exists."
-# fi
-# echo ""
-
-# # Enter MSCCL dir
-# pushd "${MSCCL_SRC_LOCATION}" || exit
-
-# # # Fetch latest changes
-# # git fetch --all
-
-# # # Checkout the correct commit
-# # git checkout "${MSCCL_COMMIT}"
-
-# # Build MSCCL
-# echo "[INFO] Building MSCCL..."
-# make clean
-# make -j src.build
-# echo ""
-
-# # Exit MSCCL dir
-# popd || exit
-# echo ""
-
-
-### NCCL Tests MSCCL Section ###
-
-echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include MSCCL!"
-
-MSCCL_HOME="${MSCCL_SRC_LOCATION}/build" 
-export MSCCL_HOME
-echo "[DEBUG] NCCL_HOME has been set to: ${MSCCL_HOME}"
-
-LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
-export LD_LIBRARY_PATH
-PATH="${MSCCL_HOME}/include:${PATH}"
-export PATH
-echo ""
-
-# Download NCCL Tests with MSCCL
-if [ ! -d "${NCCLTESTS_MSCCL_SRC_LOCATION}" ]; then
-      echo "[INFO] Downloading NCCL Tests with MSCCL repository..."
-      git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_MSCCL_SRC_LOCATION}"
-elif [ -d "${NCCLTESTS_MSCCL_SRC_LOCATION}" ]; then
-      echo "[INFO] NCCL Tests with MSCCL repository already exists."
+### MSCCL-Section ###
+# Download MSCCL
+if [ ! -d "${MSCCL_SRC_LOCATION}" ]; then
+      echo "[INFO] Downloading MSCCL repository..."
+      git clone git@github.com:dailiuyao/msccl-lyd.git "${MSCCL_SRC_LOCATION}"
+elif [ -d "${MSCCL_SRC_LOCATION}" ]; then 
+      echo "[INFO] MSCCL repository already exists."
 fi
 echo ""
 
-
-NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
-
-# Enter NCCL Tests with MSCCL dir
-pushd "${NCCLTESTS_MSCCL_SRC_LOCATION}" || exit
-echo ""
+# Enter MSCCL dir
+pushd "${MSCCL_SRC_LOCATION}" || exit
 
 # # Fetch latest changes
 # git fetch --all
 
 # # Checkout the correct commit
-# git checkout "${NCCLTESTS_MSCCL_COMMIT}"
+# git checkout "${MSCCL_COMMIT}"
 
+# Build MSCCL
+echo "[INFO] Building MSCCL..."
 make clean
+make -j src.build
+echo ""
 
-# Build NCCL Tests with MSCCL
-echo "[INFO] Building NCCL tests (MSCCL)"
-make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${MSCCL_HOME}  
-
-# Exit NCCL Tests with MSCCL dir
+# Exit MSCCL dir
 popd || exit
 echo ""
+
+
+# ### NCCL Tests MSCCL Section ###
+
+# echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include MSCCL!"
+
+# MSCCL_HOME="${MSCCL_SRC_LOCATION}/build" 
+# export MSCCL_HOME
+# echo "[DEBUG] NCCL_HOME has been set to: ${MSCCL_HOME}"
+
+# LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH
+# PATH="${MSCCL_HOME}/include:${PATH}"
+# export PATH
+# echo ""
+
+# # Download NCCL Tests with MSCCL
+# if [ ! -d "${NCCLTESTS_MSCCL_SRC_LOCATION}" ]; then
+#       echo "[INFO] Downloading NCCL Tests with MSCCL repository..."
+#       git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_MSCCL_SRC_LOCATION}"
+# elif [ -d "${NCCLTESTS_MSCCL_SRC_LOCATION}" ]; then
+#       echo "[INFO] NCCL Tests with MSCCL repository already exists."
+# fi
+# echo ""
+
+
+# NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
+
+# # Enter NCCL Tests with MSCCL dir
+# pushd "${NCCLTESTS_MSCCL_SRC_LOCATION}" || exit
+# echo ""
+
+# # # Fetch latest changes
+# # git fetch --all
+
+# # # Checkout the correct commit
+# # git checkout "${NCCLTESTS_MSCCL_COMMIT}"
+
+# make clean
+
+# # Build NCCL Tests with MSCCL
+# echo "[INFO] Building NCCL tests (MSCCL)"
+# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${MSCCL_HOME}  
+
+# # Exit NCCL Tests with MSCCL dir
+# popd || exit
+# echo ""
 
 # ################################## NCCL_PROFILE ########################################
 
