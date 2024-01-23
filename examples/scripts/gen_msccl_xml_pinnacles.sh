@@ -315,8 +315,20 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 # python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 32 4 8 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_32nodes_4gpus_channel8_chunk2.xml
 
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 16 4 2 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_4gpus_channel2_chunk2.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 16 4 2 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_4gpus_channel2_chunk2.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 16 4 4 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_4gpus_channel4_chunk2.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 16 4 4 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_4gpus_channel4_chunk2.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 16 4 8 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_4gpus_channel8_chunk2.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 16 4 8 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_4gpus_channel8_chunk2.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 64 64 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_frontera.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 64 64 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_polaris.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_polaris_32nodes_4channels.py --protocol=Simple 128 4 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_32nodes_4gpus_128chunks_4channels_polaris.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_polaris_32nodes_1channels.py --protocol=Simple 128 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_32nodes_4gpus_128chunks_1channels_polaris.xml
+
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 128 128 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_4gpus_128chunks_128channels_polaris.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_basic_ring.py --protocol=Simple 128 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_4gpus_1chunks_1channels_polaris.xml
