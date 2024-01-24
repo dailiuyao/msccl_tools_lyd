@@ -12,9 +12,9 @@ import math
 # channels=1 is standard ring, all chunks are assigned to the same tb/channel
 # channels=8 devotes 1 tb/channel to handling 1 chunk of the data
 def allreduce_ring(size, instances, channels, protocol):
-    channelsPerRing = int(channels/2)
+    chunksperchannel = int(size/channels)
     topology = fully_connected(size)
-    collective = AllReduce(size, channels*size, True)
+    collective = AllReduce(size, size, True)
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances,
          protocol=protocol, threadblock_policy=ThreadblockPolicy.manual):
         
@@ -25,18 +25,8 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = gpu_index0[(index + step) % size]
                 next_rank = gpu_index0[(index + step + 1) % size]
-                for chid in range(0, channelsPerRing):
-                    c = chunk(next_rank, Buffer.input, index+chid*size)
-                    c.reduce(chunk(rank, Buffer.input, index+chid*size), ch=chid, recvtb=chid, sendtb=chid)
-                
-
-        for step in range(0, size-1):
-            for index in range(0, size):
-                rank = gpu_index1[(index + step) % size]
-                next_rank = gpu_index1[(index + step + 1) % size]
-                for chid in range(channelsPerRing, channels):
-                    c = chunk(next_rank, Buffer.input, index+chid*size)
-                    c.reduce(chunk(rank, Buffer.input, index+chid*size), ch=chid, recvtb=chid, sendtb=chid)
+                c = chunk(next_rank, Buffer.input, index)
+                c.reduce(chunk(rank, Buffer.input, index), ch=int(step/chunksperchannel), recvtb=int(step/chunksperchannel), sendtb=int(step/chunksperchannel))
             
        
                 
@@ -45,18 +35,8 @@ def allreduce_ring(size, instances, channels, protocol):
             for index in range(0, size):
                 rank = gpu_index0[(index + step) % size]
                 next_rank = gpu_index0[(index + step + 1) % size]
-                for chid in range(0, channelsPerRing):
-                    c = chunk(rank, Buffer.input, index+chid*size)
-                    c = c.copy(next_rank, Buffer.input, index+chid*size, ch=chid, recvtb=chid, sendtb=chid)
-        
-
-        for step in range(-1, size-2):
-            for index in range(0, size):
-                rank = gpu_index1[(index + step) % size]
-                next_rank = gpu_index1[(index + step + 1) % size]
-                for chid in range(channelsPerRing, channels):
-                    c = chunk(rank, Buffer.input, index+chid*size)
-                    c = c.copy(next_rank, Buffer.input, index+chid*size, ch=chid, recvtb=chid, sendtb=chid)
+                c = chunk(rank, Buffer.input, index)
+                c = c.copy(next_rank, Buffer.input, index, ch=int(step/chunksperchannel), recvtb=int(step/chunksperchannel), sendtb=int(step/chunksperchannel))
             
         
                

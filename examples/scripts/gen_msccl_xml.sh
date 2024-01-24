@@ -332,13 +332,16 @@ export MSCCL_TOOLS_XML='/Users/liuyaodai/github/msccl_tools_lyd/examples/xml'
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree.py --protocol=Simple 128 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/allredcue_basic_binary_tree_128gpus.xml
 
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 64 64 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_16nodes_4gpus_64chunks_64channels_frontera.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 64 64 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_16nodes_4gpus_64chunks_64channels_frontera.xml
 
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 64 64 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_polaris.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_4channels.py --protocol=Simple 64 4 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 4 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_1channels.py --protocol=Simple 64 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_basic_ring.py --protocol=Simple 64 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_16nodes_4gpus_1chunks_1channels_frontera.xml
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 8 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_8channels_frontera.xml
 
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 16 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 32 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_32channels_frontera.xml
