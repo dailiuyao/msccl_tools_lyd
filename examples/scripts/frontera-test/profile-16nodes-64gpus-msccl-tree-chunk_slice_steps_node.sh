@@ -1,17 +1,5 @@
 #!/bin/bash
 
-#SBATCH -J ccl-run-16nodes-64gpus           # Job name
-#SBATCH -o ./log/ccl-run-16nodes-64gpus-chunk_slice_steps.o%j       # Name of stdout output file
-#SBATCH -e ./log/ccl-run-16nodes-64gpus-chunk_slice_steps.e%j       # Name of stderr error file
-#SBATCH -p rtx           # Queue (partition) name
-#SBATCH -N 16               # Total # of nodes (must be 1 for serial)
-#SBATCH -n 64               # Total # of mpi tasks (should be 1 for serial)
-#SBATCH -t 00:29:00        # Run time (hh:mm:ss)
-##SBATCH --mail-type=all    # Send email at begin and end of job
-##SBATCH -A ccl-run-16nodes-64gpus       # Project/Allocation name (req'd if you have more than 1)
-##SBATCH --mail-user=username@tacc.utexas.edu
-
-
 module load gcc/9.1.0
 module load impi/18.0.5
 module load cuda/11.3
@@ -41,22 +29,22 @@ export NCCL_PROTO=Simple
 export NCCL_NTHREADS=64
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk1024.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60
+$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
 
 export NCCL_NTHREADS=128
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk1024.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60
+$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
 
 export NCCL_NTHREADS=256
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk1024.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60
+$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
 
 export NCCL_NTHREADS=512
 
 export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_16nodes_channel4_chunk1024.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60
+$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
