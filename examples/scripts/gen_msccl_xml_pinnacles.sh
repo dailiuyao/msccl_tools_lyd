@@ -331,4 +331,6 @@ export MSCCL_TOOLS_XML='/home/ldai8/scratch/msccl_build/deps/msccl-tools-lyd/exa
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 128 128 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_4gpus_128chunks_128channels_polaris.xml
 
-python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_basic_ring.py --protocol=Simple 128 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_4gpus_1chunks_1channels_polaris.xml
+# python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_basic_ring.py --protocol=Simple 128 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_4gpus_1chunks_1channels_polaris.xml
+
+python ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 64 64 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_64gpus_64chunks_32channels_frontera.xml
