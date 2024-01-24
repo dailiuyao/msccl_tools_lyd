@@ -340,8 +340,19 @@ export MSCCL_TOOLS_XML='/Users/liuyaodai/github/msccl_tools_lyd/examples/xml'
 
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 1 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 8 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_8channels_frontera.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 8 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_8channels_frontera.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 16 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 16 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 32 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_32channels_frontera.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_frontera_16nodes_nchannels.py --protocol=Simple 64 32 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_32channels_frontera.xml
+
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_polaris_32nodes_nchannels.py --protocol=Simple 128 64 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_64channels_polaris.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_polaris_32nodes_nchannels.py --protocol=Simple 128 32 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_32channels_polaris.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_polaris_32nodes_nchannels.py --protocol=Simple 128 16 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_16channels_polaris.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_polaris_32nodes_nchannels.py --protocol=Simple 128 8 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_8channels_polaris.xml
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring_polaris_32nodes_nchannels.py --protocol=Simple 128 4 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_4channels_polaris.xml
