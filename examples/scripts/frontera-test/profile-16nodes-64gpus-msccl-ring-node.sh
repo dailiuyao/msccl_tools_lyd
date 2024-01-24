@@ -31,80 +31,80 @@ export NCCL_PROTO=Simple
 
 export NCCL_NTHREADS=64
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_16nodes_4gpus_64chunks_64channels_frontera.xml
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_32nodes_64gpus_64chunks_32channels_frontera.xml
 $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
 export NCCL_NTHREADS=128
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_16nodes_4gpus_64chunks_64channels_frontera.xml
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_32nodes_64gpus_64chunks_32channels_frontera.xml
 $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
 export NCCL_NTHREADS=256
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_16nodes_4gpus_64chunks_64channels_frontera.xml
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_32nodes_64gpus_64chunks_32channels_frontera.xml
 $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
 export NCCL_NTHREADS=512
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_16nodes_4gpus_64chunks_64channels_frontera.xml
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_basic_ring_32nodes_64gpus_64chunks_32channels_frontera.xml
 $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=64
+# export NCCL_NTHREADS=64
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=128
+# export NCCL_NTHREADS=128
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=256
+# export NCCL_NTHREADS=256
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=512
+# export NCCL_NTHREADS=512
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_1channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=64
+# export NCCL_NTHREADS=64
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=128
+# export NCCL_NTHREADS=128
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=256
+# export NCCL_NTHREADS=256
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=512
+# export NCCL_NTHREADS=512
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_4channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=64
+# export NCCL_NTHREADS=64
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=128
+# export NCCL_NTHREADS=128
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=256
+# export NCCL_NTHREADS=256
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
 
-export NCCL_NTHREADS=512
+# export NCCL_NTHREADS=512
 
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
-$MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_16nodes_4gpus_64chunks_16channels_frontera.xml
+# $MPI_HOME/bin/mpirun -np 64 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_16nodes -ppn 4 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 1K -e 256M -f 2 -g 1 -n 60 >> output.log 2>&1
