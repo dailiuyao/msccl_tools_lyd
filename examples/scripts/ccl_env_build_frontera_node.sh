@@ -124,8 +124,8 @@ pushd "${MSCCL_SRC_LOCATION}" || exit
 
 # Build MSCCL
 echo "[INFO] Building MSCCL..."
-make clean > output.log 2>&1
-make -j src.build > output.log 2>&1
+make clean > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/output.log 2>&1
+make -j src.build > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/output.log 2>&1
 echo ""
 
 # Exit MSCCL dir
