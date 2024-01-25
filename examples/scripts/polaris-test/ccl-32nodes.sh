@@ -399,7 +399,7 @@ echo "NCCL TEST with MSCCL RING "
 
 export NCCL_ALGO=MSCCL,TREE,RING
 
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_basic_ring_32nodes_4gpus_128chunks_128channels_polaris.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_basic_ring_32nodes_128gpus_128chunks_32channels_polaris.xml
 
 export NCCL_NTHREADS=64
 
@@ -418,7 +418,25 @@ export NCCL_NTHREADS=512
 $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
 
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_64channels_polaris.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_32channels_polaris.xml
+
+export NCCL_NTHREADS=64
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+
+export NCCL_NTHREADS=128
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+
+export NCCL_NTHREADS=256
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+
+export NCCL_NTHREADS=512
+
+$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_8channels_polaris.xml
 
 export NCCL_NTHREADS=64
 
@@ -437,40 +455,40 @@ export NCCL_NTHREADS=512
 $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
 
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_16channels_polaris.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_16channels_polaris.xml
 
-export NCCL_NTHREADS=64
+# export NCCL_NTHREADS=64
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
-export NCCL_NTHREADS=128
+# export NCCL_NTHREADS=128
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
-export NCCL_NTHREADS=256
+# export NCCL_NTHREADS=256
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
-export NCCL_NTHREADS=512
+# export NCCL_NTHREADS=512
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
-allreduce_a100_basic_ring
+# allreduce_a100_basic_ring
 
-export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_4channels_polaris.xml
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/ring/allreduce_ring_32nodes_4gpus_256chunks_4channels_polaris.xml
 
-export NCCL_NTHREADS=64
+# export NCCL_NTHREADS=64
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
-export NCCL_NTHREADS=128
+# export NCCL_NTHREADS=128
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
-export NCCL_NTHREADS=256
+# export NCCL_NTHREADS=256
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
 
-export NCCL_NTHREADS=512
+# export NCCL_NTHREADS=512
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_MSCCL_HOME}/build/all_reduce_perf -b 1K -e 256MB -f 2 -n 60 -g 1
