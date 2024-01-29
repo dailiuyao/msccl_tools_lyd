@@ -377,4 +377,7 @@ export MSCCL_TOOLS_XML='/Users/liuyaodai/github/msccl_tools_lyd/examples/xml'
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree.py --protocol=Simple 8 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/allredcue_basic_binary_tree_8gpus.xml
 
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 4 2 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_4nodes_16gpus_channel2_reverse_chunk2.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 4 2 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_4nodes_16gpus_channel2_reverse_chunk2.xml
+
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree_p_gpu01_channel_n_reverse.py --protocol=Simple 4 4 32 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_4nodes_16gpus_channel2_reverse_chunk32.xml
