@@ -53,4 +53,4 @@ export NCCL_PROTO=Simple
 MPI_RANK=${OMPI_COMM_WORLD_RANK:-$PMI_RANK}
 
 # Run nsys profile for the specific GPU
-nsys profile -o msccl-output/nsys_test_msccl_profile_rank${MPI_RANK} --stats=true $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 16M -e 16M -f 2 -g 1 -n 60
+nsys profile --force-overwrite true -o msccl-output/nsys_test_msccl_profile_rank${MPI_RANK} --stats=true $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 16M -e 16M -f 2 -g 1 -n 60
