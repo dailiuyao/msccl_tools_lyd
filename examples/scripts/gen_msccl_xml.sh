@@ -371,4 +371,7 @@ export MSCCL_TOOLS_XML='/Users/liuyaodai/github/msccl_tools_lyd/examples/xml'
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree.py --protocol=Simple 8 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/allredcue_basic_binary_tree_8gpus.xml
 
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 128 128 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_128gpus_128chunks_32channels_polaris.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_a100_ring.py --protocol=Simple 128 128 1 > ${MSCCL_TOOLS_XML}/xml_lyd/ring/allreduce_basic_ring_32nodes_128gpus_128chunks_32channels_polaris.xml
+
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/binary/allreduce_binary_tree.py --protocol=Simple 8 2 1 > ${MSCCL_TOOLS_XML}/xml_lyd/allredcue_basic_binary_tree_8gpus.xml
