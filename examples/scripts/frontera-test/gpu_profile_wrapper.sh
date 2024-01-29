@@ -11,23 +11,46 @@ export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2
 
 export WORK_DIR=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test
 
-NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
-export NCCL_PROFILE_SRC_LOCATION
+######################### NCCL_PROFILE #######################################
 
-NCCLTESTS_NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile"
-export NCCLTESTS_NCCL_PROFILE_SRC_LOCATION
 
-export LD_LIBRARY_PATH="${NCCL_PROFILE_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+# NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
+# export NCCL_PROFILE_SRC_LOCATION
+
+# NCCLTESTS_NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile"
+# export NCCLTESTS_NCCL_PROFILE_SRC_LOCATION
+
+# export LD_LIBRARY_PATH="${NCCL_PROFILE_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+
+# export NCCL_DEBUG=TRACE
+# export NCCL_ALGO=Tree
+# export NCCL_PROTO=Simple
+
+# # Determine the MPI rank and calculate the GPU ID
+# MPI_RANK=${OMPI_COMM_WORLD_RANK:-$PMI_RANK}
+
+# # Run nsys profile for the specific GPU
+# nsys profile -o msccl-output/nsys_test_nccl_profile_rank${MPI_RANK} --stats=true $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 16M -e 16M -f 2 -g 1 -n 60
+
+######################### MSCCL #######################################
+
+MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
+export MSCCL_SRC_LOCATION
+
+NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
+export NCCLTESTS_MSCCL_SRC_LOCATION
+
+export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
 export NCCL_DEBUG=TRACE
-export NCCL_ALGO=Tree
+export NCCL_DEBUG_SUBSYS=INIT,ENV
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/allredcue_basic_binary_tree_8gpus.xml
+export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
-
-
 
 
 # Determine the MPI rank and calculate the GPU ID
 MPI_RANK=${OMPI_COMM_WORLD_RANK:-$PMI_RANK}
 
 # Run nsys profile for the specific GPU
-nsys profile -o nccl-output/nsys_test_nccl_profile_rank${MPI_RANK} --stats=true $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 16M -e 16M -f 2 -g 1 -n 60
+nsys profile -o msccl-output/nsys_test_msccl_profile_rank${MPI_RANK} --stats=true $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 16M -e 16M -f 2 -g 1 -n 60
