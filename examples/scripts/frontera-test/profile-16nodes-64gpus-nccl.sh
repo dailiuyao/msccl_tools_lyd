@@ -17,78 +17,34 @@ module load gcc/9.1.0
 module load impi/18.0.5
 module load cuda/11.3
 
-
 export CUDA_HOME=/opt/apps/cuda/11.3
 export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2018.6.288/linux/mpi/intel64
 
-##################################### NCCL #####################################
-echo "##################################### NCCL #####################################"
-NCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl"
-export NCCL_SRC_LOCATION
+export WORK_DIR=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test
 
-NCCLTESTS_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests"
-export NCCLTESTS_SRC_LOCATION
+# Create the hostfile with allocated node names (shortened)
+srun --nodes=$SLURM_NNODES hostname | cut -d'.' -f1 > $WORK_DIR/myhostfile_slurm
 
-export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+
+##################################### NCCL PROFILE #####################################
+echo "##################################### NCCL PROFILE #####################################"
+NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
+export NCCL_PROFILE_SRC_LOCATION
+
+NCCLTESTS_NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile"
+export NCCLTESTS_NCCL_PROFILE_SRC_LOCATION
+
+export LD_LIBRARY_PATH="${NCCL_PROFILE_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
 export NCCL_DEBUG=TRACE
+export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-export NCCL_ALGO=TREE
-export NCCL_NTHREADS=64
+num_gpus_per_node=4
+total_num_gpus=64
 
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
+hostfile="$WORK_DIR/myhostfile_slurm"
 
-export NCCL_NTHREADS=128
+# Loop over the number of GPUs and create a profile for each
+$MPI_HOME/bin/mpirun -np 64 -ppn 4 --hostfile $hostfile -genvall ./gpu_profile_wrapper.sh
 
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
-
-export NCCL_NTHREADS=256
-
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
-
-export NCCL_NTHREADS=512
-
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
-
-export NCCL_ALGO=RING
-export NCCL_NTHREADS=64
-
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
-
-export NCCL_NTHREADS=128
-
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
-
-export NCCL_NTHREADS=256
-
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
-
-export NCCL_NTHREADS=512
-
-$MPI_HOME/bin/mpirun -np 64 -ppn 4 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100
-
-# ##################################### NCCL PROFILE #####################################
-# echo "##################################### NCCL PROFILE #####################################"
-# NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
-# export NCCL_PROFILE_SRC_LOCATION
-
-# NCCLTESTS_NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile"
-# export NCCLTESTS_NCCL_PROFILE_SRC_LOCATION
-
-# export LD_LIBRARY_PATH="${NCCL_PROFILE_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
-
-# export NCCL_DEBUG=TRACE
-# export NCCL_ALGO=Tree
-# export NCCL_PROTO=Simple
-
-# export NCCL_MIN_NCHANNELS=1
-# export NCCL_MAX_NCHANNELS=1
-
-# # export NCCL_NTHREADS=256
-
-# # export NCCL_COMM_BLOCKING=1
-
-# # $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 1M -e 1M -w 0 -f 2 -g 1 -n 1
-
-# $MPI_HOME/bin/mpirun -np 32 -ppn 4 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 128M -e 128M -f 2 -g 1

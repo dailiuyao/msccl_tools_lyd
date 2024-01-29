@@ -21,21 +21,21 @@ module load cuda/11.3
 export CUDA_HOME=/opt/apps/cuda/11.3
 export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2018.6.288/linux/mpi/intel64
 
-##################################### NCCL #####################################
-echo "##################################### NCCL #####################################"
-NCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl"
-export NCCL_SRC_LOCATION
+# ##################################### NCCL #####################################
+# echo "##################################### NCCL #####################################"
+# NCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl"
+# export NCCL_SRC_LOCATION
 
-NCCLTESTS_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests"
-export NCCLTESTS_SRC_LOCATION
+# NCCLTESTS_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests"
+# export NCCLTESTS_SRC_LOCATION
 
-export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
-export NCCL_DEBUG=TRACE
-export NCCL_ALGO=Tree
-export NCCL_PROTO=Simple
+# export NCCL_DEBUG=TRACE
+# export NCCL_ALGO=Tree
+# export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+# $MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
 
 ##################################### NCCL PROFILE #####################################
 echo "##################################### NCCL PROFILE #####################################"
@@ -51,23 +51,23 @@ export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+$MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_NCCL_PROFILE_SRC_LOCATION/build/all_reduce_perf -b 1MB -e 1MB -f 2 -g 1
 
-##################################### MSCCL #####################################
-echo "##################################### MSCCL #####################################"
-MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
-export MSCCL_SRC_LOCATION
+# ##################################### MSCCL #####################################
+# echo "##################################### MSCCL #####################################"
+# MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
+# export MSCCL_SRC_LOCATION
 
-NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
-export NCCLTESTS_MSCCL_SRC_LOCATION
+# NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
+# export NCCLTESTS_MSCCL_SRC_LOCATION
 
-export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+# export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
 
-export NCCL_DEBUG=INFO
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/allreduce_binary_tree_p_gpu01_channel4_chunk16.xml
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_DEBUG=TRACE
-export NCCL_PROTO=Simple
+# export NCCL_DEBUG=INFO
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_4gpus_channel1_reverse_chunk1.xml
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_DEBUG=TRACE
+# export NCCL_PROTO=Simple
 
-$MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 8 -e 128MB -f 2 -g 1
+# $MPI_HOME/bin/mpirun -np 4 -ppn 2 $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 16MB -e 16MB -f 2 -g 1
