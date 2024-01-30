@@ -44,7 +44,7 @@ export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_H
 
 export NCCL_DEBUG=TRACE
 export NCCL_DEBUG_SUBSYS=INIT,ENV
-export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/allredcue_basic_binary_tree_8gpus.xml
+export MSCCL_XML_FILES=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/allredcue_basic_binary_tree_16gpus.xml
 export NCCL_ALGO=MSCCL,TREE,RING
 export NCCL_PROTO=Simple
 
@@ -53,4 +53,4 @@ export NCCL_PROTO=Simple
 MPI_RANK=${OMPI_COMM_WORLD_RANK:-$PMI_RANK}
 
 # Run nsys profile for the specific GPU
-nsys profile --force-overwrite true -o msccl-output/nsys_test_msccl_profile_rank${MPI_RANK} --stats=true $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 16M -e 16M -f 2 -g 1 -n 60
+nsys profile --force-overwrite true -o msccl-output/nsys_test_msccl_profile_rank${MPI_RANK} --stats=true $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 16M -e 16M -f 2 -g 1 -n 2
