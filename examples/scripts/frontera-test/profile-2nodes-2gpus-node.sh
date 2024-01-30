@@ -41,8 +41,8 @@ export NCCL_DEBUG=TRACE
 export NCCL_PROTO=Simple
 export NCCL_NTHREADS=512
 
-# $MPI_HOME/bin/mpirun -np 2 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_2nodes -ppn 1 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100 >> output.log 2>&1
+$MPI_HOME/bin/mpirun -np 2 --hostfile /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/myhostfile_2nodes -ppn 1 $NCCLTESTS_SRC_LOCATION/build/sendrecv_perf -b 2 -e 512MB -f 2 -g 1 -n 100 >> output.log 2>&1
 
-$MPI_HOME/bin/mpirun -np 2 -ppn 2 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 100 >> output.log 2>&1
+$MPI_HOME/bin/mpirun -np 2 -ppn 2 $NCCLTESTS_SRC_LOCATION/build/sendrecv_perf -b 2 -e 512MB -f 2 -g 1 -n 100 >> output.log 2>&1
 
 

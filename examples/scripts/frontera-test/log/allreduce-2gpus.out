@@ -1,155 +1,96 @@
-# nThread 1 nGpus 1 minBytes 1024 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 100 agg iters: 1 validation: 1 graph: 0
+# nThread 1 nGpus 1 minBytes 2 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 100 agg iters: 1 validation: 1 graph: 0
 #
 # Using devices
-#  Rank  0 Group  0 Pid  19956 on   c196-042 device  0 [0x02] Quadro RTX 5000
-#  Rank  1 Group  0 Pid  10614 on   c196-051 device  0 [0x02] Quadro RTX 5000
-c196-042:19956:19956 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.108<0>
-c196-042:19956:19956 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
-c196-042:19956:19956 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+#  Rank  0 Group  0 Pid  13927 on   c197-052 device  0 [0x02] Quadro RTX 5000
+#  Rank  1 Group  0 Pid   1396 on   c197-061 device  0 [0x02] Quadro RTX 5000
+c197-052:13927:13927 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.132<0>
+c197-052:13927:13927 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c197-052:13927:13927 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
 
-c196-042:19956:19956 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
+c197-052:13927:13927 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
 NCCL version 2.17.1+cuda11.3
 
-c196-051:10614:10614 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
-c196-051:10614:10614 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.109<0>
-c196-051:10614:10614 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
-c196-051:10614:10614 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
-c196-051:10614:10634 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.109<0>
-c196-051:10614:10634 [0] NCCL INFO Using network IB
-c196-042:19956:19987 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.108<0>
-c196-042:19956:19987 [0] NCCL INFO Using network IB
-c196-042:19956:19987 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
-c196-051:10614:10634 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
-c196-042:19956:19987 [0] NCCL INFO Channel 00/02 :    0   1
-c196-042:19956:19987 [0] NCCL INFO Channel 01/02 :    0   1
-c196-042:19956:19987 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1
-c196-042:19956:19987 [0] NCCL INFO P2P Chunksize set to 131072
-c196-051:10614:10634 [0] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1
-c196-051:10614:10634 [0] NCCL INFO P2P Chunksize set to 131072
-c196-042:19956:19987 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
-c196-051:10614:10634 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
-c196-042:19956:19987 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
-c196-051:10614:10634 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
-c196-042:19956:19987 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
-c196-051:10614:10634 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
-c196-042:19956:19987 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
-c196-051:10614:10634 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
-c196-042:19956:19987 [0] NCCL INFO Connected all rings
-c196-042:19956:19987 [0] NCCL INFO Connected all trees
-c196-042:19956:19987 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
-c196-042:19956:19987 [0] NCCL INFO NCCL_PROTO set by environment to Simple
-c196-042:19956:19987 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
-c196-042:19956:19987 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
-c196-051:10614:10634 [0] NCCL INFO Connected all rings
-c196-051:10614:10634 [0] NCCL INFO Connected all trees
-c196-051:10614:10634 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
-c196-051:10614:10634 [0] NCCL INFO NCCL_PROTO set by environment to Simple
-c196-051:10614:10634 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
-c196-051:10614:10634 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
-c196-042:19956:19987 [0] NCCL INFO comm 0x5867db0 rank 0 nranks 2 cudaDev 0 busId 2000 commId 0x68f7e6f854c48629 - Init COMPLETE
+c197-061:1396:1396 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
+c197-061:1396:1396 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.133<0>
+c197-061:1396:1396 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
+c197-061:1396:1396 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
+c197-061:1396:1417 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.133<0>
+c197-061:1396:1417 [0] NCCL INFO Using network IB
+c197-052:13927:13951 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.132<0>
+c197-052:13927:13951 [0] NCCL INFO Using network IB
+c197-052:13927:13951 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
+c197-061:1396:1417 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
+c197-052:13927:13951 [0] NCCL INFO Channel 00/02 :    0   1
+c197-052:13927:13951 [0] NCCL INFO Channel 01/02 :    0   1
+c197-052:13927:13951 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1
+c197-052:13927:13951 [0] NCCL INFO P2P Chunksize set to 131072
+c197-061:1396:1417 [0] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1
+c197-061:1396:1417 [0] NCCL INFO P2P Chunksize set to 131072
+c197-061:1396:1417 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
+c197-052:13927:13951 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
+c197-061:1396:1417 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
+c197-052:13927:13951 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
+c197-061:1396:1417 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
+c197-052:13927:13951 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
+c197-061:1396:1417 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
+c197-052:13927:13951 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
+c197-052:13927:13951 [0] NCCL INFO Connected all rings
+c197-052:13927:13951 [0] NCCL INFO Connected all trees
+c197-052:13927:13951 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
+c197-052:13927:13951 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-052:13927:13951 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+c197-052:13927:13951 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c197-061:1396:1417 [0] NCCL INFO Connected all rings
+c197-061:1396:1417 [0] NCCL INFO Connected all trees
+c197-061:1396:1417 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
+c197-061:1396:1417 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-061:1396:1417 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+c197-061:1396:1417 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
+c197-052:13927:13951 [0] NCCL INFO comm 0x5849ca0 rank 0 nranks 2 cudaDev 0 busId 2000 commId 0x528c42be9351c29d - Init COMPLETE
 #
 #                                                              out-of-place                       in-place          
 #       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
 #        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
-c196-051:10614:10634 [0] NCCL INFO comm 0x5829e50 rank 1 nranks 2 cudaDev 0 busId 2000 commId 0x68f7e6f854c48629 - Init COMPLETE
-        1024           256     float     sum      -1    23.75    0.04    0.04      0    23.21    0.04    0.04      0
-        2048           512     float     sum      -1    23.72    0.09    0.09      0    23.97    0.09    0.09      0
-        4096          1024     float     sum      -1    24.92    0.16    0.16      0    24.61    0.17    0.17      0
-        8192          2048     float     sum      -1    32.24    0.25    0.25      0    31.49    0.26    0.26      0
-       16384          4096     float     sum      -1    34.08    0.48    0.48      0    33.37    0.49    0.49      0
-       32768          8192     float     sum      -1    44.08    0.74    0.74      0    43.99    0.74    0.74      0
-       65536         16384     float     sum      -1    47.49    1.38    1.38      0    47.03    1.39    1.39      0
-      131072         32768     float     sum      -1    63.34    2.07    2.07      0    62.20    2.11    2.11      0
-      262144         65536     float     sum      -1    87.22    3.01    3.01      0    87.39    3.00    3.00      0
-      524288        131072     float     sum      -1    147.1    3.56    3.56      0    145.9    3.59    3.59      0
-     1048576        262144     float     sum      -1    271.4    3.86    3.86      0    272.8    3.84    3.84      0
-     2097152        524288     float     sum      -1    519.0    4.04    4.04      0    519.4    4.04    4.04      0
-     4194304       1048576     float     sum      -1   1013.4    4.14    4.14      0   1013.7    4.14    4.14      0
-     8388608       2097152     float     sum      -1   1998.4    4.20    4.20      0   2003.1    4.19    4.19      0
-    16777216       4194304     float     sum      -1   3960.1    4.24    4.24      0   3954.2    4.24    4.24      0
-    33554432       8388608     float     sum      -1   7597.7    4.42    4.42      0   7584.7    4.42    4.42      0
-    67108864      16777216     float     sum      -1    14555    4.61    4.61      0    14537    4.62    4.62      0
-   134217728      33554432     float     sum      -1    28012    4.79    4.79      0    28006    4.79    4.79      0
-   268435456      67108864     float     sum      -1    55041    4.88    4.88      0    55114    4.87    4.87      0
-   536870912     134217728     float     sum      -1   109186    4.92    4.92      0   109235    4.91    4.91      0
-c196-042:19956:19956 [0] NCCL INFO comm 0x5867db0 rank 0 nranks 2 cudaDev 0 busId 2000 - Destroy COMPLETE
+c197-061:1396:1417 [0] NCCL INFO comm 0x6e95ee0 rank 1 nranks 2 cudaDev 0 busId 2000 commId 0x528c42be9351c29d - Init COMPLETE
+           0             0     float     sum      -1     6.03    0.00    0.00      0     6.09    0.00    0.00      0
+           4             1     float     sum      -1    23.23    0.00    0.00      0    22.76    0.00    0.00      0
+           8             2     float     sum      -1    22.36    0.00    0.00      0    22.94    0.00    0.00      0
+          16             4     float     sum      -1    22.71    0.00    0.00      0    22.06    0.00    0.00      0
+          32             8     float     sum      -1    22.69    0.00    0.00      0    22.51    0.00    0.00      0
+          64            16     float     sum      -1    22.25    0.00    0.00      0    22.65    0.00    0.00      0
+         128            32     float     sum      -1    22.76    0.01    0.01      0    22.27    0.01    0.01      0
+         256            64     float     sum      -1    22.96    0.01    0.01      0    22.67    0.01    0.01      0
+         512           128     float     sum      -1    22.65    0.02    0.02      0    22.89    0.02    0.02      0
+        1024           256     float     sum      -1    23.39    0.04    0.04      0    22.89    0.04    0.04      0
+        2048           512     float     sum      -1    24.08    0.09    0.09      0    23.98    0.09    0.09      0
+        4096          1024     float     sum      -1    24.48    0.17    0.17      0    24.61    0.17    0.17      0
+        8192          2048     float     sum      -1    32.01    0.26    0.26      0    32.93    0.25    0.25      0
+       16384          4096     float     sum      -1    33.94    0.48    0.48      0    33.41    0.49    0.49      0
+       32768          8192     float     sum      -1    43.99    0.74    0.74      0    43.76    0.75    0.75      0
+       65536         16384     float     sum      -1    48.10    1.36    1.36      0    47.80    1.37    1.37      0
+      131072         32768     float     sum      -1    63.83    2.05    2.05      0    63.64    2.06    2.06      0
+      262144         65536     float     sum      -1    90.69    2.89    2.89      0    88.39    2.97    2.97      0
+      524288        131072     float     sum      -1    150.1    3.49    3.49      0    149.1    3.52    3.52      0
+     1048576        262144     float     sum      -1    276.6    3.79    3.79      0    277.6    3.78    3.78      0
+     2097152        524288     float     sum      -1    533.8    3.93    3.93      0    530.3    3.95    3.95      0
+     4194304       1048576     float     sum      -1   1040.1    4.03    4.03      0   1042.7    4.02    4.02      0
+     8388608       2097152     float     sum      -1   2035.0    4.12    4.12      0   2035.8    4.12    4.12      0
+    16777216       4194304     float     sum      -1   4019.8    4.17    4.17      0   3987.9    4.21    4.21      0
+    33554432       8388608     float     sum      -1   7646.6    4.39    4.39      0   7651.7    4.39    4.39      0
+    67108864      16777216     float     sum      -1    14573    4.61    4.61      0    14636    4.59    4.59      0
+   134217728      33554432     float     sum      -1    28367    4.73    4.73      0    28364    4.73    4.73      0
+   268435456      67108864     float     sum      -1    55932    4.80    4.80      0    55924    4.80    4.80      0
+   536870912     134217728     float     sum      -1   110982    4.84    4.84      0   110988    4.84    4.84      0
+c197-052:13927:13927 [0] NCCL INFO comm 0x5849ca0 rank 0 nranks 2 cudaDev 0 busId 2000 - Destroy COMPLETE
+c197-061:1396:1396 [0] NCCL INFO comm 0x6e95ee0 rank 1 nranks 2 cudaDev 0 busId 2000 - Destroy COMPLETE
 # Out of bounds values : 0 OK
-# Avg bus bandwidth    : 2.79582 
+# Avg bus bandwidth    : 1.89993 
 #
-c196-051:10614:10614 [0] NCCL INFO comm 0x5829e50 rank 1 nranks 2 cudaDev 0 busId 2000 - Destroy COMPLETE
 
-# nThread 1 nGpus 1 minBytes 1024 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 100 agg iters: 1 validation: 1 graph: 0
+# nThread 1 nGpus 1 minBytes 2 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 100 agg iters: 1 validation: 1 graph: 0
 #
 # Using devices
-#  Rank  0 Group  0 Pid  20105 on   c196-042 device  0 [0x02] Quadro RTX 5000
-#  Rank  1 Group  0 Pid  20106 on   c196-042 device  1 [0x03] Quadro RTX 5000
-c196-042:20105:20105 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.108<0>
-c196-042:20105:20105 [0] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
-c196-042:20105:20105 [0] NCCL INFO NET/Plugin : No plugin found, using internal implementation
-
-c196-042:20106:20106 [1] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
-c196-042:20106:20106 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.108<0>
-c196-042:20106:20106 [1] NCCL INFO NET/Plugin : Plugin load (libnccl-net.so) returned 2 : libnccl-net.so: cannot open shared object file: No such file or directory
-c196-042:20106:20106 [1] NCCL INFO NET/Plugin : No plugin found, using internal implementation
-
-c196-042:20105:20105 [0] misc/cudawrap.cc:166 NCCL WARN cuDriverGetVersion failed with 34
-NCCL version 2.17.1+cuda11.3
-c196-042:20105:20130 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.108<0>
-c196-042:20105:20130 [0] NCCL INFO Using network IB
-c196-042:20106:20129 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.108<0>
-c196-042:20106:20129 [1] NCCL INFO Using network IB
-c196-042:20105:20130 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
-c196-042:20105:20130 [0] NCCL INFO Channel 00/02 :    0   1
-c196-042:20105:20130 [0] NCCL INFO Channel 01/02 :    0   1
-c196-042:20105:20130 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1
-c196-042:20105:20130 [0] NCCL INFO P2P Chunksize set to 131072
-c196-042:20106:20129 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0
-c196-042:20106:20129 [1] NCCL INFO P2P Chunksize set to 131072
-c196-042:20106:20129 [1] NCCL INFO Channel 00 : 1[3000] -> 0[2000] via SHM/direct/direct
-c196-042:20106:20129 [1] NCCL INFO Channel 01 : 1[3000] -> 0[2000] via SHM/direct/direct
-c196-042:20105:20130 [0] NCCL INFO Channel 00 : 0[2000] -> 1[3000] via SHM/direct/direct
-c196-042:20105:20130 [0] NCCL INFO Channel 01 : 0[2000] -> 1[3000] via SHM/direct/direct
-c196-042:20106:20129 [1] NCCL INFO Connected all rings
-c196-042:20106:20129 [1] NCCL INFO Connected all trees
-c196-042:20106:20129 [1] NCCL INFO NCCL_NTHREADS set by environment to 512.
-c196-042:20106:20129 [1] NCCL INFO NCCL_PROTO set by environment to Simple
-c196-042:20106:20129 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
-c196-042:20106:20129 [1] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
-c196-042:20105:20130 [0] NCCL INFO Connected all rings
-c196-042:20105:20130 [0] NCCL INFO Connected all trees
-c196-042:20105:20130 [0] NCCL INFO NCCL_NTHREADS set by environment to 512.
-c196-042:20105:20130 [0] NCCL INFO NCCL_PROTO set by environment to Simple
-c196-042:20105:20130 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
-c196-042:20105:20130 [0] NCCL INFO 2 coll channels, 0 nvls channels, 2 p2p channels, 2 p2p channels per peer
-c196-042:20106:20129 [1] NCCL INFO comm 0x6d9b160 rank 1 nranks 2 cudaDev 1 busId 3000 commId 0xb920184ea42914c7 - Init COMPLETE
-c196-042:20105:20130 [0] NCCL INFO comm 0x5772250 rank 0 nranks 2 cudaDev 0 busId 2000 commId 0xb920184ea42914c7 - Init COMPLETE
-#
-#                                                              out-of-place                       in-place          
-#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
-#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
-        1024           256     float     sum      -1    14.49    0.07    0.07      0    14.43    0.07    0.07      0
-        2048           512     float     sum      -1    14.73    0.14    0.14      0    14.46    0.14    0.14      0
-        4096          1024     float     sum      -1    14.92    0.27    0.27      0    14.66    0.28    0.28      0
-        8192          2048     float     sum      -1    15.66    0.52    0.52      0    15.80    0.52    0.52      0
-       16384          4096     float     sum      -1    17.70    0.93    0.93      0    17.85    0.92    0.92      0
-       32768          8192     float     sum      -1    22.38    1.46    1.46      0    22.64    1.45    1.45      0
-       65536         16384     float     sum      -1    27.37    2.39    2.39      0    27.28    2.40    2.40      0
-      131072         32768     float     sum      -1    36.28    3.61    3.61      0    36.31    3.61    3.61      0
-      262144         65536     float     sum      -1    53.44    4.91    4.91      0    53.08    4.94    4.94      0
-      524288        131072     float     sum      -1    84.23    6.22    6.22      0    83.77    6.26    6.26      0
-     1048576        262144     float     sum      -1    149.7    7.00    7.00      0    149.9    6.99    6.99      0
-     2097152        524288     float     sum      -1    285.4    7.35    7.35      0    284.4    7.37    7.37      0
-     4194304       1048576     float     sum      -1    557.4    7.52    7.52      0    558.4    7.51    7.51      0
-     8388608       2097152     float     sum      -1   1104.0    7.60    7.60      0   1103.9    7.60    7.60      0
-    16777216       4194304     float     sum      -1   2199.0    7.63    7.63      0   2196.2    7.64    7.64      0
-    33554432       8388608     float     sum      -1   4386.2    7.65    7.65      0   4380.4    7.66    7.66      0
-    67108864      16777216     float     sum      -1   8752.0    7.67    7.67      0   8749.1    7.67    7.67      0
-   134217728      33554432     float     sum      -1    17488    7.67    7.67      0    17487    7.68    7.68      0
-   268435456      67108864     float     sum      -1    34957    7.68    7.68      0    34948    7.68    7.68      0
-   536870912     134217728     float     sum      -1    69908    7.68    7.68      0    69912    7.68    7.68      0
-c196-042:20105:20105 [0] NCCL INFO comm 0x5772250 rank 0 nranks 2 cudaDev 0 busId 2000 - Destroy COMPLETE
-c196-042:20106:20106 [1] NCCL INFO comm 0x6d9b160 rank 1 nranks 2 cudaDev 1 busId 3000 - Destroy COMPLETE
-# Out of bounds values : 0 OK
-# Avg bus bandwidth    : 4.8015 
-#
-
+login3: Test CUDA failure common.cu:894 'CUDA driver version is insufficient for CUDA runtime version'
+ .. login3 pid 146419: Test failure common.cu:844
+login3: Test CUDA failure common.cu:894 'CUDA driver version is insufficient for CUDA runtime version'
+ .. login3 pid 146420: Test failure common.cu:844
