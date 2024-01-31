@@ -2,7 +2,7 @@
 #PBS -l select=2:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:10:00
-#PBS -q debug
+#PBS -q debug-scaling
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe

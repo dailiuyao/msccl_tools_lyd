@@ -1,0 +1,668 @@
+NCCL TEST with Original NCCL
+# nThread 1 nGpus 1 minBytes 2 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62438 on x3107c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid   6280 on x3107c0s37b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+x3107c0s37b0n0:62438:62438 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b0n0:62438:62438 [0] NCCL INFO Bootstrap : Using hsn1:10.201.2.111<0>
+x3107c0s37b0n0:62438:62438 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b0n0:62438:62438 [0] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b0n0:62438:62438 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b0n0:62438:62438 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62438:62438 [0] NCCL INFO cudaDriverVersion 11080
+NCCL version 2.19.4+cuda11.8
+x3107c0s37b1n0:6280:6280 [0] NCCL INFO cudaDriverVersion 11080
+x3107c0s37b1n0:6280:6280 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b1n0:6280:6280 [0] NCCL INFO Bootstrap : Using hsn1:10.201.2.165<0>
+x3107c0s37b1n0:6280:6280 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b1n0:6280:6280 [0] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b1n0:6280:6280 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b1n0:6280:6280 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b0n0:62438:62450 [0] 306.860625 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b0n0:62438:62450 [0] 306.875990 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b0n0:62438:62450 [0] 306.879342 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b0n0:62438:62450 [0] 306.881717 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b0n0:62438:62450 [0] 306.883603 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Using network AWS Libfabric
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b1n0:6280:6293 [0] 134.834664 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b1n0:6280:6293 [0] 134.847515 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b1n0:6280:6293 [0] 134.849889 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b1n0:6280:6293 [0] 134.852264 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b1n0:6280:6293 [0] 134.854638 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Using network AWS Libfabric
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO comm 0x5c756b0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x61bc853147c7f63f - Init START
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO comm 0x5344ef0 rank 1 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x61bc853147c7f63f - Init START
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 00/04 :    0   1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 01/04 :    0   1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 02/04 :    0   1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 03/04 :    0   1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] -1/-1/-1->0->1 [3] -1/-1/-1->0->1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO P2P Chunksize set to 131072
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] 0/-1/-1->1->-1 [3] 0/-1/-1->1->-1
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO P2P Chunksize set to 131072
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 02/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Channel 03/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 02/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 03/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62438:62451 [0] 553.548761 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 553.570761 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 553.574463 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 336.124644 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 336.144619 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 336.148390 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 553.677129 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62438:62451 [0] 553.683275 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 336.257762 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6280:6294 [0] 336.263419 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 557.590827 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 557.600396 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 557.610173 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 339.186272 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 339.195771 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 339.205409 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 343.206331 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 343.216737 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 343.219112 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 343.256337 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6280:6294 [0] 343.263601 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 561.587706 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 561.598811 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 561.602583 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 561.645395 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62438:62451 [0] 561.651122 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 564.590604 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 564.659258 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 564.663169 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 345.852404 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 345.861483 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 345.864277 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 348.587804 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 348.597372 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 348.600724 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 348.729791 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6280:6294 [0] 348.736077 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 567.689044 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 567.699451 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 567.702384 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 567.779140 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62438:62451 [0] 567.784867 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 571.635777 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 571.644508 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 571.647371 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 352.272276 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 352.281355 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 352.284288 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 355.851148 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 355.857713 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 355.860576 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 355.934608 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6280:6294 [0] 355.940335 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 575.523285 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 575.533621 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 575.537044 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 575.609399 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62438:62451 [0] 575.615196 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 359.446223 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 359.455372 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 359.465289 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 579.505148 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 579.514228 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 579.517580 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Connected all rings
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO Connected all trees
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO 4 coll channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Connected all rings
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO Connected all trees
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO 4 coll channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+x3107c0s37b1n0:6280:6293 [0] NCCL INFO comm 0x5344ef0 rank 1 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x61bc853147c7f63f - Init COMPLETE
+x3107c0s37b0n0:62438:62450 [0] NCCL INFO comm 0x5c756b0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x61bc853147c7f63f - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3107c0s37b0n0:62438:62453 [0] NCCL INFO Channel 02/1 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/1/Shared
+x3107c0s37b1n0:6280:6296 [0] NCCL INFO Channel 02/1 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/1/Shared
+x3107c0s37b0n0:62438:62453 [0] NCCL INFO Channel 03/1 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/3/Shared
+x3107c0s37b1n0:6280:6296 [0] NCCL INFO Channel 03/1 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/3/Shared
+x3107c0s37b1n0:6280:6296 [0] NCCL INFO Channel 02/1 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/1/Shared
+x3107c0s37b1n0:6280:6296 [0] NCCL INFO Channel 03/1 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/3/Shared
+x3107c0s37b0n0:62438:62453 [0] NCCL INFO Channel 02/1 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/1/Shared
+x3107c0s37b0n0:62438:62453 [0] NCCL INFO Channel 03/1 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/3/Shared
+x3107c0s37b1n0:6280:6294 [0] 423.057575 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 640.782526 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 423.157308 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6280:6294 [0] 423.164013 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 640.877441 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62438:62451 [0] 640.883587 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 426.476021 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 426.547888 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 644.255735 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 426.919513 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6280:6294 [0] 426.927615 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 644.321526 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 644.383545 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62438:62451 [0] 644.388713 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62438:62451 [0] 644.398700 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6280:6294 [0] 426.940046 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0: Test CUDA failure common.cu:291 'an illegal memory access was encountered'
+ .. x3107c0s37b1n0 pid 6280: Test failure common.cu:401
+ .. x3107c0s37b1n0 pid 6280: Test failure common.cu:588
+ .. x3107c0s37b1n0 pid 6280: Test failure sendrecv.cu:103
+ .. x3107c0s37b1n0 pid 6280: Test failure common.cu:615
+ .. x3107c0s37b1n0 pid 6280: Test failure common.cu:1019
+ .. x3107c0s37b1n0 pid 6280: Test failure common.cu:844
+x3107c0s37b0n0: Test CUDA failure common.cu:291 'an illegal memory access was encountered'
+ .. x3107c0s37b0n0 pid 62438: Test failure common.cu:401
+ .. x3107c0s37b0n0 pid 62438: Test failure common.cu:588
+ .. x3107c0s37b0n0 pid 62438: Test failure sendrecv.cu:103
+ .. x3107c0s37b0n0 pid 62438: Test failure common.cu:615
+ .. x3107c0s37b0n0 pid 62438: Test failure common.cu:1019
+ .. x3107c0s37b0n0 pid 62438: Test failure common.cu:844
+# nThread 1 nGpus 1 minBytes 2 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62459 on x3107c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  62460 on x3107c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+x3107c0s37b0n0:62459:62459 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b0n0:62459:62459 [0] NCCL INFO Bootstrap : Using hsn1:10.201.2.111<0>
+x3107c0s37b0n0:62459:62459 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b0n0:62459:62459 [0] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b0n0:62459:62459 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b0n0:62459:62459 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62459:62459 [0] NCCL INFO cudaDriverVersion 11080
+NCCL version 2.19.4+cuda11.8
+x3107c0s37b0n0:62460:62460 [1] NCCL INFO cudaDriverVersion 11080
+x3107c0s37b0n0:62460:62460 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b0n0:62460:62460 [1] NCCL INFO Bootstrap : Using hsn1:10.201.2.111<0>
+x3107c0s37b0n0:62460:62460 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b0n0:62460:62460 [1] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b0n0:62460:62460 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b0n0:62460:62460 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b0n0:62459:62474 [0] 370.790785 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b0n0:62459:62474 [0] 370.818443 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b0n0:62459:62474 [0] 370.821795 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b0n0:62459:62474 [0] 370.824100 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b0n0:62459:62474 [0] 370.826474 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Using network AWS Libfabric
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b0n0:62460:62475 [1] 83.982303 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b0n0:62460:62475 [1] 83.996271 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b0n0:62460:62475 [1] 83.999204 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b0n0:62460:62475 [1] 84.001090 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b0n0:62460:62475 [1] 84.002976 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Using network AWS Libfabric
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO comm 0x4c5d220 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x916bc45a9d3d9a7 - Init START
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO comm 0x43148a0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 46000 commId 0x916bc45a9d3d9a7 - Init START
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 00/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 01/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 02/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 03/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 04/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 05/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 06/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 07/08 :    0   1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] -1/-1/-1->0->1 [3] -1/-1/-1->0->1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] -1/-1/-1->0->1 [7] -1/-1/-1->0->1
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO P2P Chunksize set to 524288
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] 0/-1/-1->1->-1 [3] 0/-1/-1->1->-1 [4] -1/-1/-1->1->0 [5] -1/-1/-1->1->0 [6] 0/-1/-1->1->-1 [7] 0/-1/-1->1->-1
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO P2P Chunksize set to 524288
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Connected all rings
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO Connected all trees
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Connected all rings
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO Connected all trees
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 8 p2p channels per peer
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 8 p2p channels per peer
+x3107c0s37b0n0:62460:62475 [1] NCCL INFO comm 0x43148a0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 46000 commId 0x916bc45a9d3d9a7 - Init COMPLETE
+x3107c0s37b0n0:62459:62474 [0] NCCL INFO comm 0x4c5d220 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x916bc45a9d3d9a7 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 00/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 01/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 02/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 00/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 01/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 02/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 03/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 04/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 05/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 03/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 04/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 06/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62460:62481 [1] NCCL INFO Channel 07/1 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 05/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 06/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62459:62480 [0] NCCL INFO Channel 07/1 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0: Test CUDA failure common.cu:291 'an illegal memory access was encountered'
+ .. x3107c0s37b0n0 pid 62459: Test failure common.cu:401
+ .. x3107c0s37b0n0 pid 62459: Test failure common.cu:588
+ .. x3107c0s37b0n0 pid 62459: Test failure sendrecv.cu:103
+ .. x3107c0s37b0n0 pid 62459: Test failure common.cu:615
+ .. x3107c0s37b0n0 pid 62459: Test failure common.cu:1019
+ .. x3107c0s37b0n0 pid 62459: Test failure common.cu:844
+# nThread 1 nGpus 1 minBytes 2 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62487 on x3107c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid   6300 on x3107c0s37b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO Bootstrap : Using hsn1:10.201.2.111<0>
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO cudaDriverVersion 11080
+NCCL version 2.19.4+cuda11.8
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO cudaDriverVersion 11080
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO Bootstrap : Using hsn1:10.201.2.165<0>
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b0n0:62487:62499 [0] 221.369540 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b0n0:62487:62499 [0] 221.385185 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b0n0:62487:62499 [0] 221.387070 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b0n0:62487:62499 [0] 221.389515 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b0n0:62487:62499 [0] 221.391401 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Using network AWS Libfabric
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b1n0:6300:6313 [0] 76.935165 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b1n0:6300:6313 [0] 76.951997 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b1n0:6300:6313 [0] 76.954790 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b1n0:6300:6313 [0] 76.956676 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b1n0:6300:6313 [0] 76.958981 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Using network AWS Libfabric
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO comm 0x52727e0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x39ff2ea623f209c9 - Init START
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO comm 0x5a4cf10 rank 1 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x39ff2ea623f209c9 - Init START
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 00/04 :    0   1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 01/04 :    0   1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 02/04 :    0   1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 03/04 :    0   1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] -1/-1/-1->0->1 [3] -1/-1/-1->0->1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO P2P Chunksize set to 131072
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] 0/-1/-1->1->-1 [3] 0/-1/-1->1->-1
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO P2P Chunksize set to 131072
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 02/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 03/0 : 1[0] -> 0[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[0] [receive] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 00/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 01/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 02/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Channel 03/0 : 1[0] -> 0[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/1
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[0] [send] via NET/AWS Libfabric/3
+x3107c0s37b0n0:62487:62500 [0] 458.492628 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 458.505409 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 462.698891 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 462.707622 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 462.717050 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 465.523763 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 465.531376 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 465.534659 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 278.179679 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 278.198326 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 278.201679 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 278.306580 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 278.313215 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 282.080798 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 282.087084 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 282.095185 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 469.520642 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 469.528814 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 469.532096 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 469.568274 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 469.574001 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 285.023207 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 285.033055 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 285.035918 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 285.072375 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 285.077194 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 473.515077 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 473.522830 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 473.525693 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 288.556682 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 288.566320 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 288.569184 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 477.478642 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 477.486744 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 477.489677 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 477.561683 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 477.566852 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 292.123751 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 292.133668 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 292.136532 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 292.213497 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 292.218805 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 481.462042 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 481.470562 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 481.473356 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 295.668191 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 295.677270 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 295.680134 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 298.382429 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 298.393464 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 298.396258 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 298.470150 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 298.475458 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 485.896127 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 485.912889 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 485.916172 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 486.004032 alloc_and_reg_flush_buff:1122 NCCL TRACE NET/OFI Registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 486.018140 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 304.189584 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 304.199082 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b1n0:6300:6314 [0] 304.201946 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 490.406340 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 490.414931 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62500 [0] 490.426455 register_mr_buffers:477 NCCL TRACE NET/OFI Skip registering host buffer. local_mr: 0
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Connected all rings
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO Connected all trees
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO 4 coll channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Connected all rings
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO Connected all trees
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO 4 coll channels, 0 nvls channels, 4 p2p channels, 2 p2p channels per peer
+x3107c0s37b1n0:6300:6313 [0] NCCL INFO comm 0x5a4cf10 rank 1 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x39ff2ea623f209c9 - Init COMPLETE
+x3107c0s37b0n0:62487:62499 [0] NCCL INFO comm 0x52727e0 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x39ff2ea623f209c9 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+           0             0     float     sum      -1    12.76    0.00    0.00      0    12.86    0.00    0.00      0
+           4             1     float     sum      -1    34.16    0.00    0.00      0    34.01    0.00    0.00      0
+           8             2     float     sum      -1    34.26    0.00    0.00      0    34.13    0.00    0.00      0
+          16             4     float     sum      -1    33.91    0.00    0.00      0    33.42    0.00    0.00      0
+          32             8     float     sum      -1    34.16    0.00    0.00      0    33.82    0.00    0.00      0
+          64            16     float     sum      -1    34.29    0.00    0.00      0    33.53    0.00    0.00      0
+         128            32     float     sum      -1    35.04    0.00    0.00      0    34.58    0.00    0.00      0
+         256            64     float     sum      -1    35.06    0.01    0.01      0    34.66    0.01    0.01      0
+         512           128     float     sum      -1    34.96    0.01    0.01      0    34.47    0.01    0.01      0
+        1024           256     float     sum      -1    35.16    0.03    0.03      0    34.91    0.03    0.03      0
+        2048           512     float     sum      -1    37.07    0.06    0.06      0    36.94    0.06    0.06      0
+        4096          1024     float     sum      -1    35.99    0.11    0.11      0    36.02    0.11    0.11      0
+        8192          2048     float     sum      -1    38.26    0.21    0.21      0    37.65    0.22    0.22      0
+       16384          4096     float     sum      -1    44.47    0.37    0.37      0    44.71    0.37    0.37      0
+       32768          8192     float     sum      -1    57.75    0.57    0.57      0    57.13    0.57    0.57      0
+       65536         16384     float     sum      -1    61.17    1.07    1.07      0    61.05    1.07    1.07      0
+      131072         32768     float     sum      -1    64.43    2.03    2.03      0    64.59    2.03    2.03      0
+      262144         65536     float     sum      -1    77.96    3.36    3.36      0    77.05    3.40    3.40      0
+      524288        131072     float     sum      -1    108.7    4.82    4.82      0    99.39    5.28    5.28      0
+     1048576        262144     float     sum      -1    148.2    7.08    7.08      0    146.7    7.15    7.15      0
+     2097152        524288     float     sum      -1    249.3    8.41    8.41      0    252.4    8.31    8.31      0
+     4194304       1048576     float     sum      -1    445.6    9.41    9.41      0    445.7    9.41    9.41      0
+     8388608       2097152     float     sum      -1    863.7    9.71    9.71      0    864.3    9.71    9.71      0
+    16777216       4194304     float     sum      -1   1700.7    9.87    9.87      0   1696.2    9.89    9.89      0
+    33554432       8388608     float     sum      -1   3316.7   10.12   10.12      0   3315.1   10.12   10.12      0
+    67108864      16777216     float     sum      -1   6531.2   10.28   10.28      0   6537.2   10.27   10.27      0
+   134217728      33554432     float     sum      -1    13019   10.31   10.31      0    13001   10.32   10.32      0
+   268435456      67108864     float     sum      -1    26335   10.19   10.19      0    25953   10.34   10.34      0
+   536870912     134217728     float     sum      -1    51808   10.36   10.36      0    51786   10.37   10.37      0
+x3107c0s37b0n0:62487:62500 [0] 5951.879538 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5951.889945 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5951.892389 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5767.498684 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5767.510976 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5767.514259 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5953.140873 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 5953.156028 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5953.158403 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5953.160288 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5768.672435 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 5768.687311 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5768.689686 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5768.691641 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5769.626256 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 5769.638548 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5769.640923 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5769.642878 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5954.304289 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 5954.317489 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5954.319864 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5954.321819 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5770.601309 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 5770.613671 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5770.615975 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5770.618350 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5955.434112 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 5955.446614 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5955.448988 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5955.450944 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5771.549962 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b1n0:6300:6314 [0] 5771.561905 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5771.564279 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5771.565257 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5956.541726 recv_close:907 NCCL TRACE NET/OFI De-registering buffer for flush operations
+x3107c0s37b0n0:62487:62500 [0] 5956.554018 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5956.555904 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5956.558278 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5772.617414 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5772.623700 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5772.625586 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5957.639981 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5957.646755 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5957.648641 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5773.630950 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5773.637585 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5773.639959 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5958.757302 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5958.764356 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5958.766731 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5776.015886 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5776.023569 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6314 [0] 5776.026363 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5961.238205 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5961.246866 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b0n0:62487:62500 [0] 5961.249171 dereg_mr_base_comm:704 NCCL TRACE NET/OFI Null MR handle provided. Skipping deregisteration.
+x3107c0s37b1n0:6300:6300 [0] NCCL INFO comm 0x5a4cf10 rank 1 nranks 2 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3107c0s37b0n0:62487:62487 [0] NCCL INFO comm 0x52727e0 rank 0 nranks 2 cudaDev 0 busId 7000 - Destroy COMPLETE
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 3.74925 
+#
+
+# nThread 1 nGpus 1 minBytes 2 maxBytes 536870912 step: 2(factor) warmup iters: 5 iters: 20 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  62508 on x3107c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  62509 on x3107c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO Bootstrap : Using hsn1:10.201.2.111<0>
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO cudaDriverVersion 11080
+NCCL version 2.19.4+cuda11.8
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO cudaDriverVersion 11080
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO NCCL_SOCKET_IFNAME set by environment to hsn0,hsn1
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO Bootstrap : Using hsn1:10.201.2.111<0>
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO NET/Plugin: Failed to find ncclNetPlugin_v7 symbol.
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO NET/Plugin: Loaded net plugin AWS Libfabric (v6)
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v7 symbol.
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin symbol (>= v5). ncclCollNetPlugin symbols v4 and lower are not supported.
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b0n0:62508:62526 [0] 373.796337 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b0n0:62508:62526 [0] 373.820502 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b0n0:62508:62526 [0] 373.823366 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b0n0:62508:62526 [0] 373.825740 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b0n0:62508:62526 [0] 373.828045 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Using network AWS Libfabric
+x3107c0s37b0n0:62509:62527 [1] 84.390525 find_ofi_provider:584 NCCL TRACE NET/OFI Using Libfabric 1.6 API, with GPUDirect RDMA support
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3107c0s37b0n0:62509:62527 [1] 84.404773 nccl_net_ofi_init:1079 NCCL TRACE NET/OFI Provider cxi does not require registration of local memory buffers
+x3107c0s37b0n0:62509:62527 [1] 84.407636 nccl_net_ofi_init:1089 NCCL TRACE NET/OFI Provider cxi does not use remote virtual addressing
+x3107c0s37b0n0:62509:62527 [1] 84.409592 check_own_mr_keys_required:906 NCCL TRACE NET/OFI Provider cxi selects memory registration keys
+x3107c0s37b0n0:62509:62527 [1] 84.410570 nccl_net_ofi_init:1102 NCCL TRACE NET/OFI Provider cxi requires endpoint memory registration
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Using non-device net plugin version 0
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Using network AWS Libfabric
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO comm 0x513a420 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x6ad6aaf5a73c982c - Init START
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO comm 0x4efd9a0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 46000 commId 0x6ad6aaf5a73c982c - Init START
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 00/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 01/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 02/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 03/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 04/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 05/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 06/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 07/08 :    0   1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] 1/-1/-1->0->-1 [2] -1/-1/-1->0->1 [3] -1/-1/-1->0->1 [4] 1/-1/-1->0->-1 [5] 1/-1/-1->0->-1 [6] -1/-1/-1->0->1 [7] -1/-1/-1->0->1
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO P2P Chunksize set to 524288
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] 0/-1/-1->1->-1 [3] 0/-1/-1->1->-1 [4] -1/-1/-1->1->0 [5] -1/-1/-1->1->0 [6] 0/-1/-1->1->-1 [7] 0/-1/-1->1->-1
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO P2P Chunksize set to 524288
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 00/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 01/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 00/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 02/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 01/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 02/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 03/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 04/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 03/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 04/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 05/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 06/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Channel 07/0 : 1[1] -> 0[0] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 05/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 06/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Channel 07/0 : 0[0] -> 1[1] via P2P/IPC/read
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Connected all rings
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO Connected all trees
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Connected all rings
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO Connected all trees
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO NCCL_ALGO set by environment to Tree
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 8 p2p channels per peer
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO 8 coll channels, 0 nvls channels, 8 p2p channels, 8 p2p channels per peer
+x3107c0s37b0n0:62508:62526 [0] NCCL INFO comm 0x513a420 rank 0 nranks 2 cudaDev 0 nvmlDev 0 busId 7000 commId 0x6ad6aaf5a73c982c - Init COMPLETE
+x3107c0s37b0n0:62509:62527 [1] NCCL INFO comm 0x4efd9a0 rank 1 nranks 2 cudaDev 1 nvmlDev 1 busId 46000 commId 0x6ad6aaf5a73c982c - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+           0             0     float     sum      -1    14.18    0.00    0.00      0    14.21    0.00    0.00      0
+           4             1     float     sum      -1    27.00    0.00    0.00      0    26.78    0.00    0.00      0
+           8             2     float     sum      -1    27.03    0.00    0.00      0    26.80    0.00    0.00      0
+          16             4     float     sum      -1    26.52    0.00    0.00      0    26.53    0.00    0.00      0
+          32             8     float     sum      -1    26.75    0.00    0.00      0    26.59    0.00    0.00      0
+          64            16     float     sum      -1    26.87    0.00    0.00      0    26.69    0.00    0.00      0
+         128            32     float     sum      -1    26.77    0.00    0.00      0    26.52    0.00    0.00      0
+         256            64     float     sum      -1    26.80    0.01    0.01      0    26.50    0.01    0.01      0
+         512           128     float     sum      -1    26.68    0.02    0.02      0    26.34    0.02    0.02      0
+        1024           256     float     sum      -1    26.77    0.04    0.04      0    26.51    0.04    0.04      0
+        2048           512     float     sum      -1    28.08    0.07    0.07      0    28.28    0.07    0.07      0
+        4096          1024     float     sum      -1    26.92    0.15    0.15      0    26.77    0.15    0.15      0
+        8192          2048     float     sum      -1    28.32    0.29    0.29      0    28.14    0.29    0.29      0
+       16384          4096     float     sum      -1    32.68    0.50    0.50      0    32.40    0.51    0.51      0
+       32768          8192     float     sum      -1    39.92    0.82    0.82      0    39.21    0.84    0.84      0
+       65536         16384     float     sum      -1    41.53    1.58    1.58      0    41.32    1.59    1.59      0
+      131072         32768     float     sum      -1    41.56    3.15    3.15      0    41.13    3.19    3.19      0
+      262144         65536     float     sum      -1    44.51    5.89    5.89      0    42.94    6.11    6.11      0
+      524288        131072     float     sum      -1    49.72   10.54   10.54      0    46.80   11.20   11.20      0
+     1048576        262144     float     sum      -1    58.23   18.01   18.01      0    58.63   17.88   17.88      0
+     2097152        524288     float     sum      -1    80.70   25.99   25.99      0    80.38   26.09   26.09      0
+     4194304       1048576     float     sum      -1    113.0   37.13   37.13      0    111.9   37.48   37.48      0
+     8388608       2097152     float     sum      -1    168.7   49.72   49.72      0    166.4   50.41   50.41      0
+    16777216       4194304     float     sum      -1    286.4   58.59   58.59      0    285.1   58.84   58.84      0
+    33554432       8388608     float     sum      -1    537.5   62.43   62.43      0    532.4   63.02   63.02      0
+    67108864      16777216     float     sum      -1    994.7   67.47   67.47      0    993.2   67.57   67.57      0
+   134217728      33554432     float     sum      -1   1907.0   70.38   70.38      0   1904.1   70.49   70.49      0
+   268435456      67108864     float     sum      -1   3730.5   71.96   71.96      0   3724.9   72.07   72.07      0
+   536870912     134217728     float     sum      -1   7371.2   72.83   72.83      0   7355.8   72.99   72.99      0
+x3107c0s37b0n0:62508:62508 [0] NCCL INFO comm 0x513a420 rank 0 nranks 2 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3107c0s37b0n0:62509:62509 [1] NCCL INFO comm 0x4efd9a0 rank 1 nranks 2 cudaDev 1 busId 46000 - Destroy COMPLETE
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 19.2833 
+#
+
