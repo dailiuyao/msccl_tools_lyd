@@ -21,7 +21,7 @@ module reset
 module swap PrgEnv-nvhpc PrgEnv-gnu
 #ml nvhpc-mixed/22.11
 ml gcc/10.3.0
-ml cudatoolkit-standalone/11.8.0
+ml cudatoolkit-standalone/11.7.1
 
 
 
@@ -52,9 +52,9 @@ export NCCL_LIB_DIR=/home/yuke/ncclPG/CCL-LYD/msccl-lyd/build/lib
 
 export USE_CUDA=1
 export USE_CUDNN=1
-export CUDNN_LIBRARY=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.7.0.84_cuda11-archive
-export CUDNN_LIB_DIR=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.7.0.84_cuda11-archive/lib
-export CUDNN_INCLUDE_DIR=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.7.0.84_cuda11-archive/include
+export CUDNN_LIBRARY=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.4.1.50_cuda11.6-archive
+export CUDNN_LIB_DIR=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.4.1.50_cuda11.6-archive/lib
+export CUDNN_INCLUDE_DIR=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.4.1.50_cuda11.6-archive/include
 
 # pip install -r requirements.txt
 
@@ -68,8 +68,8 @@ export CMAKE_PREFIX_PATH=${CONDA_PREFIX:-"$(dirname $(which conda))/../"}
 
 # pip install numpy==1.19.3 pyyaml==6.0.1 setuptools==68.0.0 cffi==1.15.1 typing_extensions==4.8.0 future==0.18.3 six==1.16.0 requests==2.31.0 dataclasses==0.6
 
-export CPLUS_INCLUDE_PATH=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.7.0.84_cuda11-archive/include:$CPLUS_INCLUDE_PATH
-export C_INCLUDE_PATH=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.7.0.84_cuda11-archive/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.4.1.50_cuda11.6-archive/include:$CPLUS_INCLUDE_PATH
+export C_INCLUDE_PATH=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.4.1.50_cuda11.6-archive/include:$C_INCLUDE_PATH
 
 # pip install regex==2022.7.9
 # pip install numpy==1.19.3
@@ -106,7 +106,7 @@ export C_INCLUDE_PATH=/home/yuke/lyd/cudnn/cudnn-linux-x86_64-8.7.0.84_cuda11-ar
 # pip install torchaudio==2.0.1
 # pip uninstall torch
 
-cd /home/yuke/lyd/conda3/envs/pytorchNCCL/pytorch
+cd /home/yuke/lyd/conda3/envs/pytorchNCCL-hao/pytorch
 
 python setup.py clean
 
