@@ -72,8 +72,8 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
     collective = AllReduce(size, nchunks, True)
     with MSCCLProgram("allreduce_trinomial_tree", topology, collective, instances, protocol=protocol):
 
-        # tree0: channel0 0->1->2->3
-        # tree1: channel2 3->2->1->0
+        # channel 0: 0->1->2->3
+        # channel 1: 3->2->1->0
         # each tree has one channel
         # Reduce tree - reducing onto Rank 0
         gpu_index0 = list(range(0, num_gpus, 1))
