@@ -129,7 +129,7 @@ class AllReduce(Collective):
             input_buffer = []
             output_buffer = [None] * chunks_per_node
             for c in range(chunks_per_node):
-                # Chunks start at rank r index c, and ends on all ranks (-1) at index r
+                # Chunks start at rank r index c, and ends on all ranks (-1) at index c
                 input_buffer.append(Chunk(r, c, -1, c))
             # Input and output buffer are the same.
             if self.inplace:
@@ -224,3 +224,57 @@ class ReduceScatter(Collective):
         else:
             return buffer, index
 
+
+# class Broadcast(Collective):
+#     def __init__(self, num_ranks, chunk_factor, inplace):
+#         Collective.__init__(self, num_ranks, chunk_factor, inplace)
+#         self.name = 'broadcast'
+
+#     # Initializes input buffer for an broadcast
+#     def init_buffers(self):
+#         rank_buffers = []
+#         if self.inplace:
+#             # Inplace AllGather only uses the output buffer   
+#             for r in range(self.num_ranks):
+#                 output_buffer = [None] * (self.num_ranks * self.chunk_factor)
+#                 for ch in range(self.chunk_factor):
+#                     output_buffer[r*self.chunk_factor+ch] = Chunk(r, ch, -1, r*self.chunk_factor+ch)
+#                 buffers = {Buffer.input : output_buffer[r*self.chunk_factor:(r+1)*self.chunk_factor],
+#                            Buffer.output : output_buffer}
+#                 rank_buffers.append(buffers)
+#         else:
+#             for r in range(self.num_ranks):
+#                 input_buffer = [None] * self.chunk_factor
+#                 output_buffer = [None] * (self.num_ranks * self.chunk_factor)
+#                 for ch in range(self.chunk_factor):
+#                     input_buffer[ch] = Chunk(r, ch, -1, r*self.chunk_factor+ch)
+#                 buffers = {Buffer.input : input_buffer, 
+#                            Buffer.output : output_buffer}
+#                 rank_buffers.append(buffers)
+#         return rank_buffers
+                
+#     # Expected output buffer for broadcast
+#     def check(self, prog):
+#         correct = True
+#         buf = Buffer.output
+#         for r in range(self.num_ranks):
+#             output = prog.buffers[r][buf]
+#             for i in range(self.num_ranks):
+#                 for ch in range(self.chunk_factor):
+#                     index = i*self.chunk_factor + ch
+#                     chunk = output[index]
+#                     if chunk is None:
+#                         print(f'Rank {r} chunk {index} is incorrect should be ({i}, {ch}) given None')
+#                         correct = False
+#                     elif chunk.origin_rank != i or chunk.origin_index != ch:
+#                         print(f'Rank {r} chunk {index} is incorrect should be ({i}, {ch}) given ({chunk.origin_rank}, {chunk.origin_index})')
+#                         correct = False
+#         return correct
+
+    
+    def get_buffer_index(self, rank, buffer, index):
+        # For inplace broadcast, the input buffer points into the output buffer
+        if self.inplace and buffer == Buffer.input:
+            return Buffer.output, index + rank * self.chunk_factor
+        else:
+            return buffer, index
