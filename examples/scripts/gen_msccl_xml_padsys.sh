@@ -7,11 +7,11 @@ source /home/liuyao/scratch/deps/conda/etc/profile.d/conda.sh
 
 conda activate param_msccl
 
-export PATH="/home/liuyao/scratch/venv/bin:$PATH"
+# export PATH="/home/liuyao/scratch/venv/bin:$PATH"
 
-export MSCCL_TOOLS_ALGORITHMS='/home/liuyao/scratch/deps/msccl-tools-lyd/examples/mscclang'
+export MSCCL_TOOLS_ALGORITHMS='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang'
 
-export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl-tools-lyd/examples/xml'
+export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/xml_lyd'
 
 # ### generated algorithm for 16 gpus: msccl ring, msccl double binary tree, msccl double binomial tree, msccl triple trinomial tree, msccl resursive doubling halving
 # ### ring
@@ -150,7 +150,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl-tools-lyd/examples/xml'
 
 # python3 ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_Simple_gpu64_ins1.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_2nic_Simple_gpu64_ins1.xml
+# python3 ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter_2nic.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_h_p_2ch_intra_1ch_inter_2nic_Simple_gpu64_ins1.xml
 
 # ###### test for msccl-tools ######
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_2_gpus_tree.py 2 1 1 > ${MSCCL_TOOLS_XML}/allreduce_2_gpus_tree_gpu2_ins1_test.xml
@@ -192,5 +192,10 @@ python3 ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_h_p_2_ch_intra_1ch_inter
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_a100_4_nomial_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_a100_4_nomial_Simple_nodes_16_gpus_4_ins1_ch4_hierarchical.xml
 
 # python ${MSCCL_TOOLS_ALGORITHMS}/allreduce_binary_tree_hierarchical_ch4.py --protocol=Simple 4 16 1 > ${MSCCL_TOOLS_XML}/allreduce_binary_tree_hierarchical_Simple_gpu64_ins1_ch4.xml
+
+
+
+
+python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py --protocol=Simple --num_gpus=4 --num_nodes=8 --nchunks=32 --nchannel=4 --instances=1 > ${MSCCL_TOOLS_XML}/recursive_doubling_halving/recursive_doubling_halving_4gpus_4nodes_4channels_4chunks.xml
 
 

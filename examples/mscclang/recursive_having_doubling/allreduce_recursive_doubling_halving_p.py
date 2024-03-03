@@ -30,20 +30,21 @@ def calculate_index_vector_doubling_distance_halving(group_index, count, size):
         # Adjust the position based on the count to generate the pattern
         group_index[rank] -= (position_in_group//count)*num_groups
 
-def reduce_scatter_vector_halving_distance_doubling(size, group_index, chunk_step_total, gpu_index, ch_idx, num_gpus):
+def reduce_scatter_vector_halving_distance_doubling(size, group_index_h_d, chunk_step_total, ch_idx, num_gpus, gpu_index=[0,0,0,0]):
     count = 1
     while count < size:
-        calculate_index_vector_halving_distance_doubling(group_index, count, size)
+        calculate_index_vector_halving_distance_doubling(group_index_h_d, count, size)
         size_count = int((size // 2)/count)
         for rank in range(size):
             peer = rank ^ count
-            index = int(group_index[peer])
+            index = int(group_index_h_d[peer])
             # print(index)
-            c1 = chunk(rank*num_gpus+gpu_index[num_gpus-1], Buffer.input, index+chunk_step_total, size=size_count)
-            chunk(peer*num_gpus+gpu_index[num_gpus-1], Buffer.input, index+chunk_step_total, size=size_count).reduce(c1, ch=int(ch_idx))
+            c1 = chunk(rank*num_gpus+gpu_index[num_gpus-1], Buffer.input, chunk_step_total*size+index, size=size_count)
+            chunk(peer*num_gpus+gpu_index[num_gpus-1], Buffer.input, chunk_step_total*size+index, size=size_count).reduce(c1, ch=int(ch_idx))
         count *= 2
 
-def allgather_recursive_vector_doubling_distance_halving(size, group_index, chunk_step_total, gpu_index, ch_idx, num_gpus):
+# size is the number of nodes
+def allgather_recursive_vector_doubling_distance_halving(size, group_index, chunk_step_total, ch_idx, num_gpus, gpu_index=[0,0,0,0]):
     count = size // 2
     size_count = int((size // 2) / count)
     while count >= 1:
@@ -52,7 +53,7 @@ def allgather_recursive_vector_doubling_distance_halving(size, group_index, chun
         for rank in range(size):
             peer = rank ^ count
             index = int(group_index[rank])
-            chunk(rank*num_gpus+gpu_index[num_gpus-1], Buffer.input, chunk_step_total+index, size=size_count).copy(peer*num_gpus+gpu_index[num_gpus-1], Buffer.input, chunk_step_total+index, ch=ch_idx) 
+            chunk(rank*num_gpus+gpu_index[num_gpus-1], Buffer.input, chunk_step_total*size+index, size=size_count).copy(peer*num_gpus+gpu_index[num_gpus-1], Buffer.input, chunk_step_total*size+index, ch=int(ch_idx)) 
         count //= 2
         if (count != 0):
             calculate_index_vector_doubling_distance_halving(group_index, count*2, size)
@@ -61,36 +62,36 @@ def allgather_recursive_vector_doubling_distance_halving(size, group_index, chun
 def intra_reduce(num_nodes=0, node_offset=0, num_local_gpus=4, gpu_index=[0,0,0,0], chunk_step_total=0, ch_idx=0):
     rank_offset = node_offset * num_local_gpus
     for index in range(0, num_local_gpus-1):
-        other = chunk(int((gpu_index[index])+rank_offset), Buffer.input, chunk_step_total, size = int(num_nodes))
-        c1 = chunk(int((gpu_index[index+1])+rank_offset), Buffer.input, chunk_step_total, size = int(num_nodes)) 
+        other = chunk(int((gpu_index[index])+rank_offset), Buffer.input, chunk_step_total*num_nodes, size = int(num_nodes))
+        c1 = chunk(int((gpu_index[index+1])+rank_offset), Buffer.input, chunk_step_total*num_nodes, size = int(num_nodes)) 
         c1.reduce(other, ch=int(ch_idx))
 
 # broadcast from num_nodes-1 -> 0       
 def intra_broadcast(num_nodes=0, node_offset=0, num_local_gpus=4, gpu_index=[0,0,0,0], chunk_step_total=0, ch_idx=0):    
     rank_offset = node_offset * num_local_gpus
     for index in range(0, num_local_gpus-1):
-        c = chunk(int((gpu_index[num_local_gpus - 1 - index])%num_local_gpus + rank_offset), Buffer.input, chunk_step_total, size = int(num_nodes))
-        c.copy(int((gpu_index[num_local_gpus - 2 - index])%num_local_gpus + rank_offset), Buffer.input, chunk_step_total, ch=ch_idx)
+        c = chunk(int((gpu_index[num_local_gpus - 1 - index])%num_local_gpus + rank_offset), Buffer.input, chunk_step_total*num_nodes, size = int(num_nodes))
+        c.copy(int((gpu_index[num_local_gpus - 2 - index])%num_local_gpus + rank_offset), Buffer.input, chunk_step_total*num_nodes, ch=ch_idx)
 
 
-def chunk_reduce(group_index, num_gpus=0, num_nodes=0, combined_indices=[[0,0,0,0],[0,0,0,0]], tree_id=0, num_chunks_per_channel=0, num_channel_per_tree=0, chunk_step_channel=0):    
+def chunk_reduce(group_index_2d, num_gpus=0, num_nodes=0, combined_indices=[[0,0,0,0],[0,0,0,0]], tree_id=0, num_chunks_per_channel=0, num_channel_per_tree=0, chunk_step_channel=0):    
     for channel in range(num_channel_per_tree):
         channel_total = channel+tree_id*num_channel_per_tree
         chunk_step_total = chunk_step_channel+channel_total*num_chunks_per_channel 
         for node in range(0, num_nodes):
             intra_reduce(num_nodes=num_nodes, node_offset=node, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
 
-        reduce_scatter_vector_halving_distance_doubling(num_nodes, group_index, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total, num_gpus=num_gpus)
+        reduce_scatter_vector_halving_distance_doubling(size=num_nodes, group_index_h_d=group_index_2d[channel], chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total, num_gpus=num_gpus)
+    
         
 
-def chunk_broadcast(group_index, num_gpus=0, num_nodes=0, combined_indices=[[0,0,0,0],[0,0,0,0]], tree_id=0, num_chunks_per_channel=0, num_channel_per_tree=0, chunk_step_channel=0):
+def chunk_broadcast(group_index_2d, num_gpus=0, num_nodes=0, combined_indices=[[0,0,0,0],[0,0,0,0]], tree_id=0, num_chunks_per_channel=0, num_channel_per_tree=0, chunk_step_channel=0):
     for channel in range(num_channel_per_tree):
         channel_total = channel+tree_id*num_channel_per_tree
-        chunk_step_total = chunk_step_channel+channel_total*num_chunks_per_channel  
+        chunk_step_total = chunk_step_channel+channel_total*num_chunks_per_channel
+        allgather_recursive_vector_doubling_distance_halving(size=num_nodes, group_index=group_index_2d[channel], chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total, num_gpus=num_gpus)  
         for node in range(0, num_nodes):
             intra_broadcast(num_nodes=num_nodes, node_offset=node, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
-
-        allgather_recursive_vector_doubling_distance_halving(num_nodes, group_index, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total, num_gpus=num_gpus)
         
 def allreduce_recursive_doubling_halving(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
     
@@ -120,21 +121,26 @@ def allreduce_recursive_doubling_halving(num_gpus, num_nodes, nchunks, nchannel,
         for chunk_step in range(0, num_chunks_per_channel):
             tree_id = 0
             
-            group_index = [0] * num_nodes
+            original_group_index = [0] * num_nodes
+
+            group_index_2d = [original_group_index[:] for _ in range(num_channel_per_tree)]
+
                         
-            chunk_reduce(group_index, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+            chunk_reduce(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                         
-            chunk_broadcast(group_index, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
+            chunk_broadcast(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
         
         if trees == 2:
             for chunk_step in range(0, num_chunks_per_channel):
                 tree_id = 1
                 
-                group_index = [0] * num_nodes
+                original_group_index = [0] * num_nodes
+
+                group_index_2d = [original_group_index[:] for _ in range(num_channel_per_tree)]
                 
-                chunk_reduce(group_index, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                chunk_reduce(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                                 
-                chunk_broadcast(group_index, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
+                chunk_broadcast(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
                              
         XML()
         Check()
