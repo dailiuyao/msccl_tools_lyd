@@ -272,9 +272,9 @@ class ReduceScatter(Collective):
 #         return correct
 
     
-    def get_buffer_index(self, rank, buffer, index):
-        # For inplace broadcast, the input buffer points into the output buffer
-        if self.inplace and buffer == Buffer.input:
-            return Buffer.output, index + rank * self.chunk_factor
-        else:
-            return buffer, index
+    # def get_buffer_index(self, rank, buffer, index):
+    #     # For inplace broadcast, the input buffer points into the output buffer
+    #     if self.inplace and buffer == Buffer.input:
+    #         return Buffer.output, index + rank * self.chunk_factor
+    #     else:
+    #         return buffer, index

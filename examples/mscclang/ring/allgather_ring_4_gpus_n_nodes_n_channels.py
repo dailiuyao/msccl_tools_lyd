@@ -11,36 +11,69 @@ import math
 # Vary channels from [1-8] to divide parts of the ring over multiple channels/tbs.
 # channels=1 is standard ring, all chunks are assigned to the same tb/channel
 # channels=8 devotes 1 tb/channel to handling 1 chunk of the data
-def allgather_ring(num_nodes, num_gpus, instances, channels, protocol):
-    size = num_gpus * num_nodes
-    # for each ring, the number of chunks = size 
-    # because we have 2 rings, the number of chunks = 2 * size
-    # if we have multiple channels, we need to divide the chunks into multiple channels, so we need chunksperchannel 
-    chunksperchannel = int((2*size)/channels)
-    topology = fully_connected(size)
-    collective = AllGather(size, 2*size, True)
+def allgather_ring_pip(num_chunks:int, num_nodes:int, num_gpus:int, instances:int, channels:int, protocol:str):
+    # for each ring, the number of original chunks for each gpu = num_chunks
+    # the number of chunks to AllGather() is the original number of chunks for each gpu
+    # total number of chunks = number_of_rings * number of channels * num_chunks * size
+    size = num_gpus * num_nodes 
+    number_of_rings = 2
+    total_chunks = int(number_of_rings * num_chunks * channels * size)
+    para_chunks = int(total_chunks/size)
+    
+    chunk_offset_of_index = para_chunks
+    
+    chunksperchannel = num_chunks
+    
+    channels_per_ring = channels
+    
+    topology = fully_connected(16)
+    collective = AllGather(16, 1, True)
     with MSCCLProgram(f"allgather_ring_{channels}channelsperring", topology, collective, instances,
-         protocol=protocol, threadblock_policy=ThreadblockPolicy.manual):
-        
+         protocol=protocol):        
         # this hardcode just for 4gpus per node
-        gpu_index0 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [3, 2, 5, 4]]
-        gpu_index1 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [3, 2, 1, 0]] 
+        gpu_index0 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [0, 1, 2, 3]]
+        gpu_index1 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [0, 1, 2, 3]] 
+ 
+        for i in range(0, size):
+            for n in range(0, para_chunks):
+                print(f"rank:{i}, chunk:{n}")
+                c = chunk(i, Buffer.output, n)
+                print(f"rank:{i}, chunk:{n}, c:{c}")
                 
         # Propagate ring
-        for step in range(0, size-1):
-            for index in range(0, size):
-                rank = gpu_index0[(index + step) % size]
-                next_rank = gpu_index0[(index + step + 1) % size]
-                c = chunk(rank, Buffer.input, index)
-                c = c.copy(next_rank, Buffer.input, index, ch=int(index/chunksperchannel), recvtb=int(index/chunksperchannel), sendtb=int(index/chunksperchannel))
+        ring_id = 0
+        for chunk_step in range(0, chunksperchannel):
+            for channel in range(0, channels_per_ring):
+                channel_id_total = channel+ring_id*channels_per_ring
+                chunk_offset_of_current_channel = channel_id_total*chunksperchannel
+                for step in range(0, size-1):
+                    for index in range(0, size):
+                        rank = gpu_index0[(index + step) % size]
+                        next_rank = gpu_index0[(index + step + 1) % size]
+                        # print("rank, next_rank", rank, next_rank)
+                        # print(index+channel_id_total*chunksperchannel)
+                        # print("Before chunk:", rank, Buffer.output, index+channel_id_total*chunksperchannel)
+                        print("Before chunk:",rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
+                        c = chunk(rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
+                        # print("After chunk:", c)
+                        c.copy(next_rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step, ch=channel_id_total)
         
-        for step in range(0, size-1):
-            for index in range(0, size):
-                rank = gpu_index1[(index + step) % size]
-                next_rank = gpu_index1[(index + step + 1) % size]
-                c = chunk(rank, Buffer.input, index+size)
-                c = c.copy(next_rank, Buffer.input, index+size, ch=int((index/chunksperchannel) + (channels/2)), recvtb=int((index/chunksperchannel) + (channels/2)), sendtb=int((index/chunksperchannel) + (channels/2)))
-            
+        ring_id = 1
+        for chunk in range(0, chunksperchannel):
+            for channel in range(0, channels_per_ring):
+                channel_id_total = channel+ring_id*channels_per_ring
+                chunk_offset_of_current_channel = channel_id_total*chunksperchannel
+                for step in range(0, size-1):
+                    for index in range(0, size):
+                        rank = gpu_index0[(index + step) % size]
+                        next_rank = gpu_index0[(index + step + 1) % size]
+                        # print("rank, next_rank", rank, next_rank)
+                        # print(index+channel_id_total*chunksperchannel)
+                        # print("Before chunk:", rank, Buffer.output, index+channel_id_total*chunksperchannel)
+                        c = chunk(rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk)
+                        # print("After chunk:", c)
+                        c.copy(next_rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk, ch=channel_id_total)
+        
         
                
         XML()
@@ -50,10 +83,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--num_gpus', type=int, help ='number of gpus')
 parser.add_argument('--num_nodes', type=int, help='number of nodes')
 parser.add_argument('--channels', type=int, help='Number of channels to use for 1 instance of the ring [1-8]')
+parser.add_argument('--num_chunks', type=int, help='number of chunks')
 parser.add_argument('--instances', type=int, help='number of instances')
 parser.add_argument('--protocol', type=str, default='LL128', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: LL128')
 args = parser.parse_args()
 
 
 
-allgather_ring(args.num_nodes ,args.num_gpus, args.instances, args.channels, args.protocol)
+allgather_ring_pip(args.num_chunks, args.num_nodes ,args.num_gpus, args.instances, args.channels, args.protocol)

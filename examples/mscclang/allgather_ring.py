@@ -18,7 +18,9 @@ def allgather_ring(size, channels, instances, protocol):
         for step in range(0, size-1):
             for index in range(0, size):
                 rank = (index + step) % size
+                print("Before chunk:", rank, Buffer.output, index)
                 c = chunk(rank, Buffer.output, index)
+                print("After chunk:", c)
                 next_rank = (index + step + 1) % size
                 channel = index%channels
                 c = c.copy(next_rank, Buffer.output, index, sendtb=channel, recvtb=channel, ch=channel)   
@@ -27,9 +29,9 @@ def allgather_ring(size, channels, instances, protocol):
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument('num_gpus', type=int, help ='number of gpus')
-parser.add_argument('channels', type=int, help='Number of channels to use for 1 instance of the ring [1-8]')
-parser.add_argument('instances', type=int, help='number of instances')
+parser.add_argument('--num_gpus', type=int, help ='number of gpus')
+parser.add_argument('--channels', type=int, help='Number of channels to use for 1 instance of the ring [1-8]')
+parser.add_argument('--instances', type=int, help='number of instances')
 parser.add_argument('--protocol', type=str, default='LL128', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: Simple')
 args = parser.parse_args()
 
