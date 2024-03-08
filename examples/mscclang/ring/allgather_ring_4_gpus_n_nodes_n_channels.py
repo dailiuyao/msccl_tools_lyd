@@ -26,19 +26,13 @@ def allgather_ring_pip(num_chunks:int, num_nodes:int, num_gpus:int, instances:in
     
     channels_per_ring = channels
     
-    topology = fully_connected(16)
-    collective = AllGather(16, 1, True)
+    topology = fully_connected(size)
+    collective = AllGather(size, para_chunks, True)
     with MSCCLProgram(f"allgather_ring_{channels}channelsperring", topology, collective, instances,
          protocol=protocol):        
         # this hardcode just for 4gpus per node
         gpu_index0 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [0, 1, 2, 3]]
-        gpu_index1 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [0, 1, 2, 3]] 
- 
-        for i in range(0, size):
-            for n in range(0, para_chunks):
-                print(f"rank:{i}, chunk:{n}")
-                c = chunk(i, Buffer.output, n)
-                print(f"rank:{i}, chunk:{n}, c:{c}")
+        gpu_index1 = gpu_index0
                 
         # Propagate ring
         ring_id = 0
@@ -53,26 +47,26 @@ def allgather_ring_pip(num_chunks:int, num_nodes:int, num_gpus:int, instances:in
                         # print("rank, next_rank", rank, next_rank)
                         # print(index+channel_id_total*chunksperchannel)
                         # print("Before chunk:", rank, Buffer.output, index+channel_id_total*chunksperchannel)
-                        print("Before chunk:",rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
+                        # print("Before chunk:",rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
                         c = chunk(rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
                         # print("After chunk:", c)
                         c.copy(next_rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step, ch=channel_id_total)
         
         ring_id = 1
-        for chunk in range(0, chunksperchannel):
+        for chunk_step in range(0, chunksperchannel):
             for channel in range(0, channels_per_ring):
                 channel_id_total = channel+ring_id*channels_per_ring
                 chunk_offset_of_current_channel = channel_id_total*chunksperchannel
                 for step in range(0, size-1):
-                    for index in range(0, size):
-                        rank = gpu_index0[(index + step) % size]
-                        next_rank = gpu_index0[(index + step + 1) % size]
+                    for index in range(size-1, -1, -1):
+                        rank = gpu_index0[(index - step) % size]
+                        next_rank = gpu_index0[(index - step - 1) % size]
                         # print("rank, next_rank", rank, next_rank)
                         # print(index+channel_id_total*chunksperchannel)
                         # print("Before chunk:", rank, Buffer.output, index+channel_id_total*chunksperchannel)
-                        c = chunk(rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk)
+                        c = chunk(rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
                         # print("After chunk:", c)
-                        c.copy(next_rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk, ch=channel_id_total)
+                        c.copy(next_rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step, ch=channel_id_total)
         
         
                

@@ -202,6 +202,6 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # total chunks = 2 * num_chunks * size
 # channels is the total number of channels of all rings, chunksperchannel = int(total_chunks/channels)
 
-python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/allgather_ring.py --num_gpus=16 --channels=2 --instances=1 --protocol=Simple > ${MSCCL_TOOLS_XML}/ring/ring-test.xml
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/allgather_ring.py --num_gpus=16 --channels=2 --instances=1 --protocol=Simple > ${MSCCL_TOOLS_XML}/ring/ring-test.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allgather_ring_4_gpus_n_nodes_n_channels.py --num_nodes=4 --num_chunks=4 --channels=2 --protocol=Simple --num_gpus=4 --instances=1 > ${MSCCL_TOOLS_XML}/ring/allgather_ring_4_gpus_16_nodes_2_channels.xml
+python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allgather_ring_4_gpus_n_nodes_n_channels.py --num_nodes=4 --num_chunks=8 --channels=2 --protocol=Simple --num_gpus=4 --instances=1 > ${MSCCL_TOOLS_XML}/ring/allgather_ring_4_gpus_16_nodes_2_channels.xml
