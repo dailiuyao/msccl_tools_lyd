@@ -54,11 +54,12 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
         trees=2
     
     size = num_nodes * num_gpus
-    num_chunks_per_channel = int(nchunks / nchannel) 
-    num_channel_per_tree=int(nchannel/trees)
+    num_chunks_per_channel = nchunks
+    num_channel_per_tree=nchannel
+    num_total_chunks = nchunks * nchannel * trees 
     
     topology = fully_connected(size)
-    collective = AllReduce(size, nchunks, True)
+    collective = AllReduce(size, num_total_chunks, True)
     with MSCCLProgram("allreduce_binomial_tree", topology, collective, instances, protocol=protocol):
         
         # channel 0: 0->1->2->3

@@ -93,7 +93,7 @@ def chunk_broadcast(group_index_2d, num_gpus=0, num_nodes=0, combined_indices=[[
         for node in range(0, num_nodes):
             intra_broadcast(num_nodes=num_nodes, node_offset=node, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
         
-def allreduce_recursive_doubling_halving(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
+def allreduce_recursive_doubling_halving(num_gpus: int, num_nodes: int, nchunks: int, nchannel: int, instances: int, protocol: str):
     
     if (nchannel == 1):
         trees=1
@@ -101,9 +101,10 @@ def allreduce_recursive_doubling_halving(num_gpus, num_nodes, nchunks, nchannel,
         trees=2
     
     size = num_nodes * num_gpus
-    num_chunks_per_channel = int(nchunks / nchannel) 
-    num_channel_per_tree=int(nchannel/trees)
-    nchunks_total = nchunks * num_nodes
+    num_chunks_per_channel = nchunks
+    num_channel_per_tree= nchannel
+    nchunks_total = nchunks * num_nodes * nchannel * trees
+    
     
     topology = fully_connected(size)
     collective = AllReduce(size, nchunks_total, True)

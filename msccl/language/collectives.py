@@ -59,13 +59,18 @@ class AllToAll(Collective):
                         correct = False
         return correct
 
-
+### LYD
+# the initial buffer index is related to the rank index
+# for example, for rank 0
+# if we have 8 gpus, 2 channels
+# the initial buffer index is 0, 1, 2, ......, 15
+###
 class AllGather(Collective):
     def __init__(self, num_ranks, chunk_factor, inplace):
         Collective.__init__(self, num_ranks, chunk_factor, inplace)
         self.name = 'allgather'
 
-    # Initializes input buffer for an allgather
+    
     def init_buffers(self):
         rank_buffers = []
         if self.inplace:
