@@ -10,13 +10,17 @@ from msccl.language.collectives import AllGather
 # Binomial tree and mirrored binomial tree
 # Mirrored trees adopted from: http://algo2.iti.kit.edu/documents/2tree.pdf
 
-
-def intra_reduce(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_index=[0,0,0,0], num_chunks_per_channel=1, ch_idx=0):
+def intra_gather_peer1(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_index=[0,0,0,0], num_chunks_per_channel=1, ch_idx=0):
     rank_offset = node_offset * num_local_gpus
     for index in range(0, num_local_gpus-1):
         other = chunk((gpu_index[index])+rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel)
         c1 = chunk((gpu_index[index+1])+rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel)
-        c1.reduce(other, ch=ch_idx)
+        other.copy(c1, ch=ch_idx)
+        
+        
+        gpu_index[index+rank_offset]
+        
+        gpu_index[index+rank_offset]*chunk_offset_of_index + channel_id_total*num_chunks_per_channel + chunk_step
         
 def intra_broadcast_peer1(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_index=[0,0,0,0], num_chunks_per_channel=1, ch_idx=0):    
     rank_offset = node_offset * num_local_gpus
@@ -24,26 +28,32 @@ def intra_broadcast_peer1(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_ind
         c = chunk((gpu_index[num_local_gpus - 1 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel)
         c.copy((gpu_index[num_local_gpus - 2 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel, ch=ch_idx)
 
-def intra_broadcast_peer0(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_index=[0,0,0,0], num_chunks_per_channel=1, ch_idx=0):    
-    rank_offset = node_offset * num_local_gpus
-    for index in range(0, num_local_gpus-1):
-        c = chunk((gpu_index[num_local_gpus - 2 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel)
-        c.copy((gpu_index[num_local_gpus - 3 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel, ch=ch_idx)
+# def intra_broadcast_peer0(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_index=[0,0,0,0], num_chunks_per_channel=1, ch_idx=0):    
+#     rank_offset = node_offset * num_local_gpus
+#     for index in range(0, num_local_gpus-1):
+#         c = chunk((gpu_index[num_local_gpus - 2 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel)
+#         c.copy((gpu_index[num_local_gpus - 3 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel, ch=ch_idx)
 
 
-def allgather_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, num_channel, instances, protocol):
+def allgather_binary_tree(num_nodes, num_local_gpus, num_chunks, num_channel, instances, protocol):   
+    
     if (num_channel == 1):
         trees=1
     else:
         trees=2
-    size = num_nodes * num_local_gpus
-    num_chunks_per_channel = int(num_chunks / num_channel)
-    if (num_channel == 1):
-        num_channel_per_tree=1
-    else:
-        num_channel_per_tree=int(num_channel/2)
+
+    size = num_local_gpus * num_nodes 
+    total_chunks = int(trees * num_chunks * channels * size)
+    para_chunks = int(total_chunks/size)
+    
+    chunk_offset_of_index = para_chunks
+
+    num_chunks_per_channel = num_chunks
+    
+    num_channel_per_tree=num_channel
+
     topology = fully_connected(size)
-    collective = AllGather(size, num_chunks, True)
+    collective = AllGather(size, para_chunks, True)
 
     #/* Btree which alternates leaves and nodes.
     #* Assumes root is 0, which conveniently builds a tree on powers of two,
@@ -67,12 +77,12 @@ def allgather_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
     #*   p0  p1  p0  p1  p0  p1  p0   p1
     #*/
 
-    with MSCCLProgram("allgather_binary_tree_hierarchical", topology, collective, instances, protocol=protocol):
+    with MSCCLProgram("allgather_binary_tree", topology, collective, instances, protocol=protocol):
 
         # tree0: channel0 3->2->1->0
         # tree0: channel2 0->1->2->3
         # each tree has one channel
-        # Reduce tree - reducing onto Rank 0
+        # gather tree - gathering onto Rank 0
         gpu_index0 = list(range(num_local_gpus-1, -1, -1))
         # gpu_index1 = gpu_index0
         gpu_index1 = list(reversed(gpu_index0))
@@ -194,7 +204,7 @@ def allgather_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
         # tree1: channel1 3->2->1->0
         # tree1: channel3 0->1->2->3
         # tree1 have two different channels
-        # Reduce tree - reducing onto Rank N-1
+        # gather tree - gathering onto Rank N-1
         # if the number of node is even, the second tree is a mirrored tree
         
         if (trees == 2) and (num_nodes % 2 == 0):
@@ -308,7 +318,7 @@ def allgather_binary_tree_hierarchical(num_nodes, num_local_gpus, num_chunks, nu
         # tree1: channel1 3->2->1->0
         # tree1: channel3 3->2->1->0
         # each tree has two same channel
-        # Reduce tree - reducing onto Rank N-1
+        # gather tree - gathering onto Rank N-1
         # if the number of node is odd, the second tree is a shifted tree
         
         elif (trees == 2) and (num_nodes % 2 == 1):
@@ -432,4 +442,4 @@ parser.add_argument('--instances', type=int, help ='number of instances')
 
 parser.add_argument('--protocol', type=str, default='Simple', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: Simple')
 args = parser.parse_args()
-allgather_binary_tree_hierarchical(args.num_nodes, args.num_gpus, args.nchunk, args.nchannel ,args.instances, args.protocol)
+allgather_binary_tree(args.num_nodes, args.num_gpus, args.nchunk, args.nchannel ,args.instances, args.protocol)

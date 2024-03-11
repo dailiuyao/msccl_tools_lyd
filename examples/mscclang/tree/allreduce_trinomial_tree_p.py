@@ -50,7 +50,29 @@ def chunk_broadcast(rank=0, child_0=0, child_1=0, num_gpus=0, num_nodes=0, combi
         if child_1 < num_nodes:
             chunk(int(rank*num_gpus + combined_indices[channel][num_gpus-1]), Buffer.input, chunk_step_total).copy(int(child_1*num_gpus + combined_indices[channel][num_gpus-1]), Buffer.input, chunk_step_total, ch=channel_total)
             intra_broadcast(node_offset=child_1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+
+
+def chunk_reduce_single(rank=0, child_0=0, num_gpus=0, num_nodes=0, combined_indices=[[0,0,0,0],[0,0,0,0]], tree_id=0, num_chunks_per_channel=0, num_channel_per_tree=0, chunk_step_channel=0):    
+    for channel in range(num_channel_per_tree):
+        channel_total = channel+tree_id*num_channel_per_tree
+        chunk_step_total = chunk_step_channel+channel_total*num_chunks_per_channel 
+        if child_0 < num_nodes:
+            intra_reduce(node_offset=child_0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
+            # the children node child_0 is ready, reduce to the last gpu in the parent node rank. 
+            c1 = chunk(int(child_0*num_gpus + combined_indices[channel][num_gpus-1]), Buffer.input, chunk_step_total)
+            chunk(int(rank*num_gpus + combined_indices[channel][num_gpus-1]), Buffer.input, chunk_step_total).reduce(c1, ch=channel_total)
+       
+def chunk_broadcast_single(rank=0, child_0=0, num_gpus=0, num_nodes=0, combined_indices=[[0,0,0,0],[0,0,0,0]], tree_id=0, num_chunks_per_channel=0, num_channel_per_tree=0, chunk_step_channel=0):
+    for channel in range(num_channel_per_tree):
+        channel_total = channel+tree_id*num_channel_per_tree
+        chunk_step_total = chunk_step_channel+channel_total*num_chunks_per_channel  
+        if child_0 < num_nodes:
+            chunk(int(rank*num_gpus + combined_indices[channel][num_gpus-1]), Buffer.input, chunk_step_total).copy(int(child_0*num_gpus + combined_indices[channel][num_gpus-1]), Buffer.input, chunk_step_total, ch=channel_total)
+            intra_broadcast(node_offset=child_0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+
+    
                 
+                                
 
 # Binomial tree and mirrored binomial tree
 # Mirrored trees adopted from: http://algo2.iti.kit.edu/documents/2tree.pdf
@@ -211,6 +233,8 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                     step_parent_child /= 3
                     step_parent_parent /= 3
                     current_level -= 1
+                    
+                    
 
 
                 # reduce-tree2
@@ -227,7 +251,14 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             level_1_child_0 = rank - step_parent_child
                             level_1_child_1 = rank - step_parent_child*2
                             
-                            chunk_reduce(rank, level_1_child_0, level_1_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_reduce(rank, level_1_child_0, level_1_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                        
+                        # hardcode for 8 gpus
+                        if num_nodes == 8:
+                            rank = 7 
+                            level_1_child_0 = rank - step_parent_child
+                            chunk_reduce_single(rank, level_1_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                           
 
                     else:
                         for rank in range (2, num_nodes, step_parent_parent):
@@ -235,7 +266,17 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             level_n_child_0 = rank + step_parent_child
                             level_n_child_1 = rank + step_parent_child*2
                             
-                            chunk_reduce(rank, level_n_child_0, level_n_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_reduce(rank, level_n_child_0, level_n_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                            
+                        # hardcode for 8 gpus
+                        if num_nodes == 8:
+                            rank = 2
+                            level_n_child_0 = rank + step_parent_child*2 - 1  
+                            chunk_reduce_single(rank, level_n_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+ 
+                        
+                        
+                             
 
                     step_parent_child *= 3
                     step_parent_parent *= 3
@@ -271,17 +312,33 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             
                             chunk_broadcast(rank, level_n_child_0, level_n_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
+                        # hardcode for 8 gpus
+                        if num_nodes == 8:
+                            rank = 2
+                            level_n_child_0 = rank + step_parent_child*2 - 1
+                            chunk_broadcast_single(rank, level_n_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+
+
+                        
                     else:
                         for rank in range (2, num_nodes, int(step_parent_parent)):
                             
                             level_1_child_0 = rank - step_parent_child
                             level_1_child_1 = rank - step_parent_child*2
                             
-                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
+                            
+                            # hardcode for 8 gpus
+                            if num_nodes == 8:
+                                rank = 7 
+                                level_1_child_0 = rank - 1                                
+                                chunk_broadcast_single(rank, level_1_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
+                             
 
                     step_parent_child /= 3
                     step_parent_parent /= 3
                     current_level -= 1
+                
 
         
                    

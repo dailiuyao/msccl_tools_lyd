@@ -427,10 +427,10 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
 parser = argparse.ArgumentParser()
 parser.add_argument('--num_gpus', type=int, help='number of gpus per node')
 parser.add_argument('--num_nodes', type=int, help='number of nodes')
-parser.add_argument('--nchunk', type=int, help ='number of chunks')
+parser.add_argument('--nchunks', type=int, help ='number of chunks')
 parser.add_argument('--nchannel', type=int, help ='number of channels')
 parser.add_argument('--instances', type=int, help ='number of instances')
 
 parser.add_argument('--protocol', type=str, default='Simple', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: Simple')
 args = parser.parse_args()
-allreduce_binary_tree_hierarchical(args.num_nodes, args.num_gpus, args.nchunk, args.nchannel ,args.instances, args.protocol)
+allreduce_binary_tree_hierarchical(args.num_nodes, args.num_gpus, args.nchunks, args.nchannel ,args.instances, args.protocol)

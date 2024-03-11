@@ -20,11 +20,11 @@ def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
     topology = fully_connected(size)
     collective = AllReduce(size, 2*size, True)
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances,
-         protocol=protocol, threadblock_policy=ThreadblockPolicy.manual):
+         protocol=protocol):
         
         # this hardcode just for 4gpus per node
-        gpu_index0 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [3, 2, 5, 4]]
-        gpu_index1 = [(n + 4*i) % (int(num_nodes)*4) for i in range(int(num_nodes)) for n in [3, 2, 1, 0]]
+        gpu_index0 = list(range(0, size, 1))
+        gpu_index1 = list(reversed(gpu_index0))
 
         # Reduce ring
         for step in range(0, size-1):
@@ -32,14 +32,14 @@ def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
                 rank = gpu_index0[(index + step) % size]
                 next_rank = gpu_index0[(index + step + 1) % size]
                 c = chunk(next_rank, Buffer.input, index)
-                c.reduce(chunk(rank, Buffer.input, index), ch=int(index/chunksperchannel), recvtb=int(index/chunksperchannel), sendtb=int(index/chunksperchannel))
+                c.reduce(chunk(rank, Buffer.input, index), ch=int(index/chunksperchannel))
         
         for step in range(0, size-1):
             for index in range(0, size):
                 rank = gpu_index1[(index + step) % size]
                 next_rank = gpu_index1[(index + step + 1) % size]
                 c = chunk(next_rank, Buffer.input, index+size)
-                c.reduce(chunk(rank, Buffer.input, index+size), ch=int((index/chunksperchannel) + (channels/2)), recvtb=int((index/chunksperchannel) + (channels/2)), sendtb=int((index/chunksperchannel) + (channels/2)))
+                c.reduce(chunk(rank, Buffer.input, index+size), ch=int((index/chunksperchannel) + (channels/2)))
              
        
                 
@@ -49,14 +49,14 @@ def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
                 rank = gpu_index0[(index + step) % size]
                 next_rank = gpu_index0[(index + step + 1) % size]
                 c = chunk(rank, Buffer.input, index)
-                c = c.copy(next_rank, Buffer.input, index, ch=int(index/chunksperchannel), recvtb=int(index/chunksperchannel), sendtb=int(index/chunksperchannel))
+                c = c.copy(next_rank, Buffer.input, index, ch=int(index/chunksperchannel))
         
         for step in range(-1, size-2):
             for index in range(0, size):
                 rank = gpu_index1[(index + step) % size]
                 next_rank = gpu_index1[(index + step + 1) % size]
                 c = chunk(rank, Buffer.input, index+size)
-                c = c.copy(next_rank, Buffer.input, index+size, ch=int((index/chunksperchannel) + (channels/2)), recvtb=int((index/chunksperchannel) + (channels/2)), sendtb=int((index/chunksperchannel) + (channels/2)))
+                c = c.copy(next_rank, Buffer.input, index+size, ch=int((index/chunksperchannel) + (channels/2)))
             
         
                
@@ -66,11 +66,11 @@ def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
 parser = argparse.ArgumentParser()
 parser.add_argument('--num_gpus', type=int, help ='number of gpus')
 parser.add_argument('--num_nodes', type=int, help='number of nodes')
-parser.add_argument('--channels', type=int, help='Number of channels to use for 1 instance of the ring [1-8]')
+parser.add_argument('--nchannel', type=int, help='Number of channels to use for 1 instance of the ring [1-8]')
 parser.add_argument('--instances', type=int, help='number of instances')
 parser.add_argument('--protocol', type=str, default='LL128', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: LL128')
 args = parser.parse_args()
 
 
 
-allreduce_ring(args.num_nodes ,args.num_gpus, args.instances, args.channels, args.protocol)
+allreduce_ring(args.num_nodes ,args.num_gpus, args.instances, args.nchannel, args.protocol)
