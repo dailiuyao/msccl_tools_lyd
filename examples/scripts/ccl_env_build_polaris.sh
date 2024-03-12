@@ -16,21 +16,21 @@ module load nvhpc-mixed
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
 
-# Set location to store MSCCL_TEST source/repository
-MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
+# Set location to store MSCCL source/repository
+MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
 export MSCCL_SRC_LOCATION
-export MSCCL_TEST_COMMIT="algorithm_test_origin"
+export MSCCL_COMMIT="algorithm_test_CCLadviser"
+
+export MSCCL_HOME=${MSCCL_SRC_LOCATION}/build
 
 # Set location to store NCCL_TEST_PROFILE source/repository
 NCCLTESTS_PROFILE_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl-tests-profile"
 export NCCLTESTS_PROFILE_SRC_LOCATION
 export NCCL_TEST_PROFILE_COMMIT="nccl-test-profile-nccl"
 
-export MSCCL_TEST_HOME=${MSCCL_TEST_SRC_LOCATION}/build
-
 # Set location to store NCCL-Tests-MSCCL-LYD source/repository
-NCCLTESTS_MSCCL_TEST_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
-export NCCLTESTS_MSCCL_TEST_SRC_LOCATION
+NCCLTESTS_MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
+export NCCLTESTS_MSCCL_SRC_LOCATION
 export NCCL_TEST_PROFILE_MSCCL_COMMIT="nccl-test-profile-msccl"
 
 # Set location to store NCCL-PROFILE source/repository
@@ -126,72 +126,72 @@ export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 # echo ""
 
 
-### MSCCL_TEST Core Section ###
+### MSCCL Core Section ###
 
-# rm -rf "${MSCCL_TEST_SRC_LOCATION}" 
+# rm -rf "${MSCCL_SRC_LOCATION}" 
 
-# Download MSCCL_TEST
-if [ ! -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
-	echo "[INFO] Downloading MSCCL_TEST repository..."
-	git clone https://github.com/dailiuyao/msccl-lyd.git "${MSCCL_TEST_SRC_LOCATION}"
-elif [ -d "${MSCCL_TEST_SRC_LOCATION}" ]; then
-	echo "[INFO] MSCCL_TEST repository already downloaded; will not re-download."
+# Download MSCCL
+if [ ! -d "${MSCCL_SRC_LOCATION}" ]; then
+	echo "[INFO] Downloading MSCCL repository..."
+	git clone https://github.com/dailiuyao/msccl-lyd.git "${MSCCL_SRC_LOCATION}"
+elif [ -d "${MSCCL_SRC_LOCATION}" ]; then
+	echo "[INFO] MSCCL repository already downloaded; will not re-download."
 fi
 echo ""
 
-# Enter MSCCL_TEST directory
-pushd "${MSCCL_TEST_SRC_LOCATION}" || exit
+# Enter MSCCL directory
+pushd "${MSCCL_SRC_LOCATION}" || exit
 
-# # Fetch latest changes
-# git fetch --all
-# 
-# # Checkout the correct commit
-# git checkout "${MSCCL_TEST_COMMIT}"
+# Fetch latest changes
+git fetch --all
 
-# Build MSCCL_TEST
-echo "[INFO] Building MSCCL_TEST..."
+# Checkout the correct commit
+git checkout "${MSCCL_COMMIT}"
+
+# Build MSCCL
+echo "[INFO] Building MSCCL..."
 make -j src.build
 echo ""
 
 # Create install package
 # [TODO]
 
-# Exist MSCCL_TEST directory
+# Exist MSCCL directory
 popd || exit
 echo ""
 
 
-# ### NCCL-Tests-MSCCL-LYD Section ###
+### NCCL-Tests-MSCCL-LYD Section ###
 
-# # rm -rf "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" 
+# rm -rf "${NCCLTESTS_MSCCL_SRC_LOCATION}" 
 
-# # Download NCCL-Tests-MSCCL-LYD
-# if [ ! -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
-# 	echo "[INFO] Downloading NCCL Tests with MSCCL support repository..."
-# 	git clone https://github.com/dailiuyao/nccl-tests.git "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}"
-# elif [ -d "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" ]; then
-# 	echo "[INFO] NCCL Tests with MSCCL support repository already exists."
-# fi
-# echo ""
+# Download NCCL-Tests-MSCCL-LYD
+if [ ! -d "${NCCLTESTS_MSCCL_SRC_LOCATION}" ]; then
+	echo "[INFO] Downloading NCCL Tests with MSCCL support repository..."
+	git clone https://github.com/dailiuyao/nccl-tests.git "${NCCLTESTS_MSCCL_SRC_LOCATION}"
+elif [ -d "${NCCLTESTS_MSCCL_SRC_LOCATION}" ]; then
+	echo "[INFO] NCCL Tests with MSCCL support repository already exists."
+fi
+echo ""
 
-# # Enter NCCL-Tests-MSCCL-TEST dir
-# pushd "${NCCLTESTS_MSCCL_TEST_SRC_LOCATION}" || exit
-# echo ""
+# Enter NCCL-Tests-MSCCL-TEST dir
+pushd "${NCCLTESTS_MSCCL_SRC_LOCATION}" || exit
+echo ""
 
-# # # Fetch latest changes
-# # git fetch --all
-# # 
-# # # Checkout the correct commit
-# # git checkout "${NCCL_TEST_PROFILE_MSCCL_COMMIT}"
+# Fetch latest changes
+git fetch --all
 
-# # Build NCCL Tests with MSCCL support
-# echo "[INFO] Building NCCL tests (nccl-tests) with MSCCL support..."
-# make clean
-# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${MSCCL_TEST_HOME}" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
+# Checkout the correct commit
+git checkout "${NCCL_TEST_PROFILE_MSCCL_COMMIT}"
 
-# # Exit NCCL Tests dir
-# popd || exit
-# echo ""
+# Build NCCL Tests with MSCCL support
+echo "[INFO] Building NCCL tests (nccl-tests) with MSCCL support..."
+make clean
+make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${MSCCL_HOME}" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
+
+# Exit NCCL Tests dir
+popd || exit
+echo ""
 
 # ### NCCL-Section ###
 
@@ -259,7 +259,7 @@ echo ""
 # make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${NCCL_SRC_LOCATION}/build"  
 # 
 # 
-# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${MSCCL_TEST_HOME}"
+# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME="${MSCCL_HOME}"
 # 
 # # Exit NCCL Tests dir
 # popd || exit
