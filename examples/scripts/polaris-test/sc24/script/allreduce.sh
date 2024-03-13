@@ -7,8 +7,8 @@
 #PBS -A MPICH_MCS
 #PBS -k doe
 #PBS -N ccl-16nodes
-#PBS -o ../log/ccl-16nodes.out
-#PBS -e ../log/ccl-16nodes.error
+#PBS -o ../log/ccl-16nodes-trinomial.out
+#PBS -e ../log/ccl-16nodes-trinomial.error
 
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
@@ -49,41 +49,41 @@ export GENMSCCLXML=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ge
 
 echo "##################################### MSCCL #####################################" 
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_1ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_1ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_1ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_1ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling/allreduce_recursive_doubling_1ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling/allreduce_recursive_doubling_1ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling/allreduce_recursive_doubling_2ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling/allreduce_recursive_doubling_2ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_1ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_1ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_2ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_2ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/trinomial_tree/allreduce_trinomial_tree_1ch_64chunk_64gpus.xml
+# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/trinomial_tree/allreduce_trinomial_tree_1ch_64chunk_64gpus.xml
 
-$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 768K -e 256M -f 2 -g 1 -n 60
+# $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 768K -e 256M -f 2 -g 1 -n 60
 
 export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/trinomial_tree/allreduce_trinomial_tree_2ch_64chunk_64gpus.xml
 
