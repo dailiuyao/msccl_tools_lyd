@@ -124,13 +124,19 @@ done
 # ###################### recursive_doubling ######################
 # # only support up to 2 channels
 
-nchunks_values=(32 64)
-nchannel_values=(1 2)
+# nchunks_values=(32 64)
+# nchannel_values=(1 2)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_doubling/allreduce_recursive_doubling_p.py \
-        --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk_16gpus.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_doubling/allreduce_recursive_doubling_p.py \
+#         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk_16gpus.xml
+#     done
+# done
+
+
+
+
+
+# mpirun --hostfile ~/hostfile --map-by ppr:1:node git -C /home/ec2-user/deps/msccl-tools-lyd pull
