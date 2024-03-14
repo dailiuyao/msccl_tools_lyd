@@ -21,14 +21,14 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # ###################### recursive_having_doubling ######################
 # # only support up to 2 channels
 
-# nchunks_values=(8 16 32 64 128 256)
+# nchunks_values=(8 16 32)
 # nchannel_values=(1 2)
 
 # for nchannel in "${nchannel_values[@]}"; do
 #     for nchunks in "${nchunks_values[@]}"; do
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
 #         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/recursive_doubling_halving/allreduce_recursive_doubling_halving_${nchannel}ch_${nchunks}chunk_16gpus.xml
+#         > ${MSCCL_TOOLS_XML}/recursive_doubling_halving/allreduce_recursive_doubling_halving_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
 
@@ -45,7 +45,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 #     for nchunks in "${nchunks_values[@]}"; do
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allgather_ring_p.py \
 #         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/ring/allgather_ring_${nchannel}ch_${nchunks}chunk_16gpus.xml
+#         > ${MSCCL_TOOLS_XML}/ring/allgather_ring_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
 
@@ -62,7 +62,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 #     for nchunks in "${nchunks_values[@]}"; do
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py \
 #         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_${nchannel}ch_${nchunks}chunk_16gpus.xml
+#         > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
 
@@ -79,7 +79,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 #     for nchunks in "${nchunks_values[@]}"; do
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
 #         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${nchunks}chunk_16gpus.xml
+#         > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
 
@@ -92,14 +92,14 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # num_total_chunks = num_chunks * num_channel * trees
 # # only support up to 2 channels
 
-# nchunks_values=(8 16 32 64 128 256)
+# nchunks_values=(8 16 32 64 128)
 # nchannel_values=(1 2)
 
 # for nchannel in "${nchannel_values[@]}"; do
 #     for nchunks in "${nchunks_values[@]}"; do
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binomial_tree_p.py \
 #         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/binomial_tree/allreduce_binomial_tree_${nchannel}ch_${nchunks}chunk_16gpus.xml
+#         > ${MSCCL_TOOLS_XML}/binomial_tree/allreduce_binomial_tree_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
 
@@ -109,14 +109,14 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # only support up to 2 channels
 
 
-# nchunks_values=(8 16 32 64 128 256)
+# nchunks_values=(8 16 32 64 128)
 # nchannel_values=(1 2)
 
 # for nchannel in "${nchannel_values[@]}"; do
 #     for nchunks in "${nchunks_values[@]}"; do
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_trinomial_tree_p.py \
 #         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/trinomial_tree/allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk_16gpus.xml
+#         > ${MSCCL_TOOLS_XML}/trinomial_tree/allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
 
@@ -124,14 +124,14 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # ###################### recursive_doubling ######################
 # # only support up to 2 channels
 
-nchunks_values=(8 16 32 64 128 256)
-nchannel_values=(1 2)
+# nchunks_values=(8 16 32)
+# nchannel_values=(1 2)
 
 for nchannel in "${nchannel_values[@]}"; do
     for nchunks in "${nchunks_values[@]}"; do
         python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_doubling/allreduce_recursive_doubling_p.py \
         --protocol=Simple --num_gpus=1 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk_16gpus.xml
+        > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk.xml
     done
 done
 
@@ -151,7 +151,7 @@ done
 #     -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
 #     -x NCCL_DEBUG="INFO" \
 #     -x FI_EFA_FORK_SAFE=1 \
-#     -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_64chunk_16gpus.xml" \
+#     -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_64chunk.xml" \
 #     -x MSCCL_XML_FILES=" " \
 #     -x GENMSCCLXML=1 \
 #     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
@@ -175,13 +175,13 @@ mpirun --hostfile ~/hostfile --map-by ppr:8:node \
     -x NCCL_DEBUG="INFO" \
     -x FI_EFA_FORK_SAFE=1 \
     -x OFI_NCCL_NIC_DUP_CONNS=2 \
-    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/1nic/allreduce_binary_tree_1ch_16chunk.xml" \
+    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/1nic/16gpus/allreduce_trinomial_tree_2ch_128chunk.xml" \
     -x GENMSCCLXML=1 \
     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
     /home/ec2-user/deps/nccl-tests-lyd/build/all_reduce_perf \
     --nthreads 1 \
     --ngpus 1 \
-    --minbytes 384 \
+    --minbytes 768K \
     --maxbytes 384M \
     --stepfactor 2 \
     --op sum \
@@ -189,3 +189,38 @@ mpirun --hostfile ~/hostfile --map-by ppr:8:node \
     --iters 20 \
     --warmup_iters 5 
     # > output.txt 2>&1
+
+############### notes for AllReduce experiments on AWS SC24 ###############
+# 1. -x OFI_NCCL_NIC_DUP_CONNS=2
+
+# 2. message size: 
+#       other algorithms: 128K - 512M 
+#       trinomial tree: 192K - 768M
+
+# 3. number of channels and chunks:
+#       recursive_having_doubling
+            # nchunks_values=(8 16 32)
+            # nchannel_values=(1 2)    
+#       ring  
+            # nchunks_values=(1 2 4)
+            # nchannel_values=(2 4 8)  
+#       double_binary_tree
+            # nchunks_values=(8 16 32 64 128 256)
+            # nchannel_values=(1 2)    
+#       double_binomial_tree  
+            # nchunks_values=(8 16 32 64 128)
+            # nchannel_values=(1 2)
+#       triple_trinomial_tree 
+            # nchunks_values=(8 16 32 64 128)
+            # nchannel_values=(1 2)
+#       recursive_doubling
+            # nchunks_values=(8 16 32)
+            # nchannel_values=(1 2)
+            
+# 4. XML format:
+            # allreduce_recursive_doubling_halving_${nchannel}ch_${nchunks}chunk.xml
+            # allreduce_ring_${nchannel}ch_${nchunks}chunk.xml
+            # allreduce_binary_tree_${nchannel}ch_${nchunks}chunk.xml
+            # allreduce_binomial_tree_${nchannel}ch_${nchunks}chunk.xml
+            # allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk.xml
+            # allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk.xml
