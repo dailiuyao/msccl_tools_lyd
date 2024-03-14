@@ -7,8 +7,8 @@
 #PBS -A MPICH_MCS
 #PBS -k doe
 #PBS -N ccl-16nodes
-#PBS -o ../log/ccl-16nodes-trinomial.out
-#PBS -e ../log/ccl-16nodes-trinomial.error
+#PBS -o ../log/ccl-16nodes-trinomial-1.out
+#PBS -e ../log/ccl-16nodes-trinomial-1.error
 
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
@@ -85,9 +85,11 @@ echo "##################################### MSCCL ##############################
 
 # $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 768K -e 256M -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/trinomial_tree/allreduce_trinomial_tree_2ch_64chunk_64gpus.xml
+export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/trinomial_tree/allreduce_trinomial_tree_2ch_32chunk_64gpus.xml
 
 $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 768K -e 256M -f 2 -g 1 -n 60
+
+export MSCCL_XML_FILES=" "
 
 export NCCL_ALGO=TREE
 

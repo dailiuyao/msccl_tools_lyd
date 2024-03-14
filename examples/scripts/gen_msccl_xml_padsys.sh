@@ -21,16 +21,16 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # ###################### recursive_having_doubling ######################
 # # only support up to 2 channels
 
-nchunks_values=(32 64)
-nchannel_values=(1 2)
+# nchunks_values=(32 64)
+# nchannel_values=(1 2)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
-        --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/recursive_doubling_halving/allreduce_recursive_doubling_halving_${nchannel}ch_${nchunks}chunk_8gpus.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
+#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/recursive_doubling_halving/allreduce_recursive_doubling_halving_${nchannel}ch_${nchunks}chunk_8gpus.xml
+#     done
+# done
 
 
 
@@ -55,16 +55,16 @@ done
 
 # # at least 2 channels
 
-nchunks_values=(1)
-nchannel_values=(2 4 8)
+# nchunks_values=(1)
+# nchannel_values=(2 4 8)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py \
-        --protocol=Simple --num_gpus=1 --num_nodes=8 --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_${nchannel}ch_${nchunks}chunk_8gpus.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py \
+#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_${nchannel}ch_${nchunks}chunk_8gpus.xml
+#     done
+# done
 
 
 ##################### double_binary_tree ######################
@@ -72,16 +72,16 @@ done
 # only support up to 2 channels
 
 
-nchunks_values=(32 64)
-nchannel_values=(1 2)
+# nchunks_values=(32 64)
+# nchannel_values=(1 2)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
-        --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${nchunks}chunk_8gpus.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
+#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${nchunks}chunk_8gpus.xml
+#     done
+# done
 
 
 
@@ -92,16 +92,16 @@ done
 # # num_total_chunks = num_chunks * num_channel * trees
 # # only support up to 2 channels
 
-nchunks_values=(32 64)
-nchannel_values=(1 2)
+# nchunks_values=(32 64)
+# nchannel_values=(1 2)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binomial_tree_p.py \
-        --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/binomial_tree/allreduce_binomial_tree_${nchannel}ch_${nchunks}chunk_8gpus.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binomial_tree_p.py \
+#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/binomial_tree/allreduce_binomial_tree_${nchannel}ch_${nchunks}chunk_8gpus.xml
+#     done
+# done
 
 
 # ###################### triple_trinomial_tree ######################
@@ -109,14 +109,14 @@ done
 # # only support up to 2 channels
 
 
-nchunks_values=(32 64)
+nchunks_values=(32)
 nchannel_values=(1 2)
 
 for nchannel in "${nchannel_values[@]}"; do
     for nchunks in "${nchunks_values[@]}"; do
         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_trinomial_tree_p.py \
-        --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/trinomial_tree/allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk_8gpus.xml
+        --protocol=Simple --num_gpus=4 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+        > ${MSCCL_TOOLS_XML}/trinomial_tree/allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk_64gpus.xml
     done
 done
 
@@ -124,13 +124,13 @@ done
 # ###################### recursive_doubling ######################
 # # only support up to 2 channels
 
-nchunks_values=(32 64)
-nchannel_values=(1 2)
+# nchunks_values=(32 64)
+# nchannel_values=(1 2)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_doubling/allreduce_recursive_doubling_p.py \
-        --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk_8gpus.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_doubling/allreduce_recursive_doubling_p.py \
+#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk_8gpus.xml
+#     done
+# done
