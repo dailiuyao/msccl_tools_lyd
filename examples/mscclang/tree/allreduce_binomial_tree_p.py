@@ -48,11 +48,10 @@ def chunk_broadcast(rank=0, child=0, num_gpus=0, num_nodes=0, combined_indices=[
 # Mirrored trees adopted from: http://algo2.iti.kit.edu/documents/2tree.pdf
 def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
     
-    # if (nchannel == 1):
-    #     trees=1
-    # else:
-    #     trees=2
-    trees=1
+    if (nchannel == 1):
+        trees=1
+    else:
+        trees=2
     
     size = num_nodes * num_gpus
     num_chunks_per_channel = nchunks
