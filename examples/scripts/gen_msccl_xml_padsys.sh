@@ -166,26 +166,26 @@ done
 #     --iters 20 \
 #     --warmup_iters 5
 
-# mpirun --hostfile ~/hostfile --map-by ppr:8:node \
-#     -x CUDA_HOME="/usr/local/cuda" \
-#     -x CUDA_PATH="/usr/local/cuda" \
-#     -x NCCL_HOME="/home/ec2-user/deps/msccl/build" \
-#     -x MPI_HOME="/opt/amazon/openmpi" \
-#     -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
-#     -x NCCL_DEBUG="INFO" \
-#     -x FI_EFA_FORK_SAFE=1 \
-#     -x OFI_NCCL_NIC_DUP_CONNS=2 \
-#     -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/1nic/allreduce_trinomial_tree_2ch_64chunk_16gpus.xml" \
-#     -x GENMSCCLXML=1 \
-#     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
-#     /home/ec2-user/deps/nccl-tests-lyd/build/all_reduce_perf \
-#     --nthreads 1 \
-#     --ngpus 1 \
-#     --minbytes 384 \
-#     --maxbytes 384M \
-#     --stepfactor 2 \
-#     --op sum \
-#     --datatype float \
-#     --iters 20 \
-#     --warmup_iters 5 
-#     # > output.txt 2>&1
+mpirun --hostfile ~/hostfile --map-by ppr:8:node \
+    -x CUDA_HOME="/usr/local/cuda" \
+    -x CUDA_PATH="/usr/local/cuda" \
+    -x NCCL_HOME="/home/ec2-user/deps/msccl/build" \
+    -x MPI_HOME="/opt/amazon/openmpi" \
+    -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
+    -x NCCL_DEBUG="INFO" \
+    -x FI_EFA_FORK_SAFE=1 \
+    -x OFI_NCCL_NIC_DUP_CONNS=2 \
+    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/1nic/allreduce_binary_tree_1ch_16chunk.xml" \
+    -x GENMSCCLXML=1 \
+    --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
+    /home/ec2-user/deps/nccl-tests-lyd/build/all_reduce_perf \
+    --nthreads 1 \
+    --ngpus 1 \
+    --minbytes 384 \
+    --maxbytes 384M \
+    --stepfactor 2 \
+    --op sum \
+    --datatype float \
+    --iters 20 \
+    --warmup_iters 5 
+    # > output.txt 2>&1
