@@ -1,0 +1,5 @@
+x3201c0s13b0n0.hsn.cm.polaris.alcf.anl.gov: rank 1 exited with code 3
+The MSCCL XML file does not exist:  
+bash: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: No such file or directory
+The MSCCL XML file does not exist:  
+bash: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: No such file or directory
