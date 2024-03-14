@@ -52,7 +52,7 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
     #     trees=1
     # else:
     #     trees=2
-    trees=2
+    trees=1
     
     size = num_nodes * num_gpus
     num_chunks_per_channel = nchunks

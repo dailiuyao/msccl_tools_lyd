@@ -93,7 +93,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # only support up to 2 channels
 
 nchunks_values=(64)
-nchannel_values=(1)
+nchannel_values=(1 2)
 
 for nchannel in "${nchannel_values[@]}"; do
     for nchunks in "${nchunks_values[@]}"; do
@@ -149,7 +149,7 @@ done
 #     -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
 #     -x NCCL_DEBUG="INFO" \
 #     -x FI_EFA_FORK_SAFE=1 \
-#     -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/1nic/allreduce_binomial_tree_2ch_64chunk_16gpus.xml" \
+#     -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_1ch_64chunk_16gpus.xml" \
 #     -x GENMSCCLXML=1 \
 #     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
 #     /home/ec2-user/deps/nccl-tests-lyd/build/all_reduce_perf \
