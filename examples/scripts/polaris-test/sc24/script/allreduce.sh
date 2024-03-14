@@ -102,3 +102,5 @@ $MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/bu
 #export NCCL_ALGO=RING
 #
 #$MPIEXEC_HOME/bin/mpiexec -n 64 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 1M -e 256M -f 2 -g 1 -n 60
+
+

@@ -67,8 +67,8 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
         # each tree has one channel
         # Reduce tree - reducing onto Rank 0
         gpu_index0 = list(range(0, num_gpus, 1))
-        # gpu_index1 = gpu_index0
-        gpu_index1 = list(reversed(gpu_index0))
+        gpu_index1 = gpu_index0
+        # gpu_index1 = list(reversed(gpu_index0))
         combined_indices = [gpu_index0, gpu_index1]
         
         for chunk_step in range(0, num_chunks_per_channel):
