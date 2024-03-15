@@ -30,12 +30,10 @@ def allgather_ring_pip(num_chunks:int, num_nodes:int, num_gpus:int, instances:in
     collective = AllGather(size, para_chunks, True)
     with MSCCLProgram(f"allgather_ring_{channels}channelsperring", topology, collective, instances,
          protocol=protocol):        
-        # # this hardcode just for 4gpus per node
-        # gpu_index0 = list(range(0, size, 1))
-        # gpu_index1 = gpu_index0
         
-        gpu_index0 = [(n + num_gpus*i) % (int(num_nodes)*num_gpus) for i in range(int(num_nodes)) for n in [0, 1, 3, 2, 5, 4, 6, 7]]
+        gpu_index0 = list(range(0, size, 1))
         gpu_index1 = gpu_index0
+        # gpu_index1 = list(reversed(gpu_index0))
                 
         # Propagate ring
         ring_id = 0
@@ -50,11 +48,13 @@ def allgather_ring_pip(num_chunks:int, num_nodes:int, num_gpus:int, instances:in
                         # print("rank, next_rank", rank, next_rank)
                         # print(index+channel_id_total*chunksperchannel)
                         # print("Before chunk:", rank, Buffer.output, index+channel_id_total*chunksperchannel)
-                        # print("Before chunk:",rank, Buffer.output, index*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
+                        # print("Before chunk:",rank, Buffer.output, gpu_index0[index]*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
                         c = chunk(rank, Buffer.output, gpu_index0[index]*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
                         # print("After chunk:", c)
                         c.copy(next_rank, Buffer.output, gpu_index0[index]*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step, ch=channel_id_total)
-        
+                        # print("after chunk:",next_rank, Buffer.output, gpu_index0[index]*chunk_offset_of_index + channel_id_total*chunksperchannel + chunk_step)
+
+
         ring_id = 1
         for chunk_step in range(0, chunksperchannel):
             for channel in range(0, channels_per_ring):
