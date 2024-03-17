@@ -3,6 +3,7 @@
 
 
 import argparse
+import numpy as np
 
 from msccl.language import *
 from msccl.topologies import *
@@ -13,22 +14,36 @@ def calculate_index_vector_halving_distance_doubling(group_index, count, size):
     num_groups = size / (count*2)
     # Calculate the size of each group
     group_size = size // num_groups
-    for rank in range(size):
-        # Calculate the position within the group
-        position_in_group = rank % group_size
-        # Adjust the position based on the count to generate the pattern
-        group_index[rank] += (position_in_group//count)*num_groups
+
+    ranks = np.arange(size)
+    position_in_group = ranks % group_size
+    adjustments = (position_in_group // count) * num_groups
+    group_index[:] = group_index + adjustments
+
+    # this is the original code, now I use the numpy optimization.
+    # for rank in range(size):
+    #     # Calculate the position within the group
+    #     position_in_group = rank % group_size
+    #     # Adjust the position based on the count to generate the pattern
+    #     group_index[rank] += (position_in_group//count)*num_groups
 
 def calculate_index_vector_doubling_distance_halving(group_index, count, size):
     # Calculate the number of groups based on the current count
     num_groups = size / (count*2)
     # Calculate the size of each group
     group_size = size // num_groups
-    for rank in range(size):
-        # Calculate the position within the group
-        position_in_group = rank % group_size
-        # Adjust the position based on the count to generate the pattern
-        group_index[rank] -= (position_in_group//count)*num_groups
+
+    ranks = np.arange(size)
+    position_in_group = ranks % group_size
+    adjustments = (position_in_group // count) * num_groups
+    group_index[:] = group_index - adjustments
+
+    # this is the original code, now I use the numpy optimization.
+    # for rank in range(size):
+    #     # Calculate the position within the group
+    #     position_in_group = rank % group_size
+    #     # Adjust the position based on the count to generate the pattern
+    #     group_index[rank] -= (position_in_group//count)*num_groups
 
 def reduce_scatter_vector_halving_distance_doubling(size, group_index_h_d, chunk_step_total, ch_idx, num_gpus, gpu_index=[0,0,0,0]):
     count = 1
@@ -126,10 +141,13 @@ def allreduce_recursive_doubling_halving(num_gpus: int, num_nodes: int, nchunks:
 
             group_index_2d = [original_group_index[:] for _ in range(num_channel_per_tree)]
 
+            # Convert group_index_2d to a NumPy array
+            group_index_2d_np = np.array(group_index_2d)
+
                         
-            chunk_reduce(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+            chunk_reduce(group_index_2d_np, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                         
-            chunk_broadcast(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
+            chunk_broadcast(group_index_2d_np, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
         
         if trees == 2:
             for chunk_step in range(0, num_chunks_per_channel):
@@ -138,10 +156,13 @@ def allreduce_recursive_doubling_halving(num_gpus: int, num_nodes: int, nchunks:
                 original_group_index = [0] * num_nodes
 
                 group_index_2d = [original_group_index[:] for _ in range(num_channel_per_tree)]
+
+                # Convert group_index_2d to a NumPy array
+                group_index_2d_np = np.array(group_index_2d)
                 
-                chunk_reduce(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                chunk_reduce(group_index_2d_np, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                                 
-                chunk_broadcast(group_index_2d, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
+                chunk_broadcast(group_index_2d_np, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
                              
         XML()
         Check()

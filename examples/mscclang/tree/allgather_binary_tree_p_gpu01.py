@@ -57,16 +57,19 @@ def intra_gather_peer1(node_offset=0, tree_id=0, chunk_step=0):
         for gpu_step in range(0, num_local_gpus-1): # this for loop is to go through all the gpus in the node
             for index in range(gpu_step, num_local_gpus-1): # this for loop is to gather the data from the original gpu to the last gpu in the node
                 chunk_offset_global = int(gpu_index[gpu_step+rank_offset]*chunk_offset_size_of_rank_index + channel_step_total*num_chunks_per_channel + chunk_step)
+                if node_offset == 2:
+                    print(f"intra: src is {gpu_index[int(index+rank_offset)]}, dst is {gpu_index[int(index+rank_offset+1)]}, chunk_offset_global is {chunk_offset_global}")  
                 other = chunk(gpu_index[int(index+rank_offset)], Buffer.output, chunk_offset_global)
                 other.copy(gpu_index[int(index+rank_offset+1)], Buffer.output, chunk_offset_global, ch=channel_step_total)
                 
-                # debug
-                if index == num_local_gpus-2 and gpu_step == num_local_gpus-2:
-                    for test_index in range(0, gpu_size*chunk_offset_size_of_rank_index):
-                        c_test = chunk(gpu_index[int(index+rank_offset+1)], Buffer.output, test_index)
-                        print(f"rank is {gpu_index[int(index+rank_offset+1)]}, chunk is {test_index}, the c_test is {c_test}")
+    # # debug
+    # for channel in range(num_channel_per_tree):
+    #     gpu_index = combined_indices[channel]
+    #     for test_index in range(0, gpu_size*chunk_offset_size_of_rank_index):
+    #         c_test = chunk(gpu_index[int(index+rank_offset+1)], Buffer.output, test_index)
+    #         print(f"rank is {gpu_index[int(index+rank_offset+1)]}, chunk is {test_index}, the c_test is {c_test}")
         
-def inter_gather(peer=0, rank=0, tree_id=0, chunk_step=0, step=0):
+def inter_gather(peer=0, rank=0, tree_id=0, chunk_step=0, step=0, inter_peer_side=0):
     # gather data from peer to rank
     
     # global combined_indices 
@@ -76,22 +79,30 @@ def inter_gather(peer=0, rank=0, tree_id=0, chunk_step=0, step=0):
     # global num_local_gpus
     # gpu_size   
     
-    peer_offset = peer * num_local_gpus 
-    rank_offset = rank * num_local_gpus 
+    peer_offset_global = peer * num_local_gpus 
+    rank_offset_global = rank * num_local_gpus 
     
     for channel in range(num_channel_per_tree):
         gpu_index = combined_indices[channel]
         channel_step_total = channel + tree_id * num_channel_per_tree
         for gpu_step in range(0, num_local_gpus):
-            if inter_peer_side = 0: # 0 means left side, 1 means right side
-                node_offset_step_start = rank_offset - step/2
-                node_offset_step_end = rank_offset 
-                
-            for node_offset_step in range(peer_offset-step/2, peer_offset+step/2):
-                peer_chunk_offset_global = gpu_index[gpu_step+peer_offset]*chunk_offset_size_of_rank_index + channel_step_total*num_chunks_per_channel + chunk_step
-                other = chunk(gpu_index[num_local_gpus-1+peer_offset], Buffer.output, peer_chunk_offset_global)
-                other.copy(gpu_index[num_local_gpus-1+rank_offset], Buffer.output, peer_chunk_offset_global, ch=channel_step_total)
-   
+            if inter_peer_side == 0: # 0 means left side, 1 means right side, 2 means the top level node
+                node_offset_step_start = int(rank - (step - 1))
+                node_offset_step_end = int(rank - 1)
+            elif inter_peer_side == 1:
+                node_offset_step_start = int(rank + 1)
+                node_offset_step_end = int(rank + (step - 1)) 
+            else:
+                node_offset_step_start = 1
+                node_offset_step_end = int((gpu_size/num_local_gpus)-1) 
+              
+            for node_offset_step in range(node_offset_step_start, node_offset_step_end+1):
+                peer_chunk_offset_global = gpu_index[gpu_step+node_offset_step*num_local_gpus]*chunk_offset_size_of_rank_index + channel_step_total*num_chunks_per_channel + chunk_step
+                if rank == 2:
+                   print(f"inter: src is {gpu_index[num_local_gpus-1+peer_offset_global]}, dst is {gpu_index[num_local_gpus-1+rank_offset_global]}, peer_chunk_offset_global is {peer_chunk_offset_global}")  
+                other = chunk(gpu_index[num_local_gpus-1+peer_offset_global], Buffer.output, peer_chunk_offset_global)
+                other.copy(gpu_index[num_local_gpus-1+rank_offset_global], Buffer.output, peer_chunk_offset_global, ch=channel_step_total)
+
                 
         
 def intra_broadcast_peer1(node_offset=0, tree_id=0, chunk_step=0):    
@@ -210,7 +221,7 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
                     intra_gather_peer1(peer_0, tree_id, chunk_step)
                     
                     # the children node peer_0 is ready, gather to the last-1 gpu in the parent node rank. 
-                    inter_gather(peer_0, rank, tree_id, chunk_step)
+                    inter_gather(peer_0, rank, tree_id, chunk_step, step, 0)
                     
                     
                     peer_1 = rank + low_bit
@@ -223,7 +234,7 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
                         intra_gather_peer1(peer_1, tree_id, chunk_step)
                         
                         # the children node peer_1 is ready, gather to the last gpu in the parent node rank.
-                        inter_gather(peer_1, rank, tree_id, chunk_step)
+                        inter_gather(peer_1, rank, tree_id, chunk_step, step, 1)
                 step *= 2
                 
             peer_0 = 1
@@ -236,7 +247,7 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
             intra_gather_peer1(peer_0, tree_id, chunk_step)
             
             #gather to the top level node, the accepted gpu in the top node is last gpu
-            inter_gather(peer_0, 0, tree_id, chunk_step)
+            inter_gather(peer_0, 0, tree_id, chunk_step, step, 2)
             
             # conduct the intra gather in the top level node to the last gpu
             intra_gather_peer1(0, tree_id, chunk_step)

@@ -129,13 +129,47 @@ mpirun --hostfile ~/hostfile --map-by ppr:8:node \
     -x NCCL_DEBUG="INFO" \
     -x FI_EFA_FORK_SAFE=1 \
     -x GENMSCCLXML=1 \
-    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/1nic/16gpus/allreduce_trinomial_tree_2ch_128chunk.xml" \
+    -x NCCL_ALGO="MSCCL,TREE,RING" \
+    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/intra/allreduce_ring_8ch_4chunk.xml" \
     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
     /home/ec2-user/deps/nccl-tests-lyd/build/all_reduce_perf \
     --nthreads 1 \
     --ngpus 1 \
     --minbytes 128K \
     --maxbytes 512M \
+    --stepfactor 2 \
+    --op sum \
+    --datatype float \
+    --iters 20 \
+    --warmup_iters 5 \
+    >> output_nccl_sum_float_msccl_intra.log 2>&1
+
+allreduce_binary_tree_2ch_256chunk
+allreduce_binomial_tree_2ch_128chunk
+allreduce_recursive_doubling_2ch_32chunk
+allreduce_recursive_doubling_halving_2ch_32chunk
+allreduce_ring_8ch_4chunk
+allreduce_trinomial_tree_1ch_128chunk
+allreduce_trinomial_tree_2ch_128chunk
+
+# only for trinomial tree
+    mpirun -n 8 --oversubscribe \
+    -x CUDA_HOME="/usr/local/cuda" \
+    -x CUDA_PATH="/usr/local/cuda" \
+    -x NCCL_HOME="/home/ec2-user/deps/msccl/build" \
+    -x MPI_HOME="/opt/amazon/openmpi" \
+    -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
+    -x NCCL_DEBUG="INFO" \
+    -x FI_EFA_FORK_SAFE=1 \
+    -x GENMSCCLXML=1 \
+    -x NCCL_ALGO="MSCCL,TREE,RING" \
+    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/intra/allreduce_trinomial_tree_2ch_128chunk.xml" \
+    --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
+    /home/ec2-user/deps/nccl-tests-lyd/build/all_reduce_perf \
+    --nthreads 1 \
+    --ngpus 1 \
+    --minbytes 768K \
+    --maxbytes 384M \
     --stepfactor 2 \
     --op sum \
     --datatype float \
