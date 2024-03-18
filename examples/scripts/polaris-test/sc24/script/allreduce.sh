@@ -7,8 +7,8 @@
 #PBS -A MPICH_MCS
 #PBS -k doe
 #PBS -N ccl-16nodes
-#PBS -o ../log/ccl-64nodes-4-nomi_rec-hv-db.out
-#PBS -e ../log/ccl-64nodes-4-nomi_rec-hv-db.error
+#PBS -o ../log/ccl-64nodes-binary-binomial.out
+#PBS -e ../log/ccl-64nodes-binary-binomial.error
 
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
@@ -140,28 +140,18 @@ echo "##################################### MSCCL ##############################
 # $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
 
 
-
-
-
-
-
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/4_nomial_tree/allreduce_4_nomial_tree_1ch_32chunk.xml
+export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_32chunk.xml
 
 $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/4_nomial_tree/allreduce_4_nomial_tree_1ch_64chunk.xml
+export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_128chunk.xml
 
 $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/4_nomial_tree/allreduce_4_nomial_tree_2ch_64chunk.xml
+export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_32chunk.xml
 
 $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
 
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_2ch_2chunk.xml
+export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_128chunk.xml
 
 $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_2ch_4chunk.xml
-
-$MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-

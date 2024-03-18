@@ -188,6 +188,13 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             
                             chunk_reduce(rank, level_n_child_0, level_n_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
+                        # hardcode for 16 gpus
+                        if (num_nodes == 16) and (current_level == 2):
+                            rank = 10
+                            level_n_child_0 = 15  
+                            chunk_reduce_single(rank, level_n_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+ 
+                        
                         
                         
                     step_parent_child *= 3
@@ -224,7 +231,13 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             
                             chunk_broadcast(rank, level_n_child_0, level_n_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
                             
-                       
+                        # hardcode for 16 nodes
+                        if (num_nodes == 16) and (current_level == 2):
+                            rank = 10 
+                            level_1_child_0 = 15                               
+                            chunk_broadcast_single(rank, level_1_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
+                                
+
                     else:
                         for rank in range (1, num_nodes, int(step_parent_parent)):
                             
@@ -256,7 +269,12 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             
                             chunk_reduce(rank, level_1_child_0, level_1_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                         
-                        
+                        # hardcode for 8 gpus
+                        if num_nodes == 8:
+                            rank = 7 
+                            level_1_child_0 = rank - step_parent_child
+                            chunk_reduce_single(rank, level_1_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                           
 
                     else:
                         for rank in range (2, num_nodes, step_parent_parent):
@@ -266,7 +284,21 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             
                             chunk_reduce(rank, level_n_child_0, level_n_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                             
+                        # hardcode for 8 gpus
+                        if num_nodes == 8:
+                            rank = 2
+                            level_n_child_0 = rank + step_parent_child*2 - 1  
+                            chunk_reduce_single(rank, level_n_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+
+                        # hardcode for 16 nodes
+                        if (num_nodes == 16) and (current_level) == 2:
+                            rank = 11
+                            level_n_child_0 = 15  
+                            chunk_reduce_single(rank, level_n_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+ 
                         
+                        
+                             
 
                     step_parent_child *= 3
                     step_parent_parent *= 3
@@ -302,7 +334,19 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             
                             chunk_broadcast(rank, level_n_child_0, level_n_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
-                        
+                        # hardcode for 8 gpus
+                        if num_nodes == 8:
+                            rank = 2
+                            level_n_child_0 = rank + step_parent_child*2 - 1
+                            chunk_broadcast_single(rank, level_n_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+
+                        # hardcode for 16 nodes
+                        if (num_nodes == 16) and (current_level == 2):
+                            rank = 11 
+                            level_1_child_0 = 15                               
+                            chunk_broadcast_single(rank, level_1_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
+                                
+
                         
                     else:
                         for rank in range (2, num_nodes, int(step_parent_parent)):
@@ -311,6 +355,12 @@ def allreduce_trinomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, 
                             level_1_child_1 = rank - step_parent_child*2
                             
                             chunk_broadcast(rank, level_1_child_0, level_1_child_1, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
+                            
+                            # hardcode for 8 gpus
+                            if num_nodes == 8:
+                                rank = 7 
+                                level_1_child_0 = rank - 1                                
+                                chunk_broadcast_single(rank, level_1_child_0, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
                             
                             
 
