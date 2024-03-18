@@ -87,7 +87,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 #         --protocol=Simple --num_gpus=4 --num_nodes=8 --nchunks=4 --nchannel=1 --instances=1 \
 #         > ${MSCCL_TOOLS_XML}/ring/allgather_ring_test.xml
 
-# python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allgather_binary_tree_p_gpu01.py --protocol=Simple --num_gpus=2 --num_nodes=8 --nchunk=4 --nchannel=1 --instances=1 > ${MSCCL_TOOLS_XML}/binary_tree/allgather_binary_tree.xml
+python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allgather_binary_tree_p_gpu01.py --protocol=Simple --num_gpus=2 --num_nodes=16 --nchunk=1 --nchannel=1 --instances=1 > ${MSCCL_TOOLS_XML}/binary_tree/allgather_binary_tree.xml
 
 
 # ###################### double_binomial_tree ######################
@@ -128,13 +128,13 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # only support up to 2 channels
 
 
-# nchunks_values=(128)
-# nchannel_values=(2)
+# nchunks_values=(2)
+# nchannel_values=(1)
 
 # for nchannel in "${nchannel_values[@]}"; do
 #     for nchunks in "${nchunks_values[@]}"; do
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_4_nomial_tree_p.py \
-#         --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         --protocol=Simple --num_gpus=2 --num_nodes=16 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
 #         > ${MSCCL_TOOLS_XML}/4_nomial_tree/allreduce_4_nomial_tree_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
@@ -143,16 +143,16 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # ###################### recursive_doubling ######################
 # # only support up to 2 channels
 
-nchunks_values=(32)
-nchannel_values=(2)
+# nchunks_values=(32)
+# nchannel_values=(2)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_doubling/allreduce_recursive_doubling_p.py \
-        --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_doubling/allreduce_recursive_doubling_p.py \
+#         --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/recursive_doubling/allreduce_recursive_doubling_${nchannel}ch_${nchunks}chunk.xml
+#     done
+# done
 
 
 

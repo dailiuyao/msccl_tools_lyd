@@ -98,10 +98,8 @@ def inter_gather(peer=0, rank=0, tree_id=0, chunk_step=0, step=0, inter_peer_sid
               
             for node_offset_step in range(node_offset_step_start, node_offset_step_end+1):
                 peer_chunk_offset_global = gpu_index[gpu_step+node_offset_step*num_local_gpus]*chunk_offset_size_of_rank_index + channel_step_total*num_chunks_per_channel + chunk_step
-                if rank == 2:
-                   print(f"inter: src is {gpu_index[num_local_gpus-1+peer_offset_global]}, dst is {gpu_index[num_local_gpus-1+rank_offset_global]}, peer_chunk_offset_global is {peer_chunk_offset_global}")  
                 other = chunk(gpu_index[num_local_gpus-1+peer_offset_global], Buffer.output, peer_chunk_offset_global)
-                other.copy(gpu_index[num_local_gpus-1+rank_offset_global], Buffer.output, peer_chunk_offset_global, ch=channel_step_total)
+                other.copy(gpu_index[num_local_gpus-1+rank_offset_global], Buffer.output, peer_chunk_offset_global, ch=channel_step_total+node_offset_step)
 
                 
         
@@ -124,7 +122,7 @@ def intra_broadcast_peer1(node_offset=0, tree_id=0, chunk_step=0):
                 c1 = chunk(gpu_index[num_local_gpus - 1 - index + rank_offset], Buffer.output, chunk_offset_global)
                 c1.copy(gpu_index[num_local_gpus - 2 - index + rank_offset], Buffer.output, chunk_offset_global, ch=channel_step_total)
 
-def inter_broadcast(peer=0, rank=0, tree_id=0, chunk_step=0):
+def inter_broadcast(peer=0, rank=0, tree_id=0, chunk_step=0, step=0, inter_peer_side=0):
     # broadcast data from rank to peer
     
     # global combined_indices 
@@ -145,6 +143,7 @@ def inter_broadcast(peer=0, rank=0, tree_id=0, chunk_step=0):
             other = chunk(gpu_index[num_local_gpus-1+rank_offset], Buffer.output, chunk_offset_global)
             c1 = chunk(gpu_index[num_local_gpus-1+peer_offset], Buffer.output, chunk_offset_global)
             other.copy(gpu_index[num_local_gpus-1+peer_offset], Buffer.output, chunk_offset_global, ch=channel_step_total)
+
             
 
 def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_channel: int, instances: int, protocol: str):   
@@ -256,42 +255,42 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
             
             
             
-            # # Broadcast tree - root is Rank 0
-            # # conduct the intra broadcast in the top level node from the last gpu
-            # intra_broadcast_peer1(0, tree_id, chunk_step)
+            # Broadcast tree - root is Rank 0
+            # conduct the intra broadcast in the top level node from the last gpu
+            intra_broadcast_peer1(0, tree_id, chunk_step)
             
-            # inter_broadcast(peer_0, 0, tree_id, chunk_step)
+            inter_broadcast(peer_0, 0, tree_id, chunk_step)
             
-            # intra_broadcast_peer1(peer_0, tree_id, chunk_step)
+            intra_broadcast_peer1(peer_0, tree_id, chunk_step)
             
-            # step = 2**num_level
-            # while step >= 2:       
-            #     for rank in range(step, num_nodes, step*2):
-            #         bit = 1
-            #         while bit < num_nodes:            
-            #             if bit & rank:
-            #                 break
-            #             bit *= 2   
+            step = 2**num_level
+            while step >= 2:       
+                for rank in range(step, num_nodes, step*2):
+                    bit = 1
+                    while bit < num_nodes:            
+                        if bit & rank:
+                            break
+                        bit *= 2   
                     
-            #         low_bit = bit // 2
-            #         peer_0 = rank - low_bit
+                    low_bit = bit // 2
+                    peer_0 = rank - low_bit
                     
-            #         inter_broadcast(peer_0, rank, tree_id, chunk_step)
+                    inter_broadcast(peer_0, rank, tree_id, chunk_step, step, 0)
                     
-            #         intra_broadcast_peer1(peer_0, tree_id, chunk_step)
+                    intra_broadcast_peer1(peer_0, tree_id, chunk_step)
                    
 
-            #         peer_1 = rank + low_bit
-            #         while peer_1 >= num_nodes:
-            #             peer_1 = rank + low_bit
-            #             low_bit //= 2
+                    peer_1 = rank + low_bit
+                    while peer_1 >= num_nodes:
+                        peer_1 = rank + low_bit
+                        low_bit //= 2
 
-            #         if peer_1 > rank:
-            #             inter_broadcast(peer_1, rank, tree_id, chunk_step)
+                    if peer_1 > rank:
+                        inter_broadcast(peer_1, rank, tree_id, chunk_step, step, 1)
                         
-            #             intra_broadcast_peer1(peer_1, tree_id, chunk_step)
+                        intra_broadcast_peer1(peer_1, tree_id, chunk_step)
                        
-            #     step //= 2
+                step //= 2
   
 
 

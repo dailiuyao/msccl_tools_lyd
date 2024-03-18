@@ -68,12 +68,12 @@ def chunk_broadcast(rank=0, child_0=0, child_1=0, child_2=0, num_gpus=0, num_nod
 
 def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
     
-    # if (nchannel == 1):
-    #     trees=1
-    # else:
-    #     trees=4
+    if (nchannel == 1):
+        trees=1
+    else:
+        trees=4
 
-    trees=4
+    # trees=4
 
     size = num_nodes * num_gpus
     num_chunks_per_channel = nchunks

@@ -21,16 +21,16 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # ###################### recursive_having_doubling ######################
 # # only support up to 2 channels
 
-# nchunks_values=(8)
-# nchannel_values=(2)
+nchunks_values=(8)
+nchannel_values=(2)
 
-# for nchannel in "${nchannel_values[@]}"; do
-#     for nchunks in "${nchunks_values[@]}"; do
-#         python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
-#         --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/recursive_doubling_halving/allreduce_recursive_doubling_halving_${nchannel}ch_${nchunks}chunk.xml
-#     done
-# done
+for nchannel in "${nchannel_values[@]}"; do
+    for nchunks in "${nchunks_values[@]}"; do
+        python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
+        --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+        > ${MSCCL_TOOLS_XML}/recursive_doubling_halving/allreduce_recursive_doubling_halving_${nchannel}ch_${nchunks}chunk.xml
+    done
+done
 
 
 
@@ -143,16 +143,16 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # only support up to 2 channels
 
 
-nchunks_values=(32 64)
-nchannel_values=(1)
+# nchunks_values=(32 64)
+# nchannel_values=(1)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_4_nomial_tree_p.py \
-        --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/4_nomial_tree/allreduce_4_nomial_tree_${nchannel}ch_${nchunks}chunk.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_4_nomial_tree_p.py \
+#         --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/4_nomial_tree/allreduce_4_nomial_tree_${nchannel}ch_${nchunks}chunk.xml
+#     done
+# done
 
 
 
