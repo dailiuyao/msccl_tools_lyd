@@ -94,16 +94,16 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # num_total_chunks = num_chunks * num_channel * trees
 # # only support up to 2 channels
 
-# nchunks_values=(32 64 128)
-# nchannel_values=(1)
+nchunks_values=(1)
+nchannel_values=(1)
 
-# for nchannel in "${nchannel_values[@]}"; do
-#     for nchunks in "${nchunks_values[@]}"; do
-#         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binomial_tree_p.py \
-#         --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/binomial_tree/allreduce_binomial_tree_${nchannel}ch_${nchunks}chunk.xml
-#     done
-# done
+for nchannel in "${nchannel_values[@]}"; do
+    for nchunks in "${nchunks_values[@]}"; do
+        python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binomial_tree_p.py \
+        --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+        > ${MSCCL_TOOLS_XML}/binomial_tree/allreduce_binomial_tree_${nchannel}ch_${nchunks}chunk.xml
+    done
+done
 
 
 # ###################### triple_trinomial_tree ######################
@@ -128,7 +128,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # only support up to 2 channels
 
 
-nchunks_values=(32 64 128)
+nchunks_values=(1)
 nchannel_values=(1)
 
 for nchannel in "${nchannel_values[@]}"; do
