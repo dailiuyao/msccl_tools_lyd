@@ -57,8 +57,6 @@ def intra_gather_peer1(node_offset=0, tree_id=0, chunk_step=0):
         for gpu_step in range(0, num_local_gpus-1): # this for loop is to go through all the gpus in the node
             for index in range(gpu_step, num_local_gpus-1): # this for loop is to gather the data from the original gpu to the last gpu in the node
                 chunk_offset_global = int(gpu_index[gpu_step+rank_offset]*chunk_offset_size_of_rank_index + channel_step_total*num_chunks_per_channel + chunk_step)
-                if node_offset == 2:
-                    print(f"intra: src is {gpu_index[int(index+rank_offset)]}, dst is {gpu_index[int(index+rank_offset+1)]}, chunk_offset_global is {chunk_offset_global}")  
                 other = chunk(gpu_index[int(index+rank_offset)], Buffer.output, chunk_offset_global)
                 other.copy(gpu_index[int(index+rank_offset+1)], Buffer.output, chunk_offset_global, ch=channel_step_total)
                 
@@ -165,7 +163,6 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
     gpu_size = size
     total_chunks = int(trees * num_chunks * num_channel * size)
     para_chunks = int(total_chunks/size)
-    print(f"para_chunks is {para_chunks}, size is {size}")
     
     chunk_offset_size_of_rank_index = para_chunks
 
@@ -181,7 +178,6 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
     # each tree has one channel
     # gather tree - gathering onto Rank 0
     gpu_index0 = list(range(0, size, 1))
-    print(f"gpu_index0 is {gpu_index0}")
     # gpu_index1 = gpu_index0
     gpu_index1 = list(reversed(gpu_index0))
     combined_indices = [gpu_index0, gpu_index1] 
@@ -198,7 +194,7 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
         # peer0 and peer 1 are children nodes
         for chunk_step in range(0, num_chunks_per_channel):
             
-            print(f"###################### chunk_step {chunk_step} start ######################")
+            # print(f"###################### chunk_step {chunk_step} start ######################")
             
             num_level_ori = math.log(num_nodes,2)
             num_level = math.ceil(num_level_ori) - 1
@@ -251,7 +247,7 @@ def allgather_binary_tree(num_nodes: int, num_gpus:int , num_chunks: int, num_ch
             # conduct the intra gather in the top level node to the last gpu
             intra_gather_peer1(0, tree_id, chunk_step)
             
-            print(f"###################### chunk_step {chunk_step} end ######################")
+            # print(f"###################### chunk_step {chunk_step} end ######################")
             
             
             
