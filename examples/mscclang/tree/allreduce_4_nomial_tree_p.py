@@ -68,12 +68,12 @@ def chunk_broadcast(rank=0, child_0=0, child_1=0, child_2=0, num_gpus=0, num_nod
 
 def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
     
-    if (nchannel == 1):
-        trees=1
-    else:
-        trees=4
+    # if (nchannel == 1):
+    #     trees=1
+    # else:
+    #     trees=4
 
-    # trees=4
+    trees=4
 
     size = num_nodes * num_gpus
     num_chunks_per_channel = nchunks
@@ -91,7 +91,13 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
         gpu_index0 = list(range(0, num_gpus, 1))
         # gpu_index1 = gpu_index0
         gpu_index1 = list(reversed(gpu_index0))
-        combined_indices = [gpu_index0, gpu_index1]
+        # hard code the gpu_index2 and gpu_index3 for 4 gpus
+        gpu_index2 = [2,3,0,1]
+        gpu_index3 = [1,0,3,2]
+        combined_indices_0 = [gpu_index0, gpu_index0]
+        combined_indices_1 = [gpu_index1, gpu_index1]
+        combined_indices_2 = [gpu_index2, gpu_index2]
+        combined_indices_3 = [gpu_index3, gpu_index3]
 
 
         for chunk_step in range(0, num_chunks_per_channel):
@@ -113,7 +119,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                     child_1 = rank + step_parent_child*2
                     child_2 = rank + step_parent_child*3
 
-                    chunk_reduce(rank, child_0, child_1, child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                    chunk_reduce(rank, child_0, child_1, child_2, num_gpus, num_nodes, combined_indices_0, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
                         
                 step_parent_child *= 4
@@ -124,7 +130,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
             for channel in range(num_channel_per_tree):
                 channel_total = channel+tree_id*num_channel_per_tree
                 chunk_step_total = chunk_step+channel_total*num_chunks_per_channel 
-                intra_reduce(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
+                intra_reduce(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_0[channel], ch_idx=channel_total)
 
             # broadcast-tee0
             num_level_ori = math.log(num_nodes,4)
@@ -137,7 +143,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
             for channel in range(num_channel_per_tree):
                 channel_total = channel+tree_id*num_channel_per_tree
                 chunk_step_total = chunk_step+channel_total*num_chunks_per_channel  
-                intra_broadcast(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+                intra_broadcast(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_0[channel], ch_idx=channel_total) 
                             
             while current_level >= 1:
                 for rank in range (0, num_nodes, int(step_parent_parent)):
@@ -146,7 +152,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                     child_1 = rank + step_parent_child*2
                     child_2 = rank + step_parent_child*3
 
-                    chunk_broadcast(rank, child_0, child_1, child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                    chunk_broadcast(rank, child_0, child_1, child_2, num_gpus, num_nodes, combined_indices_0, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
 
                 step_parent_child /= 4
                 step_parent_parent /= 4
@@ -170,7 +176,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_1_child_1 = rank + step_parent_child*2
                             level_1_child_2 = rank - step_parent_child
                             
-                            chunk_reduce(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_reduce(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices_1, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
                     else:
                         for rank in range (1, num_nodes, step_parent_parent):
@@ -179,7 +185,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_n_child_1 = rank + step_parent_child*2
                             level_n_child_2 = rank + step_parent_child*3
                             
-                            chunk_reduce(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_reduce(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices_1, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
                     step_parent_child *= 4
                     step_parent_parent *= 4
@@ -189,7 +195,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel 
-                    intra_reduce(node_offset=1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
+                    intra_reduce(node_offset=1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_1[channel], ch_idx=channel_total)
 
 
                 # broadcast-tee1
@@ -203,7 +209,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel  
-                    intra_broadcast(node_offset=1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+                    intra_broadcast(node_offset=1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_1[channel], ch_idx=channel_total) 
                             
                 
                 while current_level >= 1:
@@ -214,7 +220,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_n_child_1 = rank + step_parent_child*2
                             level_n_child_2 = rank + step_parent_child*3
                             
-                            chunk_broadcast(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
+                            chunk_broadcast(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices_1, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step) 
                             
                     else:
                         for rank in range (1, num_nodes, int(step_parent_parent)):
@@ -223,7 +229,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_1_child_1 = rank + step_parent_child*2
                             level_1_child_2 = rank - step_parent_child
                             
-                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices_1, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
      
                     step_parent_child /= 4
                     step_parent_parent /= 4
@@ -247,7 +253,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_1_child_1 = rank - step_parent_child*2
                             level_1_child_2 = rank - step_parent_child
                             
-                            chunk_reduce(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                            chunk_reduce(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices_2, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                         
                     else:
                         for rank in range (2, num_nodes, step_parent_parent):
@@ -256,7 +262,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_n_child_1 = rank + step_parent_child*2
                             level_n_child_2 = rank + step_parent_child*3
                             
-                            chunk_reduce(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                            chunk_reduce(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices_2, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                             
                     step_parent_child *= 4
                     step_parent_parent *= 4
@@ -266,7 +272,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel 
-                    intra_reduce(node_offset=2, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
+                    intra_reduce(node_offset=2, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_2[channel], ch_idx=channel_total)
     
                     
                 # broadcast-tee2
@@ -280,7 +286,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel  
-                    intra_broadcast(node_offset=2, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+                    intra_broadcast(node_offset=2, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_2[channel], ch_idx=channel_total) 
                       
                 
                 while current_level >= 1:
@@ -291,7 +297,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_n_child_1 = rank + step_parent_child*2
                             level_n_child_2 = rank + step_parent_child*3
                             
-                            chunk_broadcast(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_broadcast(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices_2, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
                     else:
                         for rank in range (2, num_nodes, int(step_parent_parent)):
@@ -300,7 +306,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_1_child_1 = rank - step_parent_child*2
                             level_1_child_2 = rank - step_parent_child
                             
-                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
+                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices_2, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
                             
                     step_parent_child /= 4
                     step_parent_parent /= 4
@@ -321,7 +327,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_1_child_1 = rank - step_parent_child*2
                             level_1_child_2 = rank - step_parent_child
                             
-                            chunk_reduce(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                            chunk_reduce(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices_3, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
 
                     else:
                         for rank in range (3, num_nodes, step_parent_parent):
@@ -330,7 +336,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_n_child_1 = rank + step_parent_child*2
                             level_n_child_2 = rank + step_parent_child*3
                             
-                            chunk_reduce(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                            chunk_reduce(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices_3, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
 
                     step_parent_child *= 4
                     step_parent_parent *= 4
@@ -340,7 +346,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel 
-                    intra_reduce(node_offset=3, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
+                    intra_reduce(node_offset=3, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_3[channel], ch_idx=channel_total)
     
                     
                 # broadcast-tee3
@@ -354,7 +360,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel  
-                    intra_broadcast(node_offset=3, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+                    intra_broadcast(node_offset=3, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_3[channel], ch_idx=channel_total) 
                       
                 
                 while current_level >= 1:
@@ -365,7 +371,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_n_child_1 = rank + step_parent_child*2
                             level_n_child_2 = rank + step_parent_child*3
                             
-                            chunk_broadcast(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                            chunk_broadcast(rank, level_n_child_0, level_n_child_1, level_n_child_2, num_gpus, num_nodes, combined_indices_3, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
      
                     else:
                         for rank in range (3, num_nodes, int(step_parent_parent)):
@@ -374,7 +380,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                             level_1_child_1 = rank - step_parent_child*2
                             level_1_child_2 = rank - step_parent_child
                             
-                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
+                            chunk_broadcast(rank, level_1_child_0, level_1_child_1, level_1_child_2, num_gpus, num_nodes, combined_indices_3, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)   
                             
                            
 

@@ -48,10 +48,11 @@ def chunk_broadcast(rank=0, child=0, num_gpus=0, num_nodes=0, combined_indices=[
 # Mirrored trees adopted from: http://algo2.iti.kit.edu/documents/2tree.pdf
 def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
     
-    if (nchannel == 1):
-        trees=1
-    else:
-        trees=2
+    # if (nchannel == 1):
+    #     trees=1
+    # else:
+    #     trees=2
+    trees=2
     
     size = num_nodes * num_gpus
     num_chunks_per_channel = nchunks
@@ -69,7 +70,8 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
         gpu_index0 = list(range(0, num_gpus, 1))
         # gpu_index1 = gpu_index0
         gpu_index1 = list(reversed(gpu_index0))
-        combined_indices = [gpu_index0, gpu_index1]
+        combined_indices_0 = [gpu_index0, gpu_index0]
+        combined_indices_1 = [gpu_index1, gpu_index1]
         
         for chunk_step in range(0, num_chunks_per_channel):
             tree_id = 0
@@ -79,20 +81,20 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 # Reduce onto the left neighbor that is distance away
                 for rank in range(0, num_nodes, distance*2):
                     child = rank + distance
-                    chunk_reduce(rank, child, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                    chunk_reduce(rank, child, num_gpus, num_nodes, combined_indices_0, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
                 distance *= 2
             
             # root node reduce of tree 0
             for channel in range(num_channel_per_tree):
                 channel_total = channel+tree_id*num_channel_per_tree
                 chunk_step_total = chunk_step+channel_total*num_chunks_per_channel 
-                intra_reduce(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
+                intra_reduce(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_0[channel], ch_idx=channel_total)
             
             # root node broadcast of tree 0
             for channel in range(num_channel_per_tree):
                 channel_total = channel+tree_id*num_channel_per_tree
                 chunk_step_total = chunk_step+channel_total*num_chunks_per_channel  
-                intra_broadcast(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+                intra_broadcast(node_offset=0, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_0[channel], ch_idx=channel_total) 
                          
             
             # Broadcast tree - root is Rank 0
@@ -101,7 +103,7 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 # Copy to the right neighbor that is distance away
                 for rank in range(0, num_nodes, distance*2):
                     child = rank + distance
-                    chunk_broadcast(rank, child, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                    chunk_broadcast(rank, child, num_gpus, num_nodes, combined_indices_0, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                 distance = distance // 2
             
 
@@ -115,7 +117,7 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                     # Reduce onto the right neighbor that is distance away
                     for rank in range(num_nodes-1, 0, -distance*2):
                         child = rank - distance
-                        chunk_reduce(rank, child, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
+                        chunk_reduce(rank, child, num_gpus, num_nodes, combined_indices_1, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)    
 
                     distance *= 2
                 
@@ -123,13 +125,13 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel 
-                    intra_reduce(node_offset=num_nodes-1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total)
+                    intra_reduce(node_offset=num_nodes-1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_1[channel], ch_idx=channel_total)
                 
                 # root node broadcast of tree 0
                 for channel in range(num_channel_per_tree):
                     channel_total = channel+tree_id*num_channel_per_tree
                     chunk_step_total = chunk_step+channel_total*num_chunks_per_channel  
-                    intra_broadcast(node_offset=num_nodes-1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
+                    intra_broadcast(node_offset=num_nodes-1, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices_1[channel], ch_idx=channel_total) 
                          
                 
                 
@@ -139,7 +141,7 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                     # Copy to the left neighbor that is distance away
                     for rank in range(num_nodes-1, 0, -distance*2):
                         child = rank - distance
-                        chunk_broadcast(rank, child, num_gpus, num_nodes, combined_indices, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
+                        chunk_broadcast(rank, child, num_gpus, num_nodes, combined_indices_1, tree_id, num_chunks_per_channel, num_channel_per_tree, chunk_step)
                     distance = distance // 2
 
         XML()
