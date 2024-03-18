@@ -87,7 +87,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 #         --protocol=Simple --num_gpus=4 --num_nodes=8 --nchunks=4 --nchannel=1 --instances=1 \
 #         > ${MSCCL_TOOLS_XML}/ring/allgather_ring_test.xml
 
-python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allgather_binary_tree_p_gpu01.py --protocol=Simple --num_gpus=2 --num_nodes=16 --nchunk=1 --nchannel=1 --instances=1 > ${MSCCL_TOOLS_XML}/binary_tree/allgather_binary_tree.xml
+python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allgather_binary_tree_p_gpu01.py --protocol=Simple --num_gpus=4 --num_nodes=4 --nchunk=1 --nchannel=1 --instances=1 > ${MSCCL_TOOLS_XML}/binary_tree/allgather_binary_tree.xml
 
 
 # ###################### double_binomial_tree ######################
