@@ -31,11 +31,11 @@ def intra_broadcast_peer0(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_ind
         c.copy((gpu_index[num_local_gpus - 3 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel, ch=ch_idx)
 
 
-def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_chunks:int, num_channel:int, instances:int, protocol:str):
-    if (num_channel == 1):
-        trees=1
-    else:
-        trees=2
+def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_chunks:int, num_channel:int, instances:int, protocol:str, trees:int):
+    # if (num_channel == 1):
+    #     trees=1
+    # else:
+    #     trees=2
     size = num_nodes * num_local_gpus
     
     num_chunks_per_channel = num_chunks
@@ -77,7 +77,9 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
         gpu_index0 = list(range(num_local_gpus-1, -1, -1))
         # gpu_index1 = gpu_index0
         gpu_index1 = list(reversed(gpu_index0))
-        combined_indices = [gpu_index0, gpu_index1]
+        gpu_index2 = [2,3,0,1]
+        gpu_index3 = [1,0,3,2]
+        combined_indices = [gpu_index0, gpu_index1, gpu_index2, gpu_index3]
 
 
         # peer0 and peer 1 are children nodes
@@ -430,7 +432,7 @@ parser.add_argument('--num_nodes', type=int, help='number of nodes')
 parser.add_argument('--nchunks', type=int, help ='number of chunks')
 parser.add_argument('--nchannel', type=int, help ='number of channels')
 parser.add_argument('--instances', type=int, help ='number of instances')
-
+parser.add_argument('--trees', type=int, choices=[1, 2], help ='number of trees')
 parser.add_argument('--protocol', type=str, default='Simple', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: Simple')
 args = parser.parse_args()
-allreduce_binary_tree_hierarchical(args.num_nodes, args.num_gpus, args.nchunks, args.nchannel ,args.instances, args.protocol)
+allreduce_binary_tree_hierarchical(args.num_nodes, args.num_gpus, args.nchunks, args.nchannel ,args.instances, args.protocol, args.trees)

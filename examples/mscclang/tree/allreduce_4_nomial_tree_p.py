@@ -66,14 +66,14 @@ def chunk_broadcast(rank=0, child_0=0, child_1=0, child_2=0, num_gpus=0, num_nod
 
 
 
-def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
+def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol, trees):
     
     # if (nchannel == 1):
     #     trees=1
     # else:
     #     trees=4
 
-    trees=4
+
 
     size = num_nodes * num_gpus
     num_chunks_per_channel = nchunks
@@ -158,7 +158,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 step_parent_parent /= 4
                 current_level -= 1
         
-        if trees == 4:
+        if trees == 2:
             for chunk_step in range(0, num_chunks_per_channel):
                 # reduce-tree1
                 tree_id = 1
@@ -237,7 +237,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                     
                     
 
-
+        if trees == 4:
                 # reduce-tree2
                 tree_id = 2
                 num_level_ori = math.log(num_nodes,4)
@@ -401,10 +401,10 @@ parser.add_argument('--nchunks', type=int, help ='number of chunks')
 parser.add_argument('--num_gpus', type=int, help='number of gpus per node')
 parser.add_argument('--num_nodes', type=int, help='number of nodes')
 parser.add_argument('--nchannel', type=int, help ='number of channels')
-
+parser.add_argument('--trees', type=int, choices=[1, 2, 4], help ='number of trees')
 parser.add_argument('--instances', type=int, help ='number of instances')
 
 parser.add_argument('--protocol', type=str, default='Simple', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: Simple')
 args = parser.parse_args()
 
-allreduce_4_nomial_tree(args.num_gpus, args.num_nodes, args.nchunks, args.nchannel ,args.instances, args.protocol)
+allreduce_4_nomial_tree(args.num_gpus, args.num_nodes, args.nchunks, args.nchannel ,args.instances, args.protocol, args.trees)

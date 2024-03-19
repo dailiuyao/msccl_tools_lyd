@@ -46,13 +46,12 @@ def chunk_broadcast(rank=0, child=0, num_gpus=0, num_nodes=0, combined_indices=[
         
 # Binomial tree and mirrored binomial tree
 # Mirrored trees adopted from: http://algo2.iti.kit.edu/documents/2tree.pdf
-def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol):
+def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, protocol, trees):
     
     # if (nchannel == 1):
     #     trees=1
     # else:
     #     trees=2
-    trees=2
     
     size = num_nodes * num_gpus
     num_chunks_per_channel = nchunks
@@ -158,10 +157,10 @@ parser.add_argument('--nchunks', type=int, help ='number of chunks')
 parser.add_argument('--num_gpus', type=int, help='number of gpus per node')
 parser.add_argument('--num_nodes', type=int, help='number of nodes')
 parser.add_argument('--nchannel', type=int, help ='number of channels')
-
+parser.add_argument('--trees', type=int, choices=[1, 2], help ='number of trees')
 parser.add_argument('--instances', type=int, help ='number of instances')
 
 parser.add_argument('--protocol', type=str, default='Simple', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: Simple')
 args = parser.parse_args()
 
-allreduce_binomial_tree(args.num_gpus, args.num_nodes, args.nchunks, args.nchannel ,args.instances, args.protocol)
+allreduce_binomial_tree(args.num_gpus, args.num_nodes, args.nchunks, args.nchannel ,args.instances, args.protocol, args.trees)

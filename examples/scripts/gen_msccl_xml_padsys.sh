@@ -53,17 +53,14 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 
 # # channles not used to multiply the chunks, only to divide the chunks into multiple parallelism
 
-# # at least 2 channels
+# at least 2 channels
 
-# nchunks_values=(4)
-# nchannel_values=(8)
+# nchannel_values=(2)
 
 # for nchannel in "${nchannel_values[@]}"; do
-#     for nchunks in "${nchunks_values[@]}"; do
-#         python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py \
-#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_${nchannel}ch_${nchunks}chunk.xml
-#     done
+#     python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py \
+#     --protocol=Simple --num_gpus=4 --num_nodes=64 --nchannel=$nchannel --instances=1 \
+#     > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_${nchannel}ch_2ring_512chunk_64node_256gpu.xml
 # done
 
 
@@ -72,14 +69,31 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # only support up to 2 channels
 
 
-# nchunks_values=(256)
-# nchannel_values=(2)
+nchunks_values=(1 4 16 64 256)
+nchannel_values=(1 2 4)
+trees_values=(2)
+nodes_values=(4 8 16 32 64)
 
+export ngpus=4
+
+for nnodes in "${nodes_values[@]}"; do
+    for nchannel in "${nchannel_values[@]}"; do
+        for nchunks in "${nchunks_values[@]}"; do
+            for trees in "${trees_values[@]}"; do
+                python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
+                --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+                > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_${nchunks}chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
+            done
+        done
+    done
+done
 # for nchannel in "${nchannel_values[@]}"; do
 #     for nchunks in "${nchunks_values[@]}"; do
-#         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
-#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${nchunks}chunk.xml
+#         for trees in "${trees_values[@]}"; do
+#             python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
+#             --protocol=Simple --num_gpus=4 --num_nodes=64 --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+#             > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_$((nchannel*2))ch_${trees}tree_${nchunks}chunk_64node_256gpu.xml
+#         done
 #     done
 # done
 
@@ -111,16 +125,16 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # only support up to 2 channels
 
 
-nchunks_values=(64)
-nchannel_values=(2)
+# nchunks_values=(64)
+# nchannel_values=(2)
 
-for nchannel in "${nchannel_values[@]}"; do
-    for nchunks in "${nchunks_values[@]}"; do
-        python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_trinomial_tree_p.py \
-        --protocol=Simple --num_gpus=4 --num_nodes=81 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-        > ${MSCCL_TOOLS_XML}/trinomial_tree/allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk_27nodes.xml
-    done
-done
+# for nchannel in "${nchannel_values[@]}"; do
+#     for nchunks in "${nchunks_values[@]}"; do
+#         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_trinomial_tree_p.py \
+#         --protocol=Simple --num_gpus=4 --num_nodes=81 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#         > ${MSCCL_TOOLS_XML}/trinomial_tree/allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk_27nodes.xml
+#     done
+# done
 
 
 # ###################### recursive_doubling ######################
@@ -153,6 +167,83 @@ done
 #         > ${MSCCL_TOOLS_XML}/4_nomial_tree/allreduce_4_nomial_tree_${nchannel}ch_${nchunks}chunk.xml
 #     done
 # done
+
+
+
+# ###################### basic_msccl ######################
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_ring.py \
+# --num_gpus=64 --instances=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_64gpus.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
+# --protocol=Simple --num_gpus=64 --instances=1 --trees=2 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binomial_tree_64gpus_2tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
+# --protocol=Simple --num_gpus=64 --instances=1 --trees=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binomial_tree_64gpus_1tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_recursive_doubling_halving.py \
+# --protocol=Simple --num_gpus=64 --instances=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_rec_hv_db_64gpus.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=64 --instances=1 --trees=2 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_64gpus_2tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=64 --instances=1 --trees=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_64gpus_1tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_ring.py \
+# --num_gpus=128 --instances=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_128gpus.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
+# --protocol=Simple --num_gpus=128 --instances=1 --trees=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binomial_tree_128gpus_1tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
+# --protocol=Simple --num_gpus=128 --instances=1 --trees=2 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binomial_tree_128gpus_2tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_recursive_doubling_halving.py \
+# --protocol=Simple --num_gpus=128 --instances=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_rec_hv_db_128gpus.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=128 --instances=1 --trees=2 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_128gpus_2tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=128 --instances=1 --trees=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_128gpus_1tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_ring.py \
+# --num_gpus=256 --instances=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_256gpus.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
+# --protocol=Simple --num_gpus=256 --instances=1 --trees=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binomial_tree_256gpus_1tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
+# --protocol=Simple --num_gpus=256 --instances=1 --trees=2 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binomial_tree_256gpus_2tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_recursive_doubling_halving.py \
+# --protocol=Simple --num_gpus=256 --instances=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_rec_hv_db_256gpus.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=256 --instances=1 --trees=2 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_256gpus_2tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=256 --instances=1 --trees=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_256gpus_1tree.xml
+
+
 
 
 
