@@ -1,14 +1,14 @@
 #!/bin/bash -l
-#PBS -l select=8:system=polaris
+#PBS -l select=32:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:59:59
-#PBS -q debug-scaling
+#PBS -q prod
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
-#PBS -N ccl-8nodes
-#PBS -o ../log/paper0/ccl-8nodes-tree.out
-#PBS -e ../log/paper0/ccl-8nodes-tree.error
+#PBS -N ccl-32nodes
+#PBS -o ../log/paper0/ccl-32nodes-tree.out
+#PBS -e ../log/paper0/ccl-32nodes-tree.error
 
 export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
 export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
@@ -47,7 +47,7 @@ nchunks_values=(1 4 16 64 256)
 nchannel_values=(1 2 4)
 trees_values=(2)
 # nodes_values=(4 8 16 32 64)
-nodes_values=8
+nodes_values=32
 
 export ngpus=4
 
