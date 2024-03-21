@@ -69,8 +69,8 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # only support up to 2 channels
 
 
-nchunks_values=(1 4 16 64 256)
-nchannel_values=(1 2 4)
+nchunks_values=(128)
+nchannel_values=(4)
 trees_values=(2)
 nodes_values=(4 8 16 32 64)
 
@@ -82,7 +82,7 @@ for nnodes in "${nodes_values[@]}"; do
             for trees in "${trees_values[@]}"; do
                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
-                > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_${nchunks}chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
+                > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_$((nchunks*2))chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
             done
         done
     done
