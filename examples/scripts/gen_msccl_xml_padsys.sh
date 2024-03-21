@@ -82,7 +82,7 @@ for nnodes in "${nodes_values[@]}"; do
             for trees in "${trees_values[@]}"; do
                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu01.py \
                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
-                > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_$((nchunks*2))chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
+                > ${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_$((nchunks))chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
             done
         done
     done

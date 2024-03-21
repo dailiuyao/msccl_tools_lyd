@@ -6,6 +6,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 
+struct LogMessage_lyd* d_messages;
 
 #define MPICHECK(cmd) do {                          \
   int e = cmd;                                      \
@@ -101,18 +102,98 @@ int main(int argc, char* argv[])
   CUDACHECK(cudaMalloc(&recvbuff, size * sizeof(float)));
   CUDACHECK(cudaStreamCreate(&s));
 
+  //gauge test
+  CUDACHECK(cudaMalloc(&d_messages, sizeof(LogMessage_lyd)));
+  CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd)));
+
 
   //initializing NCCL
   NCCLCHECK(ncclCommInitRank(&comm, nRanks, id, myRank));
 
 
   //communicating using NCCL
-  NCCLCHECK(ncclAllReduce((const void*)sendbuff, (void*)recvbuff, size, ncclFloat, ncclSum,
-        comm, s));
+  ncclGroupStart();
+  if (myRank == 0){
+    NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, 1, comm, s));
+  } else {
+    NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, 0, comm, s));
+  }
+  ncclGroupEnd();
 
 
   //completing NCCL operation by synchronizing on the CUDA stream
   CUDACHECK(cudaStreamSynchronize(s));
+
+
+  // After the kernel execution, copy the messages back to the host
+  LogMessage_lyd* h_messages = new LogMessage_lyd;
+  cudaMemcpy(h_messages, d_messages, sizeof(LogMessage_lyd), cudaMemcpyDeviceToHost);
+  
+  // Process and print the messages on the host
+  #if PROFILE_LYD_REDUCE_BROADCAST == 1
+  for (size_t i = 0; i < maxMessages; ++i) {
+    printf("DEVICE | allreduce.h | runTreeUpDown | recvReduceCopy | time: %f us\n", h_messages->timeValue[i][0]);
+  }
+
+  for (size_t i = 0; i < maxMessages; ++i) {
+    printf("DEVICE | allreduce.h | runTreeUpDown | directSendFromOutput | time: %f us\n", h_messages->timeValue1[i][0]);
+  }
+  #endif
+
+  #if PROFILE_LYD_REDUCE_BROADCAST_CHUNK == 1
+  for (size_t i = 0; i < maxMessages; ++i) {
+    for (size_t j = 0; j < MAXLOGLYD; j++){
+      printf("DEVICE | allreduce.h | runTreeUpDown | recvReduceCopy-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue[i][j]);
+    }
+  }
+  for (size_t i = 0; i < maxMessages; ++i) {
+    for (size_t j = 0; j < MAXLOGLYD; j++){
+      printf("DEVICE | allreduce.h | runTreeUpDown | directSendFromOutput-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue1[i][j]);
+    }
+  }
+  #endif
+
+  #if PROFILE_LYD_REDUCE_LOADCONN_SETDATA == 1
+  for (size_t i = 0; i < maxMessages; ++i) {
+    printf("DEVICE | prims_simple.h | primitives | loadRecvConn | time: %f us\n", h_messages->timeValue[i][0]);
+  }
+
+  for (size_t i = 0; i < maxMessages; ++i) {
+    printf("DEVICE | prims_simple.h | primitives | loadSendConn | time: %f us\n", h_messages->timeValue1[i][0]);
+  }
+
+  for (size_t i = 0; i < maxMessages; ++i) {
+    printf("DEVICE | prims_simple.h | primitives | setDataPtrs | time: %f us\n", h_messages->timeValue2[i][0]);
+  }
+  #endif
+
+  #if PROFILE_LYD_GENERIC == 1
+  for (size_t i = 0; i < maxMessages; ++i) {
+    printf("DEVICE | prims_simple.h | genericop | time: %f us\n", h_messages->timeValue[i][0]);
+  }
+  #endif
+
+  #if PROFILE_LYD_WAIT_REDUCE_COPY_POST
+  for (size_t i = 0; i < maxMessages; ++i) {
+    for (size_t j = 0; j < MAXLOGLYD; j++){
+      printf("DEVICE | prims_simple.h | genericOp | waitpeer | iteration %d | time: %f us\n", j, h_messages->timeValue[i][j]);
+    }
+  }
+  for (size_t i = 0; i < maxMessages; ++i) {
+    for (size_t j = 0; j < MAXLOGLYD; j++){
+      printf("DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration %d | time: %f us\n", j, h_messages->timeValue1[i][j]);
+    }
+  }
+  for (size_t i = 0; i < maxMessages; ++i) {
+    for (size_t j = 0; j < MAXLOGLYD; j++){
+      printf("DEVICE | prims_simple.h | genericOp | postPeer | iteration %d | time: %f us\n", j, h_messages->timeValue2[i][j]);
+    }
+  }
+  #endif
+
+  // Free the device memory of the gauge test
+  cudaFree(d_messages);
+  delete[] h_messages;
 
 
   //free device buffers
