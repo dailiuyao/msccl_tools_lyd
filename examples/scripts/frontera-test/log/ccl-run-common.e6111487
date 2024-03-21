@@ -1,0 +1,9 @@
+[mpiexec@c198-012.frontera.tacc.utexas.edu] match_arg (../../../../../src/pm/i_hydra/libhydra/arg/hydra_arg.c:91): unrecognized argument ntasks
+[mpiexec@c198-012.frontera.tacc.utexas.edu] Similar arguments:
+[mpiexec@c198-012.frontera.tacc.utexas.edu] 	 n
+[mpiexec@c198-012.frontera.tacc.utexas.edu] 	 hosts
+[mpiexec@c198-012.frontera.tacc.utexas.edu] 	 s
+[mpiexec@c198-012.frontera.tacc.utexas.edu] HYD_arg_parse_array (../../../../../src/pm/i_hydra/libhydra/arg/hydra_arg.c:128): argument matching returned error
+[mpiexec@c198-012.frontera.tacc.utexas.edu] mpiexec_get_parameters (../../../../../src/pm/i_hydra/mpiexec/mpiexec_params.c:1338): error parsing input array
+[mpiexec@c198-012.frontera.tacc.utexas.edu] main (../../../../../src/pm/i_hydra/mpiexec/mpiexec.c:1738): error parsing parameters
+slurmstepd: error: *** JOB 6111487 ON c198-012 CANCELLED AT 2024-02-15T15:03:12 ***

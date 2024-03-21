@@ -1,0 +1,45 @@
+##################################### MSCCL #####################################
+TACC:  Starting up job 6111523 
+TACC:  Starting parallel tasks... 
+# nThread 1 nGpus 1 minBytes 1024 maxBytes 2097152 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  30743 on   c198-022 device  0 [0x02] Quadro RTX 5000
+#  Rank  1 Group  0 Pid  30012 on   c198-031 device  0 [0x02] Quadro RTX 5000
+c198-022:30743:30743 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.148<0>
+c198-022:30743:30743 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c198-022:30743:30743 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.148<0>
+c198-022:30743:30743 [0] NCCL INFO Using network IB
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.3
+c198-031:30012:30012 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.149<0>
+c198-031:30012:30012 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c198-031:30012:30012 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.149<0>
+c198-031:30012:30012 [0] NCCL INFO Using network IB
+c198-022:30743:30764 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
+c198-031:30012:30034 [0] NCCL INFO Setting affinity for GPU 0 to ff00ff
+c198-022:30743:30764 [0] NCCL INFO Channel 00/02 :    0   1
+c198-022:30743:30764 [0] NCCL INFO Channel 01/02 :    0   1
+c198-022:30743:30764 [0] NCCL INFO Trees [0] 1/-1/-1->0->-1 [1] -1/-1/-1->0->1
+c198-031:30012:30034 [0] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] 0/-1/-1->1->-1
+c198-022:30743:30764 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
+c198-031:30012:30034 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
+c198-022:30743:30764 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [receive] via NET/IB/0
+c198-031:30012:30034 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [receive] via NET/IB/0
+c198-022:30743:30764 [0] NCCL INFO Channel 00/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
+c198-031:30012:30034 [0] NCCL INFO Channel 00/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
+c198-022:30743:30764 [0] NCCL INFO Channel 01/0 : 0[2000] -> 1[2000] [send] via NET/IB/0
+c198-031:30012:30034 [0] NCCL INFO Channel 01/0 : 1[2000] -> 0[2000] [send] via NET/IB/0
+c198-022:30743:30764 [0] NCCL INFO Connected all rings
+c198-022:30743:30764 [0] NCCL INFO Connected all trees
+c198-031:30012:30034 [0] NCCL INFO Connected all rings
+c198-031:30012:30034 [0] NCCL INFO Connected all trees
+c198-031:30012:30034 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk2_frontera.xml
+c198-031:30012:30034 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk2_frontera.xml
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   RANK 1 PID 30012 RUNNING AT c198-031
+=   KILLED BY SIGNAL: 11 (Segmentation fault)
+===================================================================================
+TACC:  MPI job exited with code: 255 
+TACC:  Shutdown complete. Exiting. 

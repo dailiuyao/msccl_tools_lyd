@@ -1,0 +1,49 @@
+
+Lmod is automatically replacing "intel/19.1.1" with "gcc/9.1.0".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) impi/19.0.9
+
+The following have been reloaded with a version change:
+  1) python3/3.7.0 => python3/3.8.2
+
+
+The following have been reloaded with a version change:
+  1) impi/19.0.9 => impi/18.0.5
+
+srun: error: PMK_KVS_Barrier duplicate request from task 0
+srun: error: PMK_KVS_Barrier duplicate request from task 0
+srun: error: PMK_KVS_Barrier duplicate request from task 0
+srun: error: PMK_KVS_Barrier duplicate request from task 2
+srun: error: PMK_KVS_Barrier duplicate request from task 2
+srun: error: PMK_KVS_Barrier duplicate request from task 2
+srun: error: PMK_KVS_Barrier duplicate request from task 3
+srun: error: PMK_KVS_Barrier duplicate request from task 3
+srun: error: PMK_KVS_Barrier duplicate request from task 3
+srun: error: PMK_KVS_Barrier duplicate request from task 1
+srun: error: PMK_KVS_Barrier duplicate request from task 1
+srun: error: PMK_KVS_Barrier duplicate request from task 1
+Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(805).................: fail failed
+MPID_Init(1870).......................: channel initialization failed
+MPIDI_CH3_Init(126)...................: fail failed
+MPID_nem_init_ckpt(857)...............: fail failed
+MPIDI_CH3I_Seg_commit(433)............: fail failed
+MPIU_SHMW_Hnd_deserialize(323)........: fail failed
+MPIU_SHMW_Seg_open(921)...............: fail failed
+MPIU_SHMW_Seg_create_attach_templ(641): open failed - No such file or directory
+In: PMI_Abort(71350543, Fatal error in MPI_Init: Other MPI error, error stack:
+MPIR_Init_thread(805).................: fail failed
+MPID_Init(1870).......................: channel initialization failed
+MPIDI_CH3_Init(126)...................: fail failed
+MPID_nem_init_ckpt(857)...............: fail failed
+MPIDI_CH3I_Seg_commit(433)............: fail failed
+MPIU_SHMW_Hnd_deserialize(323)........: fail failed
+MPIU_SHMW_Seg_open(921)...............: fail failed
+MPIU_SHMW_Seg_create_attach_templ(641): open failed - No such file or directory)
+slurmstepd: error: *** STEP 6179904.0 ON c196-072 CANCELLED AT 2024-03-18T00:23:18 ***
+[mpiexec@c196-072.frontera.tacc.utexas.edu] control_cb (../../pm/pmiserv/pmiserv_cb.c:863): connection to proxy 1 at host c196-081 failed
+[mpiexec@c196-072.frontera.tacc.utexas.edu] HYDT_dmxu_poll_wait_for_event (../../tools/demux/demux_poll.c:76): callback returned error status
+[mpiexec@c196-072.frontera.tacc.utexas.edu] HYD_pmci_wait_for_completion (../../pm/pmiserv/pmiserv_pmci.c:520): error waiting for event
+[mpiexec@c196-072.frontera.tacc.utexas.edu] main (../../ui/mpich/mpiexec.c:1157): process manager error waiting for completion
