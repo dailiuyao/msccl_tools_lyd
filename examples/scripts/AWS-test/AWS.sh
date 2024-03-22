@@ -55,7 +55,7 @@ mpirun --hostfile ~/hostfile --map-by ppr:8:node \
     -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
     -x NCCL_DEBUG="INFO" \
     -x NCCL_ALGO="MSCCL,TREE,RING" \
-    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/8nic/16gpus/allreduce_binary_tree_node2_gpu16_mcl8_mck64_gan0.xml" \
+    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/8nic/16gpus/allreduce_binary_tree_node2_gpu16_mcl8_mck1_gan0.xml" \
     -x FI_EFA_FORK_SAFE=1 \
     -x GENMSCCLXML=1 \
     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
