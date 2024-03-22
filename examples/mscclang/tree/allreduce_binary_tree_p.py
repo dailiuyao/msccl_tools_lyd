@@ -24,12 +24,6 @@ def intra_broadcast_peer1(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_ind
         c = chunk((gpu_index[num_local_gpus - 1 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel)
         c.copy((gpu_index[num_local_gpus - 2 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel, ch=ch_idx)
 
-def intra_broadcast_peer0(node_offset=0, num_local_gpus=4, chunk_step=0, gpu_index=[0,0,0,0], num_chunks_per_channel=1, ch_idx=0):    
-    rank_offset = node_offset * num_local_gpus
-    for index in range(0, num_local_gpus-1):
-        c = chunk((gpu_index[num_local_gpus - 2 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel)
-        c.copy((gpu_index[num_local_gpus - 3 - index])%num_local_gpus + rank_offset, Buffer.input, chunk_step+ch_idx*num_chunks_per_channel, ch=ch_idx)
-
 
 def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_chunks:int, num_channel:int, instances:int, protocol:str, trees:int):
     # if (num_channel == 1):
@@ -89,6 +83,10 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
         
         
         combined_indices = [gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1]]
+
+        # for channel in range(num_channel_per_tree):
+        #     for gpuidx in range(num_local_gpus):
+        #         print(f"channel is {channel}, gpuidx is {gpuidx}, combined_indices is {combined_indices[channel][gpuidx]}")
 
 
         # peer0 and peer 1 are children nodes

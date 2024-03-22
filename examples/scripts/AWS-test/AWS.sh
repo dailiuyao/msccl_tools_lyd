@@ -21,6 +21,25 @@ mpirun --hostfile ~/hostfile --map-by ppr:1:node wget https://github.com/aws/aws
 
 mpirun --hostfile ~/hostfile --map-by ppr:1:node git -C /home/ec2-user/deps/msccl-tools-lyd pull
 
+mpirun --hostfile ~/hostfile --map-by ppr:1:node git -C /home/ec2-user/deps clone https://github.com/NVIDIA/nccl.git
+
+mpirun --hostfile ~/hostfile --map-by ppr:1:node mkdir /home/ec2-user/deps/aws-setup-lyd
+
+mpirun --hostfile ~/hostfile --map-by ppr:1:node git -C /home/ec2-user/deps/aws-setup-lyd clone https://github.com/dailiuyao/aws-setup-lyd.git
+
+mpirun --hostfile ~/hostfile --map-by ppr:1:node git -C /home/ec2-user/deps/aws-setup-lyd/aws-setup-lyd pull
+
+mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "sudo sh /home/ec2-user/deps/aws-setup-lyd/aws-setup-lyd/setup-nccl-lyd.sh"
+
+
+mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "cd /home/ec2-user/deps/nccl && make -j src.build"
+
+mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "cd /home/ec2-user/deps/nccl && make src.build CUDA_HOME=/usr/local/cuda"
+
+mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "cd /home/ec2-user/deps/nccl && sudo make -j src.build CUDA_HOME=/usr/local/cuda"
+
+make -j src.build
+
 ############## MSCCL TEST for non AWS optimization ##############
 
 mpirun --hostfile ~/hostfile --map-by ppr:8:node \
@@ -50,12 +69,11 @@ mpirun --hostfile ~/hostfile --map-by ppr:8:node \
 mpirun --hostfile ~/hostfile --map-by ppr:8:node \
     -x CUDA_HOME="/usr/local/cuda" \
     -x CUDA_PATH="/usr/local/cuda" \
-    -x NCCL_HOME="/home/ec2-user/deps/msccl/build" \
+    -x NCCL_HOME="/opt/nccl-lyd/build" \
     -x MPI_HOME="/opt/amazon/openmpi" \
-    -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
-    -x NCCL_DEBUG="INFO" \
-    -x NCCL_ALGO="MSCCL,TREE,RING" \
-    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/8nic/16gpus/allreduce_binary_tree_node2_gpu16_mcl8_mck1_gan0.xml" \
+    -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/opt/nccl-lyd/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
+    -x NCCL_DEBUG="TRACE" \
+    -x NCCL_ALGO="TREE" \
     -x FI_EFA_FORK_SAFE=1 \
     -x GENMSCCLXML=1 \
     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
@@ -247,4 +265,12 @@ allreduce_trinomial_tree_2ch_128chunk
 
 7. MSCCL path:
             /home/ec2-user/deps/msccl/build
+
+
+
+
+lspci -tvv
+
+
+ssh ec2-user@3.129.153.226
 
