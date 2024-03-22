@@ -11,7 +11,7 @@ export CUDA_HOME=/home/liuyao/software/cuda-11.6
 # export MPI_HOME="/home/liuyao/software/mpich_4_1_1_pgcc"
 
 export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_nvidiahpc-21.9-0"
-export NCCL_SRC_LOCATION="/home/liuyao/NCCL/deps-nccl/nccl"
+export NCCL_SRC_LOCATION="/home/liuyao/scratch/deps/nccl"
 
 # Update to include the correct path for NVCC and MPI library paths
 export PATH=${CUDA_HOME}/bin:${MPI_HOME}/bin:${PATH}

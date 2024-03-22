@@ -88,16 +88,19 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
         # channel 1: 3->2->1->0
         # each tree has one channel
         # Reduce tree - reducing onto Rank 0
-        gpu_index0 = list(range(0, num_gpus, 1))
-        # gpu_index1 = gpu_index0
-        gpu_index1 = list(reversed(gpu_index0))
-        # hard code the gpu_index2 and gpu_index3 for 4 gpus
-        gpu_index2 = [2,3,0,1]
-        gpu_index3 = [1,0,3,2]
-        combined_indices_0 = [gpu_index0, gpu_index0]
-        combined_indices_1 = [gpu_index1, gpu_index1]
-        combined_indices_2 = [gpu_index2, gpu_index2]
-        combined_indices_3 = [gpu_index3, gpu_index3]
+        
+        gpu_indices = []
+        gpu_indices.append(list(range(num_gpus)))  # gpu_index0
+        gpu_indices.append(list(reversed(gpu_indices[0])))  # gpu_index1
+        
+        for i in range(1, nchannel*trees//2):
+            gpu_indices.append([(x + i) % num_gpus for x in gpu_indices[0]])
+            gpu_indices.append(list(reversed(gpu_indices[-1])))
+
+        combined_indices_0 = [gpu_indices[0], gpu_indices[1], gpu_indices[2], gpu_indices[3]]
+        combined_indices_1 = [gpu_indices[4], gpu_indices[5], gpu_indices[6], gpu_indices[7]]
+        combined_indices_2 = [gpu_indices[8], gpu_indices[9], gpu_indices[10], gpu_indices[11]]
+        combined_indices_3 = [gpu_indices[12], gpu_indices[13], gpu_indices[14], gpu_indices[15]]
 
 
         for chunk_step in range(0, num_chunks_per_channel):
@@ -158,7 +161,7 @@ def allreduce_4_nomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
                 step_parent_parent /= 4
                 current_level -= 1
         
-        if trees == 2:
+        if trees == 2 or trees == 4:
             for chunk_step in range(0, num_chunks_per_channel):
                 # reduce-tree1
                 tree_id = 1

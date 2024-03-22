@@ -130,63 +130,15 @@ int main(int argc, char* argv[])
   cudaMemcpy(h_messages, d_messages, sizeof(LogMessage_lyd), cudaMemcpyDeviceToHost);
   
   // Process and print the messages on the host
-  #if PROFILE_LYD_REDUCE_BROADCAST == 1
-  for (size_t i = 0; i < maxMessages; ++i) {
-    printf("DEVICE | allreduce.h | runTreeUpDown | recvReduceCopy | time: %f us\n", h_messages->timeValue[i][0]);
-  }
-
-  for (size_t i = 0; i < maxMessages; ++i) {
-    printf("DEVICE | allreduce.h | runTreeUpDown | directSendFromOutput | time: %f us\n", h_messages->timeValue1[i][0]);
-  }
-  #endif
-
-  #if PROFILE_LYD_REDUCE_BROADCAST_CHUNK == 1
+  #if PROFILE_LYD_SEND_RECV_CHUNK == 1
   for (size_t i = 0; i < maxMessages; ++i) {
     for (size_t j = 0; j < MAXLOGLYD; j++){
-      printf("DEVICE | allreduce.h | runTreeUpDown | recvReduceCopy-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue[i][j]);
+      printf("DEVICE | sendrecv.h | runsend | directsend-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue[i][j]);
     }
   }
   for (size_t i = 0; i < maxMessages; ++i) {
     for (size_t j = 0; j < MAXLOGLYD; j++){
-      printf("DEVICE | allreduce.h | runTreeUpDown | directSendFromOutput-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue1[i][j]);
-    }
-  }
-  #endif
-
-  #if PROFILE_LYD_REDUCE_LOADCONN_SETDATA == 1
-  for (size_t i = 0; i < maxMessages; ++i) {
-    printf("DEVICE | prims_simple.h | primitives | loadRecvConn | time: %f us\n", h_messages->timeValue[i][0]);
-  }
-
-  for (size_t i = 0; i < maxMessages; ++i) {
-    printf("DEVICE | prims_simple.h | primitives | loadSendConn | time: %f us\n", h_messages->timeValue1[i][0]);
-  }
-
-  for (size_t i = 0; i < maxMessages; ++i) {
-    printf("DEVICE | prims_simple.h | primitives | setDataPtrs | time: %f us\n", h_messages->timeValue2[i][0]);
-  }
-  #endif
-
-  #if PROFILE_LYD_GENERIC == 1
-  for (size_t i = 0; i < maxMessages; ++i) {
-    printf("DEVICE | prims_simple.h | genericop | time: %f us\n", h_messages->timeValue[i][0]);
-  }
-  #endif
-
-  #if PROFILE_LYD_WAIT_REDUCE_COPY_POST
-  for (size_t i = 0; i < maxMessages; ++i) {
-    for (size_t j = 0; j < MAXLOGLYD; j++){
-      printf("DEVICE | prims_simple.h | genericOp | waitpeer | iteration %d | time: %f us\n", j, h_messages->timeValue[i][j]);
-    }
-  }
-  for (size_t i = 0; i < maxMessages; ++i) {
-    for (size_t j = 0; j < MAXLOGLYD; j++){
-      printf("DEVICE | prims_simple.h | genericOp | ReduceOrCopyMulti | iteration %d | time: %f us\n", j, h_messages->timeValue1[i][j]);
-    }
-  }
-  for (size_t i = 0; i < maxMessages; ++i) {
-    for (size_t j = 0; j < MAXLOGLYD; j++){
-      printf("DEVICE | prims_simple.h | genericOp | postPeer | iteration %d | time: %f us\n", j, h_messages->timeValue2[i][j]);
+      printf("DEVICE | sendrecv.h | runrecv | directsend-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue1[i][j]);
     }
   }
   #endif
