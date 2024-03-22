@@ -142,11 +142,11 @@ echo ""
 # Enter MSCCL directory
 pushd "${MSCCL_SRC_LOCATION}" || exit
 
-# Fetch latest changes
-git fetch --all
+## Fetch latest changes
+#git fetch --all
 
-# Checkout the correct commit
-git checkout "${MSCCL_COMMIT}"
+## Checkout the correct commit
+#git checkout "${MSCCL_COMMIT}"
 
 # Build MSCCL
 echo "[INFO] Building MSCCL..."
@@ -178,11 +178,11 @@ echo ""
 pushd "${NCCLTESTS_MSCCL_SRC_LOCATION}" || exit
 echo ""
 
-# Fetch latest changes
-git fetch --all
+## Fetch latest changes
+#git fetch --all
 
-# Checkout the correct commit
-git checkout "${NCCL_TEST_PROFILE_MSCCL_COMMIT}"
+## Checkout the correct commit
+#git checkout "${NCCL_TEST_PROFILE_MSCCL_COMMIT}"
 
 # Build NCCL Tests with MSCCL support
 echo "[INFO] Building NCCL tests (nccl-tests) with MSCCL support..."
