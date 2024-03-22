@@ -19,7 +19,7 @@ mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "cd /home/ec2-user/deps
 mpirun --hostfile ~/hostfile --map-by ppr:1:node wget https://github.com/aws/aws-ofi-nccl/releases/download/v1.7.4-aws/aws-ofi-nccl-1.7.4-aws.tar.gz
 
 
-
+mpirun --hostfile ~/hostfile --map-by ppr:1:node git -C /home/ec2-user/deps/msccl-tools-lyd pull
 
 ############## MSCCL TEST for non AWS optimization ##############
 
@@ -54,7 +54,8 @@ mpirun --hostfile ~/hostfile --map-by ppr:8:node \
     -x MPI_HOME="/opt/amazon/openmpi" \
     -x LD_LIBRARY_PATH="/opt/aws-ofi-nccl/lib:/opt/amazon/openmpi/lib64:/home/ec2-user/deps/msccl/build/lib:/usr/local/cuda/lib64:${LD_LIBRARY_PATH}" \
     -x NCCL_DEBUG="INFO" \
-    -x NCCL_ALGO="TREE" \
+    -x NCCL_ALGO="MSCCL,TREE,RING" \
+    -x MSCCL_XML_FILES="/home/ec2-user/deps/msccl-tools-lyd/examples/xml/xml_lyd/aws-test/8nic/16gpus/allreduce_binary_tree_node2_gpu16_mcl8_mck64_gan0.xml" \
     -x FI_EFA_FORK_SAFE=1 \
     -x GENMSCCLXML=1 \
     --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \

@@ -74,16 +74,21 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
         # tree0: channel2 0->1->2->3
         # each tree has one channel
         # Reduce tree - reducing onto Rank 0
+        
+        # gpu_indices = []
+        # gpu_indices.append(list(range(num_local_gpus)))  # gpu_index0
+        # gpu_indices.append(list(reversed(gpu_indices[0])))  # gpu_index1
+        
+        # for i in range(1, num_channel*trees//4):
+        #     gpu_indices.append([(x + i) % num_local_gpus for x in gpu_indices[0]])
+        #     gpu_indices.append(list(reversed(gpu_indices[-1])))
+        
         gpu_indices = []
-        gpu_indices.append(list(range(num_local_gpus)))  # gpu_index0
-        gpu_indices.append(list(reversed(gpu_indices[0])))  # gpu_index1
-        
-        for i in range(1, num_channel*trees//4):
-            gpu_indices.append([(x + i) % num_local_gpus for x in gpu_indices[0]])
-            gpu_indices.append(list(reversed(gpu_indices[-1])))
+        gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index0
+        gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index1
         
         
-        combined_indices = [gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1]]
+        combined_indices = [gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1]]
 
 
         # peer0 and peer 1 are children nodes
