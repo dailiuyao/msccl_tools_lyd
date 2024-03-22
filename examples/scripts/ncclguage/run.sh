@@ -21,4 +21,6 @@ export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib64:${CUDA_H
 export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 
 
-$MPI_HOME/bin/mpirun -np 2 -ppn 2 -hosts node04 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/ncclguage/ncclp2p.exe > output.log 2>&1
+# $MPI_HOME/bin/mpirun -np 2 -ppn 2 -hosts node04 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/ncclguage/ncclp2p.exe > output.log 2>&1
+
+$MPI_HOME/bin/mpirun -np 2 -ppn 2 -hosts node04 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/ncclguage/OneDevicePerThread.exe > output.log 2>&1

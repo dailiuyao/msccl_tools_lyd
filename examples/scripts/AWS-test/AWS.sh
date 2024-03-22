@@ -31,6 +31,7 @@ mpirun --hostfile ~/hostfile --map-by ppr:1:node git -C /home/ec2-user/deps/aws-
 
 mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "sudo sh /home/ec2-user/deps/aws-setup-lyd/aws-setup-lyd/setup-nccl-lyd.sh"
 
+mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "sudo sh /home/ec2-user/deps/aws-setup-lyd/aws-setup-lyd/ccl-run.sh"
 
 mpirun --hostfile ~/hostfile --map-by ppr:1:node bash -c "cd /home/ec2-user/deps/nccl && make -j src.build"
 
