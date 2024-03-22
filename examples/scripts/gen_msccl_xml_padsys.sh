@@ -69,44 +69,44 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # only support up to 2 channels
 
 
-# nchunks_values=(16 32 64)
-# nchannel_values=(8)
-# trees_values=(2)
-# nodes_values=(2)
-
-# export ngpus=8
-
-# for nnodes in "${nodes_values[@]}"; do
-#     for nchannel in "${nchannel_values[@]}"; do
-#         for nchunks in "${nchunks_values[@]}"; do
-#             for trees in "${trees_values[@]}"; do
-#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p.py \
-#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
-#                 > ${MSCCL_TOOLS_XML}/aws-test/8nic/16gpus/allreduce_binary_tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
-#             done
-#         done
-#     done
-# done
-
-
 nchunks_values=(16 32 64)
 nchannel_values=(8)
-trees_values=(1)
-nodes_values=(16)
+trees_values=(2)
+nodes_values=(2)
 
-export ngpus=1
+export ngpus=8
 
 for nnodes in "${nodes_values[@]}"; do
     for nchannel in "${nchannel_values[@]}"; do
         for nchunks in "${nchunks_values[@]}"; do
             for trees in "${trees_values[@]}"; do
-                python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu.py \
+                python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p.py \
                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
-                > ${MSCCL_TOOLS_XML}/aws-test/8nic/16gpus/allreduce_binary_tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan1.xml
+                > ${MSCCL_TOOLS_XML}/aws-test/8nic/16gpus/allreduce_binary_tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
             done
         done
     done
 done
+
+
+# nchunks_values=(16 32 64)
+# nchannel_values=(8)
+# trees_values=(1)
+# nodes_values=(16)
+
+# export ngpus=1
+
+# for nnodes in "${nodes_values[@]}"; do
+#     for nchannel in "${nchannel_values[@]}"; do
+#         for nchunks in "${nchunks_values[@]}"; do
+#             for trees in "${trees_values[@]}"; do
+#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p_gpu.py \
+#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+#                 > ${MSCCL_TOOLS_XML}/aws-test/8nic/16gpus/allreduce_binary_tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan1.xml
+#             done
+#         done
+#     done
+# done
 
 
 
