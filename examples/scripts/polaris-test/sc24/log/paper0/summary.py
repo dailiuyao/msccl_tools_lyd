@@ -4,7 +4,7 @@ import csv
 
 def parse_and_split_to_csvs(text_file_path, output_dir):
     # Regular expression to match the start of a new block
-    start_block_re = re.compile(r"The MSCCL XML file exists: (.+\.xml)")
+    start_block_re = re.compile(r"NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8")
 
     # Read the file content
     with open(text_file_path, 'r') as file:
@@ -59,7 +59,7 @@ def write_block_to_csv(block, filename, output_dir):
 # Paths to the input text file and the output directory for the CSV files
 
 
-text_file_path = '/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/ccl-4nodes-tree.out'  # Replace with the actual path to your source file
+text_file_path = '/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/buffer_size_2/ccl-4nodes-tree.out'  # Replace with the actual path to your source file
 output_dir = '/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/csv/tree'    # Replace with the actual path to your output directory
 
 # Create the output directory if it does not exist

@@ -91,7 +91,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 
 nchunks_values=(16 32 64)
 nchannel_values=(8)
-trees_values=(2)
+trees_values=(1)
 nodes_values=(16)
 
 export ngpus=1
