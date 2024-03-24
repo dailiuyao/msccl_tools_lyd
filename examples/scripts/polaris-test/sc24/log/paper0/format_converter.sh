@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Directory containing the files to process
-directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/buffer_size_4"
+directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/buffer_size_1"
 
 # Loop through each file in the directory
 for file in "$directory"/*; do

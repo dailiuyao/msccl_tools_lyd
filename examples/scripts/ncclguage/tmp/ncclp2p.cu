@@ -107,45 +107,59 @@ int main(int argc, char* argv[])
   CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd)));
 
 
-  //initializing NCCL
+ // Initialize NCCL communication
   NCCLCHECK(ncclCommInitRank(&comm, nRanks, id, myRank));
 
+  // Create events for timing
+  cudaEvent_t start, stop;
+  CUDACHECK(cudaEventCreate(&start));
+  CUDACHECK(cudaEventCreate(&stop));
 
-  //communicating using NCCL
-  ncclGroupStart();
-  if (myRank == 0){
-    NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, 1, comm, s));
-  } else {
-    NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, 0, comm, s));
+  // Temporary buffer to hold timing information
+  float *p2pTimes = (float*)malloc((nRanks / 2) * sizeof(float));
+
+  int half_nRanks = nRanks / 2;
+
+  // Communicate from each GPU in node0 to each GPU in node1
+  for (int i = 0; i < half_nRanks; ++i) {
+      if (myRank == i) { // This process is on node0
+          for (int j = half_nRanks; j < nRanks; ++j) { // Send to each process on node1
+              // Start timing
+              CUDACHECK(cudaEventRecord(start, s));
+
+              // Communicating using NCCL
+              ncclGroupStart();
+              NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, i, comm, s));
+              NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, j, comm, s));
+              ncclGroupEnd();
+
+              // Stop timing
+              CUDACHECK(cudaEventRecord(stop, s));
+              CUDACHECK(cudaEventSynchronize(stop));
+
+              // Calculate the elapsed time
+              CUDACHECK(cudaEventElapsedTime(&p2pTimes[j - half_nRanks], start, stop));
+              printf("P2P time between GPU %d on node0 and GPU %d on node1: %f ms\n", i, j - half_nRanks, p2pTimes[j - half_nRanks]);
+          }
+      } 
   }
-  ncclGroupEnd();
-
-
-  //completing NCCL operation by synchronizing on the CUDA stream
-  CUDACHECK(cudaStreamSynchronize(s));
 
 
   // After the kernel execution, copy the messages back to the host
   LogMessage_lyd* h_messages = new LogMessage_lyd;
   cudaMemcpy(h_messages, d_messages, sizeof(LogMessage_lyd), cudaMemcpyDeviceToHost);
   
-  // Process and print the messages on the host
-  #if PROFILE_LYD_SEND_RECV_CHUNK == 1
-  for (size_t i = 0; i < maxMessages; ++i) {
-    for (size_t j = 0; j < MAXLOGLYD; j++){
-      printf("DEVICE | sendrecv.h | runsend | directsend-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue[i][j]);
-    }
-  }
-  for (size_t i = 0; i < maxMessages; ++i) {
-    for (size_t j = 0; j < MAXLOGLYD; j++){
-      printf("DEVICE | sendrecv.h | runrecv | directsend-chunk | iteration %d | time: %f us\n", j, h_messages->timeValue1[i][j]);
-    }
-  }
-  #endif
 
   // Free the device memory of the gauge test
   cudaFree(d_messages);
   delete[] h_messages;
+
+  // Free the event resources
+  CUDACHECK(cudaEventDestroy(start));
+  CUDACHECK(cudaEventDestroy(stop));
+
+  // Free the timing buffer
+  free(p2pTimes);
 
 
   //free device buffers
@@ -161,6 +175,5 @@ int main(int argc, char* argv[])
   MPICHECK(MPI_Finalize());
 
 
-  printf("[MPI Rank %d] Success \n", myRank);
   return 0;
 }

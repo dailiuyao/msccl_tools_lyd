@@ -7,11 +7,12 @@ set -e
 
 ### Load Modules (DIFFERENT DEPENDING ON SYSTEM) ###
 
+
+module load mpich/3.4.2-gcc-8.4.1 
+
 source /home/liuyao/sbatch_sh/.nvccrc
 
-module load mpich
-
-export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_nvidiahpc-21.9-0"
+export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_gcc-8.4.1"
 
 export LD_LIBRARY_PATH=${MPI_HOME}/lib:$LD_LIBRARY_PATH
 export PATH=${MPI_HOME}/bin:$PATH
@@ -162,36 +163,36 @@ popd || exit
 echo ""
 
 
-# ### NCCL Tests on NCCL Section ###
+### NCCL Tests on NCCL Section ###
 
-# # Download NCCL Tests
-# if [ ! -d "${NCCLTESTS_SRC_LOCATION}" ]; then
-# 	echo "[INFO] Downloading NCCL Tests repository..."
-# 	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_SRC_LOCATION}"
-# elif [ -d "${NCCLTESTS_SRC_LOCATION}" ]; then
-# 	echo "[INFO] NCCL Tests repository already exists."
-# fi
-# echo ""
+# Download NCCL Tests
+if [ ! -d "${NCCLTESTS_SRC_LOCATION}" ]; then
+	echo "[INFO] Downloading NCCL Tests repository..."
+	git clone git@github.com:dailiuyao/nccl-tests.git "${NCCLTESTS_SRC_LOCATION}"
+elif [ -d "${NCCLTESTS_SRC_LOCATION}" ]; then
+	echo "[INFO] NCCL Tests repository already exists."
+fi
+echo ""
 
-# # Enter NCCL Tests dir
-# pushd "${NCCLTESTS_SRC_LOCATION}" || exit
-# echo ""
+# Enter NCCL Tests dir
+pushd "${NCCLTESTS_SRC_LOCATION}" || exit
+echo ""
 
-# # Fetch latest changes
+# Fetch latest changes
 # git fetch --all
 
 # # Checkout the correct commit
 # git checkout "${NCCLTESTS_COMMIT}"
 
-# # Build NCCL Tests with MSCCL support
-# echo "[INFO] Building NCCL tests (nccl-tests)..."
-# # srun make MPI=1 NCCL_HOME="${MSCCL_SRC_LOCATION}/build/" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
-# make MPI=1 NCCL_HOME="${NCCL_SRC_LOCATION}/build/" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
-# # srun make MPI=1 NCCL_HOME="${NCCL_SRC_LOCATION}/build/" -j  
+# Build NCCL Tests with MSCCL support
+echo "[INFO] Building NCCL tests (nccl-tests)..."
+# srun make MPI=1 NCCL_HOME="${MSCCL_SRC_LOCATION}/build/" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
+make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=/home/liuyao/software/cuda-11.6 NCCL_HOME=${NCCL_HOME}
+# srun make MPI=1 NCCL_HOME="${NCCL_SRC_LOCATION}/build/" -j  
 
-# # Exit NCCL Tests dir
-# popd || exit
-# echo ""
+# Exit NCCL Tests dir
+popd || exit
+echo ""
 
 
 # # ## MSCCL Core Section ###

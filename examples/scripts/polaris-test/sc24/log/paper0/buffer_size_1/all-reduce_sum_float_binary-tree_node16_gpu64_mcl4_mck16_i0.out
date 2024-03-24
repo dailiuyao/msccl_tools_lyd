@@ -65,7 +65,7 @@
 #  Rank 61 Group  0 Pid  59898 on x3005c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
 #  Rank 62 Group  0 Pid  59899 on x3005c0s1b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
 #  Rank 63 Group  0 Pid  59900 on x3005c0s1b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
-The MSCCL XML file exists: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_16chunk_16node_64gpu.xml
+The MSCCL XML file exists: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary-tree_node16_gpu64_mcl4_mck16_gan0.xml
 NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
 #
 #                                                              out-of-place                       in-place          
