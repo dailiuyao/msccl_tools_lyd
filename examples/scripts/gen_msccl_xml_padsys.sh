@@ -70,7 +70,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 
 
 nchunks_values=(1 2 4 16 32 64)
-nchannel_values=(8)
+nchannel_values=(4)
 trees_values=(2)
 nodes_values=(8)
 
