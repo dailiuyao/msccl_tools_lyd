@@ -102,10 +102,6 @@ int main(int argc, char* argv[])
   CUDACHECK(cudaMalloc(&recvbuff, size * sizeof(float)));
   CUDACHECK(cudaStreamCreate(&s));
 
-  //gauge test
-  CUDACHECK(cudaMalloc(&d_messages, sizeof(LogMessage_lyd)));
-  CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd)));
-
 
  // Initialize NCCL communication
   NCCLCHECK(ncclCommInitRank(&comm, nRanks, id, myRank));
@@ -123,36 +119,27 @@ int main(int argc, char* argv[])
   // Communicate from each GPU in node0 to each GPU in node1
   for (int i = 0; i < half_nRanks; ++i) {
       if (myRank == i) { // This process is on node0
-          for (int j = half_nRanks; j < nRanks; ++j) { // Send to each process on node1
-              // Start timing
-              CUDACHECK(cudaEventRecord(start, s));
 
-              // Communicating using NCCL
-              ncclGroupStart();
-              NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, i, comm, s));
-              NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, j, comm, s));
-              ncclGroupEnd();
+          int j = half_nRanks+1;
+          // Start timing
+          CUDACHECK(cudaEventRecord(start, s));
 
-              // Stop timing
-              CUDACHECK(cudaEventRecord(stop, s));
-              CUDACHECK(cudaEventSynchronize(stop));
+          // Communicating using NCCL
+          ncclGroupStart();
+          NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, i, comm, s));
+          NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, j, comm, s));
+          ncclGroupEnd();
 
-              // Calculate the elapsed time
-              CUDACHECK(cudaEventElapsedTime(&p2pTimes[j - half_nRanks], start, stop));
-              printf("P2P time between GPU %d on node0 and GPU %d on node1: %f ms\n", i, j - half_nRanks, p2pTimes[j - half_nRanks]);
-          }
+          // Stop timing
+          CUDACHECK(cudaEventRecord(stop, s));
+          CUDACHECK(cudaEventSynchronize(stop));
+
+          // Calculate the elapsed time
+          CUDACHECK(cudaEventElapsedTime(&p2pTimes[j - half_nRanks], start, stop));
+          printf("P2P time between GPU %d on node0 and GPU %d on node1: %f ms\n", i, j - half_nRanks, p2pTimes[j - half_nRanks]);
+          
       } 
   }
-
-
-  // After the kernel execution, copy the messages back to the host
-  LogMessage_lyd* h_messages = new LogMessage_lyd;
-  cudaMemcpy(h_messages, d_messages, sizeof(LogMessage_lyd), cudaMemcpyDeviceToHost);
-  
-
-  // Free the device memory of the gauge test
-  cudaFree(d_messages);
-  delete[] h_messages;
 
   // Free the event resources
   CUDACHECK(cudaEventDestroy(start));

@@ -275,3 +275,31 @@ lspci -tvv
 
 ssh ec2-user@3.129.153.226
 
+
+# System Summary
+
+## Library Install Locations
+- EFA: /opt/amazon/efa
+- OpenMPI: /opt/amazon/openmpi
+- CUDA: /usr/local/cuda
+- NCCL: /opt/nccl/build
+- cuDNN: /opt/cudnn
+- cuSPARSE_lt: /opt/libcusparse_lt
+- OpenBLAS: /opt/OpenBLAS
+- Magma: /opt/magma
+
+## Plugins, etc.
+- AWS OFI NCCL Plugin: /opt/aws-ofi-nccl
+
+## Softwares and Binaries
+- Ninja: /opt/ninja (just `bin` directory within this)
+
+## Example of running NCCL Tests:
+```bash
+/opt/amazon/openmpi/bin/mpirun \
+    -x FI_EFA_USE_DEVICE_RDMA=1 \
+    -x LD_LIBRARY_PATH=/opt/nccl/build/lib:/usr/local/cuda/lib64:/opt/amazon/efa/lib64:/opt/amazon/openmpi/lib64:/opt/aws-ofi-nccl/lib:$LD_LIBRARY_PATH \
+    -x NCCL_DEBUG=INFO \
+    -n 8 -N 8 \
+    --mca pml ^cm --mca btl tcp,self --mca btl_tcp_if_exclude lo,docker0 --bind-to none \
+    $HOME/stock/nccl-tests/build/all_reduce_perf -b 8 -e 16G -f 2 -g 1 -c 1 -n 100
