@@ -82,7 +82,7 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
         gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
         
         
-        combined_indices = [gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1]]
+        combined_indices = [gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[0], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1], gpu_indices[1]]
 
         # for channel in range(num_channel_per_tree):
         #     for gpuidx in range(num_local_gpus):
