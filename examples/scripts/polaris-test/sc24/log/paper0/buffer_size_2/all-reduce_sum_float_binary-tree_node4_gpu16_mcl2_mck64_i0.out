@@ -1,0 +1,42 @@
+# nThread 1 nGpus 1 minBytes 65536 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  60179 on x3011c0s13b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  60180 on x3011c0s13b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  60181 on x3011c0s13b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  60182 on x3011c0s13b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  40642 on x3011c0s13b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  40643 on x3011c0s13b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  40644 on x3011c0s13b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  40645 on x3011c0s13b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid   7736 on x3011c0s19b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid   7737 on x3011c0s19b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid   7738 on x3011c0s19b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid   7739 on x3011c0s19b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  49440 on x3011c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  49441 on x3011c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  49442 on x3011c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  49443 on x3011c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+The MSCCL XML file exists: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_2tree_64chunk_4node_16gpu.xml
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+       65536         16384     float     sum      -1    995.4    0.07    0.12      0    988.5    0.07    0.12      0
+      131072         32768     float     sum      -1    990.5    0.13    0.25      0   9409.5    0.01    0.03      0
+      262144         65536     float     sum      -1   1023.0    0.26    0.48      0   1023.6    0.26    0.48      0
+      524288        131072     float     sum      -1   1037.5    0.51    0.95      0   1030.2    0.51    0.95      0
+     1048576        262144     float     sum      -1   1078.5    0.97    1.82      0   1097.5    0.96    1.79      0
+     2097152        524288     float     sum      -1   1154.8    1.82    3.40      0   1141.3    1.84    3.45      0
+     4194304       1048576     float     sum      -1   1401.3    2.99    5.61      0   1375.3    3.05    5.72      0
+     8388608       2097152     float     sum      -1   1870.1    4.49    8.41      0   1869.9    4.49    8.41      0
+    16777216       4194304     float     sum      -1   3503.8    4.79    8.98      0   3513.4    4.78    8.95      0
+    33554432       8388608     float     sum      -1   6934.3    4.84    9.07      0    11302    2.97    5.57      0
+    67108864      16777216     float     sum      -1    13931    4.82    9.03      0    18278    3.67    6.88      0
+   134217728      33554432     float     sum      -1    29217    4.59    8.61      0    29345    4.57    8.58      0
+   268435456      67108864     float     sum      -1    61536    4.36    8.18      0    60322    4.45    8.34      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 4.77698 
+#
+
