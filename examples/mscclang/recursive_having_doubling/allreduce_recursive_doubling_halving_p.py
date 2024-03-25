@@ -108,7 +108,7 @@ def chunk_broadcast(group_index_2d, num_gpus=0, num_nodes=0, combined_indices=[[
         for node in range(0, num_nodes):
             intra_broadcast(num_nodes=num_nodes, node_offset=node, num_local_gpus=num_gpus, chunk_step_total=chunk_step_total, gpu_index=combined_indices[channel], ch_idx=channel_total) 
         
-def allreduce_recursive_doubling_halving(num_gpus: int, num_nodes: int, nchunks: int, nchannel: int, instances: int, protocol: str):
+def allreduce_recursive_doubling_halving(num_gpus: int, num_nodes: int, nchunks: int, nchannel: int, instances: int, protocol: str, trees:int):
     
     if (nchannel == 1):
         trees=1
@@ -129,10 +129,13 @@ def allreduce_recursive_doubling_halving(num_gpus: int, num_nodes: int, nchunks:
         # channel 1: 3->2->1->0
         # each tree has one channel
         # Reduce tree - reducing onto Rank 0
-        gpu_index0 = list(range(0, num_gpus, 1))
-        # gpu_index1 = gpu_index0
-        gpu_index1 = list(reversed(gpu_index0))
-        combined_indices = [gpu_index0, gpu_index1]
+        gpu_indices = []
+        gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index0
+        gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
+        
+        
+        combined_indices = [gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1]]
+
         
         for chunk_step in range(0, num_chunks_per_channel):
             tree_id = 0
@@ -172,10 +175,10 @@ parser.add_argument('--nchunks', type=int, help ='number of chunks')
 parser.add_argument('--num_gpus', type=int, help='number of gpus per node')
 parser.add_argument('--num_nodes', type=int, help='number of nodes')
 parser.add_argument('--nchannel', type=int, help ='number of channels')
-
+parser.add_argument('--trees', type=int, choices=[1, 2], help ='number of trees')
 parser.add_argument('--instances', type=int, help ='number of instances')
 
 parser.add_argument('--protocol', type=str, default='Simple', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: Simple')
 args = parser.parse_args()
 
-allreduce_recursive_doubling_halving(args.num_gpus, args.num_nodes, args.nchunks, args.nchannel ,args.instances, args.protocol)
+allreduce_recursive_doubling_halving(args.num_gpus, args.num_nodes, args.nchunks, args.nchannel ,args.instances, args.protocol, args.trees)

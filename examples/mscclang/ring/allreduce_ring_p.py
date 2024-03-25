@@ -70,8 +70,26 @@ import numpy as np
 #         XML()
 #         Check()
 
+def generate_gpu_indices(num_elements=64):
+    sets_needed = num_elements // 8
 
-def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
+    # Generate gpu_indices0
+    gpu_indices0 = [n for set_num in range(sets_needed) for n in range(set_num * 8 + 7, set_num * 8 - 1, -1)]
+    
+    # Generate gpu_indices1 with the specified starting pattern and then following the pattern of gpu_indices0
+    gpu_indices1 = []
+    for set_num in range(sets_needed):
+        offset = set_num * 8
+        if set_num == 0:  # For the first set, follow the specific starting pattern
+            gpu_indices1.extend([1, 0, 7, 6, 5, 4, 3, 2])
+        else:  # For subsequent sets, create the pattern based on the offset
+            new_pattern = [((n + 1) % 8) + offset if ((n + 1) % 8) != 0 else offset for n in range(offset, offset + 8)]
+            gpu_indices1.extend(new_pattern)
+    
+    return gpu_indices0, gpu_indices1
+
+
+def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
     size = num_gpus * num_nodes
     rings = 2
     
@@ -81,8 +99,17 @@ def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
     
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances, protocol=protocol):
         
-        gpu_index0 = np.arange(size)
-        gpu_index1 = gpu_index0[::-1]
+        # gpu_indices = []
+        # gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index0
+        # gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
+
+        gpu_indices0, gpu_indices1 = generate_gpu_indices(64)
+
+        # # Print the first 16 elements of each list to verify the pattern
+        # print("gpu_indices0:", gpu_indices0[:64])
+        # print("gpu_indices1:", gpu_indices1[:64])
+
+
 
         # Using NumPy broadcasting to calculate ranks and next_ranks for both rings
         steps = np.arange(size - 1)
@@ -97,12 +124,12 @@ def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
             for step in range(size - 1):
                 for index in range(size):
                     if ring == 0:
-                        rank = gpu_index0[(index + step) % size]
-                        next_rank = gpu_index0[(index + step + 1) % size]
+                        rank = gpu_indices0[(index + step) % size]
+                        next_rank = gpu_indices0[(index + step + 1) % size]
                         offset = 0
                     else:
-                        rank = gpu_index1[(index + step) % size]
-                        next_rank = gpu_index1[(index + step + 1) % size]
+                        rank = gpu_indices1[(index + step) % size]
+                        next_rank = gpu_indices1[(index + step + 1) % size]
                         offset = size
                     
                     c = chunk(next_rank, Buffer.input, index + offset)
@@ -112,12 +139,12 @@ def allreduce_ring(num_nodes, num_gpus, instances, channels, protocol):
             for step in range(-1, size - 2):
                 for index in range(size):
                     if ring == 0:
-                        rank = gpu_index0[(index + step) % size]
-                        next_rank = gpu_index0[(index + step + 1) % size]
+                        rank = gpu_indices0[(index + step) % size]
+                        next_rank = gpu_indices0[(index + step + 1) % size]
                         offset = 0
                     else:
-                        rank = gpu_index1[(index + step) % size]
-                        next_rank = gpu_index1[(index + step + 1) % size]
+                        rank = gpu_indices1[(index + step) % size]
+                        next_rank = gpu_indices1[(index + step + 1) % size]
                         offset = size
                     
                     channel_index = int((index / chunksperchannel) + (channels / 2) * ring)
@@ -130,10 +157,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--num_gpus', type=int, help ='number of gpus')
 parser.add_argument('--num_nodes', type=int, help='number of nodes')
 parser.add_argument('--nchannel', type=int, help='Number of channels to use for 1 instance of the ring [1-8]')
+parser.add_argument('--nchunks', type=int, help='Number of chunks')
 parser.add_argument('--instances', type=int, help='number of instances')
 parser.add_argument('--protocol', type=str, default='LL128', choices=['Simple', 'LL', 'LL128'], help ='NCCL protocol. Default: LL128')
 args = parser.parse_args()
 
-
-
-allreduce_ring(args.num_nodes ,args.num_gpus, args.instances, args.nchannel, args.protocol)
+allreduce_ring(args.num_nodes ,args.num_gpus, args.instances, args.nchunks, args.nchannel, args.protocol)

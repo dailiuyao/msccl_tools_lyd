@@ -32,22 +32,51 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 #     done
 # done
 
+nchunks_values=(1 4 16 64)
+nchannel_values=(4 8 12)
+trees_values=(2)
+nodes_values=(8)
+
+export ngpus=8
+
+for nnodes in "${nodes_values[@]}"; do
+    for nchannel in "${nchannel_values[@]}"; do
+        for nchunks in "${nchunks_values[@]}"; do
+            for trees in "${trees_values[@]}"; do
+                python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
+                --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+                > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_recursive-doubling-halving_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+            done
+        done
+    done
+done
+
 
 
 # ##################### ring ######################
 # # the num_chunks is the original number of chunks per channel for each gpu
 # # total chunks = 2 * num_chunks * size * channels * number of rings
 
-# nchunks_values=(1 2 4)
-# nchannel_values=(1 2)
 
-# for nchannel in "${nchannel_values[@]}"; do
-#     for nchunks in "${nchunks_values[@]}"; do
-#         python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allgather_ring_p.py \
-#         --protocol=Simple --num_gpus=1 --num_nodes=8 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#         > ${MSCCL_TOOLS_XML}/ring/allgather_ring_${nchannel}ch_${nchunks}chunk.xml
+# nchunks_values=(64)
+# nchannel_values=(4 8 12)
+# trees_values=(2)
+# nodes_values=(8)
+
+# export ngpus=8
+
+# for nnodes in "${nodes_values[@]}"; do
+#     for nchannel in "${nchannel_values[@]}"; do
+#         for nchunks in "${nchunks_values[@]}"; do
+#             for trees in "${trees_values[@]}"; do
+#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py  \
+#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+#                 > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+#             done
+#         done
 #     done
 # done
+
 
 # # num_chunks = 2 * num_nodes * num_gpus
 
@@ -69,24 +98,24 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # only support up to 2 channels
 
 
-nchunks_values=(1 4 16 64)
-nchannel_values=(8)
-trees_values=(2)
-nodes_values=(8)
+# nchunks_values=(1 4 16 64)
+# nchannel_values=(4 8 12)
+# trees_values=(2)
+# nodes_values=(8)
 
-export ngpus=8
+# export ngpus=8
 
-for nnodes in "${nodes_values[@]}"; do
-    for nchannel in "${nchannel_values[@]}"; do
-        for nchunks in "${nchunks_values[@]}"; do
-            for trees in "${trees_values[@]}"; do
-                python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p.py \
-                --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
-                > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
-            done
-        done
-    done
-done
+# for nnodes in "${nodes_values[@]}"; do
+#     for nchannel in "${nchannel_values[@]}"; do
+#         for nchunks in "${nchunks_values[@]}"; do
+#             for trees in "${trees_values[@]}"; do
+#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p.py \
+#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+#                 > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+#             done
+#         done
+#     done
+# done
 
 
 # nchunks_values=(16 32 64)
@@ -144,6 +173,26 @@ done
 # done
 
 
+# nchunks_values=(1 4 16 64)
+# nchannel_values=(4 8 12)
+# trees_values=(2)
+# nodes_values=(8)
+
+# export ngpus=8
+
+# for nnodes in "${nodes_values[@]}"; do
+#     for nchannel in "${nchannel_values[@]}"; do
+#         for nchunks in "${nchunks_values[@]}"; do
+#             for trees in "${trees_values[@]}"; do
+#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binomial_tree_p.py \
+#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+#                 > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_binomial-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+#             done
+#         done
+#     done
+# done
+
+
 # ###################### triple_trinomial_tree ######################
 # # num_total_chunks = num_chunks * num_channel * trees
 # # only support up to 2 channels
@@ -157,6 +206,25 @@ done
 #         python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_trinomial_tree_p.py \
 #         --protocol=Simple --num_gpus=4 --num_nodes=81 --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
 #         > ${MSCCL_TOOLS_XML}/trinomial_tree/allreduce_trinomial_tree_${nchannel}ch_${nchunks}chunk_27nodes.xml
+#     done
+# done
+
+# nchunks_values=(1 4 16 64)
+# nchannel_values=(4 8)
+# trees_values=(2)
+# nodes_values=(8)
+
+# export ngpus=8
+
+# for nnodes in "${nodes_values[@]}"; do
+#     for nchannel in "${nchannel_values[@]}"; do
+#         for nchunks in "${nchunks_values[@]}"; do
+#             for trees in "${trees_values[@]}"; do
+#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_trinomial_tree_p.py \
+#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+#                 > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_trinomial-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+#             done
+#         done
 #     done
 # done
 

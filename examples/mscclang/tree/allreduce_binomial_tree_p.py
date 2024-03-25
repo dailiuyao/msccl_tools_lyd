@@ -66,15 +66,24 @@ def allreduce_binomial_tree(num_gpus, num_nodes, nchunks, nchannel, instances, p
         # channel 1: 3->2->1->0
         # each tree has one channel
         # Reduce tree - reducing onto Rank 0
-        gpu_index0 = list(range(0, num_gpus, 1))
-        # gpu_index1 = gpu_index0
-        gpu_index1 = list(reversed(gpu_index0))
-        gpu_index2 = [2,3,0,1]
-        gpu_index3 = [1,0,3,2]
-        combined_indices_0 = [gpu_index0, gpu_index0]
-        combined_indices_1 = [gpu_index1, gpu_index1]
-        combined_indices_2 = [gpu_index2, gpu_index2]
-        combined_indices_3 = [gpu_index3, gpu_index3]
+        # gpu_index0 = list(range(0, num_gpus, 1))
+        # # gpu_index1 = gpu_index0
+        # gpu_index1 = list(reversed(gpu_index0))
+        # gpu_index2 = [2,3,0,1]
+        # gpu_index3 = [1,0,3,2]
+        # combined_indices_0 = [gpu_index0, gpu_index0]
+        # combined_indices_1 = [gpu_index1, gpu_index1]
+        # combined_indices_2 = [gpu_index2, gpu_index2]
+        # combined_indices_3 = [gpu_index3, gpu_index3]
+
+        gpu_indices = []
+        gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index0
+        gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
+        
+        
+        combined_indices_0 = [gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1]]
+        combined_indices_1 = [gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1]]
+
         
         for chunk_step in range(0, num_chunks_per_channel):
             tree_id = 0
