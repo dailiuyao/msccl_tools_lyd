@@ -79,7 +79,7 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
         
         gpu_indices = []
         gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index0
-        gpu_indices.append([7,6,5,4,3,2,0,1])  # gpu_index1
+        gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
         
         
         combined_indices = [gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1]]
@@ -91,6 +91,11 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
 
         # peer0 and peer 1 are children nodes
         for chunk_step in range(0, num_chunks_per_channel):
+
+            for rank in range(0, num_nodes):
+                for channel in range(num_channel_per_tree):
+                    intra_reduce(node_offset=rank, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel)
+
             
             num_level_ori = math.log(num_nodes,2)
             num_level = math.ceil(num_level_ori) - 1
@@ -108,10 +113,6 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                     low_bit = bit // 2
                     peer_0 = rank - low_bit
                     
-                    # peer_0 is one of the two children nodes, the first step is in the children node: reduce to the last gpu.
-                    for channel in range(num_channel_per_tree):
-                        intra_reduce(node_offset=peer_0, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel)
-
                     # the children node peer_0 is ready, reduce to the last-1 gpu in the parent node rank. 
                     for channel in range(num_channel_per_tree):
                         c1 = chunk(peer_0*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel)
@@ -124,14 +125,11 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                         low_bit //= 2
                     
                     if peer_1 > rank:
-                        # peer_1 is another children node, the first step is in the children node: reduce to the last gpu.
-                        for channel in range(num_channel_per_tree):
-                            intra_reduce(node_offset=peer_1, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel)
                         
                         # the children node peer_1 is ready, reduce to the last gpu in the parent node rank.
                         for channel in range(num_channel_per_tree): 
                             c1 = chunk(peer_1*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel)
-                            chunk(rank*num_local_gpus + combined_indices[channel][num_local_gpus-2], Buffer.input, chunk_step+channel*num_chunks_per_channel).reduce(c1, ch=channel)
+                            chunk(rank*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel).reduce(c1, ch=channel)
                 step *= 2
                 
             peer_0 = 1
@@ -140,31 +138,21 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
         
             peer_0 //= 2
             
-            # this is the node under the top level node, so there is only one children node, and conduct the intra reduce in this node
-            for channel in range(num_channel_per_tree): 
-                intra_reduce(node_offset=peer_0, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel)
-
+            
             #reduce to the top level node, the accepted gpu in the top node is last gpu
             for channel in range(num_channel_per_tree): 
                 c1 = chunk(peer_0*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel)
                 chunk(0*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel).reduce(c1, ch=channel)                 
             
-            # conduct the intra reduce in the top level node to the last gpu
-            for channel in range(num_channel_per_tree): 
-                intra_reduce(node_offset=0, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel)
-
+            
             
             
             # Broadcast tree - root is Rank 0
             # conduct the intra broadcast in the top level node from the last gpu
-            for channel in range(num_channel_per_tree): 
-                intra_broadcast_peer1(node_offset=0, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel) 
             
             for channel in range(num_channel_per_tree): 
                 chunk(0*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel).copy(peer_0*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel, ch=channel) 
             
-            for channel in range(num_channel_per_tree): 
-                intra_broadcast_peer1(node_offset=peer_0, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel) 
             
             step = 2**num_level
             while step >= 2:       
@@ -181,10 +169,7 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                     for channel in range(num_channel_per_tree): 
                         chunk(rank*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel).copy(peer_0*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel, ch=channel) 
                     
-                    for channel in range(num_channel_per_tree): 
-                        intra_broadcast_peer1(node_offset=peer_0, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel) 
                     
-
                     peer_1 = rank + low_bit
                     while peer_1 >= num_nodes:
                         peer_1 = rank + low_bit
@@ -192,12 +177,15 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
 
                     if peer_1 > rank:
                         for channel in range(num_channel_per_tree): 
-                            chunk(rank*num_local_gpus + combined_indices[channel][num_local_gpus-2], Buffer.input, chunk_step+channel*num_chunks_per_channel).copy(peer_1*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel, ch=channel)
+                            chunk(rank*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel).copy(peer_1*num_local_gpus + combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+channel*num_chunks_per_channel, ch=channel)
 
-                        for channel in range(num_channel_per_tree): 
-                            intra_broadcast_peer1(node_offset=peer_1, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel) 
-                    
+                        
                 step //= 2
+            
+            for rank in range(0, num_nodes):
+                for channel in range(num_channel_per_tree): 
+                    intra_broadcast_peer1(node_offset=rank, num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel) 
+                    
   
 
 
@@ -214,6 +202,13 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                 num_level_ori = math.log(num_nodes,2)
                 num_level = math.ceil(num_level_ori) - 1
                 step = 2
+
+                for rank in range(0, num_nodes):
+                    for channel in range(num_channel_per_tree): 
+                        intra_reduce(node_offset=(num_nodes-1-rank), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree)
+
+
+
                 while step <= 2**num_level:       
                     for rank in range(step, num_nodes, step*2):
                         bit = 1
@@ -225,10 +220,7 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                         low_bit = bit // 2
                         peer_0 = rank - low_bit
 
-                         # peer_0 is one of the two children nodes, the first step is in the children node: reduce to the last gpu.
-                        for channel in range(num_channel_per_tree): 
-                            intra_reduce(node_offset=(num_nodes-1-peer_0), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree)
-
+                        
                         # the children node peer_0 is ready, reduce to the last-1 gpu in the parent node rank.
                         for channel in range(num_channel_per_tree):  
                             c1 = chunk((num_nodes-1-peer_0)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel)
@@ -240,14 +232,11 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                             low_bit //= 2
 
                         if peer_1 > rank:
-                            # peer_1 is another children node, the first step is in the children node: reduce to the last gpu.
-                            for channel in range(num_channel_per_tree): 
-                                intra_reduce(node_offset=(num_nodes-1-peer_1), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree)
-                        
+                            
                             # the children node peer_1 is ready, reduce to the last gpu in the parent node rank.
                             for channel in range(num_channel_per_tree):  
                                 c1 = chunk((num_nodes-1-peer_1)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel)
-                                chunk((num_nodes-1-rank)*num_local_gpus+combined_indices[channel][num_local_gpus-2], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel).reduce(c1, ch=channel+num_channel_per_tree) 
+                                chunk((num_nodes-1-rank)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel).reduce(c1, ch=channel+num_channel_per_tree) 
                     step *= 2
                     
                 peer_0 = 1
@@ -256,32 +245,21 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
             
                 peer_0 //= 2
 
-                # this is the node under the top level node, so there is only one children node, and conduct the intra reduce in this node
-                for channel in range(num_channel_per_tree):
-                    intra_reduce(node_offset=(num_nodes-1-peer_0), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree)
-
+                
                 #reduce to the top level node, the accepted gpu in the top node is last gpu
                 for channel in range(num_channel_per_tree):
                     c1 = chunk((num_nodes-1-peer_0)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel)
                     chunk((num_nodes-1-0)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel).reduce(c1, ch=channel+num_channel_per_tree)     
      
 
-                 # conduct the intra reduce in the top level node to the last gpu
-                for channel in range(num_channel_per_tree):
-                    intra_reduce(node_offset=(num_nodes-1-0), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree)
-
-
+                
                 # Broadcast tree - root is Rank N-1
                 # conduct the intra broadcast in the top level node from the last gpu
-                for channel in range(num_channel_per_tree):
-                    intra_broadcast_peer1(node_offset=(num_nodes-1-0), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree) 
-
+                
                 for channel in range(num_channel_per_tree):
                     chunk((num_nodes-1-0)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel).copy((num_nodes-1-peer_0)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel, ch=channel+num_channel_per_tree) 
 
-                for channel in range(num_channel_per_tree):
-                    intra_broadcast_peer1(node_offset=(num_nodes-1-peer_0), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree) 
-            
+                
                 step = 2**num_level
                 while step >= 2:       
                     for rank in range(step, num_nodes, step*2):
@@ -297,9 +275,7 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                         for channel in range(num_channel_per_tree):
                             chunk((num_nodes-1-rank)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel).copy((num_nodes-1-peer_0)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel, ch=channel+num_channel_per_tree) 
 
-                        for channel in range(num_channel_per_tree):
-                            intra_broadcast_peer1(node_offset=(num_nodes-1-peer_0), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree) 
-                    
+                        
                         peer_1 = rank + low_bit
                         while peer_1 >= num_nodes:
                             peer_1 = rank + low_bit
@@ -307,12 +283,17 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
                         
                         
                         for channel in range(num_channel_per_tree):
-                            chunk((num_nodes-1-rank)*num_local_gpus+combined_indices[channel][num_local_gpus-2], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel).copy((num_nodes-1-peer_1)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel, ch=channel+num_channel_per_tree) 
+                            chunk((num_nodes-1-rank)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel).copy((num_nodes-1-peer_1)*num_local_gpus+combined_indices[channel][num_local_gpus-1], Buffer.input, chunk_step+(channel+num_channel_per_tree)*num_chunks_per_channel, ch=channel+num_channel_per_tree) 
 
                         for channel in range(num_channel_per_tree):
                             intra_broadcast_peer1(node_offset=(num_nodes-1-peer_1), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree) 
                     
                     step //= 2
+                
+                for rank in range(0, num_nodes):
+                    for channel in range(num_channel_per_tree):
+                        intra_broadcast_peer1(node_offset=(num_nodes-1-rank), num_local_gpus=num_local_gpus, chunk_step=chunk_step, gpu_index=combined_indices[channel], num_chunks_per_channel=num_chunks_per_channel, ch_idx=channel+num_channel_per_tree) 
+                    
         
         
         # tree1: channel1 3->2->1->0
