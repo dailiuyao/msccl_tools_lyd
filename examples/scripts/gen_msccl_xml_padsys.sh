@@ -32,33 +32,7 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 #     done
 # done
 
-nchunks_values=(1 4 16 64)
-nchannel_values=(4 8 12)
-trees_values=(2)
-nodes_values=(8)
-
-export ngpus=8
-
-for nnodes in "${nodes_values[@]}"; do
-    for nchannel in "${nchannel_values[@]}"; do
-        for nchunks in "${nchunks_values[@]}"; do
-            for trees in "${trees_values[@]}"; do
-                python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
-                --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
-                > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_recursive-doubling-halving_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
-            done
-        done
-    done
-done
-
-
-
-# ##################### ring ######################
-# # the num_chunks is the original number of chunks per channel for each gpu
-# # total chunks = 2 * num_chunks * size * channels * number of rings
-
-
-# nchunks_values=(64)
+# nchunks_values=(1 4 16 64)
 # nchannel_values=(4 8 12)
 # trees_values=(2)
 # nodes_values=(8)
@@ -69,13 +43,39 @@ done
 #     for nchannel in "${nchannel_values[@]}"; do
 #         for nchunks in "${nchunks_values[@]}"; do
 #             for trees in "${trees_values[@]}"; do
-#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py  \
-#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-#                 > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+#                 python3 ${MSCCL_TOOLS_ALGORITHMS}/recursive_having_doubling/allreduce_recursive_doubling_halving_p.py \
+#                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
+#                 > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_recursive-doubling-halving_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
 #             done
 #         done
 #     done
 # done
+
+
+
+# ##################### ring ######################
+# # the num_chunks is the original number of chunks per channel for each gpu
+# # total chunks = 2 * num_chunks * size * channels * number of rings
+
+
+nchunks_values=(64)
+nchannel_values=(2)
+trees_values=(2)
+nodes_values=(8)
+
+export ngpus=8
+
+for nnodes in "${nodes_values[@]}"; do
+    for nchannel in "${nchannel_values[@]}"; do
+        for nchunks in "${nchunks_values[@]}"; do
+            for trees in "${trees_values[@]}"; do
+                python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py  \
+                --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+                > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+            done
+        done
+    done
+done
 
 
 # # num_chunks = 2 * num_nodes * num_gpus
@@ -261,14 +261,16 @@ done
 # done
 
 
-# ###################### basic_msccl ######################
+# # ###################### basic_msccl ######################
 # python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_ring.py \
 # --num_gpus=64 --instances=1 \
-# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_64gpus.xml
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic-ring_node8_gpu64_mcl1_mck1_gan0.xml
+
+# allreduce_trinomial-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0
 
 # python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
 # --protocol=Simple --num_gpus=64 --instances=1 --trees=2 \
-# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binomial_tree_64gpus_2tree.xml
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic-binomial-tree_node8_gpu64_mcl1_mck1_gan0.xml
 
 # python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binomial_tree.py \
 # --protocol=Simple --num_gpus=64 --instances=1 --trees=1 \

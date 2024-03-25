@@ -76,16 +76,16 @@ def generate_gpu_indices(num_elements=64):
     # Generate gpu_indices0
     gpu_indices0 = [n for set_num in range(sets_needed) for n in range(set_num * 8 + 7, set_num * 8 - 1, -1)]
     
-    # Generate gpu_indices1 with the specified starting pattern and then following the pattern of gpu_indices0
-    gpu_indices1 = []
-    for set_num in range(sets_needed):
-        offset = set_num * 8
-        if set_num == 0:  # For the first set, follow the specific starting pattern
-            gpu_indices1.extend([1, 0, 7, 6, 5, 4, 3, 2])
-        else:  # For subsequent sets, create the pattern based on the offset
-            new_pattern = [((n + 1) % 8) + offset if ((n + 1) % 8) != 0 else offset for n in range(offset, offset + 8)]
-            gpu_indices1.extend(new_pattern)
+    gpu_indices1 = [1, 0, 7, 6, 5, 4, 3, 2]
     
+    # Number of groups after the initial one
+    num_groups = num_elements // 8 - 1  # Subtract 1 for the initial group already defined
+    
+    # Generate the subsequent groups by adding 8 * group_number to each element of the previous group
+    for group in range(1, num_groups + 1):
+        new_group = [(x + 8 * group) % 64 for x in gpu_indices1[-8:]]  # Use modulo 64 to ensure numbers are within bounds
+        gpu_indices1.extend(new_group)
+
     return gpu_indices0, gpu_indices1
 
 
@@ -95,7 +95,7 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
     
     chunksperchannel = int(rings * size)
     topology = fully_connected(size)
-    collective = AllReduce(size, rings * size * channels, True)
+    collective = AllReduce(size, rings * size , True)
     
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances, protocol=protocol):
         
@@ -112,8 +112,8 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
 
 
         # Using NumPy broadcasting to calculate ranks and next_ranks for both rings
-        steps = np.arange(size - 1)
-        indices = np.arange(size)
+        # steps = np.arange(size - 1)
+        # indices = np.arange(size)
         # ranks_ring0 = (np.newaxis + steps) % size
         # next_ranks_ring0 = (np.newaxis + steps + 1) % size
 
