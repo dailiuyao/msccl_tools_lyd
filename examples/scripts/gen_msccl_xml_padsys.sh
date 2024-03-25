@@ -69,10 +69,10 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # only support up to 2 channels
 
 
-nchunks_values=(1 2 4 16 32 64)
-nchannel_values=(8)
+nchunks_values=(1 4 16 64)
+nchannel_values=(4 8 12)
 trees_values=(2)
-nodes_values=(8)
+nodes_values=(2 4 8)
 
 export ngpus=8
 
