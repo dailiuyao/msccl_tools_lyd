@@ -98,7 +98,7 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
     
     chunksperchannel = size
     topology = fully_connected(size)
-    collective = AllReduce(size,  size * channels , True)
+    collective = AllReduce(size, nchunks * size * channels , True)
     
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances, protocol=protocol):
         
@@ -129,26 +129,28 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
         # ranks_ring1 = (np.newaxis + steps) % size
         # next_ranks_ring1 = (np.newaxis + steps + 1) % size
 
-        for ring_id in range(channels):
-            for step in range(size - 1):
-                for index in range(size):
-                    rank = gpu_indices[ring_id][(index + step) % size]
-                    next_rank = gpu_indices[ring_id][(index + step + 1) % size]
-                    offset = int(ring_id*size)
+        for chunk_id in range(nchunks):
+            for ring_id in range(channels):
+                for step in range(size - 1):
+                    for index in range(size):
+                        rank = gpu_indices[ring_id][(index + step) % size]
+                        next_rank = gpu_indices[ring_id][(index + step + 1) % size]
+                        
+                        offset = ring_id * size + chunk_id * size * channels
+                        
+                        c = chunk(int(next_rank), Buffer.input, index + offset)
+                        channel_index = int(ring_id)
+                        c.reduce(chunk(rank, Buffer.input, index + offset), ch=channel_index)
 
-                    
-                    c = chunk(int(next_rank), Buffer.input, index + offset)
-                    channel_index = int(ring_id)
-                    c.reduce(chunk(rank, Buffer.input, index + offset), ch=channel_index)
+                for step in range(-1, size - 2):
+                    for index in range(size):
+                        rank = gpu_indices[ring_id][(index + step) % size]
+                        next_rank = gpu_indices[ring_id][(index + step + 1) % size]
+                        
+                        offset = ring_id * size + chunk_id * size * channels
 
-            for step in range(-1, size - 2):
-                for index in range(size):
-                    rank = gpu_indices[ring_id][(index + step) % size]
-                    next_rank = gpu_indices[ring_id][(index + step + 1) % size]
-                    offset = ring_id*size
-
-                    channel_index = int(ring_id)
-                    chunk(rank, Buffer.input, index + offset).copy(next_rank, Buffer.input, index + offset, ch=channel_index)
+                        channel_index = int(ring_id)
+                        chunk(rank, Buffer.input, index + offset).copy(next_rank, Buffer.input, index + offset, ch=channel_index)
         
         XML()
         Check()
