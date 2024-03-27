@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#SBATCH -J ccl-run-4nodes-16gpus           # Job name
-#SBATCH -o ../log/paper0/ccl-run-4nodes-16gpus.o%j       # Name of stdout output file
-#SBATCH -e ../log/paper0/ccl-run-4nodes-16gpus.e%j       # Name of stderr error file
+#SBATCH -J ccl-run-8nodes-32gpus           # Job name
+#SBATCH -o ../log/paper0/ccl-run-8nodes-32gpus.o%j       # Name of stdout output file
+#SBATCH -e ../log/paper0/ccl-run-8nodes-32gpus.e%j       # Name of stderr error file
 #SBATCH -p rtx           # Queue (partition) name
-#SBATCH -N 4               # Total # of nodes (must be 1 for serial)
-#SBATCH -n 16               # Total # of mpi tasks (should be 1 for serial)
+#SBATCH -N 8               # Total # of nodes (must be 1 for serial)
+#SBATCH -n 32               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:00:00        # Run time (hh:mm:ss)
-#SBATCH --exclude=c199-121,c199-051,c197-022,c199-012
+##SBATCH --exclude=c199-121,c199-051,c197-022,c199-012
 ##SBATCH --mail-type=all    # Send email at begin and end of job
-##SBATCH -A ccl-run-4nodes-16gpus       # Project/Allocation name (req'd if you have more than 1)
+##SBATCH -A ccl-run-8nodes-32gpus        # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --mail-user=username@tacc.utexas.edu
 
 set -e
@@ -46,7 +46,7 @@ nchunks_values=(1 4 16 64 256)
 nchannel_values=(1 2 4)
 trees_values=(2)
 # nodes_values=(4 8 16 32 64)
-nodes_values=4
+nodes_values=8
 
 export ngpus=4
 
@@ -57,7 +57,7 @@ for nnodes in "${nodes_values[@]}"; do
                 echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
                 export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_${nchunks}chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
                 ibrun -n $((nnodes*ngpus)) --ntasks-per-node=$ngpus --cpu-bind core $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-                > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/buffer_size_2/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
+                > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_2/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
             done
         done
     done

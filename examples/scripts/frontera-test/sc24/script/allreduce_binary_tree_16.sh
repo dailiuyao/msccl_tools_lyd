@@ -1,48 +1,47 @@
-#!/bin/bash -l
-#PBS -l select=16:system=polaris
-#PBS -l place=scatter
-#PBS -l walltime=00:59:59
-#PBS -q prod
-#PBS -l filesystems=home
-#PBS -A MPICH_MCS
-#PBS -k doe
-#PBS -N ccl-16nodes
-#PBS -o ../log/paper0/ccl-16nodes-tree.out
-#PBS -e ../log/paper0/ccl-16nodes-tree.error
+#!/bin/bash
 
-export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
-export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
+#SBATCH -J ccl-run-16nodes-6gpus           # Job name
+#SBATCH -o ../log/paper0/ccl-run-16nodes-64gpus.o%j       # Name of stdout output file
+#SBATCH -e ../log/paper0/ccl-run-16nodes-64gpus.e%j       # Name of stderr error file
+#SBATCH -p rtx           # Queue (partition) name
+#SBATCH -N 16               # Total # of nodes (must be 1 for serial)
+#SBATCH -n 64               # Total # of mpi tasks (should be 1 for serial)
+#SBATCH -t 01:00:00        # Run time (hh:mm:ss)
+##SBATCH --exclude=c199-121,c199-051,c197-022,c199-012
+##SBATCH --mail-type=all    # Send email at begin and end of job
+##SBATCH -A ccl-run-16nodes-64gpus        # Project/Allocation name (req'd if you have more than 1)
+##SBATCH --mail-user=username@tacc.utexas.edu
 
-export MPIEXEC_HOME=/opt/cray/pe/pals/1.2.11
-export NCCL_NET_PLUGIN_HOME="/home/yuke/ncclPG/aws-ofi-nccl-1.7.4-aws/build"          
+set -e
 
-export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
-
-# export OFI_NCCL_PROTOCOL=RDMA
-export NCCL_SOCKET_IFNAME=hsn0,hsn1
-export NCCL_IB_HCA=cxi0,cxi1
+module load gcc/9.1.0
+module load impi/19.0.5
+module load cuda/11.3
 
 
-################################### MSCCL TEST #########################################################
+export CUDA_HOME=/opt/apps/cuda/11.3
+export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2018.6.288/linux/mpi/intel64
 
-echo "NCCL TEST with MSCCL"
-
-export NCCL_TEST_MSCCL_HOME="/home/yuke/ncclPG/CCL-LYD/nccl-tests-msccl"
-MSCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl-lyd"
+##################################### MSCCL #####################################
+echo "##################################### MSCCL #####################################"
+MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
 export MSCCL_SRC_LOCATION
 
-export MSCCL_TOOLS_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd"
+NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
+export NCCLTESTS_MSCCL_SRC_LOCATION
 
-export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:${MSCCL_SRC_LOCATION}/build/lib/:$LD_LIBRARY_PATH
-export NCCL_DEBUG=WARN
-# export NCCL_DEBUG_SUBSYS=INIT,ENV
+export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+
+export NCCL_DEBUG=TRACE
+export NCCL_DEBUG_SUBSYS=INIT,ENV
 export NCCL_ALGO=MSCCL,TREE,RING
+export NCCL_DEBUG=TRACE
 export NCCL_PROTO=Simple
-# export NCCL_NTHREADS=512
 
-export GENMSCCLXML=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh
+export GENMSCCLXML=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh
 
-export MSCCL_TOOLS_XML="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd" 
+export MSCCL_TOOLS_XML="/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd"
+
 nchunks_values=(1 4 16 64 256)
 nchannel_values=(1 2 4)
 trees_values=(2)
@@ -51,82 +50,15 @@ nodes_values=16
 
 export ngpus=4
 
-
 for nnodes in "${nodes_values[@]}"; do
     for nchannel in "${nchannel_values[@]}"; do
         for nchunks in "${nchunks_values[@]}"; do
             for trees in "${trees_values[@]}"; do
                 echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
                 export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_${nchunks}chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
-                $MPIEXEC_HOME/bin/mpiexec -n $((nnodes*ngpus)) --ppn ${ngpus} --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-		> /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/buffer_size_2/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
+                ibrun -n $((nnodes*ngpus)) --ntasks-per-node=$ngpus --cpu-bind core $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+                > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_2/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
             done
         done
     done
 done
-
-
-
-
-
-# echo "##################################### MSCCL #####################################" 
-
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/4_nomial_tree/allreduce_4_nomial_tree_2ch_32chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/4_nomial_tree/allreduce_4_nomial_tree_2ch_64chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4--cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/4_nomial_tree/allreduce_4_nomial_tree_2ch_128chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_32chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_64chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_2ch_128chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_32chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_64chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/binomial_tree/allreduce_binomial_tree_2ch_128chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling/allreduce_recursive_doubling_2ch_4chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling/allreduce_recursive_doubling_2ch_32chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_2ch_2chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/recursive_doubling_halving/allreduce_recursive_doubling_halving_2ch_4chunk.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 512K -e 512MB -f 2 -g 1 -n 60
-
-
-# export MSCCL_XML_FILES=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/trinomial_tree/allreduce_trinomial_tree_2ch_64chunk_27nodes.xml
-
-# $MPIEXEC_HOME/bin/mpiexec -n 324 --ppn 4 --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 768K -e 768MB -f 2 -g 1 -n 60
