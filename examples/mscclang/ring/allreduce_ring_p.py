@@ -70,20 +70,24 @@ import numpy as np
 #         XML()
 #         Check()
 
-def generate_gpu_indices(num_elements=64):
-    sets_needed = num_elements // 8
+
+def generate_gpu_indices(num_elements=64, num_gpus=4):
 
     # Generate gpu_indices0
-    gpu_indices0 = [n for set_num in range(sets_needed) for n in range(set_num * 8 + 7, set_num * 8 - 1, -1)]
+    gpu_indices0 = [3, 2, 1, 0]
     
-    gpu_indices1 = [1, 0, 7, 6, 5, 4, 3, 2]
+    gpu_indices1 = [1, 0, 3, 2]
     
     # Number of groups after the initial one
-    num_groups = num_elements // 8 - 1  # Subtract 1 for the initial group already defined
+    num_groups = num_elements // num_gpus - 1  # Subtract 1 for the initial group already defined
     
     # Generate the subsequent groups by adding 8 * group_number to each element of the previous group
     for group in range(1, num_groups + 1):
-        new_group = [(x + 8 * group) % 64 for x in gpu_indices1[-8:]]  # Use modulo 64 to ensure numbers are within bounds
+        new_group = [(x + num_gpus) % num_elements for x in gpu_indices0[-num_gpus:]]  # Use modulo 64 to ensure numbers are within bounds
+        gpu_indices0.extend(new_group)
+
+    for group in range(1, num_groups + 1):
+        new_group = [(x + num_gpus) % num_elements for x in gpu_indices1[-num_gpus:]]  # Use modulo 64 to ensure numbers are within bounds
         gpu_indices1.extend(new_group)
 
     return gpu_indices0, gpu_indices1
@@ -91,11 +95,10 @@ def generate_gpu_indices(num_elements=64):
 
 def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
     size = num_gpus * num_nodes
-    rings = 2
     
-    chunksperchannel = int(rings * size)
+    chunksperchannel = size
     topology = fully_connected(size)
-    collective = AllReduce(size, rings * size , True)
+    collective = AllReduce(size,  size * channels , True)
     
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances, protocol=protocol):
         
@@ -103,7 +106,13 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
         # gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index0
         # gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
 
-        gpu_indices0, gpu_indices1 = generate_gpu_indices(64)
+        gpu_indices0, gpu_indices1 = generate_gpu_indices(size, num_gpus)
+
+        gpu_indices2=list(reversed(gpu_indices0))
+
+        gpu_indices3=list(reversed(gpu_indices1))
+
+        gpu_indices = [gpu_indices0, gpu_indices1, gpu_indices2, gpu_indices3, gpu_indices0, gpu_indices1, gpu_indices2, gpu_indices3, gpu_indices0, gpu_indices1, gpu_indices2, gpu_indices3]
 
         # # Print the first 16 elements of each list to verify the pattern
         # print("gpu_indices0:", gpu_indices0[:64])
@@ -120,34 +129,25 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
         # ranks_ring1 = (np.newaxis + steps) % size
         # next_ranks_ring1 = (np.newaxis + steps + 1) % size
 
-        for ring in [0, 1]:
+        for ring_id in range(channels):
             for step in range(size - 1):
                 for index in range(size):
-                    if ring == 0:
-                        rank = gpu_indices0[(index + step) % size]
-                        next_rank = gpu_indices0[(index + step + 1) % size]
-                        offset = 0
-                    else:
-                        rank = gpu_indices1[(index + step) % size]
-                        next_rank = gpu_indices1[(index + step + 1) % size]
-                        offset = size
+                    rank = gpu_indices[ring_id][(index + step) % size]
+                    next_rank = gpu_indices[ring_id][(index + step + 1) % size]
+                    offset = int(ring_id*size)
+
                     
-                    c = chunk(next_rank, Buffer.input, index + offset)
-                    channel_index = int((index / chunksperchannel) + (channels / 2) * ring)
+                    c = chunk(int(next_rank), Buffer.input, index + offset)
+                    channel_index = int(ring_id)
                     c.reduce(chunk(rank, Buffer.input, index + offset), ch=channel_index)
 
             for step in range(-1, size - 2):
                 for index in range(size):
-                    if ring == 0:
-                        rank = gpu_indices0[(index + step) % size]
-                        next_rank = gpu_indices0[(index + step + 1) % size]
-                        offset = 0
-                    else:
-                        rank = gpu_indices1[(index + step) % size]
-                        next_rank = gpu_indices1[(index + step + 1) % size]
-                        offset = size
-                    
-                    channel_index = int((index / chunksperchannel) + (channels / 2) * ring)
+                    rank = gpu_indices[ring_id][(index + step) % size]
+                    next_rank = gpu_indices[ring_id][(index + step + 1) % size]
+                    offset = ring_id*size
+
+                    channel_index = int(ring_id)
                     chunk(rank, Buffer.input, index + offset).copy(next_rank, Buffer.input, index + offset, ch=channel_index)
         
         XML()
