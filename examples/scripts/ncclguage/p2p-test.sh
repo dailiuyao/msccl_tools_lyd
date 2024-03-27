@@ -36,9 +36,9 @@ export NCCL_PROTO=Simple
 export NCCL_MIN_NCHANNELS=4
 export NCCL_MAX_NCHANNELS=4
 
-# $MPI_HOME/bin/mpirun -np 2 -hosts node03:2 $NCCLTESTS_SRC_LOCATION/build/sendrecv_perf -b 2MB -e 2MB -f 2 -g 1 > output.log 2>&1
+$MPI_HOME/bin/mpirun -np 2 -hosts node03:2 $NCCLTESTS_SRC_LOCATION/build/sendrecv_perf -b 2MB -e 2MB -f 2 -g 1 > output.log 2>&1
 
 # $MPI_HOME/bin/mpirun -np 2 -hosts node03:1,node04:1 $NCCLTESTS_SRC_LOCATION/build/sendrecv_perf -b 2MB -e 2MB -f 2 -g 1 > output.log 2>&1
 
-$MPI_HOME/bin/mpirun -np 4 -hosts node03:2,node04:2 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 64MB -e 64MB -f 2 -g 1 > output.log 2>&1
+# $MPI_HOME/bin/mpirun -np 4 -hosts node03:2,node04:2 $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 64MB -e 64MB -f 2 -g 1 > output.log 2>&1
 
