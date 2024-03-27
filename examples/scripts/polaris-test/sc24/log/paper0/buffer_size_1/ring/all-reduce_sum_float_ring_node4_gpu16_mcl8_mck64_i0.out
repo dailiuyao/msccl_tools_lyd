@@ -1,0 +1,105 @@
+# nThread 1 nGpus 1 minBytes 65536 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  49342 on x3002c0s19b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  49343 on x3002c0s19b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  49344 on x3002c0s19b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  49345 on x3002c0s19b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  25744 on x3002c0s1b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  25745 on x3002c0s1b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  25746 on x3002c0s1b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  25747 on x3002c0s1b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid  49659 on x3002c0s1b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid  49660 on x3002c0s1b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid  49661 on x3002c0s1b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid  49662 on x3002c0s1b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  60993 on x3002c0s25b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  60994 on x3002c0s25b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  60995 on x3002c0s25b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  60996 on x3002c0s25b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
+
+x3002c0s25b0n0:60994:61018 [1] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s25b0n0:60994:61018 [1] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s25b0n0:60995:61017 [2] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s25b0n0:60995:61017 [2] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s19b1n0:49343:49372 [1] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s19b1n0:49343:49372 [1] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s19b1n0:49344:49371 [2] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s19b1n0:49344:49371 [2] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s19b1n0:49345:49373 [3] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s19b1n0:49345:49373 [3] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s1b1n0:49662:49685 [3] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b1n0:49662:49685 [3] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s25b0n0:60996:61019 [3] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s25b0n0:60996:61019 [3] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s1b0n0:25747:25769 [3] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b0n0:25747:25769 [3] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s25b0n0:60993:61020 [0] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s25b0n0:60993:61020 [0] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s1b0n0:25744:25771 [0] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b0n0:25744:25771 [0] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s19b1n0:49342:49370 [0] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s19b1n0:49342:49370 [0] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s1b1n0:49659:49686 [0] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b1n0:49659:49686 [0] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+
+x3002c0s1b1n0:49660:49684 [1] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b1n0:49660:49684 [1] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s1b1n0:49661:49683 [2] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b1n0:49661:49683 [2] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s1b0n0:25745:25770 [1] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b0n0:25745:25770 [1] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+
+x3002c0s1b0n0:25746:25768 [2] graph/xml.cc:885 NCCL WARN Could not open XML MSCCL graph file /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml : No such file or directory
+
+x3002c0s1b0n0:25746:25768 [2] graph/topo.cc:1212 NCCL WARN MSCCL: algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl8_mck64_gan0.xml failed to initialize. Will be ignored.
+       65536         16384     float     sum      -1    163.3    0.40    0.75      0    157.7    0.42    0.78      0
+      131072         32768     float     sum      -1    164.2    0.80    1.50      0    161.3    0.81    1.52      0
+      262144         65536     float     sum      -1    174.0    1.51    2.83      0    172.9    1.52    2.84      0
+      524288        131072     float     sum      -1    202.8    2.59    4.85      0    203.2    2.58    4.84      0
+     1048576        262144     float     sum      -1    299.0    3.51    6.58      0    298.2    3.52    6.59      0
+     2097152        524288     float     sum      -1    511.9    4.10    7.68      0    513.9    4.08    7.65      0
+     4194304       1048576     float     sum      -1    980.6    4.28    8.02      0    940.9    4.46    8.36      0
+     8388608       2097152     float     sum      -1   1862.1    4.50    8.45      0   1774.1    4.73    8.87      0
+    16777216       4194304     float     sum      -1   3553.0    4.72    8.85      0    11693    1.43    2.69      0
+    33554432       8388608     float     sum      -1    11659    2.88    5.40      0   7320.2    4.58    8.59      0
+    67108864      16777216     float     sum      -1    26980    2.49    4.66      0    23438    2.86    5.37      0
+   134217728      33554432     float     sum      -1    28375    4.73    8.87      0    28345    4.74    8.88      0
+   268435456      67108864     float     sum      -1    56595    4.74    8.89      0    56444    4.76    8.92      0
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 5.89319 
+#
+

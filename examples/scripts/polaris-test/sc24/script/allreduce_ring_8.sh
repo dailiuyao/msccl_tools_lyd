@@ -58,7 +58,7 @@ for nnodes in "${nodes_values[@]}"; do
                 echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
                 export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/ring/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
                 $MPIEXEC_HOME/bin/mpiexec -n $((nnodes*ngpus)) --ppn ${ngpus} --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-                > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/buffer_size_2/ring/all-reduce_sum_float_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
+                > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/buffer_size_1/ring/all-reduce_sum_float_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
             done
         done
     done
