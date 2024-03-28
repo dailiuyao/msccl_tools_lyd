@@ -70,7 +70,7 @@ for nnodes in "${nodes_values[@]}"; do
             for trees in "${trees_values[@]}"; do
                 python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py  \
                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-                > ${MSCCL_TOOLS_XML}/aws-test/32nic/32gpus/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck$((nchunks*2))_gan0.xml
+                > ${MSCCL_TOOLS_XML}/aws-test/32nic/32gpus/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck$((nchunks))_gan0.xml
             done
         done
     done
