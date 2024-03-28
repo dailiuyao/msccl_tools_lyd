@@ -62,3 +62,7 @@ Running MSCCL tree test with 16 nodes, 4 channels, 4 chunks, 2 trees
 Running MSCCL tree test with 16 nodes, 4 channels, 16 chunks, 2 trees
 Running MSCCL tree test with 16 nodes, 4 channels, 64 chunks, 2 trees
 Running MSCCL tree test with 16 nodes, 4 channels, 256 chunks, 2 trees
+NCCL TEST with MSCCL
+Running MSCCL tree test with 16 nodes, 2 channels, 64 chunks, 2 trees
+Running MSCCL tree test with 16 nodes, 4 channels, 64 chunks, 2 trees
+Running MSCCL tree test with 16 nodes, 8 channels, 64 chunks, 2 trees
