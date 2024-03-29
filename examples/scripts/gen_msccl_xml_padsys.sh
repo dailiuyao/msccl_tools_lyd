@@ -57,11 +57,10 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # the num_chunks is the original number of chunks per channel for each gpu
 # # total chunks = 2 * num_chunks * size * channels * number of rings
 
-
-nchunks_values=(64)
-nchannel_values=(2 4 8)
+nchunks_values=(1)
+nchannel_values=(2 4)
 trees_values=(2)
-nodes_values=(4)
+nodes_values=(64)
 
 export ngpus=4
 
@@ -70,12 +69,13 @@ for nnodes in "${nodes_values[@]}"; do
         for nchunks in "${nchunks_values[@]}"; do
             for trees in "${trees_values[@]}"; do
                 python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py  \
-                --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$((nnodes*ngpus)) --nchannel=$nchannel --instances=1 \
-                > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck$((nnodes*ngpus))_gan0.xml
+                --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
+                > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck$((nchunks))_gan0.xml
             done
         done
     done
 done
+
 
 
 # # num_chunks = 2 * num_nodes * num_gpus
@@ -98,10 +98,10 @@ done
 # only support up to 2 channels
 
 
-# nchunks_values=(1 4 16 64)
-# nchannel_values=(4 8 12)
+# nchunks_values=(2 8 32)
+# nchannel_values=(4 8 16)
 # trees_values=(2)
-# nodes_values=(8)
+# nodes_values=(4)
 
 # export ngpus=8
 
@@ -111,11 +111,12 @@ done
 #             for trees in "${trees_values[@]}"; do
 #                 python3 ${MSCCL_TOOLS_ALGORITHMS}/tree/allreduce_binary_tree_p.py \
 #                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 --trees=$trees \
-#                 > ${MSCCL_TOOLS_XML}/aws-test/test/allreduce_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+#                 > ${MSCCL_TOOLS_XML}/aws-test/32nic/32gpus/allreduce_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
 #             done
 #         done
 #     done
 # done
+
 
 
 # nchunks_values=(16 32 64)
@@ -335,6 +336,18 @@ done
 # python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
 # --protocol=Simple --num_gpus=256 --instances=1 --trees=1 \
 # > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_256gpus_1tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=32 --instances=1 --trees=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_32gpus_1tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_binary_tree.py \
+# --protocol=Simple --num_gpus=32 --instances=1 --trees=2 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_32gpus_2tree.xml
+
+# python3 /home/liuyao/scratch/deps/msccl_tools_lyd/examples/mscclang/basic_msccl/allreduce_ring.py \
+# --num_gpus=32 --instances=1 \
+# > ${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_32gpus.xml
 
 
 

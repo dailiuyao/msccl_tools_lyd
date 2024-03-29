@@ -78,11 +78,27 @@ def allreduce_binary_tree_hierarchical(num_nodes:int, num_local_gpus:int, num_ch
         #     gpu_indices.append(list(reversed(gpu_indices[-1])))
         
         gpu_indices = []
-        gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index0
-        gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
+        gpu_indices.append([7,6,5,4,3,2,1,0])  
+        gpu_indices.append([0,7,6,5,4,3,2,1]) 
+        gpu_indices.append([1,0,7,6,5,4,3,2]) 
+        gpu_indices.append([2,1,0,7,6,5,4,3])
+        gpu_indices.append([3,2,1,0,7,6,5,4])
+        gpu_indices.append([4,3,2,1,0,7,6,5])
+        gpu_indices.append([5,4,3,2,1,0,7,6])
+        gpu_indices.append([6,5,4,3,2,1,0,7])
+        gpu_indices.append(list(reversed([7,6,5,4,3,2,1,0])))
+        gpu_indices.append(list(reversed([0,7,6,5,4,3,2,1])))
+        gpu_indices.append(list(reversed([1,0,7,6,5,4,3,2])))
+        gpu_indices.append(list(reversed([2,1,0,7,6,5,4,3])))
+        gpu_indices.append(list(reversed([3,2,1,0,7,6,5,4])))
+        gpu_indices.append(list(reversed([4,3,2,1,0,7,6,5])))
+        gpu_indices.append(list(reversed([5,4,3,2,1,0,7,6])))
+        gpu_indices.append(list(reversed([6,5,4,3,2,1,0,7])))
+
         
-        
-        combined_indices = [gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1]]
+        combined_indices = [gpu_indices[0], gpu_indices[1], gpu_indices[2], gpu_indices[3], gpu_indices[4], gpu_indices[5], gpu_indices[6], gpu_indices[7], gpu_indices[8], gpu_indices[9], gpu_indices[10], gpu_indices[11], gpu_indices[12], gpu_indices[13], gpu_indices[14], gpu_indices[15]]
+
+        # combined_indices = [gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1], gpu_indices[0], gpu_indices[1]]
 
         # for channel in range(num_channel_per_tree):
         #     for gpuidx in range(num_local_gpus):
