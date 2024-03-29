@@ -15,12 +15,13 @@
 set -e
 
 module load gcc/9.1.0
-module load impi/18.0.5
+module load impi/19.0.5
 module load cuda/11.3
 
 
 export CUDA_HOME=/opt/apps/cuda/11.3
-export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2018.6.288/linux/mpi/intel64
+# export MPI_HOME=/scratch1/projects/compilers/intel18u5/compilers_and_libraries_2018.6.288/linux/mpi/intel64
+export MPI_HOME=/opt/intel/compilers_and_libraries_2019.5.281/linux/mpi/intel64
 
 export NVCC_GENCODE="-gencode=arch=compute_75,code=sm_75"
 
@@ -105,12 +106,12 @@ export NVCC_GENCODE="-gencode=arch=compute_75,code=sm_75"
 # Set location to store NCCL source/repository
 MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
 export MSCCL_SRC_LOCATION
-# export MSCCL_COMMIT="algorithm_div_threads"
+export MSCCL_COMMIT="algorithm_test_CCLadviser"
 
 # Set location to store NCCL_TEST source/repository
 NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
 export NCCLTESTS_MSCCL_SRC_LOCATION
-export NCCLTESTS_MSCCL_COMMIT="nccl-test-profile-msccl"
+export NCCLTESTS_MSCCL_COMMIT="nccl-test-profile-msccl-frontera"
 
 ### MSCCL-Section ###
 # Download MSCCL
@@ -133,8 +134,8 @@ pushd "${MSCCL_SRC_LOCATION}" || exit
 
 # Build MSCCL
 echo "[INFO] Building MSCCL..."
-make clean
-make -j src.build
+make clean > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/output.log 2>&1
+make -j src.build > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/output.log 2>&1
 echo ""
 
 # Exit MSCCL dir
@@ -188,7 +189,7 @@ make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${MSCCL_HOME}
 popd || exit
 echo ""
 
-# ################################## NCCL_PROFILE ########################################
+# # # ################################## NCCL_PROFILE ########################################
 
 # # Set location to store NCCL source/repository
 # NCCL_PROFILE_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
@@ -273,7 +274,7 @@ echo ""
 
 # # Build NCCL Tests with NCCL_PROFILE
 # echo "[INFO] Building NCCL tests (NCCL_PROFILE)"
-# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${NCCL_PROFILE_HOME}  
+# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${NCCL_PROFILE_HOME} > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/output.log 2>&1  
 
 # # Exit NCCL Tests with NCCL_PROFILE dir
 # popd || exit
