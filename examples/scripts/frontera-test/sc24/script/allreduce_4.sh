@@ -22,66 +22,117 @@ module load cuda/11.3
 export CUDA_HOME=/opt/apps/cuda/11.3
 export MPI_HOME=/opt/intel/compilers_and_libraries_2019.5.281/linux/mpi/intel64
 
-##################################### MSCCL #####################################
-echo "##################################### MSCCL #####################################"
-MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
-export MSCCL_SRC_LOCATION
+##################################### NCCL #####################################
+echo "##################################### NCCL #####################################"
 
-NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
-export NCCLTESTS_MSCCL_SRC_LOCATION
+NCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl"
+export NCCL_SRC_LOCATION
 
-export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+NCCLTESTS_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests"
+export NCCLTESTS_SRC_LOCATION
+
+export LD_LIBRARY_PATH="${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+
+export ngpus=4
+export nnodes=4
 
 export NCCL_DEBUG=TRACE
-export NCCL_DEBUG_SUBSYS=INIT,ENV
-export NCCL_ALGO=MSCCL,TREE,RING
-export NCCL_DEBUG=TRACE
+export NCCL_ALGO=TREE
 export NCCL_PROTO=Simple
 
-export GENMSCCLXML=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh
+ibrun -n $((ngpus*nnodes)) --ntasks-per-node=$ngpus $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+> /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/nccl/all-reduce_sum_float_nccl-tree_node${nnodes}_gpu$((ngpus*nnodes))_mcl1_mck1_i1.out
 
-export MSCCL_TOOLS_XML="/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd"
+export NCCL_ALGO=RING
 
-nchunks_values=(1 4 16 64 256)
-nchannel_values=(1 2 4)
-trees_values=(2)
-# nodes_values=(4 8 16 32 64)
-nodes_values=4
-
-export ngpus=4
-
-for nnodes in "${nodes_values[@]}"; do
-    for nchannel in "${nchannel_values[@]}"; do
-        for nchunks in "${nchunks_values[@]}"; do
-            for trees in "${trees_values[@]}"; do
-                echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
-                export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_${nchunks}chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
-                ibrun -n $((nnodes*ngpus)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-                > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_1/tree/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i1.out
-            done
-        done
-    done
-done
+ibrun -n $((ngpus*nnodes)) --ntasks-per-node=$ngpus $NCCLTESTS_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+> /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/nccl/all-reduce_sum_float_nccl-ring_node${nnodes}_gpu$((ngpus*nnodes))_mcl1_mck1_i1.out
 
 
 
 
-nchunks_values=(1 2)
-nchannel_values=(1 2 4)
-trees_values=(2)
-nodes_values=4
+# ##################################### MSCCL #####################################
+# echo "##################################### MSCCL #####################################"
+# MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/msccl-lyd"
+# export MSCCL_SRC_LOCATION
 
-export ngpus=4
+# NCCLTESTS_MSCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/nccl-tests-profile-msccl"
+# export NCCLTESTS_MSCCL_SRC_LOCATION
 
-for nnodes in "${nodes_values[@]}"; do
-    for nchannel in "${nchannel_values[@]}"; do
-        for nchunks in "${nchunks_values[@]}"; do
-            for trees in "${trees_values[@]}"; do
-                echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
-                export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/ring/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
-                ibrun -n $((nnodes*ngpus)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-                > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_1/ring/all-reduce_sum_float_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i1.out
-            done
-        done
-    done
-done
+# export LD_LIBRARY_PATH="${MSCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:$LD_LIBRARY_PATH"
+
+# export NCCL_DEBUG=TRACE
+# export NCCL_DEBUG_SUBSYS=INIT,ENV
+# export NCCL_ALGO=MSCCL,TREE,RING
+# export NCCL_DEBUG=TRACE
+# export NCCL_PROTO=Simple
+
+# export GENMSCCLXML=/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh
+
+# export MSCCL_TOOLS_XML="/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd"
+
+
+
+# export ngpus=4
+# export nnodes=4
+
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_$((ngpus*nnodes))gpus_1tree.xml
+
+# ibrun -n $((ngpus*nnodes)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+# > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/basic_msccl/all-reduce_sum_float_basic-binary-tree_node${nnodes}_gpu$((ngpus*nnodes))_mcl1_mck1_i1.out
+
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_$((ngpus*nnodes))gpus_2tree.xml
+
+# ibrun -n $((ngpus*nnodes)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+# > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/basic_msccl/all-reduce_sum_float_basic-binary-tree_node${nnodes}_gpu$((ngpus*nnodes))_mcl2_mck1_i1.out
+
+# export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_$((ngpus*nnodes))gpus.xml
+
+# ibrun -n $((ngpus*nnodes)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+# > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/basic_msccl/all-reduce_sum_float_basic-ring_node${nnodes}_gpu$((ngpus*nnodes))_mcl1_mck1_i1.out
+
+
+
+# nchunks_values=(1 4 16 64 256)
+# nchannel_values=(1 2 4)
+# trees_values=(2)
+# # nodes_values=(4 8 16 32 64)
+# nodes_values=4
+
+# export ngpus=4
+
+# for nnodes in "${nodes_values[@]}"; do
+#     for nchannel in "${nchannel_values[@]}"; do
+#         for nchunks in "${nchunks_values[@]}"; do
+#             for trees in "${trees_values[@]}"; do
+#                 echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
+#                 export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_${nchunks}chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
+#                 ibrun -n $((nnodes*ngpus)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+#                 > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_1/tree/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i1.out
+#             done
+#         done
+#     done
+# done
+
+
+
+
+# nchunks_values=(1 2)
+# nchannel_values=(1 2 4)
+# trees_values=(2)
+# nodes_values=4
+
+# export ngpus=4
+
+# for nnodes in "${nodes_values[@]}"; do
+#     for nchannel in "${nchannel_values[@]}"; do
+#         for nchunks in "${nchunks_values[@]}"; do
+#             for trees in "${trees_values[@]}"; do
+#                 echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
+#                 export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/ring/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_gan0.xml
+#                 ibrun -n $((nnodes*ngpus)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
+#                 > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_1/ring/all-reduce_sum_float_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i1.out
+#             done
+#         done
+#     done
+# done
