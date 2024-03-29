@@ -1,0 +1,652 @@
+TACC:  Starting up job 6212683 
+TACC:  Starting parallel tasks... 
+# nThread 1 nGpus 1 minBytes 65536 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  22608 on   c196-111 device  0 [0x02] Quadro RTX 5000
+#  Rank  1 Group  0 Pid  22609 on   c196-111 device  1 [0x03] Quadro RTX 5000
+#  Rank  2 Group  0 Pid  22610 on   c196-111 device  2 [0x82] Quadro RTX 5000
+#  Rank  3 Group  0 Pid  22611 on   c196-111 device  3 [0x83] Quadro RTX 5000
+#  Rank  4 Group  0 Pid   9256 on   c196-112 device  0 [0x02] Quadro RTX 5000
+#  Rank  5 Group  0 Pid   9257 on   c196-112 device  1 [0x03] Quadro RTX 5000
+#  Rank  6 Group  0 Pid   9258 on   c196-112 device  2 [0x82] Quadro RTX 5000
+#  Rank  7 Group  0 Pid   9259 on   c196-112 device  3 [0x83] Quadro RTX 5000
+#  Rank  8 Group  0 Pid   6823 on   c197-011 device  0 [0x02] Quadro RTX 5000
+#  Rank  9 Group  0 Pid   6824 on   c197-011 device  1 [0x03] Quadro RTX 5000
+#  Rank 10 Group  0 Pid   6825 on   c197-011 device  2 [0x82] Quadro RTX 5000
+#  Rank 11 Group  0 Pid   6826 on   c197-011 device  3 [0x83] Quadro RTX 5000
+#  Rank 12 Group  0 Pid   2696 on   c197-012 device  0 [0x02] Quadro RTX 5000
+#  Rank 13 Group  0 Pid   2697 on   c197-012 device  1 [0x03] Quadro RTX 5000
+#  Rank 14 Group  0 Pid   2698 on   c197-012 device  2 [0x82] Quadro RTX 5000
+#  Rank 15 Group  0 Pid   2699 on   c197-012 device  3 [0x83] Quadro RTX 5000
+The MSCCL XML file exists: /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22608:22608 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.121<0>
+c196-111:22608:22608 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-111:22608:22608 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.121<0>
+c196-111:22608:22608 [0] NCCL INFO Using network IB
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.3
+c196-111:22610:22610 [2] NCCL INFO Bootstrap : Using ib0:192.168.44.121<0>
+c196-111:22610:22610 [2] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-111:22611:22611 [3] NCCL INFO Bootstrap : Using ib0:192.168.44.121<0>
+c196-111:22611:22611 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-111:22611:22611 [3] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.121<0>
+c196-111:22611:22611 [3] NCCL INFO Using network IB
+c196-111:22610:22610 [2] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.121<0>
+c196-111:22610:22610 [2] NCCL INFO Using network IB
+c196-111:22609:22609 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.121<0>
+c196-111:22609:22609 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-111:22609:22609 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.121<0>
+c196-111:22609:22609 [1] NCCL INFO Using network IB
+c197-011:6825:6825 [2] NCCL INFO Bootstrap : Using ib0:192.168.44.123<0>
+c197-011:6825:6825 [2] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-011:6825:6825 [2] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.123<0>
+c197-011:6825:6825 [2] NCCL INFO Using network IB
+c196-112:9256:9256 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.122<0>
+c196-112:9256:9256 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-012:2699:2699 [3] NCCL INFO Bootstrap : Using ib0:192.168.44.124<0>
+c197-012:2699:2699 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-011:6823:6823 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.123<0>
+c197-011:6826:6826 [3] NCCL INFO Bootstrap : Using ib0:192.168.44.123<0>
+c197-011:6824:6824 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.123<0>
+c197-011:6826:6826 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-012:2699:2699 [3] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.124<0>
+c197-012:2699:2699 [3] NCCL INFO Using network IB
+c197-011:6823:6823 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-011:6824:6824 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-112:9256:9256 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.122<0>
+c196-112:9256:9256 [0] NCCL INFO Using network IB
+c196-112:9257:9257 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.122<0>
+c196-112:9258:9258 [2] NCCL INFO Bootstrap : Using ib0:192.168.44.122<0>
+c196-112:9259:9259 [3] NCCL INFO Bootstrap : Using ib0:192.168.44.122<0>
+c196-112:9257:9257 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-112:9258:9258 [2] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-112:9259:9259 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-011:6826:6826 [3] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.123<0>
+c197-011:6826:6826 [3] NCCL INFO Using network IB
+c197-011:6823:6823 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.123<0>
+c197-011:6823:6823 [0] NCCL INFO Using network IB
+c197-011:6824:6824 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.123<0>
+c197-011:6824:6824 [1] NCCL INFO Using network IB
+c197-012:2696:2696 [0] NCCL INFO Bootstrap : Using ib0:192.168.44.124<0>
+c197-012:2698:2698 [2] NCCL INFO Bootstrap : Using ib0:192.168.44.124<0>
+c197-012:2697:2697 [1] NCCL INFO Bootstrap : Using ib0:192.168.44.124<0>
+c197-012:2698:2698 [2] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-012:2696:2696 [0] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c197-012:2697:2697 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+c196-112:9257:9257 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.122<0>
+c196-112:9257:9257 [1] NCCL INFO Using network IB
+c196-112:9259:9259 [3] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.122<0>
+c196-112:9259:9259 [3] NCCL INFO Using network IB
+c196-112:9258:9258 [2] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.122<0>
+c196-112:9258:9258 [2] NCCL INFO Using network IB
+c197-012:2698:2698 [2] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.124<0>
+c197-012:2698:2698 [2] NCCL INFO Using network IB
+c197-012:2697:2697 [1] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.124<0>
+c197-012:2697:2697 [1] NCCL INFO Using network IB
+c197-012:2696:2696 [0] NCCL INFO NET/IB : Using [0]mlx4_0:1/IB [RO]; OOB ib0:192.168.44.124<0>
+c197-012:2696:2696 [0] NCCL INFO Using network IB
+c196-111:22608:22659 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c197-012:2699:2750 [3] NCCL INFO Setting affinity for GPU 3 to f000f000
+c196-112:9259:9314 [3] NCCL INFO Setting affinity for GPU 3 to f000f000
+c197-011:6826:6879 [3] NCCL INFO Setting affinity for GPU 3 to f000f000
+c196-111:22609:22668 [1] NCCL INFO Setting affinity for GPU 1 to f000f0
+c196-111:22610:22666 [2] NCCL INFO Setting affinity for GPU 2 to 0f000f00
+c196-111:22611:22664 [3] NCCL INFO Setting affinity for GPU 3 to f000f000
+c196-112:9256:9309 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c197-011:6824:6882 [1] NCCL INFO Setting affinity for GPU 1 to f000f0
+c197-011:6823:6881 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c197-011:6825:6876 [2] NCCL INFO Setting affinity for GPU 2 to 0f000f00
+c196-112:9257:9311 [1] NCCL INFO Setting affinity for GPU 1 to f000f0
+c196-112:9258:9315 [2] NCCL INFO Setting affinity for GPU 2 to 0f000f00
+c197-012:2696:2756 [0] NCCL INFO Setting affinity for GPU 0 to 0f000f
+c197-012:2697:2755 [1] NCCL INFO Setting affinity for GPU 1 to f000f0
+c197-012:2698:2753 [2] NCCL INFO Setting affinity for GPU 2 to 0f000f00
+c197-012:2698:2753 [2] NCCL INFO Trees [0] 15/-1/-1->14->13 [1] 15/-1/-1->14->13
+c196-111:22608:22659 [0] NCCL INFO Channel 00/02 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+c196-111:22608:22659 [0] NCCL INFO Channel 01/02 :    0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+c196-111:22608:22659 [0] NCCL INFO Trees [0] 1/8/-1->0->-1 [1] 1/-1/-1->0->4
+c196-111:22609:22668 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 2/-1/-1->1->0
+c197-012:2699:2750 [3] NCCL INFO Trees [0] -1/-1/-1->15->14 [1] -1/-1/-1->15->14
+c197-011:6823:6881 [0] NCCL INFO Trees [0] 9/12/-1->8->0 [1] 9/-1/-1->8->5
+c196-112:9256:9309 [0] NCCL INFO Trees [0] 5/-1/-1->4->9 [1] 5/0/-1->4->12
+c196-111:22610:22666 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 3/-1/-1->2->1
+c197-012:2696:2756 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] 13/4/-1->12->-1
+c197-011:6824:6882 [1] NCCL INFO Trees [0] 10/4/-1->9->8 [1] 10/-1/-1->9->8
+c196-112:9257:9311 [1] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 6/8/-1->5->4
+c196-111:22611:22664 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] -1/-1/-1->3->2
+c197-012:2697:2755 [1] NCCL INFO Trees [0] 14/-1/-1->13->12 [1] 14/-1/-1->13->12
+c197-011:6825:6876 [2] NCCL INFO Trees [0] 11/-1/-1->10->9 [1] 11/-1/-1->10->9
+c196-112:9258:9315 [2] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 7/-1/-1->6->5
+c197-011:6826:6879 [3] NCCL INFO Trees [0] -1/-1/-1->11->10 [1] -1/-1/-1->11->10
+c196-112:9259:9314 [3] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] -1/-1/-1->7->6
+c197-012:2696:2756 [0] NCCL INFO Channel 00/0 : 11[83000] -> 12[2000] [receive] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 00/0 : 7[83000] -> 8[2000] [receive] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 00/0 : 3[83000] -> 4[2000] [receive] via NET/IB/0
+c196-111:22608:22659 [0] NCCL INFO Channel 00/0 : 15[83000] -> 0[2000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 00 : 14[82000] -> 15[83000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 00 : 13[3000] -> 14[82000] via direct shared memory
+c197-012:2698:2753 [2] NCCL INFO Channel 01 : 14[82000] -> 15[83000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 01 : 13[3000] -> 14[82000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 00 : 9[3000] -> 10[82000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 01 : 9[3000] -> 10[82000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 00 : 6[82000] -> 7[83000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 00 : 5[3000] -> 6[82000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 01 : 6[82000] -> 7[83000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 01 : 5[3000] -> 6[82000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 00 : 10[82000] -> 11[83000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 00 : 2[82000] -> 3[83000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 01 : 10[82000] -> 11[83000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 00 : 1[3000] -> 2[82000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 01 : 2[82000] -> 3[83000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 01 : 1[3000] -> 2[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 00/0 : 15[83000] -> 0[2000] [send] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 00/0 : 7[83000] -> 8[2000] [send] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 00/0 : 3[83000] -> 4[2000] [send] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 00/0 : 11[83000] -> 12[2000] [send] via NET/IB/0
+c197-012:2696:2756 [0] NCCL INFO Channel 01/0 : 11[83000] -> 12[2000] [receive] via NET/IB/0
+c197-012:2696:2756 [0] NCCL INFO Channel 00 : 12[2000] -> 13[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 01 : 12[2000] -> 13[3000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 01/0 : 7[83000] -> 8[2000] [receive] via NET/IB/0
+c196-111:22608:22659 [0] NCCL INFO Channel 01/0 : 15[83000] -> 0[2000] [receive] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 00 : 8[2000] -> 9[3000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 00 : 0[2000] -> 1[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 01/0 : 3[83000] -> 4[2000] [receive] via NET/IB/0
+c196-111:22608:22659 [0] NCCL INFO Channel 01 : 0[2000] -> 1[3000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 01 : 8[2000] -> 9[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 00 : 4[2000] -> 5[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 01 : 4[2000] -> 5[3000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Connected all rings
+c196-111:22609:22668 [1] NCCL INFO Connected all rings
+c197-012:2697:2755 [1] NCCL INFO Connected all rings
+c196-112:9257:9311 [1] NCCL INFO Connected all rings
+c197-011:6824:6882 [1] NCCL INFO Channel 00/0 : 4[2000] -> 9[3000] [receive] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 01/0 : 5[3000] -> 8[2000] [send] via NET/IB/0
+c197-012:2699:2750 [3] NCCL INFO Channel 01/0 : 15[83000] -> 0[2000] [send] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 01/0 : 3[83000] -> 4[2000] [send] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 01/0 : 11[83000] -> 12[2000] [send] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 01/0 : 7[83000] -> 8[2000] [send] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Connected all rings
+c197-011:6825:6876 [2] NCCL INFO Connected all rings
+c196-111:22610:22666 [2] NCCL INFO Connected all rings
+c196-112:9258:9315 [2] NCCL INFO Connected all rings
+c197-012:2697:2755 [1] NCCL INFO Channel 00 : 13[3000] -> 12[2000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 01 : 13[3000] -> 12[2000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 00 : 1[3000] -> 0[2000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 01 : 1[3000] -> 0[2000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Connected all rings
+c197-012:2699:2750 [3] NCCL INFO Channel 00 : 15[83000] -> 14[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 01 : 15[83000] -> 14[82000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Connected all rings
+c196-112:9259:9314 [3] NCCL INFO Connected all rings
+c197-011:6826:6879 [3] NCCL INFO Channel 00 : 11[83000] -> 10[82000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 00 : 7[83000] -> 6[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Connected all rings
+c197-011:6826:6879 [3] NCCL INFO Channel 01 : 11[83000] -> 10[82000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 01 : 7[83000] -> 6[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 00 : 3[83000] -> 2[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 01 : 3[83000] -> 2[82000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Connected all rings
+c197-012:2698:2753 [2] NCCL INFO Channel 00 : 14[82000] -> 13[3000] via direct shared memory
+c197-012:2698:2753 [2] NCCL INFO Channel 01 : 14[82000] -> 13[3000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Connected all rings
+c196-112:9256:9309 [0] NCCL INFO Connected all rings
+c196-112:9258:9315 [2] NCCL INFO Channel 00 : 6[82000] -> 5[3000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 01 : 6[82000] -> 5[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Connected all rings
+c196-111:22610:22666 [2] NCCL INFO Channel 00 : 2[82000] -> 1[3000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 01 : 2[82000] -> 1[3000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 00 : 10[82000] -> 9[3000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 01 : 10[82000] -> 9[3000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Connected all trees
+c197-012:2699:2750 [3] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-012:2699:2750 [3] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-012:2698:2753 [2] NCCL INFO Connected all trees
+c197-012:2698:2753 [2] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-012:2698:2753 [2] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-112:9259:9314 [3] NCCL INFO Connected all trees
+c196-112:9259:9314 [3] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-112:9259:9314 [3] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22611:22664 [3] NCCL INFO Connected all trees
+c196-111:22611:22664 [3] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22611:22664 [3] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6826:6879 [3] NCCL INFO Connected all trees
+c197-011:6826:6879 [3] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6826:6879 [3] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22610:22666 [2] NCCL INFO Connected all trees
+c196-111:22610:22666 [2] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22610:22666 [2] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22611:22664 [3] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-012:2698:2753 [2] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-012:2699:2750 [3] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-011:6826:6879 [3] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c196-111:22610:22666 [2] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c196-112:9259:9314 [3] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c196-111:22608:22659 [0] NCCL INFO Channel 01/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 02 : 14[82000] -> 15[83000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 01/0 : 5[3000] -> 8[2000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 03 : 14[82000] -> 15[83000] via direct shared memory
+c197-012:2698:2753 [2] NCCL INFO Channel 04 : 14[82000] -> 15[83000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 01/0 : 0[2000] -> 4[2000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 05 : 14[82000] -> 15[83000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 00/0 : 8[2000] -> 12[2000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 06 : 14[82000] -> 15[83000] via direct shared memory
+c197-012:2698:2753 [2] NCCL INFO Channel 07 : 14[82000] -> 15[83000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 02 : 2[82000] -> 3[83000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 03 : 2[82000] -> 3[83000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 04 : 2[82000] -> 3[83000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 05 : 2[82000] -> 3[83000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 06 : 2[82000] -> 3[83000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 07 : 2[82000] -> 3[83000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 00/0 : 8[2000] -> 0[2000] [receive] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 00/0 : 8[2000] -> 12[2000] [send] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 00/0 : 4[2000] -> 9[3000] [send] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 01/0 : 8[2000] -> 5[3000] [receive] via NET/IB/0
+c196-111:22608:22659 [0] NCCL INFO Channel 00/0 : 0[2000] -> 8[2000] [send] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 01/0 : 12[2000] -> 4[2000] [receive] via NET/IB/0
+c197-012:2696:2756 [0] NCCL INFO Channel 01/0 : 4[2000] -> 12[2000] [receive] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 00/0 : 0[2000] -> 8[2000] [receive] via NET/IB/0
+c197-011:6824:6882 [1] NCCL INFO Channel 00/0 : 9[3000] -> 4[2000] [send] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 01/0 : 4[2000] -> 12[2000] [send] via NET/IB/0
+c197-012:2696:2756 [0] NCCL INFO Channel 01/0 : 12[2000] -> 4[2000] [send] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 00/0 : 8[2000] -> 0[2000] [send] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 00/0 : 12[2000] -> 8[2000] [receive] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 00/0 : 9[3000] -> 4[2000] [receive] via NET/IB/0
+c196-111:22608:22659 [0] NCCL INFO Channel 01/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
+c197-012:2696:2756 [0] NCCL INFO Channel 00/0 : 12[2000] -> 8[2000] [send] via NET/IB/0
+c197-011:6824:6882 [1] NCCL INFO Channel 00 : 9[3000] -> 8[2000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 01 : 9[3000] -> 8[2000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Connected all trees
+c197-012:2696:2756 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-012:2696:2756 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6825:6876 [2] NCCL INFO Connected all trees
+c197-011:6825:6876 [2] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6825:6876 [2] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-012:2697:2755 [1] NCCL INFO Connected all trees
+c197-012:2697:2755 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-012:2697:2755 [1] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-012:2696:2756 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-011:6825:6876 [2] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-012:2697:2755 [1] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-012:2696:2756 [0] NCCL INFO Channel 02 : 12[2000] -> 13[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 03 : 12[2000] -> 13[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 04 : 12[2000] -> 13[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 05 : 12[2000] -> 13[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 06 : 12[2000] -> 13[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 07 : 12[2000] -> 13[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 01/0 : 4[2000] -> 0[2000] [send] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 01/0 : 8[2000] -> 5[3000] [send] via NET/IB/0
+c197-011:6825:6876 [2] NCCL INFO Channel 02 : 10[82000] -> 11[83000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 03 : 10[82000] -> 11[83000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 04 : 10[82000] -> 11[83000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 05 : 10[82000] -> 11[83000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 06 : 10[82000] -> 11[83000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 07 : 10[82000] -> 11[83000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Connected all trees
+c197-011:6823:6881 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6823:6881 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22608:22659 [0] NCCL INFO Connected all trees
+c196-111:22608:22659 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22608:22659 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6824:6882 [1] NCCL INFO Connected all trees
+c197-011:6824:6882 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6824:6882 [1] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-112:9257:9311 [1] NCCL INFO Channel 00 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 01 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Connected all trees
+c196-112:9256:9309 [0] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-112:9256:9309 [0] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22609:22668 [1] NCCL INFO Connected all trees
+c196-111:22609:22668 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-111:22609:22668 [1] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6823:6881 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c196-111:22608:22659 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-012:2697:2755 [1] NCCL INFO Channel 04 : 13[3000] -> 14[82000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 05 : 13[3000] -> 14[82000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Connected all trees
+c196-112:9257:9311 [1] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-112:9257:9311 [1] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-112:9258:9315 [2] NCCL INFO Connected all trees
+c196-112:9258:9315 [2] NCCL INFO MSCCL_XML_FILES set by environment to /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c196-112:9258:9315 [2] NCCL INFO MSCCL: Parsing algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml
+c197-011:6824:6882 [1] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-011:6823:6881 [0] NCCL INFO Channel 02 : 8[2000] -> 9[3000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 03 : 8[2000] -> 9[3000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 04 : 8[2000] -> 9[3000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 05 : 8[2000] -> 9[3000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 06 : 8[2000] -> 9[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c197-011:6823:6881 [0] NCCL INFO Channel 07 : 8[2000] -> 9[3000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c196-111:22608:22659 [0] NCCL INFO Channel 02 : 0[2000] -> 1[3000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 03 : 0[2000] -> 1[3000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 04 : 0[2000] -> 1[3000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 05 : 0[2000] -> 1[3000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 06 : 0[2000] -> 1[3000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 07 : 0[2000] -> 1[3000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c196-112:9256:9309 [0] NCCL INFO Channel 02 : 4[2000] -> 5[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 03 : 4[2000] -> 5[3000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Parsed MSCCL Algorithm /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree/allreduce_binary_tree_4ch_2tree_1chunk_4node_16gpu.xml successfully.
+c196-112:9256:9309 [0] NCCL INFO Channel 04 : 4[2000] -> 5[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 05 : 4[2000] -> 5[3000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 06 : 4[2000] -> 5[3000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 02/0 : 9[3000] -> 13[3000] [receive] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 07 : 4[2000] -> 5[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 02 : 12[2000] -> 15[83000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 03 : 12[2000] -> 15[83000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 06 : 12[2000] -> 15[83000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Channel 07 : 12[2000] -> 15[83000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 01/0 : 11[83000] -> 15[83000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 03/0 : 10[82000] -> 14[82000] [receive] via NET/IB/0
+c197-012:2696:2756 [0] NCCL INFO Channel 04/0 : 4[2000] -> 12[2000] [receive] via NET/IB/0
+c196-112:9258:9315 [2] NCCL INFO Channel 02 : 6[82000] -> 7[83000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 03 : 6[82000] -> 7[83000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 04 : 6[82000] -> 7[83000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 05 : 6[82000] -> 7[83000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 06 : 6[82000] -> 7[83000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 07 : 6[82000] -> 7[83000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 04 : 9[3000] -> 10[82000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 05 : 9[3000] -> 10[82000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 04 : 1[3000] -> 2[82000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 05 : 1[3000] -> 2[82000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 02/0 : 9[3000] -> 13[3000] [send] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 04 : 5[3000] -> 6[82000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 05 : 5[3000] -> 6[82000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 02/0 : 5[3000] -> 8[2000] [receive] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 01/0 : 7[83000] -> 10[82000] [send] via NET/IB/0
+c196-111:22609:22668 [1] NCCL INFO Channel 06/0 : 1[3000] -> 5[3000] [send] via NET/IB/0
+c197-012:2696:2756 [0] NCCL INFO Channel 04/0 : 12[2000] -> 4[2000] [send] via NET/IB/0
+c196-111:22608:22659 [0] NCCL INFO Channel 02 : 0[2000] -> 3[83000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 03 : 0[2000] -> 3[83000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 06 : 0[2000] -> 3[83000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 07 : 0[2000] -> 3[83000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 02/0 : 5[3000] -> 8[2000] [send] via NET/IB/0
+c197-011:6825:6876 [2] NCCL INFO Channel 01/0 : 7[83000] -> 10[82000] [receive] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 05/0 : 3[83000] -> 7[83000] [send] via NET/IB/0
+c196-111:22610:22666 [2] NCCL INFO Channel 07/0 : 2[82000] -> 6[82000] [send] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 02 : 4[2000] -> 7[83000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 03 : 4[2000] -> 7[83000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 06 : 4[2000] -> 7[83000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 07 : 4[2000] -> 7[83000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Channel 04/0 : 0[2000] -> 4[2000] [send] via NET/IB/0
+c196-112:9258:9315 [2] NCCL INFO Channel 07/0 : 2[82000] -> 6[82000] [receive] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 04/0 : 5[3000] -> 8[2000] [receive] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 02 : 8[2000] -> 11[83000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 07/0 : 7[83000] -> 10[82000] [send] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 03 : 8[2000] -> 11[83000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 06 : 8[2000] -> 11[83000] via direct shared memory
+c197-011:6823:6881 [0] NCCL INFO Channel 07 : 8[2000] -> 11[83000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 06/0 : 4[2000] -> 9[3000] [receive] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 01/0 : 11[83000] -> 15[83000] [send] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 04/0 : 5[3000] -> 8[2000] [send] via NET/IB/0
+c197-011:6825:6876 [2] NCCL INFO Channel 07/0 : 7[83000] -> 10[82000] [receive] via NET/IB/0
+c197-012:2697:2755 [1] NCCL INFO Channel 06/0 : 5[3000] -> 13[3000] [receive] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 04/0 : 0[2000] -> 4[2000] [receive] via NET/IB/0
+c196-111:22610:22666 [2] NCCL INFO Channel 03/0 : 10[82000] -> 2[82000] [receive] via NET/IB/0
+c196-112:9258:9315 [2] NCCL INFO Channel 03/0 : 6[82000] -> 11[83000] [send] via NET/IB/0
+c197-012:2697:2755 [1] NCCL INFO Channel 06/0 : 13[3000] -> 5[3000] [send] via NET/IB/0
+c197-012:2699:2750 [3] NCCL INFO Channel 05/0 : 7[83000] -> 15[83000] [receive] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 03/0 : 6[82000] -> 11[83000] [receive] via NET/IB/0
+c196-111:22608:22659 [0] NCCL INFO Channel 04/0 : 4[2000] -> 0[2000] [receive] via NET/IB/0
+c196-111:22610:22666 [2] NCCL INFO Channel 03/0 : 2[82000] -> 10[82000] [send] via NET/IB/0
+c197-011:6825:6876 [2] NCCL INFO Channel 03/0 : 10[82000] -> 14[82000] [send] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 06/0 : 4[2000] -> 9[3000] [send] via NET/IB/0
+c196-112:9258:9315 [2] NCCL INFO Channel 05/0 : 6[82000] -> 11[83000] [send] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 06/0 : 1[3000] -> 5[3000] [receive] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 05/0 : 3[83000] -> 7[83000] [receive] via NET/IB/0
+c197-012:2699:2750 [3] NCCL INFO Channel 05/0 : 15[83000] -> 7[83000] [send] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 02/0 : 8[2000] -> 5[3000] [send] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 05/0 : 6[82000] -> 11[83000] [receive] via NET/IB/0
+c197-011:6825:6876 [2] NCCL INFO Channel 03/0 : 2[82000] -> 10[82000] [receive] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 01/0 : 11[83000] -> 3[83000] [receive] via NET/IB/0
+c197-011:6824:6882 [1] NCCL INFO Channel 02/0 : 1[3000] -> 9[3000] [receive] via NET/IB/0
+c196-111:22609:22668 [1] NCCL INFO Channel 02/0 : 9[3000] -> 1[3000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 07/0 : 6[82000] -> 14[82000] [receive] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 04/0 : 12[2000] -> 4[2000] [receive] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 06/0 : 13[3000] -> 5[3000] [receive] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 05/0 : 15[83000] -> 7[83000] [receive] via NET/IB/0
+c197-011:6823:6881 [0] NCCL INFO Channel 04/0 : 8[2000] -> 5[3000] [send] via NET/IB/0
+c197-011:6825:6876 [2] NCCL INFO Channel 03/0 : 10[82000] -> 2[82000] [send] via NET/IB/0
+c196-111:22609:22668 [1] NCCL INFO Channel 02/0 : 1[3000] -> 9[3000] [send] via NET/IB/0
+c197-011:6824:6882 [1] NCCL INFO Channel 02/0 : 9[3000] -> 1[3000] [send] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 01/0 : 3[83000] -> 11[83000] [send] via NET/IB/0
+c196-112:9258:9315 [2] NCCL INFO Channel 07/0 : 14[82000] -> 6[82000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 07/0 : 14[82000] -> 6[82000] [send] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 04/0 : 4[2000] -> 12[2000] [send] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 05/0 : 7[83000] -> 15[83000] [send] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 06/0 : 5[3000] -> 13[3000] [send] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 01/0 : 3[83000] -> 11[83000] [receive] via NET/IB/0
+c196-112:9258:9315 [2] NCCL INFO Channel 07/0 : 6[82000] -> 14[82000] [send] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 01/0 : 11[83000] -> 3[83000] [send] via NET/IB/0
+c197-011:6825:6876 [2] NCCL INFO Channel 03/0 : 14[82000] -> 10[82000] [receive] via NET/IB/0
+c196-111:22610:22666 [2] NCCL INFO Channel 07/0 : 6[82000] -> 2[82000] [receive] via NET/IB/0
+c197-011:6824:6882 [1] NCCL INFO Channel 06/0 : 9[3000] -> 4[2000] [send] via NET/IB/0
+c196-111:22609:22668 [1] NCCL INFO Channel 06/0 : 5[3000] -> 1[3000] [receive] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 05/0 : 7[83000] -> 3[83000] [send] via NET/IB/0
+c197-012:2699:2750 [3] NCCL INFO Channel 01/0 : 15[83000] -> 11[83000] [send] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 06/0 : 5[3000] -> 1[3000] [send] via NET/IB/0
+c197-012:2697:2755 [1] NCCL INFO Channel 02/0 : 13[3000] -> 9[3000] [send] via NET/IB/0
+c196-112:9256:9309 [0] NCCL INFO Channel 06/0 : 9[3000] -> 4[2000] [receive] via NET/IB/0
+c196-111:22609:22668 [1] NCCL INFO Channel 02 : 1[3000] -> 0[2000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 03 : 1[3000] -> 0[2000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 04 : 1[3000] -> 0[2000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 05 : 1[3000] -> 0[2000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 06 : 1[3000] -> 0[2000] via direct shared memory
+c196-111:22609:22668 [1] NCCL INFO Channel 07 : 1[3000] -> 0[2000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 03/0 : 11[83000] -> 6[82000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 03/0 : 14[82000] -> 10[82000] [send] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 05/0 : 7[83000] -> 3[83000] [receive] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 02/0 : 8[2000] -> 5[3000] [receive] via NET/IB/0
+c197-011:6824:6882 [1] NCCL INFO Channel 02/0 : 13[3000] -> 9[3000] [receive] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 03/0 : 11[83000] -> 6[82000] [send] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 02 : 3[83000] -> 0[2000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 03 : 3[83000] -> 0[2000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 06 : 3[83000] -> 0[2000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 07 : 3[83000] -> 0[2000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Channel 04/0 : 4[2000] -> 0[2000] [send] via NET/IB/0
+c197-012:2697:2755 [1] NCCL INFO Channel 02 : 13[3000] -> 12[2000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 03 : 13[3000] -> 12[2000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 04 : 13[3000] -> 12[2000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 05 : 13[3000] -> 12[2000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 06 : 13[3000] -> 12[2000] via direct shared memory
+c197-012:2697:2755 [1] NCCL INFO Channel 07 : 13[3000] -> 12[2000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 02 : 9[3000] -> 8[2000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 03 : 9[3000] -> 8[2000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 04 : 9[3000] -> 8[2000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 05 : 9[3000] -> 8[2000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 06 : 9[3000] -> 8[2000] via direct shared memory
+c197-011:6824:6882 [1] NCCL INFO Channel 07 : 9[3000] -> 8[2000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 05/0 : 11[83000] -> 6[82000] [receive] via NET/IB/0
+c197-012:2698:2753 [2] NCCL INFO Channel 04 : 14[82000] -> 13[3000] via direct shared memory
+c197-012:2698:2753 [2] NCCL INFO Channel 05 : 14[82000] -> 13[3000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 01/0 : 10[82000] -> 7[83000] [send] via NET/IB/0
+c196-112:9257:9311 [1] NCCL INFO Channel 04/0 : 8[2000] -> 5[3000] [receive] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 01/0 : 10[82000] -> 7[83000] [receive] via NET/IB/0
+c197-011:6826:6879 [3] NCCL INFO Channel 05/0 : 11[83000] -> 6[82000] [send] via NET/IB/0
+c196-111:22611:22664 [3] NCCL INFO Channel 02 : 3[83000] -> 2[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 03 : 3[83000] -> 2[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 04 : 3[83000] -> 2[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 05 : 3[83000] -> 2[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 06 : 3[83000] -> 2[82000] via direct shared memory
+c196-111:22611:22664 [3] NCCL INFO Channel 07 : 3[83000] -> 2[82000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 07/0 : 10[82000] -> 7[83000] [send] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 07/0 : 10[82000] -> 7[83000] [receive] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 02 : 7[83000] -> 4[2000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 03 : 7[83000] -> 4[2000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 06 : 7[83000] -> 4[2000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 07 : 7[83000] -> 4[2000] via direct shared memory
+c196-111:22608:22659 [0] NCCL INFO Connected 1 MSCCL algorithms
+c196-111:22608:22659 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-111:22608:22659 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-111:22608:22659 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-111:22608:22659 [0] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-112:9258:9315 [2] NCCL INFO Channel 07/0 : 6[82000] -> 2[82000] [send] via NET/IB/0
+c196-112:9259:9314 [3] NCCL INFO Channel 02 : 7[83000] -> 6[82000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 03 : 7[83000] -> 6[82000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 04 : 7[83000] -> 6[82000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 05 : 7[83000] -> 6[82000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 06 : 7[83000] -> 6[82000] via direct shared memory
+c196-112:9259:9314 [3] NCCL INFO Channel 07 : 7[83000] -> 6[82000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 01/0 : 15[83000] -> 11[83000] [receive] via NET/IB/0
+c197-012:2699:2750 [3] NCCL INFO Channel 02 : 15[83000] -> 12[2000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 03 : 15[83000] -> 12[2000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 06 : 15[83000] -> 12[2000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 07 : 15[83000] -> 12[2000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 02 : 11[83000] -> 8[2000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 03 : 11[83000] -> 8[2000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 06 : 11[83000] -> 8[2000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 07 : 11[83000] -> 8[2000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 02 : 15[83000] -> 14[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 03 : 15[83000] -> 14[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 04 : 15[83000] -> 14[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 05 : 15[83000] -> 14[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 06 : 15[83000] -> 14[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Channel 07 : 15[83000] -> 14[82000] via direct shared memory
+c197-012:2698:2753 [2] NCCL INFO Connected 1 MSCCL algorithms
+c197-012:2698:2753 [2] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-012:2698:2753 [2] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-012:2698:2753 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-012:2698:2753 [2] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-011:6826:6879 [3] NCCL INFO Channel 02 : 11[83000] -> 10[82000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 03 : 11[83000] -> 10[82000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 04 : 11[83000] -> 10[82000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 05 : 11[83000] -> 10[82000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 06 : 11[83000] -> 10[82000] via direct shared memory
+c197-011:6826:6879 [3] NCCL INFO Channel 07 : 11[83000] -> 10[82000] via direct shared memory
+c197-012:2699:2750 [3] NCCL INFO Connected 1 MSCCL algorithms
+c197-012:2699:2750 [3] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-012:2699:2750 [3] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-012:2699:2750 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-012:2699:2750 [3] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-011:6825:6876 [2] NCCL INFO Channel 04 : 10[82000] -> 9[3000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Channel 05 : 10[82000] -> 9[3000] via direct shared memory
+c197-011:6825:6876 [2] NCCL INFO Connected 1 MSCCL algorithms
+c197-011:6825:6876 [2] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-011:6825:6876 [2] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-011:6825:6876 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-011:6825:6876 [2] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-011:6826:6879 [3] NCCL INFO Connected 1 MSCCL algorithms
+c197-011:6826:6879 [3] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-011:6826:6879 [3] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-011:6826:6879 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-011:6826:6879 [3] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-112:9257:9311 [1] NCCL INFO Channel 02 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 03 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 04 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 05 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 06 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9257:9311 [1] NCCL INFO Channel 07 : 5[3000] -> 4[2000] via direct shared memory
+c196-112:9256:9309 [0] NCCL INFO Connected 1 MSCCL algorithms
+c196-112:9256:9309 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-112:9256:9309 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-112:9256:9309 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-112:9256:9309 [0] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-112:9258:9315 [2] NCCL INFO Channel 04 : 6[82000] -> 5[3000] via direct shared memory
+c196-112:9258:9315 [2] NCCL INFO Channel 05 : 6[82000] -> 5[3000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 04 : 2[82000] -> 1[3000] via direct shared memory
+c196-111:22610:22666 [2] NCCL INFO Channel 05 : 2[82000] -> 1[3000] via direct shared memory
+c197-012:2696:2756 [0] NCCL INFO Connected 1 MSCCL algorithms
+c197-012:2696:2756 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-012:2696:2756 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-012:2696:2756 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-012:2696:2756 [0] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-112:9258:9315 [2] NCCL INFO Connected 1 MSCCL algorithms
+c196-112:9258:9315 [2] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-112:9258:9315 [2] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-112:9258:9315 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-112:9258:9315 [2] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-111:22610:22666 [2] NCCL INFO Connected 1 MSCCL algorithms
+c196-111:22610:22666 [2] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-111:22610:22666 [2] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-111:22610:22666 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-111:22610:22666 [2] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-112:9259:9314 [3] NCCL INFO Connected 1 MSCCL algorithms
+c196-112:9259:9314 [3] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-112:9259:9314 [3] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-112:9259:9314 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-112:9259:9314 [3] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-112:9257:9311 [1] NCCL INFO Connected 1 MSCCL algorithms
+c196-112:9257:9311 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-112:9257:9311 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-112:9257:9311 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-112:9257:9311 [1] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-111:22611:22664 [3] NCCL INFO Connected 1 MSCCL algorithms
+c196-111:22611:22664 [3] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-111:22611:22664 [3] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-111:22611:22664 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-111:22611:22664 [3] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c196-111:22609:22668 [1] NCCL INFO Connected 1 MSCCL algorithms
+c196-111:22609:22668 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+c196-111:22609:22668 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c196-111:22609:22668 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c196-111:22609:22668 [1] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-012:2697:2755 [1] NCCL INFO Connected 1 MSCCL algorithms
+c197-012:2697:2755 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-012:2697:2755 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-012:2697:2755 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-012:2697:2755 [1] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-012:2699:2750 [3] NCCL INFO comm 0x2b600e000010 rank 15 nranks 16 cudaDev 3 busId 83000 - Init COMPLETE
+c197-012:2697:2755 [1] NCCL INFO comm 0x2b6dfe000010 rank 13 nranks 16 cudaDev 1 busId 3000 - Init COMPLETE
+c197-012:2698:2753 [2] NCCL INFO comm 0x2b9d82000010 rank 14 nranks 16 cudaDev 2 busId 82000 - Init COMPLETE
+c197-012:2696:2756 [0] NCCL INFO comm 0x2b0380000010 rank 12 nranks 16 cudaDev 0 busId 2000 - Init COMPLETE
+c197-011:6823:6881 [0] NCCL INFO Connected 1 MSCCL algorithms
+c197-011:6823:6881 [0] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-011:6823:6881 [0] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-011:6823:6881 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-011:6823:6881 [0] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-011:6824:6882 [1] NCCL INFO Connected 1 MSCCL algorithms
+c197-011:6824:6882 [1] NCCL INFO NCCL_PROTO set by environment to Simple
+c197-011:6824:6882 [1] NCCL INFO NCCL_ALGO set by environment to MSCCL,TREE,RING
+c197-011:6824:6882 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+c197-011:6824:6882 [1] NCCL INFO 8 coll channels, 2 p2p channels, 2 p2p channels per peer
+c197-011:6824:6882 [1] NCCL INFO comm 0x2b065e27b010 rank 9 nranks 16 cudaDev 1 busId 3000 - Init COMPLETE
+c197-011:6826:6879 [3] NCCL INFO comm 0x2ad952000010 rank 11 nranks 16 cudaDev 3 busId 83000 - Init COMPLETE
+c197-011:6825:6876 [2] NCCL INFO comm 0x2b1dce000010 rank 10 nranks 16 cudaDev 2 busId 82000 - Init COMPLETE
+c197-011:6823:6881 [0] NCCL INFO comm 0x2b26ae000010 rank 8 nranks 16 cudaDev 0 busId 2000 - Init COMPLETE
+c196-111:22609:22668 [1] NCCL INFO comm 0x2b8c22000010 rank 1 nranks 16 cudaDev 1 busId 3000 - Init COMPLETE
+c196-111:22610:22666 [2] NCCL INFO comm 0x2ba59d30d010 rank 2 nranks 16 cudaDev 2 busId 82000 - Init COMPLETE
+c196-111:22611:22664 [3] NCCL INFO comm 0x2b40e0000010 rank 3 nranks 16 cudaDev 3 busId 83000 - Init COMPLETE
+c196-111:22608:22659 [0] NCCL INFO comm 0x2b337e000010 rank 0 nranks 16 cudaDev 0 busId 2000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+c196-112:9257:9311 [1] NCCL INFO comm 0x2b3e12615010 rank 5 nranks 16 cudaDev 1 busId 3000 - Init COMPLETE
+c196-112:9258:9315 [2] NCCL INFO comm 0x2abb92000010 rank 6 nranks 16 cudaDev 2 busId 82000 - Init COMPLETE
+c196-112:9256:9309 [0] NCCL INFO comm 0x2aded5b6e010 rank 4 nranks 16 cudaDev 0 busId 2000 - Init COMPLETE
+c196-112:9259:9314 [3] NCCL INFO comm 0x2ac1dcbb6010 rank 7 nranks 16 cudaDev 3 busId 83000 - Init COMPLETE
+c196-111:22608:22608 [0] NCCL INFO Launch mode Parallel
+       65536         16384     float     sum      -1    193.8    0.34    0.63      0    197.9    0.33    0.62      0
+      131072         32768     float     sum      -1    213.0    0.62    1.15      0    220.4    0.59    1.12      0
+      262144         65536     float     sum      -1    286.9    0.91    1.71      0    445.2    0.59    1.10      0
+      524288        131072     float     sum      -1    437.0    1.20    2.25      0    439.5    1.19    2.24      0
+     1048576        262144     float     sum      -1    823.1    1.27    2.39      0    818.3    1.28    2.40      0
+     2097152        524288     float     sum      -1   1593.3    1.32    2.47      0   1631.5    1.29    2.41      0
+     4194304       1048576     float     sum      -1   3124.1    1.34    2.52      0   3023.2    1.39    2.60      0
+     8388608       2097152     float     sum      -1   6109.1    1.37    2.57      0   6153.8    1.36    2.56      0
+    16777216       4194304     float     sum      -1   9378.9    1.79    3.35      0   9373.4    1.79    3.36      0
+    33554432       8388608     float     sum      -1    17532    1.91    3.59      0    17535    1.91    3.59      0
+    67108864      16777216     float     sum      -1    34603    1.94    3.64      0    34696    1.93    3.63      0
+   134217728      33554432     float     sum      -1    70168    1.91    3.59      0    70347    1.91    3.58      0
+   268435456      67108864     float     sum      -1   137686    1.95    3.66      0   137842    1.95    3.65      0
+c196-111:22609:22609 [1] NCCL INFO comm 0x2b8c22000010 rank 1 nranks 16 cudaDev 1 busId 3000 - Destroy COMPLETE
+c197-012:2699:2699 [3] NCCL INFO comm 0x2b600e000010 rank 15 nranks 16 cudaDev 3 busId 83000 - Destroy COMPLETE
+c196-111:22611:22611 [3] NCCL INFO comm 0x2b40e0000010 rank 3 nranks 16 cudaDev 3 busId 83000 - Destroy COMPLETE
+c197-012:2697:2697 [1] NCCL INFO comm 0x2b6dfe000010 rank 13 nranks 16 cudaDev 1 busId 3000 - Destroy COMPLETE
+c197-011:6825:6825 [2] NCCL INFO comm 0x2b1dce000010 rank 10 nranks 16 cudaDev 2 busId 82000 - Destroy COMPLETE
+c196-112:9259:9259 [3] NCCL INFO comm 0x2ac1dcbb6010 rank 7 nranks 16 cudaDev 3 busId 83000 - Destroy COMPLETE
+c196-111:22610:22610 [2] NCCL INFO comm 0x2ba59d30d010 rank 2 nranks 16 cudaDev 2 busId 82000 - Destroy COMPLETE
+c196-112:9258:9258 [2] NCCL INFO comm 0x2abb92000010 rank 6 nranks 16 cudaDev 2 busId 82000 - Destroy COMPLETE
+c197-012:2698:2698 [2] NCCL INFO comm 0x2b9d82000010 rank 14 nranks 16 cudaDev 2 busId 82000 - Destroy COMPLETE
+c196-111:22608:22608 [0] NCCL INFO comm 0x2b337e000010 rank 0 nranks 16 cudaDev 0 busId 2000 - Destroy COMPLETE
+c197-011:6824:6824 [1] NCCL INFO comm 0x2b065e27b010 rank 9 nranks 16 cudaDev 1 busId 3000 - Destroy COMPLETE
+c197-012:2696:2696 [0] NCCL INFO comm 0x2b0380000010 rank 12 nranks 16 cudaDev 0 busId 2000 - Destroy COMPLETE
+c197-011:6823:6823 [0] NCCL INFO comm 0x2b26ae000010 rank 8 nranks 16 cudaDev 0 busId 2000 - Destroy COMPLETE
+c196-112:9257:9257 [1] NCCL INFO comm 0x2b3e12615010 rank 5 nranks 16 cudaDev 1 busId 3000 - Destroy COMPLETE
+c196-112:9256:9256 [0] NCCL INFO comm 0x2aded5b6e010 rank 4 nranks 16 cudaDev 0 busId 2000 - Destroy COMPLETE
+c197-011:6826:6826 [3] NCCL INFO comm 0x2ad952000010 rank 11 nranks 16 cudaDev 3 busId 83000 - Destroy COMPLETE
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 2.55256 
+#
+
+TACC:  Shutdown complete. Exiting. 

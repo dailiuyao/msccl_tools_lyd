@@ -7,7 +7,7 @@
 #SBATCH -N 8               # Total # of nodes (must be 1 for serial)
 #SBATCH -n 32               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:00:00        # Run time (hh:mm:ss)
-#SBATCH --exclude=c197-072
+#SBATCH --exclude=c197-072,c196-102
 ##SBATCH --mail-type=all    # Send email at begin and end of job
 ##SBATCH -A ccl-run-8nodes-32gpus        # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --mail-user=username@tacc.utexas.edu

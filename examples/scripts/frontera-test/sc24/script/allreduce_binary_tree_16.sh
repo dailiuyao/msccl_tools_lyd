@@ -7,7 +7,7 @@
 #SBATCH -N 16               # Total # of nodes (must be 1 for serial)
 #SBATCH -n 64               # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:00:00        # Run time (hh:mm:ss)
-#SBATCH --exclude=c197-072
+#SBATCH --exclude=c197-072,c196-102
 ##SBATCH --mail-type=all    # Send email at begin and end of job
 ##SBATCH -A ccl-run-16nodes-64gpus        # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --mail-user=username@tacc.utexas.edu
@@ -57,8 +57,10 @@ for nnodes in "${nodes_values[@]}"; do
                 echo "Running MSCCL tree test with ${nnodes} nodes, ${nchannel} channels, ${nchunks} chunks, ${trees} trees"
                 export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/binary_tree/allreduce_binary_tree_${nchannel}ch_${trees}tree_${nchunks}chunk_${nnodes}node_$((nnodes*ngpus))gpu.xml
                 ibrun -n $((nnodes*ngpus)) --ntasks-per-node=$ngpus $NCCLTESTS_MSCCL_SRC_LOCATION/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-                > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_1/tree/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
+                > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_2/tree/all-reduce_sum_float_binary-tree_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck${nchunks}_i0.out
             done
         done
     done
 done
+
+

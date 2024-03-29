@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH -J ccl-env-build           # Job name
-#SBATCH -o ./build-log/paper0/ccl-env-build.o%j       # Name of stdout output file
+#SBATCH -o ./build-log/ccl-env-build.o%j       # Name of stdout output file
 #SBATCH -e ./build-log/ccl-env-build.e%j       # Name of stderr error file
 #SBATCH -p rtx           # Queue (partition) name
 #SBATCH -N 1               # Total # of nodes (must be 1 for serial)
@@ -134,7 +134,7 @@ pushd "${MSCCL_SRC_LOCATION}" || exit
 # Build MSCCL
 echo "[INFO] Building MSCCL..."
 # make clean > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/output.log 2>&1
-make -j src.build > /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/output.log 2>&1
+make -j src.build 
 echo ""
 
 # Exit MSCCL dir
