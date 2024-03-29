@@ -58,11 +58,11 @@ export MSCCL_TOOLS_XML='/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/x
 # # total chunks = 2 * num_chunks * size * channels * number of rings
 
 nchunks_values=(1)
-nchannel_values=(4 8 16)
+nchannel_values=(2 4)
 trees_values=(2)
-nodes_values=(4)
+nodes_values=(64)
 
-export ngpus=8
+export ngpus=4
 
 for nnodes in "${nodes_values[@]}"; do
     for nchannel in "${nchannel_values[@]}"; do
@@ -70,7 +70,7 @@ for nnodes in "${nodes_values[@]}"; do
             for trees in "${trees_values[@]}"; do
                 python3 ${MSCCL_TOOLS_ALGORITHMS}/ring/allreduce_ring_p.py  \
                 --protocol=Simple --num_gpus=$ngpus --num_nodes=$nnodes --nchunks=$nchunks --nchannel=$nchannel --instances=1 \
-                > ${MSCCL_TOOLS_XML}/aws-test/32nic/32gpus/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck$((nchunks))_gan0.xml
+                > ${MSCCL_TOOLS_XML}/ring/allreduce_ring_node${nnodes}_gpu$((nnodes*ngpus))_mcl${nchannel}_mck$((nchunks))_gan0.xml
             done
         done
     done

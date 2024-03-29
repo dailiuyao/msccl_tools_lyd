@@ -73,44 +73,75 @@ import numpy as np
 
 def generate_gpu_indices(num_elements=64, num_gpus=4):
 
-    # # Generate gpu_indices0
-    # gpu_indices0 = [3, 2, 1, 0]
-    
-    # gpu_indices1 = [1, 0, 3, 2]
-    
+    # Generate gpu_indices
     gpu_indices = []
-    gpu_indices.append([7,6,5,4,3,2,1,0])  
-    gpu_indices.append([0,7,6,5,4,3,2,1]) 
-    gpu_indices.append([1,0,7,6,5,4,3,2]) 
-    gpu_indices.append([2,1,0,7,6,5,4,3])
-    gpu_indices.append([3,2,1,0,7,6,5,4])
-    gpu_indices.append([4,3,2,1,0,7,6,5])
-    gpu_indices.append([5,4,3,2,1,0,7,6])
-    gpu_indices.append([6,5,4,3,2,1,0,7])
-    gpu_indices.append(list(reversed([7,6,5,4,3,2,1,0])))
-    gpu_indices.append(list(reversed([0,7,6,5,4,3,2,1])))
-    gpu_indices.append(list(reversed([1,0,7,6,5,4,3,2])))
-    gpu_indices.append(list(reversed([2,1,0,7,6,5,4,3])))
-    gpu_indices.append(list(reversed([3,2,1,0,7,6,5,4])))
-    gpu_indices.append(list(reversed([4,3,2,1,0,7,6,5])))
-    gpu_indices.append(list(reversed([5,4,3,2,1,0,7,6])))
-    gpu_indices.append(list(reversed([6,5,4,3,2,1,0,7])))
-    gpu_indices.append([7,6,5,4,3,2,1,0])  
-    gpu_indices.append([0,7,6,5,4,3,2,1]) 
-    gpu_indices.append([1,0,7,6,5,4,3,2]) 
-    gpu_indices.append([2,1,0,7,6,5,4,3])
-    gpu_indices.append([3,2,1,0,7,6,5,4])
-    gpu_indices.append([4,3,2,1,0,7,6,5])
-    gpu_indices.append([5,4,3,2,1,0,7,6])
-    gpu_indices.append([6,5,4,3,2,1,0,7])
-    gpu_indices.append(list(reversed([7,6,5,4,3,2,1,0])))
-    gpu_indices.append(list(reversed([0,7,6,5,4,3,2,1])))
-    gpu_indices.append(list(reversed([1,0,7,6,5,4,3,2])))
-    gpu_indices.append(list(reversed([2,1,0,7,6,5,4,3])))
-    gpu_indices.append(list(reversed([3,2,1,0,7,6,5,4])))
-    gpu_indices.append(list(reversed([4,3,2,1,0,7,6,5])))
-    gpu_indices.append(list(reversed([5,4,3,2,1,0,7,6])))
-    gpu_indices.append(list(reversed([6,5,4,3,2,1,0,7])))
+    
+    if num_gpus == 4:
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+        gpu_indices.append([3, 2, 1, 0])
+        gpu_indices.append([1, 0, 3, 2])
+        gpu_indices.append(list(reversed([3, 2, 1, 0])))
+        gpu_indices.append(list(reversed([1, 0, 3, 2])))
+    elif num_gpus == 8:
+        gpu_indices.append([7,6,5,4,3,2,1,0])  
+        gpu_indices.append([0,7,6,5,4,3,2,1]) 
+        gpu_indices.append([1,0,7,6,5,4,3,2]) 
+        gpu_indices.append([2,1,0,7,6,5,4,3])
+        gpu_indices.append([3,2,1,0,7,6,5,4])
+        gpu_indices.append([4,3,2,1,0,7,6,5])
+        gpu_indices.append([5,4,3,2,1,0,7,6])
+        gpu_indices.append([6,5,4,3,2,1,0,7])
+        gpu_indices.append(list(reversed([7,6,5,4,3,2,1,0])))
+        gpu_indices.append(list(reversed([0,7,6,5,4,3,2,1])))
+        gpu_indices.append(list(reversed([1,0,7,6,5,4,3,2])))
+        gpu_indices.append(list(reversed([2,1,0,7,6,5,4,3])))
+        gpu_indices.append(list(reversed([3,2,1,0,7,6,5,4])))
+        gpu_indices.append(list(reversed([4,3,2,1,0,7,6,5])))
+        gpu_indices.append(list(reversed([5,4,3,2,1,0,7,6])))
+        gpu_indices.append(list(reversed([6,5,4,3,2,1,0,7])))
+        gpu_indices.append([7,6,5,4,3,2,1,0])  
+        gpu_indices.append([0,7,6,5,4,3,2,1]) 
+        gpu_indices.append([1,0,7,6,5,4,3,2]) 
+        gpu_indices.append([2,1,0,7,6,5,4,3])
+        gpu_indices.append([3,2,1,0,7,6,5,4])
+        gpu_indices.append([4,3,2,1,0,7,6,5])
+        gpu_indices.append([5,4,3,2,1,0,7,6])
+        gpu_indices.append([6,5,4,3,2,1,0,7])
+        gpu_indices.append(list(reversed([7,6,5,4,3,2,1,0])))
+        gpu_indices.append(list(reversed([0,7,6,5,4,3,2,1])))
+        gpu_indices.append(list(reversed([1,0,7,6,5,4,3,2])))
+        gpu_indices.append(list(reversed([2,1,0,7,6,5,4,3])))
+        gpu_indices.append(list(reversed([3,2,1,0,7,6,5,4])))
+        gpu_indices.append(list(reversed([4,3,2,1,0,7,6,5])))
+        gpu_indices.append(list(reversed([5,4,3,2,1,0,7,6])))
+        gpu_indices.append(list(reversed([6,5,4,3,2,1,0,7])))
     
     # Number of groups after the initial one
     num_groups = num_elements // num_gpus - 1  # Subtract 1 for the initial group already defined
@@ -134,27 +165,8 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
     collective = AllReduce(size, nchunks * size * channels , True)
     
     with MSCCLProgram(f"allreduce_ring_{channels}channelsperring", topology, collective, instances, protocol=protocol):
-        
-        # gpu_indices = []
-        # gpu_indices.append([7,6,5,4,3,2,1,0])  # gpu_index0
-        # gpu_indices.append([0,7,6,5,4,3,2,1])  # gpu_index1
 
         gpu_indices = generate_gpu_indices(size, num_gpus)
-                
-        # # Print the first 16 elements of each list to verify the pattern
-        # print("gpu_indices0:", gpu_indices0[:64])
-        # print("gpu_indices1:", gpu_indices1[:64])
-
-
-
-        # Using NumPy broadcasting to calculate ranks and next_ranks for both rings
-        # steps = np.arange(size - 1)
-        # indices = np.arange(size)
-        # ranks_ring0 = (np.newaxis + steps) % size
-        # next_ranks_ring0 = (np.newaxis + steps + 1) % size
-
-        # ranks_ring1 = (np.newaxis + steps) % size
-        # next_ranks_ring1 = (np.newaxis + steps + 1) % size
 
         for chunk_id in range(nchunks):
             for ring_id in range(channels):
