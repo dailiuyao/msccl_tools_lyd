@@ -13,10 +13,10 @@
 # echo "Processing complete."
 
 # Directory containing the files to process
-directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_1/tree"
+directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_4/ring"
 
 for file in "$directory"/*; do
-    mv "$file" "${file//\.out/\.log}"
+    mv "$file" "${file//i0\.out/buf4_gan0_i0\.log}"
 done
 
 echo "Processing complete."

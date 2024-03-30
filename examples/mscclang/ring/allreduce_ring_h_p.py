@@ -121,15 +121,15 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
 
         gpu_indices = generate_gpu_indices(size, num_gpus)
 
-        for chunk_id in range(nchunks):
-            for ring_id in range(channels):
+        for ring_id in range(channels):
+            for chunk_id in range(nchunks):
                 
-                chunk_offset = ring_id * num_nodes + chunk_id * num_nodes * channels
-                
+                chunk_offset = nchunks * num_nodes * ring_id + chunk_id * num_nodes
+                    
                 # reduce from 0 -> num_nodes-1 for all nodes
                 for node_offset in range(num_nodes):
                     for index in range(num_nodes):
-                        intra_reduce(node_offset, num_gpus, gpu_indices[ring_id], index + chunk_offset, ring_id) 
+                        intra_reduce(node_offset, num_gpus, gpu_indices[ring_id], chunk_offset + index, ring_id*nchunks+chunk_id) 
                 
                 # allreduce inter-node
                 for step in range(num_nodes - 1):
@@ -138,7 +138,7 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
                         next_rank = ((index + step + 1) % num_nodes)*num_gpus+gpu_indices[ring_id][num_gpus-1]
                                                 
                         c = chunk(int(next_rank), Buffer.input, index + chunk_offset)
-                        channel_index = int(ring_id+channels)
+                        channel_index = int(ring_id*nchunks+chunk_id+channels*nchunks)
                         c.reduce(chunk(rank, Buffer.input, index + chunk_offset), ch=channel_index)
 
                 for step in range(-1, num_nodes - 2):
@@ -146,13 +146,13 @@ def allreduce_ring(num_nodes, num_gpus, instances, nchunks, channels, protocol):
                         rank = ((index + step) % num_nodes)*num_gpus+gpu_indices[ring_id][num_gpus-1]
                         next_rank = ((index + step + 1) % num_nodes)*num_gpus+gpu_indices[ring_id][num_gpus-1]
                                                 
-                        channel_index = int(ring_id+2*channels)
+                        channel_index = int(ring_id*nchunks+chunk_id+channels*nchunks)
                         chunk(rank, Buffer.input, index + chunk_offset).copy(next_rank, Buffer.input, index + chunk_offset, ch=channel_index)
 
                 # reduce from 0 -> num_nodes-1 for all nodes
                 for node_offset in range(num_nodes):
                     for index in range(num_nodes):
-                        intra_broadcast(node_offset, num_gpus, gpu_indices[ring_id], index + chunk_offset, ring_id+3*channels) 
+                        intra_broadcast(node_offset, num_gpus, gpu_indices[ring_id], index + chunk_offset, ring_id*nchunks+chunk_id) 
         
         XML()
         Check()
