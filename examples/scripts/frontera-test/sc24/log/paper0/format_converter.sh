@@ -13,11 +13,15 @@
 # echo "Processing complete."
 
 # Directory containing the files to process
-directory="/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/basic_msccl"
+directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_1/tree"
 
 for file in "$directory"/*; do
-    mv "$file" "${file//basic-binary_tree/basic-binary-tree}"
+    mv "$file" "${file//\.out/\.log}"
 done
 
 echo "Processing complete."
+
+# all-reduce_sum_float_binary-tree_node4_gpu16_mcl1_mck1_i0
+
+# all-reduce_binary-tree_node4_gpu32_mcl16_mck1_buf1_gan0_i0.log
 
