@@ -1,0 +1,567 @@
+# nThread 1 nGpus 1 minBytes 65536 maxBytes 268435456 step: 2(factor) warmup iters: 5 iters: 60 agg iters: 1 validation: 1 graph: 0
+#
+# Using devices
+#  Rank  0 Group  0 Pid  16449 on x3109c0s25b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  1 Group  0 Pid  16450 on x3109c0s25b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  2 Group  0 Pid  16451 on x3109c0s25b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  3 Group  0 Pid  16452 on x3109c0s25b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  4 Group  0 Pid  45989 on x3109c0s31b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  5 Group  0 Pid  45990 on x3109c0s31b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank  6 Group  0 Pid  45991 on x3109c0s31b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank  7 Group  0 Pid  45992 on x3109c0s31b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank  8 Group  0 Pid  51697 on x3109c0s31b1n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank  9 Group  0 Pid  51698 on x3109c0s31b1n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 10 Group  0 Pid  51699 on x3109c0s31b1n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 11 Group  0 Pid  51700 on x3109c0s31b1n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+#  Rank 12 Group  0 Pid  58744 on x3109c0s37b0n0 device  0 [0x07] NVIDIA A100-SXM4-40GB
+#  Rank 13 Group  0 Pid  58745 on x3109c0s37b0n0 device  1 [0x46] NVIDIA A100-SXM4-40GB
+#  Rank 14 Group  0 Pid  58746 on x3109c0s37b0n0 device  2 [0x85] NVIDIA A100-SXM4-40GB
+#  Rank 15 Group  0 Pid  58747 on x3109c0s37b0n0 device  3 [0xc7] NVIDIA A100-SXM4-40GB
+The MSCCL XML file exists: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.128<0>
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO Using network AWS Libfabric
+NCCL version 2.12.12.MSCCL.0.7.4+cuda11.8
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.128<0>
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO Using network AWS Libfabric
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO Bootstrap : Using hsn1:10.201.1.128<0>
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO Bootstrap : Using hsn1:10.201.1.128<0>
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO Using network AWS Libfabric
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO Using network AWS Libfabric
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.200<0>
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO Bootstrap : Using hsn1:10.201.1.200<0>
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO Bootstrap : Using hsn1:10.201.1.200<0>
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.200<0>
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO Using network AWS Libfabric
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.202<0>
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO Using network AWS Libfabric
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO Using network AWS Libfabric
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO Using network AWS Libfabric
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO Bootstrap : Using hsn1:10.201.1.202<0>
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO Bootstrap : Using hsn1:10.201.1.202<0>
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO Bootstrap : Using hsn1:10.201.1.174<0>
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO Using network AWS Libfabric
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO Bootstrap : Using hsn1:10.201.1.174<0>
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO Bootstrap : Using hsn1:10.201.1.174<0>
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.202<0>
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO Bootstrap : Using hsn1:10.201.1.174<0>
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v5 symbol.
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO NET/Plugin: Failed to find ncclCollNetPlugin_v4 symbol.
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO NET/OFI Initializing aws-ofi-nccl 1.7.4-aws
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO NET/OFI Using CUDA runtime version 11080
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO NET/OFI Selected Provider is cxi (found 4 nics)
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO NET/OFI Using transport protocol SENDRECV
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO Using network AWS Libfabric
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO Using network AWS Libfabric
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO Using network AWS Libfabric
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO Using network AWS Libfabric
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO Using network AWS Libfabric
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO Using network AWS Libfabric
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO Using network AWS Libfabric
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Setting affinity for GPU 3 to 08,00000008
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Setting affinity for GPU 3 to 08,00000008
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Setting affinity for GPU 3 to 08,00000008
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Setting affinity for GPU 3 to 08,00000008
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 00/04 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Trees [0] -1/-1/-1->11->10 [1] 10/15/-1->11->3 [2] -1/-1/-1->11->10 [3] 10/-1/-1->11->6
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Trees [0] 5/-1/-1->4->9 [1] -1/-1/-1->4->5 [2] 5/0/-1->4->12 [3] -1/-1/-1->4->5
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Trees [0] 9/12/-1->8->0 [1] -1/-1/-1->8->9 [2] 9/-1/-1->8->5 [3] -1/-1/-1->8->9
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Trees [0] 13/-1/-1->12->8 [1] -1/-1/-1->12->13 [2] 13/4/-1->12->-1 [3] -1/-1/-1->12->13
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Trees [0] -1/-1/-1->3->2 [1] 2/11/-1->3->-1 [2] -1/-1/-1->3->2 [3] 2/-1/-1->3->7
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Trees [0] 6/-1/-1->5->4 [1] 4/-1/-1->5->6 [2] 6/8/-1->5->4 [3] 4/-1/-1->5->6
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Trees [0] 10/4/-1->9->8 [1] 8/-1/-1->9->10 [2] 10/-1/-1->9->8 [3] 8/-1/-1->9->10
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Trees [0] 14/-1/-1->13->12 [1] 12/-1/-1->13->14 [2] 14/-1/-1->13->12 [3] 12/-1/-1->13->14
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 01/04 :    0   7   6   5   4  11  10   9   8  15  14  13  12   3   2   1
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 02/04 :    0   3   2   5   4   7   6   9   8  11  10  13  12  15  14   1
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 03/04 :    0   7   6   5   4  11  10   9   8  15  14  13  12   3   2   1
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Trees [0] 1/8/-1->0->-1 [1] -1/-1/-1->0->1 [2] 1/-1/-1->0->4 [3] -1/-1/-1->0->1
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Trees [0] 7/-1/-1->6->5 [1] 5/-1/-1->6->7 [2] 7/-1/-1->6->5 [3] 5/11/-1->6->7
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Trees [0] 11/-1/-1->10->9 [1] 9/7/-1->10->11 [2] 11/-1/-1->10->9 [3] 9/-1/-1->10->11
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Trees [0] 15/-1/-1->14->13 [1] 13/-1/-1->14->15 [2] 15/-1/-1->14->13 [3] 13/-1/-1->14->15
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Trees [0] 2/-1/-1->1->0 [1] 0/-1/-1->1->2 [2] 2/-1/-1->1->0 [3] 0/-1/-1->1->2
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Trees [0] -1/-1/-1->7->6 [1] 6/-1/-1->7->10 [2] -1/-1/-1->7->6 [3] 6/3/-1->7->15
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Trees [0] -1/-1/-1->15->14 [1] 14/-1/-1->15->11 [2] -1/-1/-1->15->14 [3] 14/7/-1->15->-1
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Trees [0] 3/-1/-1->2->1 [1] 1/-1/-1->2->3 [2] 3/-1/-1->2->1 [3] 1/-1/-1->2->3
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 00 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 00 : 8[7000] -> 11[c7000] via P2P/IPC/read
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 00 : 12[7000] -> 15[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 00 : 4[7000] -> 7[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 00/0 : 6[85000] -> 9[46000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 02 : 12[7000] -> 15[c7000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 00/0 : 14[85000] -> 1[46000] [send] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 00/0 : 2[85000] -> 5[46000] [send] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 02 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 02 : 4[7000] -> 7[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 02/0 : 6[85000] -> 9[46000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 00/0 : 6[85000] -> 9[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 02/0 : 6[85000] -> 9[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 02 : 8[7000] -> 11[c7000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 00/0 : 14[85000] -> 1[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 00/0 : 10[85000] -> 13[46000] [send] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 00/0 : 2[85000] -> 5[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 02/0 : 2[85000] -> 5[46000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 00/0 : 10[85000] -> 13[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 02/0 : 14[85000] -> 1[46000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 02/0 : 10[85000] -> 13[46000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 02/0 : 10[85000] -> 13[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 01 : 6[85000] -> 5[46000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 03 : 6[85000] -> 5[46000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 02/0 : 14[85000] -> 1[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 02/0 : 2[85000] -> 5[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 01/0 : 8[7000] -> 15[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 01/0 : 0[7000] -> 7[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 01/0 : 4[7000] -> 11[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 01/0 : 12[7000] -> 3[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 03/0 : 12[7000] -> 3[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 01/0 : 0[7000] -> 7[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 01/0 : 8[7000] -> 15[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 03/0 : 4[7000] -> 11[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 00 : 13[46000] -> 12[7000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 01 : 13[46000] -> 12[7000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 02 : 13[46000] -> 12[7000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 03 : 13[46000] -> 12[7000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 00 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 01 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 02 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 03 : 1[46000] -> 0[7000] via P2P/IPC/read
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 03/0 : 0[7000] -> 7[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 00 : 9[46000] -> 8[7000] via P2P/IPC/read
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 03/0 : 8[7000] -> 15[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 01 : 10[85000] -> 9[46000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 03 : 10[85000] -> 9[46000] via P2P/IPC/read
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 01/0 : 12[7000] -> 3[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 01/0 : 4[7000] -> 11[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 03/0 : 4[7000] -> 11[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 01 : 9[46000] -> 8[7000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 01 : 14[85000] -> 13[46000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 03 : 14[85000] -> 13[46000] via P2P/IPC/read
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 02 : 9[46000] -> 8[7000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 03/0 : 0[7000] -> 7[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 03 : 9[46000] -> 8[7000] via P2P/IPC/read
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 01 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 03 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 03/0 : 8[7000] -> 15[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 03/0 : 12[7000] -> 3[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 00 : 5[46000] -> 4[7000] via P2P/IPC/read
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 01 : 5[46000] -> 4[7000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 00 : 11[c7000] -> 10[85000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 00 : 7[c7000] -> 6[85000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 01 : 7[c7000] -> 6[85000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 02 : 7[c7000] -> 6[85000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 03 : 7[c7000] -> 6[85000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Connected all rings
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Connected all rings
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 00 : 12[7000] -> 13[46000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 01 : 11[c7000] -> 10[85000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 02 : 11[c7000] -> 10[85000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 03 : 11[c7000] -> 10[85000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Connected all rings
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 02 : 5[46000] -> 4[7000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Connected all rings
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 00 : 15[c7000] -> 14[85000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Connected all rings
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 00 : 10[85000] -> 11[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 01 : 10[85000] -> 11[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 02 : 10[85000] -> 11[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 03 : 10[85000] -> 11[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Connected all rings
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 00 : 8[7000] -> 9[46000] via P2P/IPC/read
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Connected all rings
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 01 : 15[c7000] -> 14[85000] via P2P/IPC/read
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 01 : 12[7000] -> 13[46000] via P2P/IPC/read
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Connected all rings
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 00 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 03 : 5[46000] -> 4[7000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Connected all rings
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 00 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 00 : 9[46000] -> 10[85000] via P2P/IPC/read
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 01 : 9[46000] -> 10[85000] via P2P/IPC/read
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 02 : 9[46000] -> 10[85000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 00 : 13[46000] -> 14[85000] via P2P/IPC/read
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 03 : 9[46000] -> 10[85000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 01 : 13[46000] -> 14[85000] via P2P/IPC/read
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 01 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 02 : 13[46000] -> 14[85000] via P2P/IPC/read
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Channel 03 : 13[46000] -> 14[85000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 01/0 : 11[c7000] -> 15[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 01 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 01 : 8[7000] -> 9[46000] via P2P/IPC/read
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 02 : 15[c7000] -> 14[85000] via P2P/IPC/read
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 02 : 12[7000] -> 13[46000] via P2P/IPC/read
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 03 : 15[c7000] -> 14[85000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Connected all rings
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Connected all rings
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 03 : 12[7000] -> 13[46000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Connected all rings
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 00 : 14[85000] -> 15[c7000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 01 : 14[85000] -> 15[c7000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 02 : 14[85000] -> 15[c7000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 03 : 14[85000] -> 15[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Connected all rings
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 00 : 4[7000] -> 5[46000] via P2P/IPC/read
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Connected all rings
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 02 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 01 : 4[7000] -> 5[46000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 02 : 4[7000] -> 5[46000] via P2P/IPC/read
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 02 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 03 : 4[7000] -> 5[46000] via P2P/IPC/read
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 03 : 3[c7000] -> 2[85000] via P2P/IPC/read
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Connected all rings
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 02 : 8[7000] -> 9[46000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 00 : 6[85000] -> 7[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 01 : 6[85000] -> 7[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 02 : 6[85000] -> 7[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 03 : 6[85000] -> 7[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 03 : 8[7000] -> 9[46000] via P2P/IPC/read
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Connected all rings
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 03 : 0[7000] -> 1[46000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 00 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 01 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 02 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Channel 03 : 1[46000] -> 2[85000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 01/0 : 7[c7000] -> 10[85000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 01/0 : 7[c7000] -> 10[85000] [send] via NET/AWS Libfabric/1
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 00/0 : 8[7000] -> 12[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 00/0 : 4[7000] -> 9[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 03/0 : 3[c7000] -> 7[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 02/0 : 0[7000] -> 4[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 02/0 : 5[46000] -> 8[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 00 : 5[46000] -> 6[85000] via P2P/IPC/read
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 01 : 5[46000] -> 6[85000] via P2P/IPC/read
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 02 : 5[46000] -> 6[85000] via P2P/IPC/read
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 03 : 5[46000] -> 6[85000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 00 : 14[85000] -> 13[46000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 02/0 : 0[7000] -> 4[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 01/0 : 10[85000] -> 7[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 03/0 : 6[85000] -> 11[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 02 : 14[85000] -> 13[46000] via P2P/IPC/read
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Connected all trees
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Connected all trees
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 02/0 : 5[46000] -> 8[7000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 06/0 : 10[85000] -> 14[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 07/0 : 10[85000] -> 14[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 06/0 : 14[85000] -> 2[85000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Channel 07/0 : 14[85000] -> 2[85000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 01/0 : 11[c7000] -> 15[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 00 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Channel 02/0 : 8[7000] -> 5[46000] [receive] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 00/0 : 8[7000] -> 0[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 00/0 : 8[7000] -> 12[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 00/0 : 4[7000] -> 9[46000] [send] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 01 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 03/0 : 6[85000] -> 11[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 02/0 : 4[7000] -> 12[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Channel 00/0 : 9[46000] -> 4[7000] [send] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 02 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 00/0 : 0[7000] -> 8[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 00/0 : 0[7000] -> 8[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 03 : 2[85000] -> 3[c7000] via P2P/IPC/read
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 02/0 : 12[7000] -> 4[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 00 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 03/0 : 7[c7000] -> 15[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 00/0 : 8[7000] -> 0[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 02/0 : 4[7000] -> 12[7000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 02/0 : 12[7000] -> 4[7000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 03/0 : 15[c7000] -> 7[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 02 : 2[85000] -> 1[46000] via P2P/IPC/read
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 03/0 : 3[c7000] -> 7[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 03/0 : 11[c7000] -> 6[85000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 03/0 : 15[c7000] -> 7[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Connected all trees
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Connected all trees
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 01/0 : 3[c7000] -> 11[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 01/0 : 11[c7000] -> 3[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 00/0 : 12[7000] -> 8[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 00/0 : 12[7000] -> 8[7000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Connected all trees
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 00/0 : 9[46000] -> 4[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 02/0 : 4[7000] -> 0[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 03 : 12[7000] -> 15[c7000] via P2P/IPC/read
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 01/0 : 3[c7000] -> 11[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 03/0 : 7[c7000] -> 15[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 01/0 : 11[c7000] -> 3[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 06/0 : 14[85000] -> 2[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 02/0 : 8[7000] -> 5[46000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Connected all trees
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 02/0 : 4[7000] -> 0[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 03 : 8[7000] -> 11[c7000] via P2P/IPC/read
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 07/0 : 14[85000] -> 2[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 03/0 : 7[c7000] -> 3[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Connected all trees
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 03/0 : 7[c7000] -> 3[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 03 : 4[7000] -> 7[c7000] via P2P/IPC/read
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 03/0 : 11[c7000] -> 6[85000] [send] via NET/AWS Libfabric/1
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Connected all trees
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Connected all trees
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 01/0 : 15[c7000] -> 11[c7000] [send] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 00 : 6[85000] -> 5[46000] via P2P/IPC/read
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 03 : 0[7000] -> 3[c7000] via P2P/IPC/read
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 06/0 : 2[85000] -> 6[85000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 01/0 : 15[c7000] -> 11[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 02 : 6[85000] -> 5[46000] via P2P/IPC/read
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Channel 07/0 : 2[85000] -> 6[85000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Connected all trees
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Connected all trees
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 02 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 01/0 : 10[85000] -> 7[c7000] [receive] via NET/AWS Libfabric/1
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Connected all trees
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Connected all trees
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Channel 03 : 3[c7000] -> 0[7000] via P2P/IPC/read
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 04/0 : 12[7000] -> 0[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 02 : 11[c7000] -> 8[7000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Connected all trees
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 00 : 10[85000] -> 9[46000] via P2P/IPC/read
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 02 : 15[c7000] -> 12[7000] via P2P/IPC/read
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 04/0 : 4[7000] -> 8[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Channel 03 : 11[c7000] -> 8[7000] via P2P/IPC/read
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Channel 03 : 15[c7000] -> 12[7000] via P2P/IPC/read
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 02 : 7[c7000] -> 4[7000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 02 : 10[85000] -> 9[46000] via P2P/IPC/read
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 05/0 : 4[7000] -> 8[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Channel 03 : 7[c7000] -> 4[7000] via P2P/IPC/read
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Connected all trees
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Connected all trees
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO MSCCL: Parsing algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 04/0 : 8[7000] -> 12[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Parsed MSCCL Algorithm /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node4_gpu16_mcl2_mck2_gan0.xml successfully.
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 06/0 : 2[85000] -> 6[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 05/0 : 12[7000] -> 0[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 04/0 : 0[7000] -> 4[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 05/0 : 8[7000] -> 12[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 05/0 : 0[7000] -> 4[7000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 04/0 : 4[7000] -> 8[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Channel 05/0 : 4[7000] -> 8[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 07/0 : 2[85000] -> 6[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 04/0 : 0[7000] -> 4[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 04/0 : 8[7000] -> 12[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 06/0 : 6[85000] -> 10[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 04/0 : 12[7000] -> 0[7000] [send] via NET/AWS Libfabric/3
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Channel 05/0 : 0[7000] -> 4[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 07/0 : 6[85000] -> 10[85000] [receive] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 06/0 : 6[85000] -> 10[85000] [send] via NET/AWS Libfabric/3
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Channel 05/0 : 12[7000] -> 0[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Channel 05/0 : 8[7000] -> 12[7000] [send] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Channel 07/0 : 6[85000] -> 10[85000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 06/0 : 10[85000] -> 14[85000] [send] via NET/AWS Libfabric/3
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Channel 07/0 : 10[85000] -> 14[85000] [send] via NET/AWS Libfabric/3
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO Connected 1 MSCCL algorithms
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO threadThresholds 8/8/64 | 128/8/64 | 8/8/64 | 8/8/512
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO 8 coll channels, 4 p2p channels, 2 p2p channels per peer
+x3109c0s25b1n0:16451:16477 [2] NCCL INFO comm 0x15119a45a010 rank 2 nranks 16 cudaDev 2 busId 85000 - Init COMPLETE
+x3109c0s25b1n0:16452:16476 [3] NCCL INFO comm 0x152240cb4010 rank 3 nranks 16 cudaDev 3 busId c7000 - Init COMPLETE
+x3109c0s25b1n0:16449:16474 [0] NCCL INFO comm 0x15074c449010 rank 0 nranks 16 cudaDev 0 busId 7000 - Init COMPLETE
+#
+#                                                              out-of-place                       in-place          
+#       size         count      type   redop    root     time   algbw   busbw #wrong     time   algbw   busbw #wrong
+#        (B)    (elements)                               (us)  (GB/s)  (GB/s)            (us)  (GB/s)  (GB/s)       
+x3109c0s25b1n0:16450:16475 [1] NCCL INFO comm 0x1461cc259010 rank 1 nranks 16 cudaDev 1 busId 46000 - Init COMPLETE
+x3109c0s37b0n0:58747:58771 [3] NCCL INFO comm 0x14a86c45a010 rank 15 nranks 16 cudaDev 3 busId c7000 - Init COMPLETE
+x3109c0s37b0n0:58744:58772 [0] NCCL INFO comm 0x14dd8c45a010 rank 12 nranks 16 cudaDev 0 busId 7000 - Init COMPLETE
+x3109c0s37b0n0:58746:58770 [2] NCCL INFO comm 0x154bb645a010 rank 14 nranks 16 cudaDev 2 busId 85000 - Init COMPLETE
+x3109c0s31b0n0:45991:46015 [2] NCCL INFO comm 0x145f20ec5010 rank 6 nranks 16 cudaDev 2 busId 85000 - Init COMPLETE
+x3109c0s31b0n0:45989:46016 [0] NCCL INFO comm 0x147f5645a010 rank 4 nranks 16 cudaDev 0 busId 7000 - Init COMPLETE
+x3109c0s31b0n0:45990:46013 [1] NCCL INFO comm 0x14f0ca45a010 rank 5 nranks 16 cudaDev 1 busId 46000 - Init COMPLETE
+x3109c0s31b0n0:45992:46014 [3] NCCL INFO comm 0x15394645a010 rank 7 nranks 16 cudaDev 3 busId c7000 - Init COMPLETE
+x3109c0s31b1n0:51700:51723 [3] NCCL INFO comm 0x151a95cac010 rank 11 nranks 16 cudaDev 3 busId c7000 - Init COMPLETE
+x3109c0s31b1n0:51697:51724 [0] NCCL INFO comm 0x148bea45a010 rank 8 nranks 16 cudaDev 0 busId 7000 - Init COMPLETE
+x3109c0s31b1n0:51698:51721 [1] NCCL INFO comm 0x153065a54010 rank 9 nranks 16 cudaDev 1 busId 46000 - Init COMPLETE
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO Launch mode Parallel
+x3109c0s31b1n0:51699:51722 [2] NCCL INFO comm 0x15243a45a010 rank 10 nranks 16 cudaDev 2 busId 85000 - Init COMPLETE
+x3109c0s37b0n0:58745:58768 [1] NCCL INFO comm 0x14cb8181a010 rank 13 nranks 16 cudaDev 1 busId 46000 - Init COMPLETE
+       65536         16384     float     sum      -1    150.3    0.44    0.82      0    148.3    0.44    0.83      0
+      131072         32768     float     sum      -1    151.3    0.87    1.62      0    150.6    0.87    1.63      0
+      262144         65536     float     sum      -1    161.6    1.62    3.04      0    159.3    1.65    3.09      0
+      524288        131072     float     sum      -1    191.2    2.74    5.14      0    191.8    2.73    5.13      0
+     1048576        262144     float     sum      -1    247.0    4.25    7.96      0    250.4    4.19    7.85      0
+     2097152        524288     float     sum      -1    440.3    4.76    8.93      0    449.2    4.67    8.75      0
+     4194304       1048576     float     sum      -1    824.1    5.09    9.54      0    831.6    5.04    9.46      0
+     8388608       2097152     float     sum      -1   1637.5    5.12    9.61      0   1656.0    5.07    9.50      0
+    16777216       4194304     float     sum      -1   3142.1    5.34   10.01      0   3190.8    5.26    9.86      0
+    33554432       8388608     float     sum      -1   6156.8    5.45   10.22      0   6187.2    5.42   10.17      0
+    67108864      16777216     float     sum      -1    12808    5.24    9.82      0    12620    5.32    9.97      0
+   134217728      33554432     float     sum      -1    25610    5.24    9.83      0    25520    5.26    9.86      0
+   268435456      67108864     float     sum      -1    51403    5.22    9.79      0    59410    4.52    8.47      0
+x3109c0s25b1n0:16450:16450 [1] NCCL INFO comm 0x1461cc259010 rank 1 nranks 16 cudaDev 1 busId 46000 - Destroy COMPLETE
+x3109c0s37b0n0:58745:58745 [1] NCCL INFO comm 0x14cb8181a010 rank 13 nranks 16 cudaDev 1 busId 46000 - Destroy COMPLETE
+x3109c0s31b0n0:45990:45990 [1] NCCL INFO comm 0x14f0ca45a010 rank 5 nranks 16 cudaDev 1 busId 46000 - Destroy COMPLETE
+x3109c0s25b1n0:16452:16452 [3] NCCL INFO comm 0x152240cb4010 rank 3 nranks 16 cudaDev 3 busId c7000 - Destroy COMPLETE
+x3109c0s31b1n0:51698:51698 [1] NCCL INFO comm 0x153065a54010 rank 9 nranks 16 cudaDev 1 busId 46000 - Destroy COMPLETE
+x3109c0s25b1n0:16451:16451 [2] NCCL INFO comm 0x15119a45a010 rank 2 nranks 16 cudaDev 2 busId 85000 - Destroy COMPLETE
+x3109c0s37b0n0:58747:58747 [3] NCCL INFO comm 0x14a86c45a010 rank 15 nranks 16 cudaDev 3 busId c7000 - Destroy COMPLETE
+x3109c0s37b0n0:58746:58746 [2] NCCL INFO comm 0x154bb645a010 rank 14 nranks 16 cudaDev 2 busId 85000 - Destroy COMPLETE
+x3109c0s31b1n0:51700:51700 [3] NCCL INFO comm 0x151a95cac010 rank 11 nranks 16 cudaDev 3 busId c7000 - Destroy COMPLETE
+x3109c0s31b0n0:45992:45992 [3] NCCL INFO comm 0x15394645a010 rank 7 nranks 16 cudaDev 3 busId c7000 - Destroy COMPLETE
+x3109c0s25b1n0:16449:16449 [0] NCCL INFO comm 0x15074c449010 rank 0 nranks 16 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3109c0s31b0n0:45991:45991 [2] NCCL INFO comm 0x145f20ec5010 rank 6 nranks 16 cudaDev 2 busId 85000 - Destroy COMPLETE
+x3109c0s37b0n0:58744:58744 [0] NCCL INFO comm 0x14dd8c45a010 rank 12 nranks 16 cudaDev 0 busId 7000 - Destroy COMPLETE
+# Out of bounds values : 0 OK
+# Avg bus bandwidth    : 7.3422 
+#
+x3109c0s31b0n0:45989:45989 [0] NCCL INFO comm 0x147f5645a010 rank 4 nranks 16 cudaDev 0 busId 7000 - Destroy COMPLETE
+x3109c0s31b1n0:51699:51699 [2] NCCL INFO comm 0x15243a45a010 rank 10 nranks 16 cudaDev 2 busId 85000 - Destroy COMPLETE
+x3109c0s31b1n0:51697:51697 [0] NCCL INFO comm 0x148bea45a010 rank 8 nranks 16 cudaDev 0 busId 7000 - Destroy COMPLETE
+
