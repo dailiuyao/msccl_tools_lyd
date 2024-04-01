@@ -46,7 +46,7 @@ export MSCCL_TOOLS_XML="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/x
 
 export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_32gpus_2tree.xml
 
-export ngpus=8
+export nnodes=8
 
 export ngpus=4
 
