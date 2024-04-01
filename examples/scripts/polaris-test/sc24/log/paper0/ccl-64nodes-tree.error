@@ -1,8 +1,0 @@
-The MSCCL XML file does not exist: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node64_gpu256_mcl2_mck256_gan0.xml
-/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: line 3: /home1/09168/ldai1/anaconda3/etc/profile.d/conda.sh: No such file or directory
-/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: line 5: conda: command not found
-/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: line 12: /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk2_frontera.xml: No such file or directory
-The MSCCL XML file does not exist: /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd/ring/allreduce_ring_node64_gpu256_mcl4_mck256_gan0.xml
-/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: line 3: /home1/09168/ldai1/anaconda3/etc/profile.d/conda.sh: No such file or directory
-/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: line 5: conda: command not found
-/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/gen_msccl_xml_frontera.sh: line 12: /home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/xml/xml_lyd/binary_h_gpu01_reverse_p/allreduce_binary_tree_p_gpu01_2nodes_2gpus_channel1_reverse_chunk2_frontera.xml: No such file or directory
