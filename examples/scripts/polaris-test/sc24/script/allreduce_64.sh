@@ -44,15 +44,19 @@ export GENMSCCLXML=/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ge
 
 export MSCCL_TOOLS_XML="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/xml/xml_lyd"
 
-export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_256gpus_2tree.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_binary_tree_128gpus_2tree.xml
+
+export ngpus=64
+
+export ngpus=4
 
 $MPIEXEC_HOME/bin/mpiexec -n $((nnodes*ngpus)) --ppn ${ngpus} --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_sum_float_basic-binary-tree.log
+    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_sum_float_basic-binary-tree-256.log
 
-export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_256gpus.xml
+export MSCCL_XML_FILES=${MSCCL_TOOLS_XML}/basic_msccl/allreduce_basic_ring_128gpus.xml
 
 $MPIEXEC_HOME/bin/mpiexec -n $((nnodes*ngpus)) --ppn ${ngpus} --cpu-bind core $NCCL_TEST_MSCCL_HOME/build/all_reduce_perf -b 64K -e 256MB -f 2 -g 1 -n 60 \
-    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_sum_float_basic-ring.log
+    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_sum_float_basic-ring-256.log
 
 
 
@@ -71,15 +75,16 @@ export NCCL_DEBUG=TRACE
 export NCCL_ALGO=Tree
 export NCCL_PROTO=Simple
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60 \
-    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_nccl_tree.log
+$MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60 \
+    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_nccl_tree-256.log
 
 export NCCL_DEBUG=TRACE
 export NCCL_ALGO=RING
 export NCCL_PROTO=Simple
 
-$MPIEXEC_HOME/bin/mpiexec -n 128 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60 \
-    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_nccl_ring.log
+$MPIEXEC_HOME/bin/mpiexec -n 256 --ppn 4 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 1K -e 512MB -f 2 -g 1 -n 60 \
+    > /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/polaris-test/sc24/log/paper0/all-reduce_nccl_ring-256.log
+
 
 
 
