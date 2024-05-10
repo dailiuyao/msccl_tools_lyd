@@ -1,7 +1,7 @@
 # #!/bin/bash
 
 # # Directory containing the files to process
-# directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_4/tree"
+# directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/xml_lyd/binary_tree"
 
 # # Loop through each file in the directory
 # for file in "$directory"/*; do
@@ -12,12 +12,32 @@
 
 # echo "Processing complete."
 
-Directory containing the files to process
-directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/frontera-test/sc24/log/paper0/chunk_step_4/ring"
+# # Directory containing the files to process
+# directory="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/xml/xml_lyd/aws-test/32nic"
+
+# for file in "$directory"/*; do
+#     mv "$file" "${file//gan0 copy\.xml/gan0\.xml}"
+# done
+
+# Directory containing the files to process
+directory="/home/liuyao/scratch/deps/xml/basic-msccl"
+
+allreduce_basic_binary_tree_16gpus_1tree
 
 for file in "$directory"/*; do
-    mv "$file" "${file//i0\.out/buf4_gan0_i0\.log}"
+    if [[ "$file" =~ allreduce_basic_ring_([0-9]+)gpus.xml ]]; then
+        mcl="0"
+        tree="0"
+        chunk="0"
+        node="0"
+        gpu="${BASH_REMATCH[1]}"
+        newname="allreduce_ring_node${node}_gpu${gpu}_mcl${mcl}_mck${chunk}_gan0.xml"
+        mv "$file" "$directory/$newname"
+    fi
 done
+
+
+
 
 
 

@@ -1,28 +1,28 @@
-node03:1433600:1433600 [1] NCCL INFO cudaDriverVersion 11060
-node03:1433600:1433600 [1] NCCL INFO Bootstrap : Using ib0:10.3.1.3<0>
-node03:1433600:1433600 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
-node03:1433600:1433639 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [RO]; OOB ib0:10.3.1.3<0>
-node03:1433600:1433639 [1] NCCL INFO Using network IB
-node03:1433600:1433639 [1] NCCL INFO Setting affinity for GPU 1 to 03ffff
-node03:1433600:1433639 [1] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 4.
-node03:1433600:1433639 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 4.
-node03:1433600:1433639 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] -1/-1/-1->1->0
-node03:1433600:1433639 [1] NCCL INFO Channel 00/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433639 [1] NCCL INFO Channel 01/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433639 [1] NCCL INFO Channel 02/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433639 [1] NCCL INFO Channel 03/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433639 [1] NCCL INFO Connected all rings
-node03:1433600:1433639 [1] NCCL INFO Connected all trees
-node03:1433600:1433639 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
-node03:1433600:1433639 [1] NCCL INFO 4 coll channels, 4 p2p channels, 4 p2p channels per peer
-node03:1433600:1433639 [1] NCCL INFO comm 0x22319a0 rank 1 nranks 2 cudaDev 1 busId 3d000 - Init COMPLETE
-node03:1433600:1433648 [1] NCCL INFO Channel 00/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433648 [1] NCCL INFO Channel 01/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433648 [1] NCCL INFO Channel 02/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433648 [1] NCCL INFO Channel 03/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
-node03:1433600:1433600 [1] NCCL INFO comm 0x22319a0 rank 1 nranks 2 cudaDev 1 busId 3d000 - Destroy COMPLETE
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.687500 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.125000 us
+node05:1638921:1638921 [1] NCCL INFO cudaDriverVersion 11060
+node05:1638921:1638921 [1] NCCL INFO Bootstrap : Using ib0:10.3.0.5<0>
+node05:1638921:1638921 [1] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+node05:1638921:1638936 [1] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [RO]; OOB ib0:10.3.0.5<0>
+node05:1638921:1638936 [1] NCCL INFO Using network IB
+node05:1638921:1638936 [1] NCCL INFO Setting affinity for GPU 1 to 03ffff
+node05:1638921:1638936 [1] NCCL INFO NCCL_MAX_NCHANNELS set by environment to 4.
+node05:1638921:1638936 [1] NCCL INFO NCCL_MIN_NCHANNELS set by environment to 4.
+node05:1638921:1638936 [1] NCCL INFO Trees [0] -1/-1/-1->1->0 [1] -1/-1/-1->1->0 [2] -1/-1/-1->1->0 [3] -1/-1/-1->1->0
+node05:1638921:1638936 [1] NCCL INFO Channel 00/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638936 [1] NCCL INFO Channel 01/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638936 [1] NCCL INFO Channel 02/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638936 [1] NCCL INFO Channel 03/0 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638936 [1] NCCL INFO Connected all rings
+node05:1638921:1638936 [1] NCCL INFO Connected all trees
+node05:1638921:1638936 [1] NCCL INFO threadThresholds 8/8/64 | 16/8/64 | 512 | 512
+node05:1638921:1638936 [1] NCCL INFO 4 coll channels, 4 p2p channels, 4 p2p channels per peer
+node05:1638921:1638936 [1] NCCL INFO comm 0x16d1d40 rank 1 nranks 2 cudaDev 1 busId 3d000 - Init COMPLETE
+node05:1638921:1638944 [1] NCCL INFO Channel 00/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638944 [1] NCCL INFO Channel 01/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638944 [1] NCCL INFO Channel 02/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638944 [1] NCCL INFO Channel 03/1 : 1[3d000] -> 0[2a000] via P2P/IPC/read
+node05:1638921:1638921 [1] NCCL INFO comm 0x16d1d40 rank 1 nranks 2 cudaDev 1 busId 3d000 - Destroy COMPLETE
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -41,8 +41,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.250000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.187500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -61,8 +61,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.187500 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -81,8 +81,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.187500 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.125000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -101,8 +101,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.187500 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.125000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -121,8 +121,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.125000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.187500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -141,8 +141,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.187500 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.125000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -161,8 +161,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.250000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 28.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -181,8 +181,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 28.250000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 29.500000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: 0.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -201,8 +201,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -873218.375000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -873236.062500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -11005890560.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -11005890560.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -221,8 +221,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -873218.375000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -873236.062500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -11005890560.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -11005890560.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -241,8 +241,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -873218.375000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -873236.062500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -11005890560.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -11005890560.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -261,8 +261,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -873218.312500 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -873236.062500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -11005890560.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -11005890560.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -281,8 +281,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -873218.375000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -873235.937500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -11005890560.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -11005890560.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -301,8 +301,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -873218.375000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -873235.937500 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -11005890560.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -11005890560.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
@@ -321,8 +321,8 @@ DEVICE | sendrecv.h | send - runrecv | iteration 16 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 17 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 18 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 19 | time: 0.000000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -873218.375000 us
-DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -873236.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 0 | time: -11005890560.000000 us
+DEVICE | sendrecv.h | send - runrecv | iteration 1 | time: -11005890560.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 2 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 3 | time: 0.000000 us
 DEVICE | sendrecv.h | send - runrecv | iteration 4 | time: 0.000000 us
