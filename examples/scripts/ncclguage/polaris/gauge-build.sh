@@ -5,8 +5,8 @@
 module swap PrgEnv-nvhpc PrgEnv-gnu
 module load nvhpc-mixed
 
-export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
-export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
+export MPI_HOME=/opt/cray/pe/mpich/8.1.28/ofi/nvidia/23.3
+export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda
 
 # Update to include the correct path for MPI library paths
 export LD_LIBRARY_PATH=${MPI_HOME}/lib:$LD_LIBRARY_PATH
