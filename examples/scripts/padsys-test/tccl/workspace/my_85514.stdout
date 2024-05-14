@@ -1,0 +1,174 @@
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 0 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 1 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 2 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 3 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 4 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 5 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 6 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 7 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 8 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 9 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 10 is on node node04.cluster (node idx 0)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 11 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 12 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 13 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 14 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 15 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 16 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 17 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 18 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 19 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 20 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 21 is on node node05.cluster (node idx 1)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 22 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 23 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 24 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 25 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 26 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 27 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 28 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 29 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 30 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 31 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:43.024] [info] Rank 0: Rank 32 is on node node06.cluster (node idx 2)
+[2024-05-09 20:09:45.983] [info] Rank 0: P2P available: 1
+[2024-05-09 20:09:45.983] [info] Rank 0: NUMA node available: 2
+[2024-05-09 20:09:45.983] [info] Rank 0: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 0: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 1: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 2: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 3: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 11: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 11: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 4: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 12: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 12: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 22: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 22: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 5: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 13: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 13: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 23: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 23: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 6: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 14: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 14: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 24: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 24: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 7: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 15: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 15: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 25: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 25: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 8: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 16: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 16: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 26: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 26: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 9: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 17: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 17: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 27: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 27: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 10: NUMA node 0 available: 134896869376 bytes
+[2024-05-09 20:09:45.983] [info] Rank 10: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 18: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 18: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 28: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 28: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 1: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 19: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 19: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 29: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 29: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 2: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 20: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 20: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 30: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 30: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 3: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 21: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 21: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 31: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 31: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 4: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 32: NUMA node 0 available: 134897623040 bytes
+[2024-05-09 20:09:45.983] [info] Rank 32: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 5: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 6: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 7: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 8: NUMA node 1 available: 135245561856 bytes
+[2024-05-09 20:09:45.983] [info] Rank 9: NUMA node 1 available: 135245561856 bytes
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+[2024-05-09 20:09:46.030] [info] Rank 29: Found mlx5_0 at PCI 50:00.0 / NUMA 0! Assuming it is IB NIC...
+
+[2024-05-09 20:09:46.030] [info] Rank 29: conf.num_bits_idx = 1
+[2024-05-09 20:09:46.030] [info] Rank 29: conf.gpu_numa = [0, 0]
+[2024-05-09 20:09:46.030] [info] Rank 29: conf.numa_gpu = [[], []]
+[2024-05-09 20:09:46.030] [info] Rank 29: conf.nic_numa = [0]
+[2024-05-09 20:09:46.030] [info] Rank 29: conf.numa_nic = [[0], []]
+[2024-05-09 20:09:46.030] [info] Rank 29: conf.cpumem_numa = [0, 1]
+[2024-05-09 20:09:46.030] [info] Rank 29: conf.numa_cpumem = [[0], [1]]
+[2024-05-09 20:09:46.030] [info] Rank 29: Validation complete
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+[2024-05-09 20:09:46.035] [info] Rank 20: Found mlx5_0 at PCI 50:00.0 / NUMA 0! Assuming it is IB NIC...
+
+[2024-05-09 20:09:46.035] [info] Rank 20: conf.num_bits_idx = 1
+[2024-05-09 20:09:46.035] [info] Rank 20: conf.gpu_numa = [0, 0]
+[2024-05-09 20:09:46.035] [info] Rank 20: conf.numa_gpu = [[], []]
+[2024-05-09 20:09:46.035] [info] Rank 20: conf.nic_numa = [0]
+[2024-05-09 20:09:46.035] [info] Rank 20: conf.numa_nic = [[0], []]
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+[2024-05-09 20:09:46.035] [info] Rank 20: conf.cpumem_numa = [0, 1]
+[2024-05-09 20:09:46.035] [info] Rank 20: conf.numa_cpumem = [[0], [1]]
+[2024-05-09 20:09:46.035] [info] Rank 20: Validation complete
+Ignoring PCI device with non-16bit domain.
+Pass --enable-32bits-pci-domain to configure to support such devices
+(warning: it would break the library ABI, don't enable unless really needed).
+[2024-05-09 20:09:46.036] [info] Rank 1: Found mlx5_0 at PCI 50:00.0 / NUMA 0! Assuming it is IB NIC...
+
+[2024-05-09 20:09:46.036] [info] Rank 1: Found mlx5_1 at PCI ab:00.0 / NUMA 1! Assuming it is IB NIC...
+
+[2024-05-09 20:09:46.036] [info] Rank 1: ERROR: does not support NIC more than one
+[2024-05-09 20:09:46.036] [info] Rank 1: conf.num_bits_idx = 1
+[2024-05-09 20:09:46.036] [info] Rank 1: conf.gpu_numa = [0, 0]
+[2024-05-09 20:09:46.036] [info] Rank 1: conf.numa_gpu = [[], []]
+[2024-05-09 20:09:46.036] [info] Rank 1: conf.nic_numa = [0, 1]
+[2024-05-09 20:09:46.036] [info] Rank 1: conf.numa_nic = [[0], [1]]
+[2024-05-09 20:09:46.036] [info] Rank 1: conf.cpumem_numa = [0, 1]
+[2024-05-09 20:09:46.036] [info] Rank 1: conf.numa_cpumem = [[0], [1]]
+[2024-05-09 20:09:46.036] [info] Rank 1: Validation complete
+Abort(1) on node 1 (rank 1 in comm 0): application called MPI_Abort(MPI_COMM_WORLD, 1) - process 1

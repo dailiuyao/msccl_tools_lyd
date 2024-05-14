@@ -131,47 +131,47 @@ echo "[DEBUG] MPI_HOME has been set to: ${MPI_HOME}"
 echo ""
 
 
-# ### NCCL Section ###
+### NCCL Section ###
 
-# # Download NCCL
-# if [ ! -d "${NCCL_SRC_LOCATION}" ]; then
-# 	echo "[INFO] Downloading NCCL repository..."
-# 	git clone git@github.com:dailiuyao/NCCL_profile.git "${NCCL_SRC_LOCATION}"
-# elif [ -d "${NCCL_SRC_LOCATION}" ]; then 
-# 	echo "[INFO] NCCL repository already exists."
-# fi
-# echo ""
+# Download NCCL
+if [ ! -d "${NCCL_SRC_LOCATION}" ]; then
+	echo "[INFO] Downloading NCCL repository..."
+	git clone git@github.com:dailiuyao/NCCL_profile.git "${NCCL_SRC_LOCATION}"
+elif [ -d "${NCCL_SRC_LOCATION}" ]; then 
+	echo "[INFO] NCCL repository already exists."
+fi
+echo ""
 
-# # Enter NCCL dir
-# pushd "${NCCL_SRC_LOCATION}" || exit
+# Enter NCCL dir
+pushd "${NCCL_SRC_LOCATION}" || exit
 
-# # # Fetch latest changes
-# # git fetch --all
+# # Fetch latest changes
+# git fetch --all
 
-# # # Checkout the correct commit
-# # git checkout "${NCCL_COMMIT}"
+# # Checkout the correct commit
+# git checkout "${NCCL_COMMIT}"
 
-# # Build NCCL
-# echo "[INFO] Building NCCL..."
-# make -j src.build CUDA_HOME=${CUDA_HOME} NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
-# echo ""
+# Build NCCL
+echo "[INFO] Building NCCL..."
+make -j src.build CUDA_HOME=${CUDA_HOME} NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
+echo ""
 
-# # Set environment variables that other tasks will use
-# echo "[INFO] Setting NCCL-related environment variables for other tasks..."
-# NCCL_HOME="${NCCL_SRC_LOCATION}/build" 
-# export NCCL_HOME
-# echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
+# Set environment variables that other tasks will use
+echo "[INFO] Setting NCCL-related environment variables for other tasks..."
+NCCL_HOME="${NCCL_SRC_LOCATION}/build" 
+export NCCL_HOME
+echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
 
-# echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
-# LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
-# export LD_LIBRARY_PATH
-# PATH="${PATH}:${NCCL_HOME}/include"
-# export PATH
-# echo ""
+echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
+LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
+export LD_LIBRARY_PATH
+PATH="${PATH}:${NCCL_HOME}/include"
+export PATH
+echo ""
 
-# # Exit NCCL dir
-# popd || exit
-# echo ""
+# Exit NCCL dir
+popd || exit
+echo ""
 
 
 # ### NCCL Tests on NCCL Section ###
@@ -206,79 +206,79 @@ echo ""
 # echo ""
 
 
-### TCCL Section ###
+# ### TCCL Section ###
 
-# Download TCCL
-if [ ! -d "${TCCL_SRC_LOCATION}" ]; then
-	echo "[INFO] Downloading TCCL repository..."
-	git clone git@github.com:dailiuyao/tccl-lyd.git "${TCCL_SRC_LOCATION}"
-elif [ -d "${TCCL_SRC_LOCATION}" ]; then 
-	echo "[INFO] TCCL repository already exists."
-fi
-echo ""
+# # Download TCCL
+# if [ ! -d "${TCCL_SRC_LOCATION}" ]; then
+# 	echo "[INFO] Downloading TCCL repository..."
+# 	git clone git@github.com:dailiuyao/tccl-lyd.git "${TCCL_SRC_LOCATION}"
+# elif [ -d "${TCCL_SRC_LOCATION}" ]; then 
+# 	echo "[INFO] TCCL repository already exists."
+# fi
+# echo ""
 
-# Enter TCCL dir
-pushd "${TCCL_SRC_LOCATION}" || exit
+# # Enter TCCL dir
+# pushd "${TCCL_SRC_LOCATION}" || exit
+
+# # # Fetch latest changes
+# # git fetch --all
+
+# # # Checkout the correct commit
+# # git checkout "${TCCL_COMMIT}"
+
+# # Build TCCL
+# echo "[INFO] Building TCCL..."
+# make -j src.build CUDA_HOME=${CUDA_HOME} NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
+# echo ""
+
+# # Set environment variables that other tasks will use
+# echo "[INFO] Setting TCCL-related environment variables for other tasks..."
+# NCCL_HOME="${TCCL_SRC_LOCATION}/build" 
+# export NCCL_HOME
+# echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
+
+# echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
+# LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
+# export LD_LIBRARY_PATH
+# PATH="${PATH}:${NCCL_HOME}/include"
+# export PATH
+# echo ""
+
+# # Exit NCCL dir
+# popd || exit
+# echo ""
+
+
+# ### NCCL Tests on TCCL Section ###
+
+# # Download NCCL Tests
+# if [ ! -d "${TCCLTESTS_SRC_LOCATION}" ]; then
+# 	echo "[INFO] Downloading NCCL Tests repository..."
+# 	git clone git@github.com:dailiuyao/nccl-tests.git "${TCCLTESTS_SRC_LOCATION}"
+# elif [ -d "${TCCLTESTS_SRC_LOCATION}" ]; then
+# 	echo "[INFO] NCCL Tests repository already exists."
+# fi
+# echo ""
+
+# # Enter NCCL Tests dir
+# pushd "${TCCLTESTS_SRC_LOCATION}" || exit
+# echo ""
 
 # # Fetch latest changes
-# git fetch --all
+# # git fetch --all
 
-# # Checkout the correct commit
-# git checkout "${TCCL_COMMIT}"
+# # # Checkout the correct commit
+# # git checkout "${TCCLTESTS_COMMIT}"
 
-# Build TCCL
-echo "[INFO] Building TCCL..."
-make -j src.build CUDA_HOME=${CUDA_HOME} NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
-echo ""
+# # Build NCCL Tests with TCCL support
+# echo "[INFO] Building NCCL tests (nccl-tests)..."
+# # Note: Use TCCL to build nccl-tests
+# make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${NCCL_HOME}
+# # srun make MPI=1 NCCL_HOME="${NCCL_SRC_LOCATION}/build/" -j  
 
-# Set environment variables that other tasks will use
-echo "[INFO] Setting TCCL-related environment variables for other tasks..."
-NCCL_HOME="${TCCL_SRC_LOCATION}/build" 
-export NCCL_HOME
-echo "[DEBUG] NCCL_HOME has been set to: ${NCCL_HOME}"
-
-echo "[INFO] Updating LD_LIBRARY_PATH and PATH to include NCCL!"
-LD_LIBRARY_PATH="${LD_LIBRARY_PATH}:${NCCL_HOME}/lib"
-export LD_LIBRARY_PATH
-PATH="${PATH}:${NCCL_HOME}/include"
-export PATH
-echo ""
-
-# Exit NCCL dir
-popd || exit
-echo ""
-
-
-### NCCL Tests on TCCL Section ###
-
-# Download NCCL Tests
-if [ ! -d "${TCCLTESTS_SRC_LOCATION}" ]; then
-	echo "[INFO] Downloading NCCL Tests repository..."
-	git clone git@github.com:dailiuyao/nccl-tests.git "${TCCLTESTS_SRC_LOCATION}"
-elif [ -d "${TCCLTESTS_SRC_LOCATION}" ]; then
-	echo "[INFO] NCCL Tests repository already exists."
-fi
-echo ""
-
-# Enter NCCL Tests dir
-pushd "${TCCLTESTS_SRC_LOCATION}" || exit
-echo ""
-
-# Fetch latest changes
-# git fetch --all
-
-# # Checkout the correct commit
-# git checkout "${TCCLTESTS_COMMIT}"
-
-# Build NCCL Tests with TCCL support
-echo "[INFO] Building NCCL tests (nccl-tests)..."
-# Note: Use TCCL to build nccl-tests
-make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${NCCL_HOME}
-# srun make MPI=1 NCCL_HOME="${NCCL_SRC_LOCATION}/build/" -j  
-
-# Exit NCCL Tests dir
-popd || exit
-echo ""
+# # Exit NCCL Tests dir
+# popd || exit
+# echo ""
 
 
 

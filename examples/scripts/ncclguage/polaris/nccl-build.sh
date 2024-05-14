@@ -1,14 +1,4 @@
 #!/bin/bash -l
-#PBS -l select=1:system=polaris
-#PBS -l place=scatter
-#PBS -l walltime=00:09:59
-#PBS -q debug
-#PBS -l filesystems=home
-#PBS -A MPICH_MCS
-#PBS -k doe
-#PBS -N ccl-build
-#PBS -o build-log/ccl-build.out
-#PBS -e build-log/ccl-build.error
 
 module swap PrgEnv-nvhpc PrgEnv-gnu
 module load nvhpc-mixed
