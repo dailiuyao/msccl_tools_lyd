@@ -106,7 +106,7 @@ int main(int argc, char* argv[])
   char filename[256];
 
   if (myRank < 2) {
-    sprintf(filename, "%s/nccl-%d.out", env_gauge_output_dir_var, myRank);
+    sprintf(filename, "%s/nccl-pping-%d.out", env_gauge_output_dir_var, myRank);
     freopen(filename, "a", stdout);
   } else {
     freopen("/dev/null", "w", stdout);
