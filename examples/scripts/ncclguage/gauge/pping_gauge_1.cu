@@ -113,10 +113,10 @@ int main(int argc, char* argv[])
   }
 
 
-  int nccl_start = 0;
-  int nccl_end = 0;
+  // int nccl_start = 0;
+  // int nccl_end = 0;
 
-  nccl_start = clock();
+  // nccl_start = clock();
 
   //calculating localRank based on hostname which is used in selecting a GPU
   uint64_t hostHashs[nRanks];
@@ -152,23 +152,23 @@ int main(int argc, char* argv[])
   CUDACHECK(cudaMalloc(&d_messages, sizeof(LogMessage_lyd)));
   CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd)));
 
+  // Declare CUDA events
+  cudaEvent_t start_0, stop_0;
+  cudaEventCreate(&start_0);
+  cudaEventCreate(&stop_0);
+  float milliseconds_0 = 0;
+
+  cudaEventRecord(start_0, s);
+
+
   //initializing NCCL
   NCCLCHECK(ncclCommInitRank(&comm, nRanks, id, myRank));
 
 
   //communicating using NCCL
-  
   //P2P
   int recvPeer = (myRank-1+nRanks) % nRanks;
   int sendPeer = (myRank+1) % nRanks;
-
-  // // Declare CUDA events
-  // cudaEvent_t start_0, stop_0;
-  // cudaEventCreate(&start_0);
-  // cudaEventCreate(&stop_0);
-  // float milliseconds_0 = 0;
-
-  // cudaEventRecord(start_0, s);
 
   for (int i = 0 ; i < N_ITERS; i++) {
     NCCLCHECK(ncclGroupStart());
@@ -188,17 +188,18 @@ int main(int argc, char* argv[])
   }
   NCCLCHECK(ncclGroupEnd());
 
-  // cudaEventRecord(stop_0, s);
+  cudaEventRecord(stop_0, s);
 
-  // cudaEventSynchronize(stop_0);
+  cudaEventSynchronize(stop_0);
 
-  // cudaEventElapsedTime(&milliseconds_0, start_0, stop_0);
+  cudaEventElapsedTime(&milliseconds_0, start_0, stop_0);
 
-  // printf("Rank %d | time: %f milliseconds\n", myRank, milliseconds_0);
+  printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, milliseconds_0/1.44e3);
 
-  // // Clean up
-  // cudaEventDestroy(start_0);
-  // cudaEventDestroy(stop_0);
+
+  // Clean up
+  cudaEventDestroy(start_0);
+  cudaEventDestroy(stop_0);
 
 
   //completing NCCL operation by synchronizing on the CUDA stream
@@ -310,9 +311,9 @@ int main(int argc, char* argv[])
   //finalizing NCCL
   ncclCommDestroy(comm);
 
-  nccl_end = clock();
+  // nccl_end = clock();
 
-  printf("%s_%s_%s_%s_%s_%d_%s: %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, (nccl_end - nccl_start)/1.44e3);
+  // printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, (nccl_end - nccl_start)/1.44e3);
 
   //finalizing MPI
   MPICHECK(MPI_Finalize());
