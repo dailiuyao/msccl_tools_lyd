@@ -29,10 +29,10 @@ NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl_profile"
 
 # Compilation command. Ensure to link against the MPI and NCCL libraries correctly.
 # nvcc $NVCC_GENCODE -ccbin g++ -I${NCCL_SRC_LOCATION}/build/include -I${MPI_HOME}/include -L${NCCL_SRC_LOCATION}/build/lib -L${CUDA_HOME}/lib64 -L${MPI_HOME}/lib -lnccl -lcudart -lmpi $1 -o ${1%.cu}.exe
-nvcc $NVCC_GENCODE -ccbin g++ -I${NCCL_SRC_LOCATION}/build/include -I${MPI_HOME}/include -L${NCCL_SRC_LOCATION}/build/lib -L${CUDA_HOME}/lib64 -L${MPI_HOME}/lib -lnccl -lcudart -lmpi $1 -o ${1%.cu}.exe
+nvcc $NVCC_GENCODE -ccbin g++ -I${NCCL_SRC_LOCATION}/build/include -I${MPI_HOME}/include -L${NCCL_SRC_LOCATION}/build/lib -L${CUDA_HOME}/lib64 -L${MPI_HOME}/lib -lnccl -lcudart -lmpi $1 -o ../gauge/${1%.cu}.exe
 
 # Verification of the output
-if [ -f ${1%.cu}.exe ]; then
+if [ -f ../gauge/${1%.cu}.exe ]; then
     echo "Compilation successful. Output file: ${1%.cu}.exe"
 else
     echo "Compilation failed."
