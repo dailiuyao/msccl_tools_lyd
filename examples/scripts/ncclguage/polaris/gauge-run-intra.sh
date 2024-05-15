@@ -70,6 +70,7 @@ for ((itr = 0; itr < 5; itr += 1)); do
                     export NCCL_MIN_NCHANNELS=${nch}
                     export NCCL_MAX_NCHANNELS=${nch}
                     $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 2 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
+                done
             done
         done
     done 
