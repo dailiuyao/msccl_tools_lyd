@@ -1,4 +1,14 @@
-#!/bin/bash
+#!/bin/bash -l
+#PBS -l select=2:system=polaris
+#PBS -l place=scatter
+#PBS -l walltime=00:09:59
+#PBS -q debug
+#PBS -l filesystems=home
+#PBS -A MPICH_MCS
+#PBS -k doe
+#PBS -N ncclgauge
+#PBS -o ncclgauge.out
+#PBS -e ncclgauge.error
 
 # Set environment variables
 
@@ -42,11 +52,6 @@ export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOM
 
 # export NCCL_NTHREADS=256
 
-cd /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage
+$MPIEXEC_HOME/bin/mpirun -n $((nnodes*ngpus)) --ppn 2 --cpu-bind core /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/gauge/gauge.exe 
 
-./gauge/gauge.exe
-
-
-# export MPIEXEC_HOME=/opt/cray/pals/1.3.4
-# $MPIEXEC_HOME/bin/mpirun -np 2 -hosts x3006c0s1b1n0:2 gauge-run.sh
 
