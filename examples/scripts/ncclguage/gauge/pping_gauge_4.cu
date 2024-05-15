@@ -113,6 +113,11 @@ int main(int argc, char* argv[])
   }
 
 
+  int nccl_start = 0;
+  int nccl_end = 0;
+
+  nccl_start = clock64();
+
   //calculating localRank based on hostname which is used in selecting a GPU
   uint64_t hostHashs[nRanks];
   char hostname[1024];
@@ -305,6 +310,9 @@ int main(int argc, char* argv[])
   //finalizing NCCL
   ncclCommDestroy(comm);
 
+  nccl_end = clock64();
+
+  printf("%s_%s_%s_%s_%s_%d_%s: %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, (nccl_end - nccl_start)/1.44e3);
 
   //finalizing MPI
   MPICHECK(MPI_Finalize());

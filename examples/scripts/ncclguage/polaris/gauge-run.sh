@@ -53,12 +53,15 @@ export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOM
 # export NCCL_NTHREADS=256
 
 export NCCL_GAUGE_HOME="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage"
+export GAUGE_OUT_DIRE="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris"
+export GAUGE_HEO="inter"
+export GAUGE_MODE="pingpong"
+export GAUGE_CHUNK_SIZE="2"
 
-$MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/gauge.exe 
-
-
-
-
-
-
-#define GAUGE_OUT_DIRE "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris"
+for ((itr = 0; itr < 5; itr += 1)) do
+    for ((nch = 1; nch <= 4; nch *= 2)) do
+        export GAUGE_ITERATION=${itr} 
+        export GAUGE_NCHANNELS=${nch}
+        $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/gauge.exe
+    done 
+done
