@@ -12,7 +12,7 @@ struct LogMessage_lyd* d_messages;
 #define MESSAGE_SIZE_GAUGE 8192
 #define MESSAGE_SIZE_GAUGE_REAL MESSAGE_SIZE_GAUGE*4
 
-#define GAUGE_OUT_DIRE "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage"
+#define GAUGE_OUT_DIRE "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris"
 
 #define MPICHECK(cmd) do {                          \
   int e = cmd;                                      \
