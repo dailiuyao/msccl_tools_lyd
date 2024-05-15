@@ -8,9 +8,7 @@
 
 struct LogMessage_lyd* d_messages;
 // int nccl_gauge_iteration = 0;
-#define N_ITERS 20
-#define MESSAGE_SIZE_GAUGE 8192
-#define MESSAGE_SIZE_GAUGE_REAL MESSAGE_SIZE_GAUGE*4
+#define N_ITERS 1
 
 #define GAUGE_OUT_DIRE "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris"
 
@@ -67,8 +65,30 @@ static void getHostName(char* hostname, int maxlen) {
 
 int main(int argc, char* argv[])
 {
-  int size = MESSAGE_SIZE_GAUGE*1024;
-  // int size = 1;
+
+  const char* env_gauge_heo_var = getenv("GAUGE_HEO");
+
+  const char* env_gauge_mode_var = getenv("GAUGE_MODE");
+
+  const char* env_gauge_iteration_var = getenv("GAUGE_ITERATION");
+
+  const char* env_gauge_nchannels_var = getenv("GAUGE_NCHANNELS");
+
+  const char* env_gauge_chunk_size_var = getenv("GAUGE_CHUNK_SIZE");
+
+  // Check if environment variables are set
+  if (!env_gauge_heo_var) env_gauge_heo_var = "unknown_gauge_heo";
+  if (!env_gauge_mode_var) env_gauge_mode_var = "unknown_gauge_mode";
+  if (!env_gauge_iteration_var) env_gauge_iteration_var = "unknown_gauge_iteration";
+  if (!env_gauge_nchannels_var) env_gauge_nchannels_var = "unknown_gauge_nchannels";
+  if (!env_gauge_chunk_size_var) env_gauge_chunk_size_var = "unknown_gauge_chunk_size";
+
+
+  int size = 1;  // Default size
+  const char* env_gauge_size_var = getenv("GAUGE_MESSAGE_SIZE");
+  if (env_gauge_size_var != nullptr) {
+      size = atoi(env_gauge_size_var) * 1024 / 4;  // Convert from kilobytes to number of floats, assuming the environment variable is in kilobytes
+  }
 
 
   int myRank, nRanks, localRank = 0;
@@ -82,7 +102,7 @@ int main(int argc, char* argv[])
   char filename[256];
 
   if (myRank < 2) {
-    sprintf(filename, "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris/nccl-%d.out", myRank);
+    sprintf(filename, "%s/nccl-%d.out", GAUGE_OUT_DIRE, myRank);
     freopen(filename, "w", stdout);
   } else {
     freopen("/dev/null", "w", stdout);
@@ -260,11 +280,11 @@ int main(int argc, char* argv[])
   // }
 
   if (myRank == 0) { 
-    printf("DEVICE | sendrecv.h | runrecv - runsend | PRTT(%d, 0, %dKB) | time: %f us\n", N_ITERS, MESSAGE_SIZE_GAUGE_REAL, h_messages->timeValue[1][0] - h_messages->timeValue[0][0]);
-    for (size_t i = 0; i < N_ITERS-1; ++i) {
-      printf("DEVICE | sendrecv.h | runsend_%d - runsend_0 | time: %f us\n", i, h_messages->timeValue[0][i] - h_messages->timeValue[0][0]);
-      printf("DEVICE | sendrecv.h | runsend_stop_%d - runsend_0 | time: %f us\n", i, h_messages->timeValue[2][i] - h_messages->timeValue[0][0]);
-    }
+    printf("%s_%s_%s_%s_%s_%d_%s: %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, h_messages->timeValue[1][0] - h_messages->timeValue[0][0]);
+    // for (size_t i = 0; i < N_ITERS-1; ++i) {
+    //   printf("DEVICE | sendrecv.h | runsend_%d - runsend_0 | time: %f us\n", i, h_messages->timeValue[0][i] - h_messages->timeValue[0][0]);
+    //   printf("DEVICE | sendrecv.h | runsend_stop_%d - runsend_0 | time: %f us\n", i, h_messages->timeValue[2][i] - h_messages->timeValue[0][0]);
+    // }
   }
   #endif
 

@@ -54,18 +54,6 @@ export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOM
 
 export NCCL_GAUGE_HOME="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage"
 
-# Compilation command. Ensure to link against the MPI and NCCL libraries correctly.
-# nvcc $NVCC_GENCODE -ccbin g++ -I${NCCL_SRC_LOCATION}/build/include -I${MPI_HOME}/include -L${NCCL_SRC_LOCATION}/build/lib -L${CUDA_HOME}/lib64 -L${MPI_HOME}/lib -lnccl -lcudart -lmpi $1 -o ${1%.cu}.exe
-nvcc $NVCC_GENCODE -ccbin g++ -I${NCCL_SRC_LOCATION}/build/include -I${MPI_HOME}/include -L${NCCL_SRC_LOCATION}/build/lib -L${CUDA_HOME}/lib64 -L${MPI_HOME}/lib -lnccl -lcudart -lmpi\
-    $NCCL_GAUGE_HOME/gauge/gauge.cu -o $NCCL_GAUGE_HOME/gauge/gauge.exe
-
-# Verification of the output
-if [ -f $NCCL_GAUGE_HOME/gauge/gauge.exe ]; then
-    echo "Compilation successful. Output file: gauge.exe"
-else
-    echo "Compilation failed."
-fi
-
 $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/gauge.exe 
 
 
