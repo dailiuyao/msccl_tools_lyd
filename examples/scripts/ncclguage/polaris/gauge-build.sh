@@ -39,7 +39,7 @@ NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl_profile"
 
 export NCCL_GAUGE_HOME="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage"
 
-for ((i = 1; i <= 1; i *= 2)); do
+for ((i = 1; i <= 32; i *= 2)); do
     # Use proper variable expansion and quoting in the command
     nvcc "$NVCC_GENCODE" -ccbin g++ -I"${NCCL_SRC_LOCATION}/build/include" -I"${MPI_HOME}/include" \
          -L"${NCCL_SRC_LOCATION}/build/lib" -L"${CUDA_HOME}/lib64" -L"${MPI_HOME}/lib" -lnccl -lcudart -lmpi \

@@ -57,3 +57,8 @@ export NCCL_GAUGE_HOME="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scrip
 $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/gauge.exe 
 
 
+
+
+
+
+#define GAUGE_OUT_DIRE "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris"
