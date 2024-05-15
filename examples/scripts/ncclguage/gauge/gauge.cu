@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
   char filename[256];
 
   if (myRank < 2) {
-    sprintf(filename, "%s/nccl-%d.out", GAUGE_OUT_DIRE, myRank);
+    sprintf(filename, "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris/nccl-%d.out", myRank);
     freopen(filename, "w", stdout);
   } else {
     freopen("/dev/null", "w", stdout);
