@@ -1,4 +1,14 @@
-#!/bin/bash
+#!/bin/bash -l
+#PBS -l select=1:system=polaris
+#PBS -l place=scatter
+#PBS -l walltime=00:09:59
+#PBS -q debug
+#PBS -l filesystems=home
+#PBS -A MPICH_MCS
+#PBS -k doe
+#PBS -N ncclgauge_build
+#PBS -o ncclgauge_build.out
+#PBS -e ncclgauge_build.error
 
 # Set environment variables
 
