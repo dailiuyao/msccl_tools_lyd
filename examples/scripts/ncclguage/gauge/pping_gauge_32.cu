@@ -152,13 +152,13 @@ int main(int argc, char* argv[])
   CUDACHECK(cudaMalloc(&d_messages, sizeof(LogMessage_lyd)));
   CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd)));
 
-  // Declare CUDA events
-  cudaEvent_t start_0, stop_0;
-  cudaEventCreate(&start_0);
-  cudaEventCreate(&stop_0);
-  float milliseconds_0 = 0;
+  // // Declare CUDA events
+  // cudaEvent_t start_0, stop_0;
+  // cudaEventCreate(&start_0);
+  // cudaEventCreate(&stop_0);
+  // float milliseconds_0 = 0;
 
-  cudaEventRecord(start_0, s);
+  // cudaEventRecord(start_0, s);
 
 
   //initializing NCCL
@@ -188,18 +188,18 @@ int main(int argc, char* argv[])
   }
   NCCLCHECK(ncclGroupEnd());
 
-  cudaEventRecord(stop_0, s);
+  // cudaEventRecord(stop_0, s);
 
-  cudaEventSynchronize(stop_0);
+  // cudaEventSynchronize(stop_0);
 
-  cudaEventElapsedTime(&milliseconds_0, start_0, stop_0);
+  // cudaEventElapsedTime(&milliseconds_0, start_0, stop_0);
 
-  printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, milliseconds_0/1.44e3);
+  // printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, milliseconds_0/1.44e3);
 
 
-  // Clean up
-  cudaEventDestroy(start_0);
-  cudaEventDestroy(stop_0);
+  // // Clean up
+  // cudaEventDestroy(start_0);
+  // cudaEventDestroy(stop_0);
 
 
   //completing NCCL operation by synchronizing on the CUDA stream
@@ -290,11 +290,9 @@ int main(int argc, char* argv[])
   // }
 
   if (myRank == 0) { 
-    printf("%s_%s_%s_%s_%s_%d_%s: %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, h_messages->timeValue[1][0] - h_messages->timeValue[0][0]);
-    // for (size_t i = 0; i < N_ITERS-1; ++i) {
-    //   printf("DEVICE | sendrecv.h | runsend_%d - runsend_0 | time: %f us\n", i, h_messages->timeValue[0][i] - h_messages->timeValue[0][0]);
-    //   printf("DEVICE | sendrecv.h | runsend_stop_%d - runsend_0 | time: %f us\n", i, h_messages->timeValue[2][i] - h_messages->timeValue[0][0]);
-    // }
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, h_messages->timeValue[1][0] - h_messages->timeValue[0][0]);
+  } else {
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, h_messages->timeValue[0][0] - h_messages->timeValue[1][0]);
   }
   #endif
 
