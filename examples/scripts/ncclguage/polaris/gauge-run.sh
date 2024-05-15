@@ -58,10 +58,12 @@ export GAUGE_HEO="inter"
 export GAUGE_MODE="pingpong"
 export GAUGE_CHUNK_SIZE="2"
 
-for ((itr = 0; itr < 5; itr += 1)) do
-    for ((nch = 1; nch <= 4; nch *= 2)) do
+for ((itr = 0; itr < 5; itr += 1)); do
+    for ((nch = 1; nch <= 4; nch *= 2)); do
         export GAUGE_ITERATION=${itr} 
         export GAUGE_NCHANNELS=${nch}
+        export NCCL_MIN_NCHANNELS=${nch}
+        export NCCL_MAX_NCHANNELS=${nch}
         $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/gauge.exe
     done 
 done

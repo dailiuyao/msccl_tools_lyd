@@ -40,15 +40,17 @@ NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl_profile"
 export NCCL_GAUGE_HOME="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage"
 
 for ((i = 1; i <= 32; i *= 2)); do
-    # Use proper variable expansion and quoting in the command
-    nvcc "$NVCC_GENCODE" -ccbin g++ -I"${NCCL_SRC_LOCATION}/build/include" -I"${MPI_HOME}/include" \
-         -L"${NCCL_SRC_LOCATION}/build/lib" -L"${CUDA_HOME}/lib64" -L"${MPI_HOME}/lib" -lnccl -lcudart -lmpi \
-         "${NCCL_GAUGE_HOME}/gauge/pping_gauge_${i}.cu" -o "${NCCL_GAUGE_HOME}/gauge/pping_gauge_${i}.exe"
+    for mode in pping ppong; do
+        # Use proper variable expansion and quoting in the command
+        nvcc "$NVCC_GENCODE" -ccbin g++ -I"${NCCL_SRC_LOCATION}/build/include" -I"${MPI_HOME}/include" \
+            -L"${NCCL_SRC_LOCATION}/build/lib" -L"${CUDA_HOME}/lib64" -L"${MPI_HOME}/lib" -lnccl -lcudart -lmpi \
+            "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.cu" -o "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe"
 
-    # Verification of the output
-    if [ -f "${NCCL_GAUGE_HOME}/gauge/pping_gauge_${i}.exe" ]; then
-        echo "Compilation successful. Output file: ${NCCL_GAUGE_HOME}/gauge/pping_gauge_${i}.exe"
-    else
-        echo "Compilation failed."
-    fi
+        # Verification of the output
+        if [ -f "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe" ]; then
+            echo "Compilation successful. Output file: ${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe"
+        else
+            echo "Compilation failed."
+        fi
+    done
 done
