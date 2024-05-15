@@ -12,6 +12,8 @@ struct LogMessage_lyd* d_messages;
 #define MESSAGE_SIZE_GAUGE 8192
 #define MESSAGE_SIZE_GAUGE_REAL MESSAGE_SIZE_GAUGE*4
 
+#define GAUGE_OUT_DIRE "/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage"
+
 #define MPICHECK(cmd) do {                          \
   int e = cmd;                                      \
   if( e != MPI_SUCCESS ) {                          \
@@ -80,7 +82,7 @@ int main(int argc, char* argv[])
   char filename[256];
 
   if (myRank < 2) {
-    sprintf(filename, "/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/ncclguage/nccl-%d.out", myRank);
+    sprintf(filename, "%s/nccl-%d.out", GAUGE_OUT_DIRE, myRank);
     freopen(filename, "w", stdout);
   } else {
     freopen("/dev/null", "w", stdout);

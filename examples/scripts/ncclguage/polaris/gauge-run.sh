@@ -21,6 +21,12 @@ export CUDACXX=$CUDA_HOME/bin/nvcc
 export CUDNN_LIBRARY=$CUDA_HOME/lib64
 export CUDNN_INCLUDE_DIR=$CUDA_HOME/include
 
+export MPIEXEC_HOME=/opt/cray/pals/1.3.4
+export NCCL_NET_PLUGIN_HOME="/home/yuke/ncclPG/aws-ofi-nccl-1.7.4-aws/build"     
+export NCCL_SOCKET_IFNAME=hsn0,hsn1
+export NCCL_IB_HCA=cxi0,cxi1
+export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:$LD_LIBRARY_PATH
+
 # Additional compiler flags for NVCC
 export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 
@@ -40,5 +46,7 @@ cd /home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage
 
 ./gauge/gauge.exe
 
-# $MPI_HOME/bin/mpirun -np 2 -hosts node05:2 $NCCLTESTS_SRC_LOCATION/build/sendrecv_perf -b 4MB -e 4MB -f 2 -g 1 -n 20 > output.log 2>&1
+
+# export MPIEXEC_HOME=/opt/cray/pals/1.3.4
+# $MPIEXEC_HOME/bin/mpirun -np 2 -hosts x3006c0s1b1n0:2 gauge-run.sh
 
