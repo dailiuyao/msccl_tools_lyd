@@ -1,5 +1,5 @@
 #!/bin/bash -l
-#PBS -l select=2:system=polaris
+#PBS -l select=1:system=polaris
 #PBS -l place=scatter
 #PBS -l walltime=00:09:59
 #PBS -q debug
@@ -54,7 +54,7 @@ export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOM
 
 export NCCL_GAUGE_HOME="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage"
 export GAUGE_OUT_DIRE="/home/yuke/ncclPG/CCL-LYD/msccl_tools_lyd/examples/scripts/ncclguage/polaris"
-export GAUGE_HEO="inter"
+export GAUGE_HEO="intra"
 export GAUGE_CHUNK_SIZE="2"
 
 
@@ -69,8 +69,7 @@ for ((itr = 0; itr < 5; itr += 1)); do
                     export GAUGE_MODE=${mode}
                     export NCCL_MIN_NCHANNELS=${nch}
                     export NCCL_MAX_NCHANNELS=${nch}
-                    $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
-                done
+                    $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 2 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
             done
         done
     done 
