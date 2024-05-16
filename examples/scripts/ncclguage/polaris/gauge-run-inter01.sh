@@ -1,8 +1,8 @@
 #!/bin/bash -l
 #PBS -l select=2:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=04:59:59
-#PBS -q preemptable
+#PBS -l walltime=00:59:59
+#PBS -q debug
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
@@ -60,7 +60,7 @@ export GAUGE_HEO="inter"
 export GAUGE_CHUNK_SIZE="2"
 
 
-for ((itr = 0; itr < 5; itr += 1)); do
+for ((itr = 0; itr < 2; itr += 1)); do
     for ((nch = 1; nch <= 4; nch *= 2)); do
         for mode in pping ppong; do
             for ((n = 1; n <= 32; n *= 2)); do
