@@ -10,10 +10,13 @@
 #PBS -o log/ccl-2nodes.out
 #PBS -e log/ccl-2nodes.error
 
-export MPI_HOME=/opt/cray/pe/mpich/8.1.25/ofi/nvidia/20.7
-export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/22.11/cuda
+module swap PrgEnv-nvhpc PrgEnv-gnu
+module load nvhpc-mixed
 
-export MPIEXEC_HOME=/opt/cray/pe/pals/1.2.11
+export MPI_HOME=/opt/cray/pe/mpich/8.1.28/ofi/nvidia/23.3
+export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda
+
+export MPIEXEC_HOME=/opt/cray/pals/1.3.4
 export NCCL_NET_PLUGIN_HOME="/home/yuke/ncclPG/aws-ofi-nccl-1.7.4-aws/build"          
 
 export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:${MPI_HOME}/lib:$LD_LIBRARY_PATH
@@ -57,13 +60,13 @@ export NCCL_PROTO=Simple
 # export NCCL_MIN_NCHANNELS=2
 # export NCCL_MAX_NCHANNELS=2
 
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/sendrecv_perf -b 2 -e 512MB -f 2 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/sendrecv_perf -b 2 -e 512MB -f 2 -g 1
 
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 2 --cpu-bind core ${NCCL_TEST_HOME}/build/sendrecv_perf -b 2 -e 512MB -f 2 -g 1
+# $MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 2 --cpu-bind core ${NCCL_TEST_HOME}/build/sendrecv_perf -b 2 -e 512MB -f 2 -g 1
 
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -f 2 -g 1
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 1 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 1MB -f 2 -g 1
 
-$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 2 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 512MB -f 2 -g 1
+$MPIEXEC_HOME/bin/mpiexec -n 2 --ppn 2 --cpu-bind core ${NCCL_TEST_HOME}/build/all_reduce_perf -b 2 -e 1MB -f 2 -g 1
 
 # ################################### NCCL TEST Profile ##########################################################
 
