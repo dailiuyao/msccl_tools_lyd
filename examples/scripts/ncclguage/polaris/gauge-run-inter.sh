@@ -1,8 +1,8 @@
 #!/bin/bash -l
 #PBS -l select=2:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=00:09:59
-#PBS -q debug
+#PBS -l walltime=04:59:59
+#PBS -q preemptable
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
 #PBS -k doe
@@ -69,7 +69,7 @@ for ((itr = 0; itr < 5; itr += 1)); do
                     export GAUGE_MODE=${mode}
                     export NCCL_MIN_NCHANNELS=${nch}
                     export NCCL_MAX_NCHANNELS=${nch}
-                    $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
+                    $MPIEXEC_HOME/bin/mpirun -n 2 --ppn 1 --cpu-bind core x CUDA_VISIBLE_DEVICES=1 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
                 done
             done
         done
