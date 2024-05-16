@@ -289,10 +289,14 @@ int main(int argc, char* argv[])
   //   }
   // }
 
-  if (myRank == 0) { 
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, h_messages->timeValue[1][0] - h_messages->timeValue[0][0]);
+  double prtt_time; 
+
+  if (myRank == 0) {
+    prtt_time = (h_messages->timeValue[1][0] - h_messages->timeValue[0][0])/1.44e3;
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, prtt_time);
   } else {
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, h_messages->timeValue[0][0] - h_messages->timeValue[1][0]);
+    prtt_time = (h_messages->timeValue[0][0] - h_messages->timeValue[1][0])/1.44e3;
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, prtt_time);
   }
   #endif
 
