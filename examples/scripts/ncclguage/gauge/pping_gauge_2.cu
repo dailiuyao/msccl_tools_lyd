@@ -292,10 +292,10 @@ int main(int argc, char* argv[])
   double gauge_time;
 
   if (myRank == 0) { 
-    gauge_time = (h_messages->timeValue[1][0] - h_messages->timeValue[0][0]) / 1440;
+    gauge_time = static_cast<double>(h_messages->timeValue[1][0] - h_messages->timeValue[0][0]) / 1440.0
     printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
   } else {
-    gauge_time = (h_messages->timeValue[0][0] - h_messages->timeValue[1][0]) / 1440; 
+    gauge_time = static_cast<double>(h_messages->timeValue[0][0] - h_messages->timeValue[1][0]) / 1440.0; 
     printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
   }
   #endif
