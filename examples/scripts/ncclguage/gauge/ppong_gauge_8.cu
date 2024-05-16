@@ -289,7 +289,7 @@ int main(int argc, char* argv[])
   //   }
   // }
 
-  double prtt_time;
+  float prtt_time;
 
   if (myRank == 0) { 
     prtt_time = (h_messages->timeValue[1][31] - h_messages->timeValue[0][0])/1.44e3;
