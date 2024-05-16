@@ -10,7 +10,6 @@ struct LogMessage_lyd* d_messages;
 // int nccl_gauge_iteration = 0;
 #define N_ITERS 32
 
-
 #define MPICHECK(cmd) do {                          \
   int e = cmd;                                      \
   if( e != MPI_SUCCESS ) {                          \
@@ -290,14 +289,14 @@ int main(int argc, char* argv[])
   //   }
   // }
 
-  float prtt_time;
+  unsigned long long int gauge_time;
 
   if (myRank == 0) { 
-    prtt_time = (h_messages->timeValue[1][31] - h_messages->timeValue[0][0])/1.44e3;
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, prtt_time);
+    gauge_time = (h_messages->timeValue[1][31] - h_messages->timeValue[0][0])/1440;
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
   } else {
-    prtt_time = (h_messages->timeValue[0][31] - h_messages->timeValue[1][0])/1.44e3;
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, prtt_time);
+    gauge_time = (h_messages->timeValue[0][31] - h_messages->timeValue[1][0])/1440;
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
   }
   #endif
 
