@@ -8,7 +8,7 @@
 
 struct LogMessage_lyd* d_messages;
 // int nccl_gauge_iteration = 0;
-#define N_ITERS 32s
+#define N_ITERS 32
 
 #define MPICHECK(cmd) do {                          \
   int e = cmd;                                      \
