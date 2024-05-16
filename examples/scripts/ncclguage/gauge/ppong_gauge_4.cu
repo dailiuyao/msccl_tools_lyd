@@ -289,7 +289,7 @@ int main(int argc, char* argv[])
   //   }
   // }
 
-  unsigned long long int gauge_time;
+  double gauge_time;
 
   if (myRank == 0) { 
     gauge_time = (h_messages->timeValue[1][31] - h_messages->timeValue[0][0])/1440;
