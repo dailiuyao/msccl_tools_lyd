@@ -64,7 +64,7 @@ for ((itr = 0; itr < 2; itr += 1)); do
     for ((nch = 1; nch <= 4; nch *= 2)); do
         for mode in pping ppong; do
             for ((n = 1; n <= 32; n *= 2)); do
-                for ((msize=64; msize<=256*1024; msize*=2)); do
+                for ((msize=64; msize<=512*1024; msize*=2)); do
                     export GAUGE_MESSAGE_SIZE=${msize}
                     export GAUGE_ITERATION=${itr} 
                     export GAUGE_NCHANNELS=${nch}
