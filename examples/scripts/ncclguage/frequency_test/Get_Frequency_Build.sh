@@ -1,7 +1,10 @@
-# Set environment variables
-source /home/liuyao/sbatch_sh/.nvccrc
+#!/bin/bash -l
 
-export CUDA_HOME=/home/liuyao/software/cuda-11.6
+# Set environment variables
+module swap PrgEnv-nvhpc PrgEnv-gnu
+module load nvhpc-mixed
+
+export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda
 
 # Update to include the correct path for NVCC and MPI library paths
 export PATH=${CUDA_HOME}/bin:${PATH}
