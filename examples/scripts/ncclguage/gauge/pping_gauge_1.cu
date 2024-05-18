@@ -60,6 +60,13 @@ static void getHostName(char* hostname, int maxlen) {
   }
 }
 
+uint64_t rdtsc() {
+    uint32_t lo, hi;
+    // Inline assembly to read the TSC
+    __asm__ __volatile__ ("rdtsc" : "=a" (lo), "=d" (hi));
+    return (uint64_t)hi << 32 | lo;
+}
+
 
 int main(int argc, char* argv[])
 {
@@ -160,6 +167,8 @@ int main(int argc, char* argv[])
 
   // cudaEventRecord(start_0, s);
 
+  uint64_t kernel_gauge_start = rdtsc();
+
 
   //initializing NCCL
   NCCLCHECK(ncclCommInitRank(&comm, nRanks, id, myRank));
@@ -204,6 +213,8 @@ int main(int argc, char* argv[])
 
   //completing NCCL operation by synchronizing on the CUDA stream
   CUDACHECK(cudaStreamSynchronize(s));
+
+  uint64_t kernel_gauge_end = rdtsc();
 
   // After the kernel execution, copy the messages back to the host
   LogMessage_lyd* h_messages = new LogMessage_lyd;
@@ -292,10 +303,11 @@ int main(int argc, char* argv[])
   double gauge_time;
 
   if (myRank == 0) { 
-    gauge_time = static_cast<double>(h_messages->timeValue[1][0] - h_messages->timeValue[0][0]) / 1440.0;
+    gauge_time = static_cast<double>(h_messages->timeValue[1][0] - h_messages->timeValue[0][0]) / 1410.0;
     printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
+    printf("nccl kernel elapsed time: %f us\n", static_cast<double>(kernel_gauge_end - kernel_gauge_start) / 2800.0);
   } else {
-    gauge_time = static_cast<double>(h_messages->timeValue[0][0] - h_messages->timeValue[1][0]) / 1440.0; 
+    gauge_time = static_cast<double>(h_messages->timeValue[0][0] - h_messages->timeValue[1][0]) / 1410.0; 
     printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
   }
   #endif
