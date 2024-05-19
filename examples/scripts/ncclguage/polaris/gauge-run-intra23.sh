@@ -47,7 +47,7 @@ NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl_profile"
 export PATH=${CUDA_HOME}/bin:${MPI_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
-export CUDA_VISIBLE_DEVICES=0,1
+export CUDA_VISIBLE_DEVICES=0,2
 
 # export NCCL_MIN_NCHANNELS=1
 # export NCCL_MAX_NCHANNELS=1
