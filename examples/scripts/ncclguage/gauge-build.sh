@@ -26,13 +26,21 @@ export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
 # NCCL source location
 NCCL_SRC_LOCATION="/home/liuyao/scratch/deps/nccl"
 
-# Compilation command. Ensure to link against the MPI and NCCL libraries correctly.
-# nvcc $NVCC_GENCODE -ccbin g++ -I${NCCL_SRC_LOCATION}/build/include -I${MPI_HOME}/include -L${NCCL_SRC_LOCATION}/build/lib -L${CUDA_HOME}/lib64 -L${MPI_HOME}/lib -lnccl -lcudart -lmpi $1 -o ${1%.cu}.exe
-nvcc $NVCC_GENCODE -ccbin g++ -I${NCCL_SRC_LOCATION}/build/include -I${MPI_HOME}/include -L${NCCL_SRC_LOCATION}/build/lib -L${CUDA_HOME}/lib64 -L${MPI_HOME}/lib -lnccl -lcudart -lmpi $1 -o ${1%.cu}.exe
+export NCCL_GAUGE_HOME="/home/liuyao/scratch/deps/msccl_tools_lyd/examples/scripts/ncclguage"
 
-# Verification of the output
-if [ -f ${1%.cu}.exe ]; then
-    echo "Compilation successful. Output file: ${1%.cu}.exe"
-else
-    echo "Compilation failed."
-fi
+for ((i = 1; i <= 32; i *= 2)); do
+    for mode in pping ppong; do
+        # Use proper variable expansion and quoting in the command
+        nvcc "$NVCC_GENCODE" -ccbin g++ -I"${NCCL_SRC_LOCATION}/build/include" -I"${MPI_HOME}/include" \
+            -L"${NCCL_SRC_LOCATION}/build/lib" -L"${CUDA_HOME}/lib64" -L"${MPI_HOME}/lib" -lnccl -lcudart -lmpi \
+            -D N_ITERS=${i} \
+            "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge.cu" -o "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe"
+
+        # Verification of the output
+        if [ -f "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe" ]; then
+            echo "Compilation successful. Output file: ${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe"
+        else
+            echo "Compilation failed."
+        fi
+    done
+done

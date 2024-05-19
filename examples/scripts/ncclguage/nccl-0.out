@@ -1,3 +1,0 @@
-Rank 0 | time: 109.075455 milliseconds
-DEVICE | sendrecv.h | runrecv - runsend | PRTT(20, 0, 32768KB) | time: 39936.000000 us
-[MPI Rank 0] Success 

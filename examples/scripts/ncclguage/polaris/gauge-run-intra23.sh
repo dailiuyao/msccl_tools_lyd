@@ -1,7 +1,7 @@
 #!/bin/bash -l
 #PBS -l select=1:system=polaris
 #PBS -l place=scatter
-#PBS -l walltime=00:09:59
+#PBS -l walltime=00:59:59
 #PBS -q debug
 #PBS -l filesystems=home
 #PBS -A MPICH_MCS
@@ -47,6 +47,8 @@ NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl_profile"
 export PATH=${CUDA_HOME}/bin:${MPI_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
+export CUDA_VISIBLE_DEVICES=0,1
+
 # export NCCL_MIN_NCHANNELS=1
 # export NCCL_MAX_NCHANNELS=1
 
@@ -58,11 +60,11 @@ export GAUGE_HEO="intra"
 export GAUGE_CHUNK_SIZE="2"
 
 
-for ((itr = 0; itr < 5; itr += 1)); do
+for ((itr = 2; itr < 4; itr += 1)); do
     for ((nch = 1; nch <= 4; nch *= 2)); do
         for mode in pping ppong; do
             for ((n = 1; n <= 32; n *= 2)); do
-                for ((msize=64; msize<=256*1024; msize*=2)); do
+                for ((msize=64; msize<=512*1024; msize*=2)); do
                     export GAUGE_MESSAGE_SIZE=${msize}
                     export GAUGE_ITERATION=${itr} 
                     export GAUGE_NCHANNELS=${nch}

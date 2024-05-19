@@ -8,7 +8,6 @@
 
 struct LogMessage_lyd* d_messages;
 // int nccl_gauge_iteration = 0;
-#define N_ITERS 4
 
 #define MPICHECK(cmd) do {                          \
   int e = cmd;                                      \
@@ -113,7 +112,8 @@ int main(int argc, char* argv[])
   char filename[256];
 
   if (myRank < 2) {
-    sprintf(filename, "%s/nccl-ppong-%d.out", env_gauge_output_dir_var, myRank);
+    sprintf(filename, "%s/nccl_ppong_%s_chunk%s_itr0-5-r%d.out", env_gauge_output_dir_var, env_gauge_heo_var, env_gauge_chunk_size_var, myRank);
+
     freopen(filename, "a", stdout);
   } else {
     freopen("/dev/null", "w", stdout);
@@ -302,11 +302,11 @@ int main(int argc, char* argv[])
   double gauge_time;
 
   if (myRank == 0) { 
-    gauge_time = static_cast<double>(h_messages->timeValue[1][3] - h_messages->timeValue[0][0])/1440.0;
+    gauge_time = static_cast<double>(h_messages->timeValue[1][N_ITERS-1] - h_messages->timeValue[0][0])/1410.0;
     printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
     printf("nccl kernel elapsed time: %f us\n", static_cast<double>(kernel_gauge_end - kernel_gauge_start) / 2800.0);
   } else {
-    gauge_time = static_cast<double>(h_messages->timeValue[0][3] - h_messages->timeValue[1][0])/1440.0;
+    gauge_time = static_cast<double>(h_messages->timeValue[0][N_ITERS-1] - h_messages->timeValue[1][0])/1410.0;
     printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
   }
   #endif

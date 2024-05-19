@@ -1,9 +1,0 @@
-Ignoring PCI device with non-16bit domain.
-Pass --enable-32bits-pci-domain to configure to support such devices
-(warning: it would break the library ABI, don't enable unless really needed).
-Ignoring PCI device with non-16bit domain.
-Pass --enable-32bits-pci-domain to configure to support such devices
-(warning: it would break the library ABI, don't enable unless really needed).
-slurmstepd: error: *** JOB 85542 ON node05 CANCELLED AT 2024-05-13T14:28:06 ***
-slurmstepd: error: *** STEP 85542.0 ON node05 CANCELLED AT 2024-05-13T14:28:06 ***
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
