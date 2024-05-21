@@ -47,7 +47,7 @@ NCCL_SRC_LOCATION="/home/yuke/ncclPG/CCL-LYD/nccl_profile"
 export PATH=${CUDA_HOME}/bin:${MPI_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
-export CUDA_VISIBLE_DEVICES=0,3
+export CUDA_VISIBLE_DEVICES=0,1
 
 # export NCCL_MIN_NCHANNELS=1
 # export NCCL_MAX_NCHANNELS=1
@@ -63,7 +63,7 @@ export GAUGE_CHUNK_SIZE="2"
 for ((itr = 2; itr < 4; itr += 1)); do
     for ((nch = 1; nch <= 4; nch *= 2)); do
         for mode in pping ppong; do
-            for ((n = 1; n <= 32; n *= 2)); do
+            for ((n = 64; n <= 128; n *= 2)); do
                 for ((msize=64; msize<=512*1024; msize*=2)); do
                     export GAUGE_MESSAGE_SIZE=${msize}
                     export GAUGE_ITERATION=${itr} 

@@ -11,7 +11,11 @@ set -e
 # module load mpich/3.4.2-gcc-8.4.1
 # export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_gcc-8.4.1" 
 
-export MPI_HOME="/home/liuyao/software/mpich4_1_1"
+# export MPI_HOME="/home/liuyao/software/mpich4_1_1"
+
+module load mpich
+
+export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_nvidiahpc-21.9-0"
 
 export LD_LIBRARY_PATH=${MPI_HOME}/lib:$LD_LIBRARY_PATH
 export PATH=${MPI_HOME}/bin:$PATH

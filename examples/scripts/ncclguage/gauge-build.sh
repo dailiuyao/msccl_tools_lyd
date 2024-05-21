@@ -2,7 +2,9 @@
 
 # Set environment variables
 
-export MPI_HOME="/home/liuyao/software/mpich4_1_1"
+module load mpich
+
+export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_nvidiahpc-21.9-0"
 
 # Update to include the correct path for MPI library paths
 export LD_LIBRARY_PATH=${MPI_HOME}/lib:$LD_LIBRARY_PATH
