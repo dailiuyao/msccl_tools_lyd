@@ -156,7 +156,7 @@ int main(int argc, char* argv[])
 
   //gauge test
   CUDACHECK(cudaMalloc(&d_messages, sizeof(LogMessage_lyd)));
-  CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd)));
+  CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd))); 
 
   // // Declare CUDA events
   // cudaEvent_t start_0, stop_0;
@@ -303,13 +303,26 @@ int main(int argc, char* argv[])
 
   if (myRank == 0) { 
     gauge_time = static_cast<double>(h_messages->timeValue[1][0] - h_messages->timeValue[0][0]) / 1410.0;
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
     printf("nccl kernel elapsed time: %f us\n", static_cast<double>(kernel_gauge_end - kernel_gauge_start) / 2800.0);
   } else {
     gauge_time = static_cast<double>(h_messages->timeValue[0][0] - h_messages->timeValue[1][0]) / 1410.0; 
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, env_gauge_iteration_var, gauge_time);
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
   }
   #endif
+
+  // print the gap between chunks
+  if (myRank == 0) { 
+    for (size_t i = 1; i < N_ITERS; ++i) {
+      gauge_time = static_cast<double>(h_messages->timeValue[0][i] - h_messages->timeValue[0][0]) / 1410.0;
+      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", i, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
+    }
+  } else {
+    for (size_t i = 1; i < N_ITERS; ++i) {
+      gauge_time = static_cast<double>(h_messages->timeValue[1][i] - h_messages->timeValue[1][0]) / 1410.0; 
+      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", i, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
+    }
+  }
 
   // Free the device memory of the gauge test
   cudaFree(d_messages);

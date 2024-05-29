@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# source /home/liuyao/sbatch_sh/.mpich_ucx
+source /home/liuyao/sbatch_sh/.mpich_ucx
 
-# export MPI_HOME="/home/liuyao/software/mpich4_1_1"
+export MPI_HOME="/home/liuyao/software/mpich4_1_1"
 
-module load mpich
+# module load mpich
 
-export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_nvidiahpc-21.9-0"
+# export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_nvidiahpc-21.9-0"
 
 # $MPI_HOME/bin/mpirun -np 2 -hosts node04:1,node05:1 ./gauge-run.sh 
 
@@ -32,7 +32,7 @@ export NCCL_MAX_NCHANNELS=1
 
 export NCCL_NTHREADS=256
 
-export NCCL_DEBUG=INFO
+# export NCCL_DEBUG=INFO
 
 # Additional compiler flags for NVCC
 export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
@@ -46,10 +46,10 @@ export GAUGE_CHUNK_SIZE="2"
 
 
 for ((itr = 0; itr < 1; itr += 1)); do
-    for ((nch = 1; nch <= 1; nch *= 2)); do
+    for ((nch = 2; nch <= 2; nch *= 2)); do
         for mode in pping; do
-            for ((n = 1; n <= 1; n *= 2)); do
-                for ((msize=64; msize<=512*1024; msize*=2)); do
+            for ((n = 32; n <= 32; n *= 2)); do
+                for ((msize=512*1024; msize<=512*1024; msize*=2)); do
                     export GAUGE_MESSAGE_SIZE=${msize}
                     export GAUGE_ITERATION=${itr} 
                     export GAUGE_NCHANNELS=${nch}
@@ -57,12 +57,19 @@ for ((itr = 0; itr < 1; itr += 1)); do
                     export NCCL_MIN_NCHANNELS=${nch}
                     export NCCL_MAX_NCHANNELS=${nch}
                     # $MPI_HOME/bin/mpirun -n 2 --ppn 2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
-                    $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
+                    $MPI_HOME/bin/mpirun -n 2 --ppn 2 \
+                    bash -c "nsys profile --force-overwrite true -o profile_%q{PMI_RANK} --trace=cuda,nvtx,osrt --stats=true $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe"
+                    # $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
                 done
             done
         done
     done 
 done
+
+
+
+
+
 
 # ##################################### NCCL #####################################
 # echo "##################################### NCCL #####################################"
