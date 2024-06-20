@@ -111,6 +111,18 @@ int main(int argc, char* argv[])
 
   char filename[256];
 
+  printf("proc is: %d\n", myRank);
+  int gdb = 1;
+  if (myRank == 0){
+    gdb = 0;
+    printf("proc is: %d, pid is %d\n", myRank, (int)getpid());
+  }
+  while(gdb == 0){
+    printf("loop\n");
+    sleep(10);
+  }
+
+
   if (myRank < 2) {
     sprintf(filename, "%s/nccl_pping_%s_chunk%s_itr0-5-r%d.out", env_gauge_output_dir_var, env_gauge_heo_var, env_gauge_chunk_size_var, myRank);
     freopen(filename, "a", stdout);
