@@ -95,8 +95,7 @@ for ((itr = 0; itr < 1; itr += 1)); do
                     export NCCL_MIN_NCHANNELS=${nch}
                     export NCCL_MAX_NCHANNELS=${nch}
                     # ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
-                    ibrun -n 2 --ntasks-per-node=2 \
-                        bash -c "ncu --force-overwrite true -o p2p_profile --target-processes all --set full $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe"
+                    ibrun -n 2 --ntasks-per-node=2 ncu --mode=launch $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
                 done
             done
         done
