@@ -63,7 +63,7 @@ export GAUGE_CHUNK_SIZE="2"
 for ((itr = 0; itr < 1; itr += 1)); do
     for ((nch = 1; nch <= 1; nch *= 2)); do
         for mode in pping; do
-            for ((n = 1; n <= 32; n *= 2)); do
+            for ((n = 1; n <= 32; n *= 32)); do
                 for ((msize=64; msize<=256*1024; msize*=2)); do
                     export GAUGE_MESSAGE_SIZE=${msize}
                     export GAUGE_ITERATION=${itr} 
@@ -71,9 +71,7 @@ for ((itr = 0; itr < 1; itr += 1)); do
                     export GAUGE_MODE=${mode}
                     export NCCL_MIN_NCHANNELS=${nch}
                     export NCCL_MAX_NCHANNELS=${nch}
-                    ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
-                    # ibrun -n 2 --ntasks-per-node=2 \
-                    # bash -c "nsys profile --force-overwrite true -o p2p_profile_d_0_n_${n}_${mode}_%q{SLURM_PROCID} --trace=cuda,nvtx,osrt --stats=true $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe"
+                    ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_mpi_${n}.exe
                 done
             done
         done
