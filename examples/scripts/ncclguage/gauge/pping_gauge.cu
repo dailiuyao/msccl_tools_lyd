@@ -6,10 +6,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#define PROFILE_LYD_HOST_P2P_TIME 1
-
-#define GAUGE_D 1
-
 struct LogMessage_lyd* d_messages;
 // int nccl_gauge_iteration = 0;
 
@@ -70,7 +66,6 @@ uint64_t rdtsc() {
     return (uint64_t)hi << 32 | lo;
 }
 
-
 int main(int argc, char* argv[])
 {
 
@@ -86,16 +81,30 @@ int main(int argc, char* argv[])
 
   const char* env_gauge_output_dir_var = getenv("GAUGE_OUT_DIRE");
 
+  const char* env_gauge_d_var = getenv("GAUGE_D");
+
+  int loggp_gauge_d; 
+
   // Check if environment variables are set
   if (!env_gauge_heo_var) env_gauge_heo_var = "unknown_gauge_heo";
   if (!env_gauge_mode_var) env_gauge_mode_var = "unknown_gauge_mode";
   if (!env_gauge_iteration_var) env_gauge_iteration_var = "unknown_gauge_iteration";
   if (!env_gauge_nchannels_var) env_gauge_nchannels_var = "unknown_gauge_nchannels";
-  if (!env_gauge_chunk_size_var) env_gauge_chunk_size_var = "unknown_gauge_chunk_size";
+  if (!env_gauge_chunk_size_var) env_gauge_chunk_size_var = "unknown_gauge_chunk_size"; 
   if (!env_gauge_output_dir_var) {
     env_gauge_output_dir_var = "unknown_gauge_output_dir";
     printf("unknown gauge output dir\n");
   }
+
+  if (env_gauge_d_var != NULL) {
+        // Convert it to an integer
+        loggp_gauge_d = atoi(env_gauge_d_var);
+
+        // Example usage
+        printf("GAUGE_D is set to: %d\n", loggp_gauge_d);
+    } else {
+        printf("GAUGE_D is not set.\n");
+    }
 
 
   int size = 1;  // Default size
@@ -115,6 +124,8 @@ int main(int argc, char* argv[])
 
   char filename[256];
 
+  const char*  syncmode;
+
   // printf("proc is: %d\n", myRank);
   // int gdb = 1;
   // if (myRank == 0){
@@ -126,9 +137,17 @@ int main(int argc, char* argv[])
   //   sleep(10);
   // }
 
+  if (PROFILE_LYD_P2P_HOST_SYNC == 1) {
+    syncmode = "sync";
+  } else if (PROFILE_LYD_P2P_HOST_GROUP == 1) {
+    syncmode = "group";
+  } else {
+    syncmode = "unknown";
+  }
+
 
   if (myRank < 2) {
-    sprintf(filename, "%s/nccl_pping_%s_chunk%s_itr0-5-r%d.out", env_gauge_output_dir_var, env_gauge_heo_var, env_gauge_chunk_size_var, myRank);
+    sprintf(filename, "%s/nccl_pping_%s_chunk%s-r%d-%s.out", env_gauge_output_dir_var, env_gauge_heo_var, env_gauge_chunk_size_var, myRank, syncmode);
     freopen(filename, "a", stdout);
   } else {
     freopen("/dev/null", "w", stdout);
@@ -172,20 +191,16 @@ int main(int argc, char* argv[])
 
   //gauge test
   CUDACHECK(cudaMalloc(&d_messages, sizeof(LogMessage_lyd)));
-  CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd))); 
+  CUDACHECK(cudaMemset(d_messages, 0, sizeof(LogMessage_lyd)));
+
+  ////////////////////////////// PROFILE_LYD_P2P_HOST_SYNC: START //////////////////////////////
   
-  #if PROFILE_LYD_HOST_P2P_TIME == 1
+  #if PROFILE_LYD_P2P_HOST_SYNC == 1
   // Declare CUDA events in host code
   cudaEvent_t p2p_time_stamp[N_ITERS+1];
   for (int i = 0; i < (N_ITERS+1); ++i) {
     cudaEventCreate(&p2p_time_stamp[i]); // Initialize each event individually
   }
-  #endif
-
-  #if PROFILE_LYD_SEND_RECV_CHUNK == 1
-  uint64_t kernel_gauge_start = rdtsc();
-  #endif
-
 
   //initializing NCCL
   NCCLCHECK(ncclCommInitRank(&comm, nRanks, id, myRank));
@@ -196,76 +211,124 @@ int main(int argc, char* argv[])
   int recvPeer = (myRank-1+nRanks) % nRanks;
   int sendPeer = (myRank+1) % nRanks;
 
-  cudaEventRecord(p2p_time_stamp[0], s);
   if (myRank == 0) {
+    usleep(10);
+    
+    cudaEventRecord(p2p_time_stamp[0], s);
     NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
     CUDACHECK(cudaStreamSynchronize(s));
+    // #if N_ITERS > 1 
+    // usleep(loggp_gauge_d);
+    // #endif
+
+    #if N_ITERS > 1
+    for (int i = 1 ; i < N_ITERS; i++) {
+      usleep(loggp_gauge_d);
+      cudaEventRecord(p2p_time_stamp[i], s);
+      NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
+      CUDACHECK(cudaStreamSynchronize(s));
+      // if (i != (N_ITERS-1)) usleep(loggp_gauge_d);
+    }
+    #endif
+
+    NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, recvPeer, comm, s));
+    CUDACHECK(cudaStreamSynchronize(s));
+
+    cudaEventRecord(p2p_time_stamp[N_ITERS], s);
   } else {
     NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, recvPeer, comm, s));
     CUDACHECK(cudaStreamSynchronize(s));
-  }
 
-  #if N_ITERS > 1
-  for (int i = 1 ; i < N_ITERS; i++) {
-    cudaEventRecord(p2p_time_stamp[i], s);
-    sleep(GAUGE_D);
-    if (myRank == 0) {
-      NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
-      CUDACHECK(cudaStreamSynchronize(s));
-    } else {
+    #if N_ITERS > 1
+    for (int i = 1 ; i < N_ITERS; i++) {
       NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, recvPeer, comm, s));
       CUDACHECK(cudaStreamSynchronize(s));
     }
-  }
-  #endif
+    #endif
 
-  if (myRank == 1) {
     NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
     CUDACHECK(cudaStreamSynchronize(s));
-  } else {
-    NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, recvPeer, comm, s));
-    CUDACHECK(cudaStreamSynchronize(s));
   }
 
-  #if PROFILE_LYD_HOST_P2P_TIME == 1
-  cudaEventRecord(p2p_time_stamp[N_ITERS], s);
-  float gauge_time;
-
-  cudaEventElapsedTime(&gauge_time, p2p_time_stamp[0], p2p_time_stamp[N_ITERS]);
-  if (myRank == 0) { 
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f ms\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
-  } else {
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f ms\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
-  }
-
-  // print the gap between chunks
-  if (myRank == 0) { 
-    for (size_t i = 0; i < N_ITERS-1; ++i) {
-      cudaEventElapsedTime(&gauge_time, p2p_time_stamp[i], p2p_time_stamp[i+1]);
-      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f ms\n", i+1, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
-    }
-  } else {
-    for (size_t i = 0; i < N_ITERS-1; ++i) {
-      cudaEventElapsedTime(&gauge_time, p2p_time_stamp[i], p2p_time_stamp[i+1]);
-      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f ms\n", i+1, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
-    }
-  }
   #endif
 
+  ////////////////////////////// PROFILE_LYD_P2P_HOST_SYNC: END //////////////////////////////
+
+  ////////////////////////////// PROFILE_LYD_P2P_HOST_GROUP: START //////////////////////////////
+
+  #if PROFILE_LYD_P2P_HOST_GROUP == 1
+
+  // Declare CUDA events in host code
+  cudaEvent_t p2p_time_stamp[N_ITERS+1];
+  for (int i = 0; i < (N_ITERS+1); ++i) {
+    cudaEventCreate(&p2p_time_stamp[i]); // Initialize each event individually
+  }
+
+  //initializing NCCL
+  NCCLCHECK(ncclCommInitRank(&comm, nRanks, id, myRank));
+
+  //communicating using NCCL
+  //P2P
+  int recvPeer = (myRank-1+nRanks) % nRanks;
+  int sendPeer = (myRank+1) % nRanks;
+
+  cudaEventRecord(p2p_time_stamp[0], s);
+  for (int i = 0 ; i < N_ITERS; i++) {
+    NCCLCHECK(ncclGroupStart());
+    if (myRank == 0) {
+      NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
+    } else {
+      NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, recvPeer, comm, s));
+    }
+    NCCLCHECK(ncclGroupEnd());
+    CUDACHECK(cudaStreamSynchronize(s));
+    if (myRank == 0 && i != (N_ITERS-1)) usleep(loggp_gauge_d);
+  }
+  NCCLCHECK(ncclGroupStart());
+  if (myRank == 1) {
+    NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
+  } else {
+    NCCLCHECK(ncclRecv((void*)recvbuff, size, ncclFloat, recvPeer, comm, s));
+  }
+  NCCLCHECK(ncclGroupEnd());
+  CUDACHECK(cudaStreamSynchronize(s));
+  cudaEventRecord(p2p_time_stamp[N_ITERS], s);
+
+  #endif
+
+  ////////////////////////////// PROFILE_LYD_P2P_HOST_GROUP: END //////////////////////////////
+
+  ////////////////////////////// PROFILE_LYD_P2P_HOST PRINT TIME : START //////////////////////////////
+
+  #if PROFILE_LYD_P2P_HOST_SYNC == 1 || PROFILE_LYD_P2P_HOST_GROUP == 1
+  float gauge_time;
+  cudaEventElapsedTime(&gauge_time, p2p_time_stamp[0], p2p_time_stamp[N_ITERS]);
+  if (myRank == 0) { 
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f ms\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, loggp_gauge_d, env_gauge_iteration_var, gauge_time);
+  }
+
   // Clean up
-  #if PROFILE_LYD_HOST_P2P_TIME == 1
   for (int i = 0; i < (N_ITERS+1); ++i) {
     cudaEventDestroy(p2p_time_stamp[i]); // Initialize each event individually
   }
   #endif
 
+  ////////////////////////////// PROFILE_LYD_P2P_HOST PRINT TIME : END //////////////////////////////
 
-  //completing NCCL operation by synchronizing on the CUDA stream
-  CUDACHECK(cudaStreamSynchronize(s));
+  ////////////////////////////// PROFILE_LYD_SEND_RECV_CHUNK: START //////////////////////////////
+
+  #if PROFILE_LYD_SEND_RECV_CHUNK == 1
+  uint64_t kernel_gauge_start = rdtsc();
+  #endif
 
   #if PROFILE_LYD_SEND_RECV_CHUNK == 1
   uint64_t kernel_gauge_end = rdtsc();
   #endif
+
+  ////////////////////////////// PROFILE_LYD_SEND_RECV_CHUNK: END //////////////////////////////
+
+  //completing NCCL operation by synchronizing on the CUDA stream
+  CUDACHECK(cudaStreamSynchronize(s));
 
   // After the kernel execution, copy the messages back to the host
   LogMessage_lyd* h_messages = new LogMessage_lyd;
@@ -355,23 +418,23 @@ int main(int argc, char* argv[])
 
   if (myRank == 0) { 
     gauge_time = static_cast<double>(h_messages->timeValue[1][0] - h_messages->timeValue[0][0]) / 1410.0;
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, loggp_gauge_d, env_gauge_iteration_var, gauge_time);
     printf("nccl kernel elapsed time: %f us\n", static_cast<double>(kernel_gauge_end - kernel_gauge_start) / 2800.0);
   } else {
     gauge_time = static_cast<double>(h_messages->timeValue[0][0] - h_messages->timeValue[1][0]) / 1410.0; 
-    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
+    printf("heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, loggp_gauge_d, env_gauge_iteration_var, gauge_time);
   }
 
   // print the gap between chunks
   if (myRank == 0) { 
     for (size_t i = 1; i < N_ITERS; ++i) {
       gauge_time = static_cast<double>(h_messages->timeValue[0][i] - h_messages->timeValue[0][0]) / 1410.0;
-      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", i, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
+      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", i, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, loggp_gauge_d, env_gauge_iteration_var, gauge_time);
     }
   } else {
     for (size_t i = 1; i < N_ITERS; ++i) {
       gauge_time = static_cast<double>(h_messages->timeValue[1][i] - h_messages->timeValue[1][0]) / 1410.0; 
-      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", i, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, GAUGE_D, env_gauge_iteration_var, gauge_time);
+      printf("chunk gap | chunk%d -> chunk0 | heo(%s)_mode(%s)_nchannels(%s)_chunk size(%s)_message size(%s)_n(%d)_d(%d)_iteration(%s): %f us\n", i, env_gauge_heo_var, env_gauge_mode_var, env_gauge_nchannels_var, env_gauge_chunk_size_var, env_gauge_size_var, N_ITERS, loggp_gauge_d, env_gauge_iteration_var, gauge_time);
     }
   }
   #endif
@@ -391,7 +454,6 @@ int main(int argc, char* argv[])
 
   //finalizing MPI
   MPICHECK(MPI_Finalize());
-
 
   printf("[MPI Rank %d] Success \n", myRank);
   return 0;

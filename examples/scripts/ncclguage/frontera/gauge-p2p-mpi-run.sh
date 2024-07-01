@@ -4,8 +4,8 @@
 #SBATCH -o ./nccl-gauge.o%j       # Name of stdout output file
 #SBATCH -e ./nccl-gauge.e%j       # Name of stderr error file
 #SBATCH -p rtx           # Queue (partition) name
-#SBATCH -N 1              # Total # of nodes (must be 1 for serial)
-#SBATCH -n 4              # Total # of mpi tasks (should be 1 for serial)
+#SBATCH -N 2              # Total # of nodes (must be 1 for serial)
+#SBATCH -n 8              # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:00:00        # Run time (hh:mm:ss)
 ##SBATCH --exclude=c197-072,c196-102
 ##SBATCH --mail-type=all    # Send email at begin and end of job
@@ -57,25 +57,27 @@ export NCCL_NTHREADS=256
 cd $NCCL_GAUGE_HOME/frontera
 
 export GAUGE_OUT_DIRE=$NCCL_GAUGE_HOME/frontera
-export GAUGE_HEO="intra"
+export GAUGE_HEO="inter"
 export GAUGE_CHUNK_SIZE="2"
 
-for ((itr = 0; itr < 1; itr += 1)); do
-    for ((nch = 1; nch <= 1; nch *= 2)); do
-        for mode in pping; do
-            for ((n = 1; n <= 32; n *= 32)); do
-                for ((msize=64; msize<=256*1024; msize*=2)); do
-                    export GAUGE_MESSAGE_SIZE=${msize}
-                    export GAUGE_ITERATION=${itr} 
-                    export GAUGE_NCHANNELS=${nch}
-                    export GAUGE_MODE=${mode}
-                    export NCCL_MIN_NCHANNELS=${nch}
-                    export NCCL_MAX_NCHANNELS=${nch}
-                    ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_mpi_${n}.exe
+for ((d = 0; d <= 1; d += 1)); do
+    for ((itr = 0; itr < 1; itr += 1)); do
+        for ((nch = 1; nch <= 1; nch *= 2)); do
+            for mode in pping; do
+                for ((n = 1; n <= 32; n *= 32)); do
+                    for ((msize=64; msize<=256*1024; msize*=2)); do
+                        export GAUGE_MESSAGE_SIZE=${msize}
+                        export GAUGE_ITERATION=${itr} 
+                        export GAUGE_NCHANNELS=${nch}
+                        export GAUGE_MODE=${mode}
+                        export NCCL_MIN_NCHANNELS=${nch}
+                        export NCCL_MAX_NCHANNELS=${nch}
+                        ibrun -n 2 --ntasks-per-node=1 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_mpi_d_${d}_n_${n}.exe
+                    done
                 done
             done
-        done
-    done 
+        done 
+    done
 done
 
 

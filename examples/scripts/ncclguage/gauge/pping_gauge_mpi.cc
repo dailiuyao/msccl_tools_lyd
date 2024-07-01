@@ -3,8 +3,6 @@
 #include <mpi.h>
 #include <unistd.h>
 
-#define GAUGE_D 0  // Sleep duration between sends/receives in seconds
-
 // Helper function to initialize the data buffer
 void initData(float* buffer, int size, float value) {
     for (int i = 0; i < size; i++) {
@@ -87,17 +85,19 @@ int main(int argc, char* argv[]) {
     // }
 
     if (myRank == 0) {
+      usleep(10);
+      MpiTime[0] = MPI_Wtime();
       for (int i = 0; i < N_ITERS; i++) {
-        usleep(10);
-        MpiTime[i] = MPI_Wtime();
+        // MpiTime[i] = MPI_Wtime();
         if (i != 0) sleep(GAUGE_D);
         MPI_Send(sendbuff, size, MPI_FLOAT, sendPeer, 0, MPI_COMM_WORLD);
       }
       MPI_Recv(recvbuff, size, MPI_FLOAT, recvPeer, 0, MPI_COMM_WORLD, &status);
       MpiTime[N_ITERS] = MPI_Wtime();
     } else {
+      MpiTime[0] = MPI_Wtime();
       for (int i = 0; i < N_ITERS; i++) {
-        MpiTime[i] = MPI_Wtime();
+        // MpiTime[i] = MPI_Wtime();
         MPI_Recv(recvbuff, size, MPI_FLOAT, recvPeer, 0, MPI_COMM_WORLD, &status);
       }
       MPI_Send(sendbuff, size, MPI_FLOAT, sendPeer, 0, MPI_COMM_WORLD);

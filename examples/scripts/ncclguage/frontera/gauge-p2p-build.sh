@@ -33,19 +33,30 @@ NCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
 
 export NCCL_GAUGE_HOME="/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/ncclguage"
 
-for ((i = 1; i <= 32; i *= 2)); do
-    for mode in pping ppong; do
-        # Use proper variable expansion and quoting in the command
-        nvcc "$NVCC_GENCODE" -ccbin mpicc -I"${NCCL_SRC_LOCATION}/build/include" -I"${MPI_HOME}/include" \
-            -L"${NCCL_SRC_LOCATION}/build/lib" -L"${CUDA_HOME}/lib64" -L"${MPI_HOME}/lib" -lnccl -lcudart -lmpi \
-            -D N_ITERS=${i} \
-            "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge.cu" -o "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe"
+for ((i = 1; i <= 8; i *= 8)); do
+    for mode in pping; do
+        for sync_mode in sync group; do
+            if [ "${sync_mode}" == "sync" ]; then
+                export D_SYNC=1
+                export D_GROUP=0
+            else
+                export D_SYNC=0
+                export D_GROUP=1
+            fi
+            # Use proper variable expansion and quoting in the command
+            nvcc "$NVCC_GENCODE" -ccbin mpicc -I"${NCCL_SRC_LOCATION}/build/include" -I"${MPI_HOME}/include" \
+                -L"${NCCL_SRC_LOCATION}/build/lib" -L"${CUDA_HOME}/lib64" -L"${MPI_HOME}/lib" -lnccl -lcudart -lmpi \
+                -D N_ITERS=${i} \
+                -D PROFILE_LYD_P2P_HOST_SYNC=${D_SYNC} \
+                -D PROFILE_LYD_P2P_HOST_GROUP=${D_GROUP} \
+                "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge.cu" -o "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_n_${i}_${sync_mode}.exe"
 
-        # Verification of the output
-        if [ -f "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe" ]; then
-            echo "Compilation successful. Output file: ${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_${i}.exe"
-        else
-            echo "Compilation failed."
-        fi
+            # Verification of the output
+            if [ -f "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_n_${i}_${sync_mode}.exe" ]; then
+                echo "Compilation successful. Output file: ${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_n_${i}_${sync_mode}.exe"
+            else
+                echo "Compilation failed."
+            fi
+        done
     done
 done

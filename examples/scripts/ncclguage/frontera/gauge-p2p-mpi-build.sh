@@ -33,19 +33,22 @@ NCCL_SRC_LOCATION="/home1/09168/ldai1/ccl-build/NCCL_profile"
 
 export NCCL_GAUGE_HOME="/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/scripts/ncclguage"
 
-for ((i = 1; i <= 32; i *= 32)); do
-    for mode in pping ; do
-        # Use proper variable expansion and quoting in the command
-        mpicc -I"${MPI_HOME}/include" \
-            -L"${MPI_HOME}/lib" -lmpi \
-            -D N_ITERS=${i} \
-            "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi.cc" -o "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi_${i}.exe"
+for ((j = 0; j <= 1; j += 1)); do
+    for ((i = 1; i <= 32; i *= 32)); do
+        for mode in pping ; do
+            # Use proper variable expansion and quoting in the command
+            mpicc -I"${MPI_HOME}/include" \
+                -L"${MPI_HOME}/lib" -lmpi \
+                -D N_ITERS=${i} \
+                -D GAUGE_D=${j} \
+                "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi.cc" -o "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi_d_${j}_n_${i}.exe"
 
-        # Verification of the output
-        if [ -f "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi_${i}.exe" ]; then
-            echo "Compilation successful. Output file: ${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi_${i}.exe"
-        else
-            echo "Compilation failed."
-        fi
+            # Verification of the output
+            if [ -f "${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi_d_${j}_n_${i}.exe" ]; then
+                echo "Compilation successful. Output file: ${NCCL_GAUGE_HOME}/gauge/${mode}_gauge_mpi_d_${j}_n_${i}.exe"
+            else
+                echo "Compilation failed."
+            fi
+        done
     done
 done

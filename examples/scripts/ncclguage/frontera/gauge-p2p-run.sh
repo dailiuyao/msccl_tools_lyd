@@ -7,9 +7,10 @@
 #SBATCH -N 1              # Total # of nodes (must be 1 for serial)
 #SBATCH -n 4              # Total # of mpi tasks (should be 1 for serial)
 #SBATCH -t 01:00:00        # Run time (hh:mm:ss)
+#SBATCH --exclusive
+##SBATCH -A nccl-gauge       # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --exclude=c197-072,c196-102
 ##SBATCH --mail-type=all    # Send email at begin and end of job
-##SBATCH -A nccl-gauge       # Project/Allocation name (req'd if you have more than 1)
 ##SBATCH --mail-user=username@tacc.utexas.edu
 
 set -e
@@ -47,9 +48,6 @@ export NCCL_GAUGE_HOME="/home1/09168/ldai1/ccl-build/msccl_tools_lyd/examples/sc
 export PATH=${CUDA_HOME}/bin:${MPI_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
-export NCCL_MIN_NCHANNELS=1
-export NCCL_MAX_NCHANNELS=1
-
 export NCCL_NTHREADS=256
 
 # export NCCL_DEBUG=INFO
@@ -60,49 +58,56 @@ export GAUGE_OUT_DIRE=$NCCL_GAUGE_HOME/frontera
 export GAUGE_HEO="intra"
 export GAUGE_CHUNK_SIZE="2"
 
-for ((itr = 0; itr < 1; itr += 1)); do
-    for ((nch = 1; nch <= 1; nch *= 2)); do
-        for mode in pping; do
-            for ((n = 1; n <= 32; n *= 2)); do
-                for ((msize=64; msize<=256*1024; msize*=2)); do
-                    export GAUGE_MESSAGE_SIZE=${msize}
-                    export GAUGE_ITERATION=${itr} 
-                    export GAUGE_NCHANNELS=${nch}
-                    export GAUGE_MODE=${mode}
-                    export NCCL_MIN_NCHANNELS=${nch}
-                    export NCCL_MAX_NCHANNELS=${nch}
-                    ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
-                    # ibrun -n 2 --ntasks-per-node=2 \
-                    # bash -c "nsys profile --force-overwrite true -o p2p_profile_d_0_n_${n}_${mode}_%q{SLURM_PROCID} --trace=cuda,nvtx,osrt --stats=true $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe"
+
+# benchmarks for G g o
+
+for ((itr = 1; itr < 2; itr += 1)); do
+    for sync_mode in sync group; do
+        for ((n = 1; n <= 8; n *= 8)); do
+            for ((nch = 1; nch <= 1; nch *= 2)); do
+                for mode in pping; do
+                    for ((d = 0; d <= 100*1000; d += 20*1000)); do
+                        for ((msize=32; msize<=256*1024; msize*=2)); do
+                            export GAUGE_MESSAGE_SIZE=${msize}
+                            export GAUGE_ITERATION=${itr} 
+                            export GAUGE_NCHANNELS=${nch}
+                            export GAUGE_MODE=${mode}
+                            export NCCL_MIN_NCHANNELS=${nch}
+                            export NCCL_MAX_NCHANNELS=${nch}
+                            export GAUGE_D=${d}
+                            ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}_${sync_mode}.exe
+                            # ibrun -n 2 --ntasks-per-node=2 \
+                            # bash -c "nsys profile --force-overwrite true -o p2p_profile_d_0_n_${n}_${mode}_%q{SLURM_PROCID} --trace=cuda,nvtx,osrt --stats=true $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe"
+                            # ibrun -n 2 --ntasks-per-node=2 ncu --mode=launch $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
+                        done
+                    done
                 done
-            done
+            done 
         done
-    done 
+    done
 done
 
+# # benchmarks for L
 
-# # Nsight Compute profiling
-
-# for ((itr = 0; itr < 1; itr += 1)); do
-#     for ((nch = 1; nch <= 1; nch *= 2)); do
-#         for mode in pping; do
-#             for ((n = 32; n <= 32; n *= 2)); do
-#                 for ((msize=1; msize<=1; msize*=2)); do
-#                     export GAUGE_MESSAGE_SIZE=${msize}
-#                     export GAUGE_ITERATION=${itr} 
-#                     export GAUGE_NCHANNELS=${nch}
-#                     export GAUGE_MODE=${mode}
-#                     export NCCL_MIN_NCHANNELS=${nch}
-#                     export NCCL_MAX_NCHANNELS=${nch}
-#                     # ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
-#                     ibrun -n 2 --ntasks-per-node=2 ncu --mode=launch $NCCL_GAUGE_HOME/gauge/${mode}_gauge_${n}.exe
+# for ((itr = 0; itr < 2; itr += 1)); do
+#     for sync_mode in sync group; do
+#         for ((n = 1; n <= 1; n *= 8)); do
+#             for ((nch = 1; nch <= 1; nch *= 2)); do
+#                 for mode in pping; do
+#                     for ((d = 0; d <= 0; d += 100*1000)); do
+#                         for ((msize=1; msize<=1; msize*=2)); do
+#                             export GAUGE_MESSAGE_SIZE=${msize}
+#                             export GAUGE_ITERATION=${itr} 
+#                             export GAUGE_NCHANNELS=${nch}
+#                             export GAUGE_MODE=${mode}
+#                             export NCCL_MIN_NCHANNELS=${nch}
+#                             export NCCL_MAX_NCHANNELS=${nch}
+#                             export GAUGE_D=${d}
+#                             ibrun -n 2 --ntasks-per-node=2 $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}_${sync_mode}.exe
+#                         done
+#                     done
 #                 done
-#             done
+#             done 
 #         done
-#     done 
+#     done
 # done
-
-
-
-
-
