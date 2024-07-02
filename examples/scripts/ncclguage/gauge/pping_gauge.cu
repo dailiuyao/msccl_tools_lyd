@@ -81,7 +81,7 @@ int main(int argc, char* argv[])
 
   const char* env_gauge_output_dir_var = getenv("GAUGE_OUT_DIRE");
 
-  const char* env_gauge_d_var = getenv("GAUGE_D");
+  const char* env_gauge_d_var = getenv("GAUGE_D_HOST");
 
   int loggp_gauge_d; 
 
@@ -101,9 +101,9 @@ int main(int argc, char* argv[])
         loggp_gauge_d = atoi(env_gauge_d_var);
 
         // Example usage
-        printf("GAUGE_D is set to: %d\n", loggp_gauge_d);
+        printf("GAUGE_D_HOST is set to: %d\n", loggp_gauge_d);
     } else {
-        printf("GAUGE_D is not set.\n");
+        printf("GAUGE_D_HOST is not set.\n");
     }
 
 
@@ -146,12 +146,16 @@ int main(int argc, char* argv[])
   }
 
 
-  if (myRank < 2) {
-    sprintf(filename, "%s/nccl_pping_%s_chunk%s-r%d-%s.out", env_gauge_output_dir_var, env_gauge_heo_var, env_gauge_chunk_size_var, myRank, syncmode);
-    freopen(filename, "a", stdout);
-  } else {
-    freopen("/dev/null", "w", stdout);
-  }
+  // if (myRank < 2) {
+  //   sprintf(filename, "%s/nccl_pping_%s_chunk%s-r%d-%s.out", env_gauge_output_dir_var, env_gauge_heo_var, env_gauge_chunk_size_var, myRank, syncmode);
+  //   printf("filename is %s\n", filename);
+  //   freopen(filename, "a", stdout);
+  //   printf("freopen() succeeded\n in rank %d", myRank);
+  // } else {
+  //   freopen("/dev/null", "w", stdout);
+  // }
+
+  // printf("filename is %s\n", filename);
 
 
   // int nccl_start = 0;
@@ -169,6 +173,7 @@ int main(int argc, char* argv[])
      if (p == myRank) break;
      if (hostHashs[p] == hostHashs[myRank]) localRank++;
   }
+
 
 
   ncclUniqueId id;
@@ -218,16 +223,16 @@ int main(int argc, char* argv[])
     NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
     CUDACHECK(cudaStreamSynchronize(s));
     // #if N_ITERS > 1 
-    // usleep(loggp_gauge_d);
+    // usleep(1000);
     // #endif
 
     #if N_ITERS > 1
     for (int i = 1 ; i < N_ITERS; i++) {
-      usleep(loggp_gauge_d);
+      usleep(1000);
       cudaEventRecord(p2p_time_stamp[i], s);
       NCCLCHECK(ncclSend((const void*)sendbuff, size, ncclFloat, sendPeer, comm, s));
       CUDACHECK(cudaStreamSynchronize(s));
-      // if (i != (N_ITERS-1)) usleep(loggp_gauge_d);
+      // if (i != (N_ITERS-1)) usleep(1000);
     }
     #endif
 
@@ -282,7 +287,7 @@ int main(int argc, char* argv[])
     }
     NCCLCHECK(ncclGroupEnd());
     CUDACHECK(cudaStreamSynchronize(s));
-    if (myRank == 0 && i != (N_ITERS-1)) usleep(loggp_gauge_d);
+    if (myRank == 0 && i != (N_ITERS-1)) usleep(1000);
   }
   NCCLCHECK(ncclGroupStart());
   if (myRank == 1) {

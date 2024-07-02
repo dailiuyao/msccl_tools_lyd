@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     }
 
     const char* env_gauge_size_var = getenv("GAUGE_MESSAGE_SIZE");
-    if (env_gauge_size_var != nullptr) {
+    if (env_gauge_size_var != NULL) {
         size = atoi(env_gauge_size_var) * 1024 / 4;  // Convert from kilobytes to number of floats, assuming the environment variable is in kilobytes
     }
 
