@@ -17,15 +17,25 @@ set -e
 
 # export MPI_HOME="/opt/apps/mpi/mpich-3.4.2_nvidiahpc-21.9-0"
 
-source /home/liuyao/sbatch_sh/.mpich_ucx
+# source /home/liuyao/sbatch_sh/.mpich_ucx
 
-export MPI_HOME="/home/liuyao/software/mpich4_1_1"
+# export MPI_HOME="/home/liuyao/software/mpich4_1_1"
+
+# source /home/liuyao/sbatch_sh/.openmpirc
+
+# export MPI_HOME="/home/liuyao/software/openmpi_5_0_3"
+
+spack load gcc@10.4.0 
+
+spack load mpich@4.1.1
+
+export MPI_HOME="/home/liuyao/software/spack/opt/spack/linux-almalinux8-icelake/gcc-10.4.0/mpich-4.1.1-j7lgvgtzrx6aj5k6a7lcs5xg4obnfi6i"
+
+source /home/liuyao/sbatch_sh/.nvccrc
 
 export LD_LIBRARY_PATH=${MPI_HOME}/lib:$LD_LIBRARY_PATH
 export PATH=${MPI_HOME}/bin:$PATH
 export C_INCLUDE_PATH=${MPI_HOME}/include:$C_INCLUDE_PATH
-
-source /home/liuyao/sbatch_sh/.nvccrc
 
 ### Set environment variables ###
 
@@ -185,7 +195,7 @@ popd || exit
 echo ""
 
 
-### NCCL Tests on NCCL Section ###
+### NCCL Tests on NCCL Section ###ccl_env_build_padsys.sh
 
 # Download NCCL Tests
 if [ ! -d "${NCCLTESTS_SRC_LOCATION}" ]; then
@@ -208,7 +218,10 @@ echo ""
 
 # Build NCCL Tests with MSCCL support
 echo "[INFO] Building NCCL tests (nccl-tests)..."
+echo "[DEBUG] MPI_HOME has been set to: ${MPI_HOME}"
 # srun make MPI=1 NCCL_HOME="${MSCCL_SRC_LOCATION}/build/" -j  # Note: Use MSCCL's "version" of NCCL to build nccl-tests
+make clean
+
 make MPI=1 MPI_HOME=${MPI_HOME} CUDA_HOME=${CUDA_HOME} NCCL_HOME=${NCCL_HOME}
 # srun make MPI=1 NCCL_HOME="${NCCL_SRC_LOCATION}/build/" -j  
 
