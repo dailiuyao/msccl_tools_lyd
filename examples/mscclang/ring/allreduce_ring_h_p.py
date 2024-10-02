@@ -79,6 +79,13 @@ def generate_gpu_indices(num_elements=64, num_gpus=4):
         gpu_indices.append(list(reversed([4,3,2,1,0,7,6,5])))
         gpu_indices.append(list(reversed([5,4,3,2,1,0,7,6])))
         gpu_indices.append(list(reversed([6,5,4,3,2,1,0,7])))
+    elif num_gpus == 1:
+        gpu_indices.append([0])
+        gpu_indices.append([0])
+        gpu_indices.append(list(reversed([0])))
+        gpu_indices.append(list(reversed([0])))
+        
+        
     
     # # Number of groups after the initial one
     # num_groups = num_elements // num_gpus - 1  # Subtract 1 for the initial group already defined
