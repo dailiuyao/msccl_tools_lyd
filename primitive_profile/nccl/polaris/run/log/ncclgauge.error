@@ -1,0 +1,8 @@
+
+Lmod is automatically replacing "nvhpc/23.9" with "gcc-native/12.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.28
+
+signal failed on x3004c0s13b1n0: Application 06db97ac-6e7b-4b5a-ad0d-0ab36e1c6a94 not found

@@ -63,7 +63,7 @@ export GAUGE_OUT_DIRE="$NCCL_GAUGE_HOME/run"
 export GAUGE_HEO="inter"
 export GAUGE_CHUNK_SIZE="2"
 
-export ITERATION_TIME="100"
+export ITERATION_TIME="10"
 
 export COMM_GPU_ID="0"
 
@@ -71,27 +71,8 @@ export GAUGE_MIN_NTHREADS=64
 export GAUGE_MAX_NTHREADS=64
 
 export GAUGE_MIN_NCHANNELS=1
-export GAUGE_MAX_NCHANNELS=1
+export GAUGE_MAX_NCHANNELS=4
 
-GAUGE_STEP_SIZE=512
-
-# if [ "$GAUGE_MAX_NCHANNELS" -eq 2 ]; then
-
-#     MESSAGE_SIZE_START=$((GAUGE_STEP_SIZE * 2))
-#     MESSAGE_SIZE_END=$((GAUGE_STEP_SIZE * 128))
-#     MESSAGE_SIZE_STEP=$((GAUGE_STEP_SIZE * 2))
-
-# elif [ "$GAUGE_MAX_NCHANNELS" -eq 1 ]; then
-
-#     MESSAGE_SIZE_START=$((GAUGE_STEP_SIZE))
-#     MESSAGE_SIZE_END=$((GAUGE_STEP_SIZE * 128))
-#     MESSAGE_SIZE_STEP=$((GAUGE_STEP_SIZE))
-
-# fi
-
-MESSAGE_SIZE_START=$((GAUGE_STEP_SIZE))
-MESSAGE_SIZE_END=$((GAUGE_STEP_SIZE * 128))
-MESSAGE_SIZE_STEP=$((GAUGE_STEP_SIZE))
 
 concurrency_sequence=(1)
 
@@ -111,12 +92,7 @@ for ((itr = 0; itr < ${ITERATION_TIME}; itr += 1)); do
                     export GAUGE_MESSAGE_SIZE=1
                     $MPIEXEC_HOME/bin/mpirun -n 4 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
                     export GAUGE_STEP_SIZE="512"
-                    for ((msize=${GAUGE_STEP_SIZE}; msize<=128*${GAUGE_STEP_SIZE}; msize+=${GAUGE_STEP_SIZE})); do
-                        export GAUGE_MESSAGE_SIZE=${msize}
-                        $MPIEXEC_HOME/bin/mpirun -n 4 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
-                    done
-                    export GAUGE_STEP_SIZE="524288"
-                    for ((msize=(${GAUGE_STEP_SIZE}); msize<=8*${GAUGE_STEP_SIZE}; msize+=${GAUGE_STEP_SIZE})); do
+                    for ((msize=${GAUGE_STEP_SIZE}; msize<=65536; msize*=2)); do
                         export GAUGE_MESSAGE_SIZE=${msize}
                         $MPIEXEC_HOME/bin/mpirun -n 4 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
                     done

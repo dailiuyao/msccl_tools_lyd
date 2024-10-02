@@ -252,7 +252,7 @@ int main(int argc, char* argv[])
   CUDACHECK(cudaStreamSynchronize(s));
 
   if (myRank < 4) {
-    sprintf(filename, "%s/nccl_allreduce_%s_chunk-%s_r-%d.out", env_gauge_output_dir_var, env_gauge_heo_var, env_gauge_chunk_size_var, myRank);
+    sprintf(filename, "%s/nccl_allreduce_%s_r-%d.out", env_gauge_output_dir_var, env_gauge_heo_var, myRank);
     freopen(filename, "a", stdout);
   } else {
     freopen("/dev/null", "w", stdout);
