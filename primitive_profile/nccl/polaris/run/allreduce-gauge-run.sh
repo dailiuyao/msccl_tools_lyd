@@ -53,9 +53,9 @@ export PATH=${CUDA_HOME}/bin:${MPI_HOME}/bin:${PATH}
 export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
 
 
-export NCCL_DEBUG="WARN"
+export NCCL_DEBUG="TRACE"
 export NCCL_PROTO="Simple"
-export NCCL_ALGO="Ring"
+export NCCL_ALGO="TREE"
 
 cd $NCCL_GAUGE_HOME/run
 
@@ -90,11 +90,11 @@ for ((itr = 0; itr < ${ITERATION_TIME}; itr += 1)); do
                     export GAUGE_ITERATION=${itr}
 
                     export GAUGE_MESSAGE_SIZE=1
-                    $MPIEXEC_HOME/bin/mpirun -n 4 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
+                    $MPIEXEC_HOME/bin/mpirun -n 8 --ppn 2 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
                     export GAUGE_STEP_SIZE="512"
                     for ((msize=${GAUGE_STEP_SIZE}; msize<=65536; msize*=2)); do
                         export GAUGE_MESSAGE_SIZE=${msize}
-                        $MPIEXEC_HOME/bin/mpirun -n 4 --ppn 1 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
+                        $MPIEXEC_HOME/bin/mpirun -n 8 --ppn 2 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
                     done
                 done
             done
