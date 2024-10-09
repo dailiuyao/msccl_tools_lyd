@@ -1,0 +1,76 @@
+
+Lmod is automatically replacing "nvhpc/23.9" with "gcc-native/12.3".
+
+
+Due to MODULEPATH changes, the following have been reloaded:
+  1) cray-mpich/8.1.28
+
+In file included from include/core.h:57:0,
+                 from include/transport.h:13,
+                 from include/comm.h:10,
+                 from include/enqueue.h:10,
+                 from enqueue.cc:7:
+enqueue.cc: In function ‘ncclResult_t ncclLaunchCooperativeKernelMultiDevice(cudaLaunchParams*, int*, int, int)’:
+enqueue.cc:151:97: warning: ‘cudaError_t cudaLaunchCooperativeKernelMultiDevice(cudaLaunchParams*, unsigned int, unsigned int)’ is deprecated [-Wdeprecated-declarations]
+             cudaCooperativeLaunchMultiDeviceNoPreSync|cudaCooperativeLaunchMultiDeviceNoPostSync));
+                                                                                                 ^
+include/checks.h:14:23: note: in definition of macro ‘CUDACHECK’
+     cudaError_t err = cmd;                                  \
+                       ^~~
+In file included from /opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/channel_descriptor.h:61:0,
+                 from /opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/cuda_runtime.h:94,
+                 from /home/ldai8/ccl/nccl/build/include/nccl.h:10,
+                 from include/devcomm.h:10,
+                 from include/transport.h:10,
+                 from include/comm.h:10,
+                 from include/enqueue.h:10,
+                 from enqueue.cc:7:
+/opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/cuda_runtime_api.h:4384:57: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaLaunchCooperativeKernelMultiDevice(struct cudaLaunchParams *launchParamsList, unsigned int numDevices, unsigned int flags  __dv(0));
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from include/core.h:57:0,
+                 from include/transport.h:13,
+                 from include/comm.h:10,
+                 from include/enqueue.h:10,
+                 from enqueue.cc:7:
+enqueue.cc: In function ‘ncclResult_t ncclLaunchCooperativeKernelMultiDevice(cudaLaunchParams*, int*, int, int)’:
+enqueue.cc:151:97: warning: ‘cudaError_t cudaLaunchCooperativeKernelMultiDevice(cudaLaunchParams*, unsigned int, unsigned int)’ is deprecated [-Wdeprecated-declarations]
+             cudaCooperativeLaunchMultiDeviceNoPreSync|cudaCooperativeLaunchMultiDeviceNoPostSync));
+                                                                                                 ^
+include/checks.h:14:23: note: in definition of macro ‘CUDACHECK’
+     cudaError_t err = cmd;                                  \
+                       ^~~
+In file included from /opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/channel_descriptor.h:61:0,
+                 from /opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/cuda_runtime.h:94,
+                 from /home/ldai8/ccl/nccl_step2/build/include/nccl.h:10,
+                 from include/devcomm.h:10,
+                 from include/transport.h:10,
+                 from include/comm.h:10,
+                 from include/enqueue.h:10,
+                 from enqueue.cc:7:
+/opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/cuda_runtime_api.h:4384:57: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaLaunchCooperativeKernelMultiDevice(struct cudaLaunchParams *launchParamsList, unsigned int numDevices, unsigned int flags  __dv(0));
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from include/core.h:57:0,
+                 from include/transport.h:13,
+                 from include/comm.h:10,
+                 from include/enqueue.h:10,
+                 from enqueue.cc:7:
+enqueue.cc: In function ‘ncclResult_t ncclLaunchCooperativeKernelMultiDevice(cudaLaunchParams*, int*, int, int)’:
+enqueue.cc:151:97: warning: ‘cudaError_t cudaLaunchCooperativeKernelMultiDevice(cudaLaunchParams*, unsigned int, unsigned int)’ is deprecated [-Wdeprecated-declarations]
+             cudaCooperativeLaunchMultiDeviceNoPreSync|cudaCooperativeLaunchMultiDeviceNoPostSync));
+                                                                                                 ^
+include/checks.h:14:23: note: in definition of macro ‘CUDACHECK’
+     cudaError_t err = cmd;                                  \
+                       ^~~
+In file included from /opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/channel_descriptor.h:61:0,
+                 from /opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/cuda_runtime.h:94,
+                 from /home/ldai8/ccl/nccl_step8/build/include/nccl.h:10,
+                 from include/devcomm.h:10,
+                 from include/transport.h:10,
+                 from include/comm.h:10,
+                 from include/enqueue.h:10,
+                 from enqueue.cc:7:
+/opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda/include/cuda_runtime_api.h:4384:57: note: declared here
+ extern __CUDA_DEPRECATED __host__ cudaError_t CUDARTAPI cudaLaunchCooperativeKernelMultiDevice(struct cudaLaunchParams *launchParamsList, unsigned int numDevices, unsigned int flags  __dv(0));
+                                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,106 @@
+#!/bin/bash -l
+#PBS -l select=4:system=polaris
+#PBS -l place=scatter
+#PBS -l walltime=00:59:59
+#PBS -q debug-scaling
+#PBS -l filesystems=home
+#PBS -A SR_APPFL 
+#PBS -k doe
+#PBS -N ncclgauge
+#PBS -o log/mscclgauge.out
+#PBS -e log/mscclgauge.error
+
+# Set environment variables
+
+module swap PrgEnv-nvhpc PrgEnv-gnu
+module load nvhpc-mixed
+
+# Install and load libxml2 using Spack
+spack load libxml2
+
+export MPI_HOME=/opt/cray/pe/mpich/8.1.28/ofi/nvidia/23.3
+export CUDA_HOME=/opt/nvidia/hpc_sdk/Linux_x86_64/23.9/cuda
+
+# Update to include the correct path for MPI library paths
+export LD_LIBRARY_PATH=${MPI_HOME}/lib:$LD_LIBRARY_PATH
+export PATH=${MPI_HOME}/bin:$PATH
+export C_INCLUDE_PATH=${MPI_HOME}/include:$C_INCLUDE_PATH
+
+export PATH=$CUDA_HOME/bin:$PATH
+export C_INCLUDE_PATH=$CUDA_HOME/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=$CUDA_HOME/include:$CPLUS_INCLUDE_PATH
+export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+export CUDACXX=$CUDA_HOME/bin/nvcc
+export CUDNN_LIBRARY=$CUDA_HOME/lib64
+export CUDNN_INCLUDE_DIR=$CUDA_HOME/include
+
+export MPIEXEC_HOME=/opt/cray/pals/1.3.4
+export NCCL_NET_PLUGIN_HOME="/home/ldai8/ccl/aws-ofi-nccl-1.7.4-aws/build"     
+export NCCL_SOCKET_IFNAME=hsn0,hsn1
+export NCCL_IB_HCA=cxi0,cxi1
+export LD_LIBRARY_PATH=${NCCL_NET_PLUGIN_HOME}/lib:$LD_LIBRARY_PATH
+
+# Additional compiler flags for NVCC
+export NVCC_GENCODE="-gencode=arch=compute_80,code=sm_80"
+
+export NCCL_GAUGE_HOME="/home/ldai8/ccl/msccl_tools_lyd/primitive_profile/msccl/polaris"
+
+# NCCL source location
+NCCL_SRC_LOCATION="/home/ldai8/ccl/msccl-lyd"
+
+# Update to include the correct path for NVCC and MPI library paths
+export PATH=${CUDA_HOME}/bin:${MPI_HOME}/bin:${PATH}
+export LD_LIBRARY_PATH=${NCCL_SRC_LOCATION}/build/lib:${MPI_HOME}/lib:${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}
+
+export GENMSCCLXML=0
+export MSCCL_TOOLS_SRC_LOCATION="/home/ldai8/ccl/msccl_tools_lyd"
+export MSCCL_XML_FILES=${MSCCL_TOOLS_SRC_LOCATION}/examples/xml/xml_lyd/binary_tree/allreduce_binary-tree_node4_gpu4_mcl1_mck1_gan0.xml
+
+export NCCL_DEBUG="TRACE"
+export NCCL_PROTO="Simple"
+export NCCL_ALGO=MSCCL,TREE
+
+cd $NCCL_GAUGE_HOME/run
+
+export GAUGE_OUT_DIRE="$NCCL_GAUGE_HOME/run"
+export GAUGE_HEO="inter"
+export GAUGE_CHUNK_SIZE="2"
+
+export ITERATION_TIME="10"
+
+export COMM_GPU_ID="0"
+
+export GAUGE_MIN_NTHREADS=64
+export GAUGE_MAX_NTHREADS=64
+
+export GAUGE_MIN_NCHANNELS=1
+export GAUGE_MAX_NCHANNELS=1
+
+
+concurrency_sequence=(1)
+
+for ((itr = 0; itr < ${ITERATION_TIME}; itr += 1)); do
+    for n in "${concurrency_sequence[@]}"; do
+        for ((nch = ${GAUGE_MIN_NCHANNELS}; nch <= ${GAUGE_MAX_NCHANNELS}; nch *= 2)); do
+            for mode in allreduce; do
+                for ((nth = ${GAUGE_MIN_NTHREADS}; nth <= ${GAUGE_MAX_NTHREADS}; nth *= 2)); do
+                    export GAUGE_NCHANNELS=${nch}
+                    export GAUGE_MODE=${mode}
+                    export NCCL_MIN_NCHANNELS=${nch}
+                    export NCCL_MAX_NCHANNELS=${nch}
+                    export NCCL_NTHREADS=${nth}
+                    export GAUGE_STEP_SIZE="0"
+                    export GAUGE_ITERATION=${itr}
+
+                    export GAUGE_MESSAGE_SIZE=1
+                    $MPIEXEC_HOME/bin/mpirun -n 16 --ppn 4 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
+                    export GAUGE_STEP_SIZE="512"
+                    for ((msize=${GAUGE_STEP_SIZE}; msize<=65536; msize*=2)); do
+                        export GAUGE_MESSAGE_SIZE=${msize}
+                        $MPIEXEC_HOME/bin/mpirun -n 16 --ppn 4 --cpu-bind core $NCCL_GAUGE_HOME/gauge/${mode}_gauge_n_${n}.exe
+                    done
+                done
+            done
+        done 
+    done
+done
